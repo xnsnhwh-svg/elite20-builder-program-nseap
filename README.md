@@ -46,6 +46,8 @@ The MVP now focuses on four layers:
 Start here:
 
 - `standards/standards-mapping.md`: how Richard's reference documents map to this repository
+- `docs/richard-brief.md`: short review guide for Richard
+- `docs/next-implementation-plan.md`: next steps toward reference implementation
 - `methodology/situation-to-agent.md`: the core Situation -> Agent construction method
 - `docs/vision.md`: what Elite20 Builder OS is for
 - `docs/workflow.md`: the main operating workflow

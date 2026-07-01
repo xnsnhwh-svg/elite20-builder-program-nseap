@@ -117,6 +117,35 @@ knowledge-base/knowledge-cognitive-cell/
 
 我们当前对应的是：发现“只有 Markdown 不够支撑知识产品”的问题，提出“Knowledge Repository 产品方案 + v0.1 Demo 验证”的方案，并用 AI 辅助完成第一版实现。
 
+## 方向校验
+
+本模块对应 **Team 6 Knowledge Base Building**，服务 NSEAP AI Learning Operating System 的知识层。它的作用不是单独做一个文档库，而是把课程、挑战、提示词、FAQ、最佳实践和项目案例沉淀成可检索、可复用、未来可被 Agent 调用的结构化知识资产。
+
+当前 v0.1 MVP 已完成：
+
+- Knowledge Cognitive Cell 静态 Demo
+- Markdown 知识源目录
+- KnowledgeItem metadata schema
+- FAQ / Prompt / Best Practice / Project Case 模板
+- 搜索索引生成脚本
+- Builder Workflow、Cognitive Cell 和 NSEAP 标准方向对齐说明
+
+与其他 Builder Team 的接口：
+
+- Curriculum Team：课程内容可以沉淀为 Course Knowledge。
+- Challenge Team：Challenge、Rubric、常见错误可以沉淀为 Challenge Knowledge。
+- Agent Team：Agent 可以读取知识条目作为提示词和评审上下文。
+- Ontology Team：知识条目可以映射到 Concept、Skill、Assessment 等本体节点。
+- Platform Team：后续可以把当前静态 Demo 升级为网站、数据库和后台管理能力。
+- Demo Team：可以把本模块作为 NSEAP 知识层的展示样例。
+
+下一步计划：
+
+- 接入更多真实课程资料和优秀项目案例。
+- 补充 Challenge / Rubric / Agent 相关知识条目。
+- 为 Agent 检索增加更清晰的字段和接口约定。
+- 从 v0.1 静态 Demo 继续演化到可维护、可部署的 Knowledge Repository。
+
 ## 知识增长流程
 
 每个重要知识条目都尽量连接到这个流程：

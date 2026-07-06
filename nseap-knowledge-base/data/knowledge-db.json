@@ -1,0 +1,2343 @@
+{
+  "meta": {
+    "name": "NSEAP 知识认知细胞 API MVP",
+    "version": "0.2.0",
+    "level": "轻量前后端 MVP",
+    "sourceMode": "json-database"
+  },
+  "categories": [
+    {
+      "id": "all",
+      "label": "全部"
+    },
+    {
+      "id": "overview",
+      "label": "概览"
+    },
+    {
+      "id": "course",
+      "label": "课程"
+    },
+    {
+      "id": "challenge",
+      "label": "挑战"
+    },
+    {
+      "id": "prompt",
+      "label": "提示词"
+    },
+    {
+      "id": "faq",
+      "label": "FAQ"
+    },
+    {
+      "id": "best-practice",
+      "label": "最佳实践"
+    },
+    {
+      "id": "project",
+      "label": "项目案例"
+    },
+    {
+      "id": "agent",
+      "label": "Agent"
+    }
+  ],
+  "flow": [
+    "场景",
+    "本体",
+    "流程",
+    "技能",
+    "评估",
+    "学习",
+    "知识增长"
+  ],
+  "entries": [
+    {
+      "id": "kb-project-002",
+      "title": "C2S 大数据应用挑战项目案例",
+      "type": "project",
+      "status": "sample",
+      "audience": [
+        "学生",
+        "教师",
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "project-case",
+        "big-data",
+        "ai-x",
+        "portfolio"
+      ],
+      "keywords": [
+        "C2S",
+        "大数据",
+        "AI+X",
+        "项目案例",
+        "KSTAR",
+        "AAR",
+        "Metadata-First",
+        "语义对齐"
+      ],
+      "concepts": [
+        "AI+X 范式",
+        "KSTAR",
+        "人机协同建模",
+        "元数据先行",
+        "作品集评估"
+      ],
+      "skills": [
+        "术语翻译",
+        "结构化阅读",
+        "场景化提案",
+        "AAR 复盘",
+        "大数据任务拆解"
+      ],
+      "deliverables": [
+        "双语术语表",
+        "AI+X 结构化阅读笔记",
+        "大数据应用优化提案",
+        "AAR 学习复盘",
+        "Metadata-First 实践沉淀"
+      ],
+      "related": [
+        "kb-best-practice-003",
+        "kb-upload-1782957815322",
+        "kb-upload-1782963978597"
+      ],
+      "relationships": [
+        {
+          "predicate": "usesPractice",
+          "target": "kb-best-practice-003",
+          "targetLabel": "Metadata-First 大数据任务实践"
+        },
+        {
+          "predicate": "includes",
+          "target": "kb-upload-1782957815322",
+          "targetLabel": "C2S Challenge"
+        },
+        {
+          "predicate": "includes",
+          "target": "kb-upload-1782963978597",
+          "targetLabel": "C2S Submission V2 BigData"
+        }
+      ],
+      "summary": "一个真实学生项目案例：围绕 AI+X 论文完成术语翻译、结构化理解、面向大数据应用的改进方案和 AAR 复盘。",
+      "situation": "学生需要阅读 AI+X 与共生智能相关材料，并结合自己的专业方向完成作品集提交。这个案例选择大数据应用作为专业场景，重点讨论 AI 在数据清洗、特征工程和业务语义对齐中可能出现的问题。",
+      "ontology": "本案例包含四类核心对象：原始学习材料、学生产出、专业场景和可复用方法。专业场景是大数据应用，可复用方法是 Metadata-First 协议、伪代码审查和 Prompt 效率复盘。",
+      "workflow": "阅读 AI+X 材料 -> 提取关键术语 -> 形成双语术语表 -> 从大数据专业视角解释 L1/L2/L3 -> 用 KSTAR 描述真实问题 -> 提出优化方案 -> 完成 AAR 复盘 -> 沉淀为知识库项目案例",
+      "skill": "术语翻译、结构化阅读、场景化提案、AAR 复盘、大数据任务拆解。",
+      "evaluation": "可以从四个角度评估：是否准确解释 AI+X、KSTAR 等核心概念；是否能结合大数据应用提出真实问题；是否给出可操作的改进方案；是否通过 AAR 说明自己和 AI 分别做了什么以及下一次如何改进。",
+      "knowledgeGrowth": "这个案例可以继续沉淀出项目案例、Metadata-First 最佳实践、数据分析 Prompt、FAQ 和 Agent 检索上下文。",
+      "source": "../knowledge-base/06-projects/c2s-big-data-challenge-case.md",
+      "searchText": "C2S 大数据应用挑战项目案例 AI+X KSTAR AAR Metadata-First 语义对齐 数据清洗 特征工程 业务约束 人机协同 作品集 项目案例",
+      "extractedText": "# C2S 大数据应用挑战项目案例\n\n## 用途\n\n这条知识用来证明知识库可以沉淀真实学生项目，而不只是存放示例文本。它把一次 C2S 挑战的完整产出整理成可检索、可复用、可被 Agent 调用的项目案例。\n\n## 场景 Situation\n\n学生需要阅读 AI+X 与共生智能相关材料，并结合自己的专业方向完成作品集提交。这个案例选择“大数据应用”作为专业场景，重点讨论 AI 在数据清洗、特征工程和业务语义对齐中可能出现的问题。\n\n## 本体 / 结构说明\n\n本案例包含四类核心对象：\n\n- 原始学习材料：AI+X、共生智能、KSTAR、NEOLAF、双回路教学法等概念。\n- 学生产出：双语术语表、结构化理解、改进提案、AAR 复盘。\n- 专业场景：大数据应用、数据编排、特征工程、业务约束。\n- 可复用方法：Metadata-First 协议、伪代码审查、Prompt 数量效率指标。\n\n## 流程 Workflow\n\n```text\n阅读 AI+X 材料\n-> 提取关键术语\n-> 形成双语术语表\n-> 从大数据专业视角解释 L1/L2/L3\n-> 用 KSTAR 描述真实问题\n-> 提出优化方案\n-> 完成 AAR 复盘\n-> 沉淀为知识库项目案例\n```\n\n## 技能 Skills\n\n这个项目训练了五类能力：\n\n- 将英文理论材料转成可理解的中文术语。\n- 用结构化方式解释 AI+X、L1/L2/L3、KSTAR 等概念。\n- 把抽象教育理论落到大数据专业场景中。\n- 用 KSTAR 描述“AI 听不懂业务语义”的真实痛点。\n- 通过 AAR 复盘人和 AI 的分工、调整和成长。\n\n## 解决方案 Solution\n\n项目提出的关键改进是 Metadata-First 协议：在让 AI 生成数据分析或特征工程代码之前，先提供字段含义、业务约束、异常规则和目标指标。这样可以减少“代码语法正确但业务逻辑错误”的情况。\n\n项目还建议在正式写代码前增加伪代码审查，让学生先说明逻辑流程，再让 AI 协助生成代码。AAR 部分则建议记录完成任务所需的 Prompt 数量，用来衡量人机协作效率是否提升。\n\n## 交付物 Deliverables\n\n- 20 个核心术语的双语术语表。\n- AI+X 理论的结构化阅读笔记。\n- 面向大数据应用的 Phase 3 优化提案。\n- 基于 AAR 的学习过程复盘。\n- 可沉淀进知识库的 Metadata-First 最佳实践。\n\n## 评估 Evaluation\n\n这个案例可以从四个角度评估：\n\n1. 是否准确解释 AI+X、KSTAR、双回路教学法等核心概念。\n2. 是否能结合大数据应用提出真实问题，而不是只复述材料。\n3. 是否给出可操作的改进方案，例如数据字典、伪代码审查和 Prompt 效率指标。\n4. 是否通过 AAR 说明自己和 AI 分别做了什么，以及下一次如何改进。\n\n## 知识增长 Knowledge Growth\n\n这个案例可以继续沉淀出多类知识：\n\n- 项目案例：作为学生如何完成 C2S 挑战的参考。\n- 最佳实践：Metadata-First 大数据任务协议。\n- FAQ：AI 生成的数据处理代码为什么可能逻辑错误。\n- Prompt：数据字典生成、伪代码审查、AAR 引导提示词。\n- Agent 上下文：当用户问“大数据场景如何做 AI+X 项目”时优先召回。\n\n## 复用说明 Reuse Notes\n\n其他学生可以复用这个案例的结构：先做术语和理解，再结合自己的专业提出一个具体痛点，最后用 KSTAR 和 AAR 把方案与学习过程讲清楚。\n\n## Agent Notes\n\n当用户搜索“大数据”“C2S”“Metadata-First”“语义对齐”“KSTAR”“AAR”“作品集案例”时，应优先召回本条，并联动 `kb-best-practice-003` 说明可复用方法。",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# C2S 大数据应用挑战项目案例",
+          "type": "heading",
+          "heading": "C2S 大数据应用挑战项目案例"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## 用途",
+          "type": "heading",
+          "heading": "用途"
+        },
+        {
+          "id": "chunk-2",
+          "text": "这条知识用来证明知识库可以沉淀真实学生项目，而不只是存放示例文本。它把一次 C2S 挑战的完整产出整理成可检索、可复用、可被 Agent 调用的项目案例。",
+          "type": "paragraph",
+          "heading": "用途"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## 场景 Situation",
+          "type": "heading",
+          "heading": "场景 Situation"
+        },
+        {
+          "id": "chunk-4",
+          "text": "学生需要阅读 AI+X 与共生智能相关材料，并结合自己的专业方向完成作品集提交。这个案例选择“大数据应用”作为专业场景，重点讨论 AI 在数据清洗、特征工程和业务语义对齐中可能出现的问题。",
+          "type": "paragraph",
+          "heading": "场景 Situation"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## 本体 / 结构说明",
+          "type": "heading",
+          "heading": "本体 / 结构说明"
+        },
+        {
+          "id": "chunk-6",
+          "text": "本案例包含四类核心对象：",
+          "type": "paragraph",
+          "heading": "本体 / 结构说明"
+        },
+        {
+          "id": "chunk-7",
+          "text": "- 原始学习材料：AI+X、共生智能、KSTAR、NEOLAF、双回路教学法等概念。\n- 学生产出：双语术语表、结构化理解、改进提案、AAR 复盘。\n- 专业场景：大数据应用、数据编排、特征工程、业务约束。\n- 可复用方法：Metadata-First 协议、伪代码审查、Prompt 数量效率指标。",
+          "type": "paragraph",
+          "heading": "本体 / 结构说明"
+        },
+        {
+          "id": "chunk-8",
+          "text": "## 流程 Workflow",
+          "type": "heading",
+          "heading": "流程 Workflow"
+        },
+        {
+          "id": "chunk-9",
+          "text": "```text\n阅读 AI+X 材料\n-> 提取关键术语\n-> 形成双语术语表\n-> 从大数据专业视角解释 L1/L2/L3\n-> 用 KSTAR 描述真实问题\n-> 提出优化方案\n-> 完成 AAR 复盘\n-> 沉淀为知识库项目案例\n```",
+          "type": "paragraph",
+          "heading": "流程 Workflow"
+        },
+        {
+          "id": "chunk-10",
+          "text": "## 技能 Skills",
+          "type": "heading",
+          "heading": "技能 Skills"
+        },
+        {
+          "id": "chunk-11",
+          "text": "这个项目训练了五类能力：",
+          "type": "paragraph",
+          "heading": "技能 Skills"
+        },
+        {
+          "id": "chunk-12",
+          "text": "- 将英文理论材料转成可理解的中文术语。\n- 用结构化方式解释 AI+X、L1/L2/L3、KSTAR 等概念。\n- 把抽象教育理论落到大数据专业场景中。\n- 用 KSTAR 描述“AI 听不懂业务语义”的真实痛点。\n- 通过 AAR 复盘人和 AI 的分工、调整和成长。",
+          "type": "paragraph",
+          "heading": "技能 Skills"
+        },
+        {
+          "id": "chunk-13",
+          "text": "## 解决方案 Solution",
+          "type": "heading",
+          "heading": "解决方案 Solution"
+        },
+        {
+          "id": "chunk-14",
+          "text": "项目提出的关键改进是 Metadata-First 协议：在让 AI 生成数据分析或特征工程代码之前，先提供字段含义、业务约束、异常规则和目标指标。这样可以减少“代码语法正确但业务逻辑错误”的情况。",
+          "type": "paragraph",
+          "heading": "解决方案 Solution"
+        },
+        {
+          "id": "chunk-15",
+          "text": "项目还建议在正式写代码前增加伪代码审查，让学生先说明逻辑流程，再让 AI 协助生成代码。AAR 部分则建议记录完成任务所需的 Prompt 数量，用来衡量人机协作效率是否提升。",
+          "type": "paragraph",
+          "heading": "解决方案 Solution"
+        },
+        {
+          "id": "chunk-16",
+          "text": "## 交付物 Deliverables",
+          "type": "heading",
+          "heading": "交付物 Deliverables"
+        },
+        {
+          "id": "chunk-17",
+          "text": "- 20 个核心术语的双语术语表。\n- AI+X 理论的结构化阅读笔记。\n- 面向大数据应用的 Phase 3 优化提案。\n- 基于 AAR 的学习过程复盘。\n- 可沉淀进知识库的 Metadata-First 最佳实践。",
+          "type": "paragraph",
+          "heading": "交付物 Deliverables"
+        },
+        {
+          "id": "chunk-18",
+          "text": "## 评估 Evaluation",
+          "type": "heading",
+          "heading": "评估 Evaluation"
+        },
+        {
+          "id": "chunk-19",
+          "text": "这个案例可以从四个角度评估：",
+          "type": "paragraph",
+          "heading": "评估 Evaluation"
+        },
+        {
+          "id": "chunk-20",
+          "text": "1. 是否准确解释 AI+X、KSTAR、双回路教学法等核心概念。\n2. 是否能结合大数据应用提出真实问题，而不是只复述材料。\n3. 是否给出可操作的改进方案，例如数据字典、伪代码审查和 Prompt 效率指标。\n4. 是否通过 AAR 说明自己和 AI 分别做了什么，以及下一次如何改进。",
+          "type": "paragraph",
+          "heading": "评估 Evaluation"
+        },
+        {
+          "id": "chunk-21",
+          "text": "## 知识增长 Knowledge Growth",
+          "type": "heading",
+          "heading": "知识增长 Knowledge Growth"
+        },
+        {
+          "id": "chunk-22",
+          "text": "这个案例可以继续沉淀出多类知识：",
+          "type": "paragraph",
+          "heading": "知识增长 Knowledge Growth"
+        },
+        {
+          "id": "chunk-23",
+          "text": "- 项目案例：作为学生如何完成 C2S 挑战的参考。\n- 最佳实践：Metadata-First 大数据任务协议。\n- FAQ：AI 生成的数据处理代码为什么可能逻辑错误。\n- Prompt：数据字典生成、伪代码审查、AAR 引导提示词。\n- Agent 上下文：当用户问“大数据场景如何做 AI+X 项目”时优先召回。",
+          "type": "paragraph",
+          "heading": "知识增长 Knowledge Growth"
+        },
+        {
+          "id": "chunk-24",
+          "text": "## 复用说明 Reuse Notes",
+          "type": "heading",
+          "heading": "复用说明 Reuse Notes"
+        },
+        {
+          "id": "chunk-25",
+          "text": "其他学生可以复用这个案例的结构：先做术语和理解，再结合自己的专业提出一个具体痛点，最后用 KSTAR 和 AAR 把方案与学习过程讲清楚。",
+          "type": "paragraph",
+          "heading": "复用说明 Reuse Notes"
+        },
+        {
+          "id": "chunk-26",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-27",
+          "text": "当用户搜索“大数据”“C2S”“Metadata-First”“语义对齐”“KSTAR”“AAR”“作品集案例”时，应优先召回本条，并联动 `kb-best-practice-003` 说明可复用方法。",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    },
+    {
+      "id": "kb-best-practice-003",
+      "title": "Metadata-First 大数据任务实践",
+      "type": "best-practice",
+      "status": "sample",
+      "audience": [
+        "学生",
+        "教师",
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "best-practice",
+        "big-data",
+        "metadata",
+        "ai-collaboration"
+      ],
+      "keywords": [
+        "Metadata-First",
+        "大数据",
+        "数据字典",
+        "语义对齐",
+        "特征工程",
+        "AI 协作"
+      ],
+      "concepts": [
+        "元数据先行",
+        "数据语义",
+        "业务约束",
+        "人机协同建模"
+      ],
+      "skills": [
+        "编写数据字典",
+        "描述业务规则",
+        "审查伪代码",
+        "评估 AI 输出"
+      ],
+      "deliverables": [
+        "数据字典",
+        "业务约束说明",
+        "伪代码审查清单",
+        "Prompt 效率复盘"
+      ],
+      "related": [
+        "kb-project-002"
+      ],
+      "relationships": [
+        {
+          "predicate": "supports",
+          "target": "kb-project-002",
+          "targetLabel": "C2S 大数据应用挑战项目案例"
+        }
+      ],
+      "summary": "面向大数据和数据分析任务的实践规则：先给 AI 数据字典、业务约束和目标指标，再让 AI 执行清洗、特征工程或分析代码生成。",
+      "situation": "在大数据应用、数据清洗、特征工程和分析建模中，AI 经常因为缺少业务语义而误解字段。Metadata-First 要求先讲清字段含义、合法值、异常边界和任务目标。",
+      "ontology": "字段含义、业务约束、任务目标、AI 行动和人工审查共同构成 Metadata-First 实践。",
+      "workflow": "列出字段 -> 写出字段含义和单位 -> 标注合法值和异常值 -> 说明任务目标 -> 先让 AI 写伪代码 -> 人工审查逻辑 -> 再生成正式代码 -> 复盘 Prompt 数量和错误类型",
+      "skill": "元数据表达、逻辑审查、协作复盘",
+      "evaluation": "如果使用后 AI 生成的代码更少出现业务语义错误，学生能更快发现逻辑问题，并能在 AAR 中说清改进点，就说明这条实践有效。",
+      "knowledgeGrowth": "这条实践可以继续扩展为数据字典模板、数据分析 Prompt 模板、伪代码审查清单和大数据项目 FAQ。",
+      "source": "../knowledge-base/05-best-practices/metadata-first-big-data-practice.md",
+      "searchText": "Metadata-First 大数据任务实践 best-practice Metadata-First 大数据 数据字典 语义对齐 特征工程 AI 协作 元数据先行 数据语义 业务约束 人机协同建模 编写数据字典 描述业务规则 审查伪代码 评估 AI 输出 数据字典 业务约束说明 伪代码审查清单 Prompt 效率复盘",
+      "extractedText": "# Metadata-First 大数据任务实践\n\n## 用途\n\n这条最佳实践用于解决“AI 代码能跑，但业务逻辑错了”的问题。它要求学生在让 AI 处理数据之前，先把字段含义、业务规则、异常边界和目标指标讲清楚。\n\n## 场景 Situation\n\n在大数据应用、数据清洗、特征工程和分析建模中，AI 经常因为缺少业务语义而误解字段。例如价格字段不能为负、用户状态有枚举值、缺失值处理方式和业务目标有关。如果直接让 AI 写代码，结果可能语法正确但不可用。\n\n## 本体 / 结构说明\n\n这个实践包含五个对象：\n\n- 数据字段：字段名、含义、类型、单位。\n- 业务约束：哪些值合法，哪些值异常。\n- 任务目标：要清洗、预测、分类还是生成报告。\n- AI 行动：根据元数据生成代码或分析步骤。\n- 人类审查：检查输出是否符合业务逻辑。\n\n## 流程 Workflow\n\n```text\n列出字段\n-> 写出字段含义和单位\n-> 标注合法值和异常值\n-> 说明任务目标\n-> 先让 AI 写伪代码\n-> 人类审查逻辑\n-> 再让 AI 生成正式代码\n-> 复盘 Prompt 数量和错误类型\n```\n\n## 技能 Skill\n\n学生需要练习三类能力：\n\n- 元数据表达：把字段和业务约束讲清楚。\n- 逻辑审查：先看伪代码是否合理，再看代码是否能跑。\n- 协作复盘：记录 AI 哪些地方帮到了，哪些地方需要人类判断。\n\n## 实践 Checklist\n\n- 是否提供了字段名、含义、类型和单位。\n- 是否说明了异常值、缺失值和边界条件。\n- 是否明确告诉 AI 当前任务目标。\n- 是否先审查伪代码，再生成正式代码。\n- 是否记录了 AI 输出错误的原因。\n- 是否在 AAR 中总结下一次如何减少无效 Prompt。\n\n## 评估 Evaluation\n\n如果使用这条实践后，AI 生成的代码更少出现业务语义错误，学生能更快发现逻辑问题，并能在 AAR 中说清楚改进点，就说明这条实践是有效的。\n\n## 知识增长 Knowledge Growth\n\n这条实践可以继续扩展为数据字典模板、数据分析 Prompt 模板、伪代码审查清单和大数据项目 FAQ。\n\n## Agent Notes\n\n当用户问“AI 为什么听不懂我的数据分析需求”“大数据任务怎么写 Prompt”“怎么减少 AI 生成无效代码”时，应优先召回本条。",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# Metadata-First 大数据任务实践",
+          "type": "heading",
+          "heading": "Metadata-First 大数据任务实践"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## 用途",
+          "type": "heading",
+          "heading": "用途"
+        },
+        {
+          "id": "chunk-2",
+          "text": "这条最佳实践用于解决“AI 代码能跑，但业务逻辑错了”的问题。它要求学生在让 AI 处理数据之前，先把字段含义、业务规则、异常边界和目标指标讲清楚。",
+          "type": "paragraph",
+          "heading": "用途"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## 场景 Situation",
+          "type": "heading",
+          "heading": "场景 Situation"
+        },
+        {
+          "id": "chunk-4",
+          "text": "在大数据应用、数据清洗、特征工程和分析建模中，AI 经常因为缺少业务语义而误解字段。例如价格字段不能为负、用户状态有枚举值、缺失值处理方式和业务目标有关。如果直接让 AI 写代码，结果可能语法正确但不可用。",
+          "type": "paragraph",
+          "heading": "场景 Situation"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## 本体 / 结构说明",
+          "type": "heading",
+          "heading": "本体 / 结构说明"
+        },
+        {
+          "id": "chunk-6",
+          "text": "这个实践包含五个对象：",
+          "type": "paragraph",
+          "heading": "本体 / 结构说明"
+        },
+        {
+          "id": "chunk-7",
+          "text": "- 数据字段：字段名、含义、类型、单位。\n- 业务约束：哪些值合法，哪些值异常。\n- 任务目标：要清洗、预测、分类还是生成报告。\n- AI 行动：根据元数据生成代码或分析步骤。\n- 人类审查：检查输出是否符合业务逻辑。",
+          "type": "paragraph",
+          "heading": "本体 / 结构说明"
+        },
+        {
+          "id": "chunk-8",
+          "text": "## 流程 Workflow",
+          "type": "heading",
+          "heading": "流程 Workflow"
+        },
+        {
+          "id": "chunk-9",
+          "text": "```text\n列出字段\n-> 写出字段含义和单位\n-> 标注合法值和异常值\n-> 说明任务目标\n-> 先让 AI 写伪代码\n-> 人类审查逻辑\n-> 再让 AI 生成正式代码\n-> 复盘 Prompt 数量和错误类型\n```",
+          "type": "paragraph",
+          "heading": "流程 Workflow"
+        },
+        {
+          "id": "chunk-10",
+          "text": "## 技能 Skill",
+          "type": "heading",
+          "heading": "技能 Skill"
+        },
+        {
+          "id": "chunk-11",
+          "text": "学生需要练习三类能力：",
+          "type": "paragraph",
+          "heading": "技能 Skill"
+        },
+        {
+          "id": "chunk-12",
+          "text": "- 元数据表达：把字段和业务约束讲清楚。\n- 逻辑审查：先看伪代码是否合理，再看代码是否能跑。\n- 协作复盘：记录 AI 哪些地方帮到了，哪些地方需要人类判断。",
+          "type": "paragraph",
+          "heading": "技能 Skill"
+        },
+        {
+          "id": "chunk-13",
+          "text": "## 实践 Checklist",
+          "type": "heading",
+          "heading": "实践 Checklist"
+        },
+        {
+          "id": "chunk-14",
+          "text": "- 是否提供了字段名、含义、类型和单位。\n- 是否说明了异常值、缺失值和边界条件。\n- 是否明确告诉 AI 当前任务目标。\n- 是否先审查伪代码，再生成正式代码。\n- 是否记录了 AI 输出错误的原因。\n- 是否在 AAR 中总结下一次如何减少无效 Prompt。",
+          "type": "paragraph",
+          "heading": "实践 Checklist"
+        },
+        {
+          "id": "chunk-15",
+          "text": "## 评估 Evaluation",
+          "type": "heading",
+          "heading": "评估 Evaluation"
+        },
+        {
+          "id": "chunk-16",
+          "text": "如果使用这条实践后，AI 生成的代码更少出现业务语义错误，学生能更快发现逻辑问题，并能在 AAR 中说清楚改进点，就说明这条实践是有效的。",
+          "type": "paragraph",
+          "heading": "评估 Evaluation"
+        },
+        {
+          "id": "chunk-17",
+          "text": "## 知识增长 Knowledge Growth",
+          "type": "heading",
+          "heading": "知识增长 Knowledge Growth"
+        },
+        {
+          "id": "chunk-18",
+          "text": "这条实践可以继续扩展为数据字典模板、数据分析 Prompt 模板、伪代码审查清单和大数据项目 FAQ。",
+          "type": "paragraph",
+          "heading": "知识增长 Knowledge Growth"
+        },
+        {
+          "id": "chunk-19",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-20",
+          "text": "当用户问“AI 为什么听不懂我的数据分析需求”“大数据任务怎么写 Prompt”“怎么减少 AI 生成无效代码”时，应优先召回本条。",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    },
+    {
+      "id": "kb-upload-1782957815322",
+      "title": "C2S Challenge",
+      "type": "challenge",
+      "status": "draft",
+      "audience": [
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "uploaded-file",
+        "docx"
+      ],
+      "keywords": [
+        "C2S Challenge",
+        "C2S Challenge.docx",
+        "docx",
+        "上传文件",
+        "知识草稿"
+      ],
+      "concepts": [],
+      "skills": [],
+      "related": [],
+      "relationships": [],
+      "summary": "由上传文件 C2S Challenge.docx 自动生成的知识草稿，后续需要补充 metadata。",
+      "situation": "用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。",
+      "ontology": "原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。",
+      "workflow": "上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。",
+      "skill": "资料归档、metadata 标注、知识整理、审核发布。",
+      "evaluation": "文件是否保存成功，草稿是否能被搜索到，后续 metadata 是否补充完整。",
+      "knowledgeGrowth": "上传资料经过整理和审核后，可以沉淀为课程、挑战、项目案例、FAQ、最佳实践或 Agent 上下文。",
+      "source": "/uploads/1782957815319-C2S_Challenge.docx",
+      "searchText": "C2S Challenge challenge Builder Agent uploaded-file docx C2S Challenge C2S Challenge.docx docx 上传文件 知识草稿 由上传文件 C2S Challenge.docx 自动生成的知识草稿，后续需要补充 metadata。 用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。 原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。 上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。 C2S Challenge C2S Challenge.docx 上传文件 知识草稿 ",
+      "createdAt": "2026-07-02T02:03:35.322Z",
+      "updatedAt": "2026-07-02T02:03:35.323Z"
+    },
+    {
+      "id": "kb-upload-1782957986593",
+      "title": "C2S Submission V2 BigData",
+      "type": "challenge",
+      "status": "draft",
+      "audience": [
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "uploaded-file",
+        "md"
+      ],
+      "keywords": [
+        "C2S Submission V2 BigData",
+        "C2S_Submission_V2_BigData.md",
+        "md",
+        "上传文件",
+        "知识草稿"
+      ],
+      "concepts": [],
+      "skills": [],
+      "related": [],
+      "relationships": [],
+      "summary": "# C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa",
+      "situation": "用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。",
+      "ontology": "原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。",
+      "workflow": "上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。",
+      "skill": "资料归档、metadata 标注、知识整理、审核发布。",
+      "evaluation": "文件是否保存成功，草稿是否能被搜索到，后续 metadata 是否补充完整。",
+      "knowledgeGrowth": "上传资料经过整理和审核后，可以沉淀为课程、挑战、项目案例、FAQ、最佳实践或 Agent 上下文。",
+      "source": "/uploads/1782957986590-C2S_Submission_V2_BigData.md",
+      "searchText": "C2S Submission V2 BigData challenge Builder Agent uploaded-file md C2S Submission V2 BigData C2S_Submission_V2_BigData.md md 上传文件 知识草稿 # C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa 用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。 原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。 上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。 C2S Submission V2 BigData C2S_Submission_V2_BigData.md 上传文件 知识草稿 # C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa",
+      "createdAt": "2026-07-02T02:06:26.593Z",
+      "updatedAt": "2026-07-02T02:06:26.593Z"
+    },
+    {
+      "id": "kb-upload-1783135052354",
+      "title": "本体抽取 Skill",
+      "type": "project",
+      "status": "draft",
+      "audience": [
+        "FDE",
+        "领域专家",
+        "本体工程师",
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "uploaded-file",
+        "md",
+        "本体抽取",
+        "知识图谱",
+        "结构化知识"
+      ],
+      "keywords": [
+        "本体抽取 Skill",
+        "本体抽取-Skill.md",
+        "md",
+        "上传文件",
+        "知识草稿",
+        "T-Box",
+        "R-Box",
+        "A-Box",
+        "本体建模",
+        "知识抽取"
+      ],
+      "concepts": [
+        "DomainDocument",
+        "ConceptCandidate",
+        "Entity",
+        "RuleCandidate",
+        "ValidatedRule",
+        "CaseInstance"
+      ],
+      "skills": [
+        "本体识别",
+        "规则抽取",
+        "案例结构化"
+      ],
+      "deliverables": [
+        "ontology_tbox.md",
+        "rbox_rules.md",
+        "cases.json"
+      ],
+      "related": [],
+      "relationships": [],
+      "summary": "本体抽取专用技能，将领域文档转化为结构化本体三件套（T-Box/R-Box/A-Box）。",
+      "situation": "用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。",
+      "ontology": "原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。",
+      "workflow": "上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。",
+      "skill": "资料归档、metadata 标注、知识整理、审核发布。",
+      "evaluation": "文件是否保存成功，草稿是否能被搜索到，后续 metadata 是否补充完整。",
+      "knowledgeGrowth": "上传资料经过整理和审核后，可以沉淀为课程、挑战、项目案例、FAQ、最佳实践或 Agent 上下文。",
+      "knowledgeProcessing": {
+        "classificationReason": "文件详细描述了本体抽取的方法论、规则和执行流程，符合技能定义。",
+        "coreProblem": "如何将非结构化的领域文档转化为机器可执行的结构化本体知识。",
+        "keyPoints": [
+          "T-Box/R-Box/A-Box三件套方法论",
+          "实体分层(T1/T2/T3)标准",
+          "规则抽取的REASON强制要求",
+          "A-Box完整性的严格定义",
+          "三轮抽取+可视化+专家确认的执行流程"
+        ],
+        "suggestedRelations": [
+          {
+            "predicate": "requires",
+            "targetHint": "KSTAR方法论文档",
+            "reason": "本技能基于KSTAR方法论构建"
+          },
+          {
+            "predicate": "includes",
+            "targetHint": "SKILL-模板.md",
+            "reason": "模板文件是本技能的必要配套资源"
+          },
+          {
+            "predicate": "assessedBy",
+            "targetHint": "领域专家",
+            "reason": "规则需要专家确认才能生效"
+          }
+        ],
+        "missingFields": [
+          "prerequisites",
+          "limitations"
+        ],
+        "nextActions": [
+          "补充前置条件说明",
+          "添加技能限制说明",
+          "关联KSTAR方法论文档",
+          "发布审核"
+        ]
+      },
+      "source": "/uploads/1783135029949-%E6%9C%AC%E4%BD%93%E6%8A%BD%E5%8F%96-Skill.md",
+      "searchText": "本体抽取 Skill project FDE 领域专家 本体工程师 Builder Agent uploaded-file md 本体抽取 知识图谱 结构化知识 本体抽取 Skill 本体抽取-Skill.md md 上传文件 知识草稿 T-Box R-Box A-Box 本体建模 知识抽取 DomainDocument ConceptCandidate Entity RuleCandidate ValidatedRule CaseInstance 本体识别 规则抽取 案例结构化 ontology_tbox.md rbox_rules.md cases.json 本体抽取专用技能，将领域文档转化为结构化本体三件套（T-Box/R-Box/A-Box）。 用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。 原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。 上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。 文件详细描述了本体抽取的方法论、规则和执行流程，符合技能定义。 如何将非结构化的领域文档转化为机器可执行的结构化本体知识。 T-Box/R-Box/A-Box三件套方法论 实体分层(T1/T2/T3)标准 规则抽取的REASON强制要求 A-Box完整性的严格定义 三轮抽取+可视化+专家确认的执行流程 prerequisites limitations 补充前置条件说明 添加技能限制说明 关联KSTAR方法论文档 发布审核 本体抽取 Skill 本体抽取-Skill.md 上传文件 知识草稿 --- name: ontology-extraction version: \"2.1.0\" updated: \"2026-07-02\" changelog: | v2.1.0（2026-07-02）新增5项： ① T1强制确认步骤（新实体升T1时不可跳过） ② A-Box completeness语义定义（compl",
+      "metadataGeneratedBy": "llm",
+      "analysisStatus": "llm-analyzed",
+      "analysisNote": "已使用 deepseek-ai/DeepSeek-V3 自动分析正文并生成 metadata。",
+      "analysisConfidence": 0.7,
+      "extractionStatus": "text-extracted",
+      "extractionMethod": "browser-text",
+      "extractionNote": "已直接读取文本文件正文。",
+      "extractedTextPreview": "--- name: ontology-extraction version: \"2.1.0\" updated: \"2026-07-02\" changelog: | v2.1.0（2026-07-02）新增5项： ① T1强制确认步骤（新实体升T1时不可跳过） ② A-Box completeness语义定义（compl",
+      "archivedAt": null,
+      "createdAt": "2026-07-04T03:17:32.354Z",
+      "updatedAt": "2026-07-04T03:17:32.355Z"
+    },
+    {
+      "id": "kb-overview-001",
+      "title": "NSEAP Knowledge Base Intro",
+      "type": "overview",
+      "status": "draft",
+      "audience": [
+        "学生",
+        "教师",
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "nseap",
+        "knowledge-base",
+        "elite20"
+      ],
+      "keywords": [
+        "概览",
+        "知识库",
+        "介绍"
+      ],
+      "concepts": [
+        "知识层",
+        "共享记忆",
+        "模块定位"
+      ],
+      "skills": [
+        "理解知识库定位",
+        "认识知识分类结构"
+      ],
+      "related": [],
+      "relationships": [],
+      "summary": "Explain the role of the Knowledge Base in the Elite20 Builder Program.",
+      "situation": "Use this entry when introducing why the Knowledge Team exists and how it supports other teams.",
+      "ontology": "The Knowledge Base is the shared memory layer for the NSEAP AI Learning Operating System. It stores course knowledge, challenge guidance, prompts, FAQs, best practices, project cases, and agent context in a consistent format.",
+      "workflow": "阅读总览 -> 理解分类 -> 进入具体条目 -> 持续补充与更新。",
+      "skill": "理解知识库定位、认识知识分类结构",
+      "evaluation": "使用者能否快速理解知识模块的作用、结构和使用方式。",
+      "knowledgeGrowth": "随着课程和项目推进，持续补充分层条目、关系和检索规则。",
+      "source": "../knowledge-base/00-overview/nseap-knowledge-base-intro.md",
+      "searchText": "kb-overview-001 NSEAP Knowledge Base Intro overview student teacher builder agent nseap knowledge-base elite20 知识层 共享记忆 模块定位 理解知识库定位 认识知识分类结构 NSEAP Knowledge Base Intro Purpose Content When To Use Agent Notes # NSEAP Knowledge Base Intro ## Purpose Explain the role of the Knowledge Base in the Elite20 Builder Program. ## Content The Knowledge Base is the shared memory layer for the NSEAP AI Learning Operating System. It stores course knowledge, challenge guidance, prompts, FAQs, best practices, project cases, and agent context in a consistent format. ## When To Use Use this entry when introducing why the Knowledge Team exists and how it supports other teams. ## Agent Notes Retrieve this entry when a user asks what the Knowledge Base is, why it matters, or how it supports the project.",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T09:05:03.152Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# NSEAP Knowledge Base Intro\n\n## Purpose\n\nExplain the role of the Knowledge Base in the Elite20 Builder Program.\n\n## Content\n\nThe Knowledge Base is the shared memory layer for the NSEAP AI Learning Operating System.\n\nIt stores course knowledge, challenge guidance, prompts, FAQs, best practices, project cases, and agent context in a consistent format.\n\n## When To Use\n\nUse this entry when introducing why the Knowledge Team exists and how it supports other teams.\n\n## Agent Notes\n\nRetrieve this entry when a user asks what the Knowledge Base is, why it matters, or how it supports the project.",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# NSEAP Knowledge Base Intro",
+          "type": "heading",
+          "heading": "NSEAP Knowledge Base Intro"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Purpose",
+          "type": "heading",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Explain the role of the Knowledge Base in the Elite20 Builder Program.",
+          "type": "paragraph",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Content",
+          "type": "heading",
+          "heading": "Content"
+        },
+        {
+          "id": "chunk-4",
+          "text": "The Knowledge Base is the shared memory layer for the NSEAP AI Learning Operating System.",
+          "type": "paragraph",
+          "heading": "Content"
+        },
+        {
+          "id": "chunk-5",
+          "text": "It stores course knowledge, challenge guidance, prompts, FAQs, best practices, project cases, and agent context in a consistent format.",
+          "type": "paragraph",
+          "heading": "Content"
+        },
+        {
+          "id": "chunk-6",
+          "text": "## When To Use",
+          "type": "heading",
+          "heading": "When To Use"
+        },
+        {
+          "id": "chunk-7",
+          "text": "Use this entry when introducing why the Knowledge Team exists and how it supports other teams.",
+          "type": "paragraph",
+          "heading": "When To Use"
+        },
+        {
+          "id": "chunk-8",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-9",
+          "text": "Retrieve this entry when a user asks what the Knowledge Base is, why it matters, or how it supports the project.",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    },
+    {
+      "id": "kb-course-001",
+      "title": "Week 1 Overview",
+      "type": "course",
+      "status": "sample",
+      "audience": [
+        "学生",
+        "教师",
+        "Agent"
+      ],
+      "tags": [
+        "elite20",
+        "vibe-coding",
+        "week-1"
+      ],
+      "keywords": [
+        "课程",
+        "第一周",
+        "Week 1",
+        "学习路径",
+        "Vibe Coding",
+        "课程安排"
+      ],
+      "concepts": [
+        "ai-native-learning",
+        "vibe-coding",
+        "learning-workflow"
+      ],
+      "skills": [
+        "ai-tool-setup",
+        "reflective-learning",
+        "prompting-basics"
+      ],
+      "related": [
+        "kb-challenge-001",
+        "kb-prompt-001"
+      ],
+      "relationships": [
+        {
+          "predicate": "includes",
+          "target": "kb-challenge-001"
+        },
+        {
+          "predicate": "usesPrompt",
+          "target": "kb-prompt-001"
+        }
+      ],
+      "summary": "Give students and teachers a clear starting point for Week 1 of the Vibe Coding course.",
+      "situation": "适合在梳理课程目标、学习路径和配套挑战时使用。",
+      "ontology": "Week 1 should introduce the course purpose, expected learning behavior, basic AI tool usage, and the first challenge.",
+      "workflow": "查看课程目标 -> 理解学习任务 -> 找到配套挑战和提示词 -> 开始执行。",
+      "skill": "ai-tool-setup、reflective-learning、prompting-basics",
+      "evaluation": "学习者能否按课程路径理解目标并开始执行。",
+      "knowledgeGrowth": "课程中的问题、案例和提示词可以继续沉淀为 FAQ、项目案例和最佳实践。",
+      "source": "../knowledge-base/01-course/sample-week-1-overview.md",
+      "searchText": "kb-course-001 Week 1 Overview course student teacher agent elite20 vibe-coding week-1 课程 第一周 Week 1 学习路径 Vibe Coding ai-native-learning vibe-coding learning-workflow ai-tool-setup reflective-learning prompting-basics kb-challenge-001 kb-prompt-001 Week 1 Overview Purpose Learning Goal Content Graph Notes Example Activities Related Agent Notes # Week 1 Overview ## Purpose Give students and teachers a clear starting point for Week 1 of the Vibe Coding course. ## Learning Goal Understand what an AI-native learning workflow looks like and complete the first small AI-assisted creation task. ## Content Week 1 should introduce the course purpose, expected learning behavior, basic AI tool usage, and the first challenge. ## Graph Notes This entry can become a future `CourseUnit` node. It includes the first challenge and uses a coding coach prompt as support. ## Example Activities - Set up required accounts and tools. - Ask an AI assistant to explain a coding concept. - Complete a small guided creation task. - Reflect on what AI helped with and what still required human judgment. ## Related - `knowledge-base/02-challenges/sample-challenge-knowledge.md` - `knowledge-base/03-prompts/sample-coding-coach-prompt.md` ## Agent Notes Retrieve this entry when a student asks how to start Week 1 or when a teacher asks what Week 1 should cover.",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T08:43:29.981Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# Week 1 Overview\n\n## Purpose\n\nGive students and teachers a clear starting point for Week 1 of the Vibe Coding course.\n\n## Learning Goal\n\nUnderstand what an AI-native learning workflow looks like and complete the first small AI-assisted creation task.\n\n## Content\n\nWeek 1 should introduce the course purpose, expected learning behavior, basic AI tool usage, and the first challenge.\n\n## Graph Notes\n\nThis entry can become a future `CourseUnit` node. It includes the first challenge and uses a coding coach prompt as support.\n\n## Example Activities\n\n- Set up required accounts and tools.\n- Ask an AI assistant to explain a coding concept.\n- Complete a small guided creation task.\n- Reflect on what AI helped with and what still required human judgment.\n\n## Related\n\n- `knowledge-base/02-challenges/sample-challenge-knowledge.md`\n- `knowledge-base/03-prompts/sample-coding-coach-prompt.md`\n\n## Agent Notes\n\nRetrieve this entry when a student asks how to start Week 1 or when a teacher asks what Week 1 should cover.",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# Week 1 Overview",
+          "type": "heading",
+          "heading": "Week 1 Overview"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Purpose",
+          "type": "heading",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Give students and teachers a clear starting point for Week 1 of the Vibe Coding course.",
+          "type": "paragraph",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Learning Goal",
+          "type": "heading",
+          "heading": "Learning Goal"
+        },
+        {
+          "id": "chunk-4",
+          "text": "Understand what an AI-native learning workflow looks like and complete the first small AI-assisted creation task.",
+          "type": "paragraph",
+          "heading": "Learning Goal"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## Content",
+          "type": "heading",
+          "heading": "Content"
+        },
+        {
+          "id": "chunk-6",
+          "text": "Week 1 should introduce the course purpose, expected learning behavior, basic AI tool usage, and the first challenge.",
+          "type": "paragraph",
+          "heading": "Content"
+        },
+        {
+          "id": "chunk-7",
+          "text": "## Graph Notes",
+          "type": "heading",
+          "heading": "Graph Notes"
+        },
+        {
+          "id": "chunk-8",
+          "text": "This entry can become a future `CourseUnit` node. It includes the first challenge and uses a coding coach prompt as support.",
+          "type": "paragraph",
+          "heading": "Graph Notes"
+        },
+        {
+          "id": "chunk-9",
+          "text": "## Example Activities",
+          "type": "heading",
+          "heading": "Example Activities"
+        },
+        {
+          "id": "chunk-10",
+          "text": "- Set up required accounts and tools.\n- Ask an AI assistant to explain a coding concept.\n- Complete a small guided creation task.\n- Reflect on what AI helped with and what still required human judgment.",
+          "type": "paragraph",
+          "heading": "Example Activities"
+        },
+        {
+          "id": "chunk-11",
+          "text": "## Related",
+          "type": "heading",
+          "heading": "Related"
+        },
+        {
+          "id": "chunk-12",
+          "text": "- `knowledge-base/02-challenges/sample-challenge-knowledge.md`\n- `knowledge-base/03-prompts/sample-coding-coach-prompt.md`",
+          "type": "paragraph",
+          "heading": "Related"
+        },
+        {
+          "id": "chunk-13",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-14",
+          "text": "Retrieve this entry when a student asks how to start Week 1 or when a teacher asks what Week 1 should cover.",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    },
+    {
+      "id": "kb-challenge-001",
+      "title": "构建你的第一个 AI 助手",
+      "type": "challenge",
+      "status": "sample",
+      "audience": [
+        "学生",
+        "教师",
+        "Agent"
+      ],
+      "tags": [
+        "challenge",
+        "ai-assistant",
+        "week-1"
+      ],
+      "keywords": [
+        "挑战",
+        "任务",
+        "AI 助手",
+        "入门项目",
+        "Challenge",
+        "练习"
+      ],
+      "concepts": [
+        "场景定义",
+        "角色设计",
+        "提示词工程"
+      ],
+      "skills": [
+        "拆解任务",
+        "编写系统提示",
+        "评估输出质量"
+      ],
+      "related": [
+        "kb-course-001",
+        "kb-prompt-001"
+      ],
+      "relationships": [
+        {
+          "predicate": "supports",
+          "target": "kb-course-001"
+        },
+        {
+          "predicate": "usesPrompt",
+          "target": "kb-prompt-001"
+        },
+        {
+          "predicate": "requires",
+          "targetLabel": "提示词工程基础"
+        }
+      ],
+      "summary": "面向第一周学习者的入门挑战，要求围绕一个真实场景设计小型 AI 助手，并提交提示词、示例对话和反思。",
+      "situation": "适合刚进入课程的学生，也适合老师拿来做第一周挑战说明。后续如果接入 Agent，这条知识也可以作为“如何完成第一个 AI 助手挑战”的标准上下文。",
+      "ontology": "这条挑战涉及四个核心对象： 使用场景：助手到底服务什么问题。 助手角色：它是谁，负责什么，不负责什么。 提示词：它如何被指挥工作。 评估方式：怎么判断这个助手是不是有用。",
+      "workflow": "理解挑战 -> 完成交付 -> 测试和调整 -> 提交结果与反思。",
+      "skill": "拆解任务、编写系统提示、评估输出质量",
+      "evaluation": "挑战目标是否清晰、交付物是否完整、反思是否到位。",
+      "knowledgeGrowth": "优秀挑战产出可继续沉淀为提示词、FAQ 和项目案例。",
+      "source": "../knowledge-base/02-challenges/sample-challenge-knowledge.md",
+      "searchText": "kb-challenge-001 构建你的第一个 AI 助手 challenge student teacher agent challenge ai-assistant week-1 挑战 任务 AI 助手 入门项目 Challenge 场景定义 角色设计 提示词工程 拆解任务 编写系统提示 评估输出质量 kb-course-001 kb-prompt-001 构建你的第一个 AI 助手 用途 适用对象与场景 场景 Situation 本体 / 结构说明 流程 Workflow 技能 Skill 评估 Evaluation 知识增长 Knowledge Growth 详细内容 任务说明 建议选题 交付要求 常见错误 相关关系 Agent Notes # 构建你的第一个 AI 助手 ## 用途 这是一条面向新同学的入门挑战，用来帮助学习者第一次把“想法”变成一个可演示的小型 AI 助手，而不是只停留在聊天体验上。 ## 适用对象与场景 适合刚进入课程的学生，也适合老师拿来做第一周挑战说明。后续如果接入 Agent，这条知识也可以作为“如何完成第一个 AI 助手挑战”的标准上下文。 ## 场景 Situation 很多同学第一次接触这个项目时，会觉得“做 AI 助手”听起来很大，但不知道到底要交什么、从哪里开始。所以这条挑战要把任务拆清楚，让学生能围绕一个具体场景，比如背单词、复习代码、规划学习时间，做出一个小而完整的 AI 助手。 ## 本体 / 结构说明 这条挑战涉及四个核心对象： 1. 使用场景：助手到底服务什么问题。 2. 助手角色：它是谁，负责什么，不负责什么。 3. 提示词：它如何被指挥工作。 4. 评估方式：怎么判断这个助手是不是有用。 ## 流程 Workflow ```text 选择一个真实场景 -> 定义助手角色与边界 -> 编写系统提示或指令提示 -> 测试 2 到 3 轮对话 -> 观察输出问题 -> 修改提示词 -> 提交结果与反思 ``` ## 技能 Skill 完成这条挑战时，学生会练到三类关键能力： - 场景拆解：把一个模糊想法变成具体任务。 - 提示词编写：能清楚告诉 AI 要做什么、不该做什么。 - 输出评估：不只看“能不能回答”，还看“回得有没有帮助”。 ## 评估 Evaluation 这条挑战建议从下面四点判断是否完成得好： 1. 场景是否具体，不空泛。 2. 助手角色是否清晰，有边界。 3. 示例对话是否能体现这个助手真的在工作。 4. 反思是否说明了你修改过什么、为什么修改。 ## 知识增长 Knowledge Growth 这条挑战不是做完就结束，它还会继续回流到知识库： - 好的提示词可以沉淀到提示词库。 - 常见问题可以沉淀到 FAQ。 - 优秀作品可以沉淀为项目案例。 - 高频能力点可以沉淀为概念或技能节点。 ## 详细内容 ### 任务说明 请你围绕一个真实的小场景，设计一个 AI 助手。这个助手不需要很复杂，但必须清楚说明： - 它服务谁； - 它解决什么问题； - 它会怎么回答； - 它不能越界做什么。 ### 建议选题 可以从下面这些方向里任选一个： - 帮助自己规划一周学习任务； - 帮助解释一段报错代码； - 帮助整理课堂笔记； - 帮助复习英语单词； - 帮助完成课程问题答疑。 ### 交付要求 至少提交下面 4 样东西： 1. 助手简介：一句话说清它是谁、做什么。 2. 提示词：你的系统提示或核心指令。 3. 示例对话：至少 2 轮。 4. 简短反思：你测试后改了什么、发现了什么问题。 ### 常见错误 - 角色定义太大，比如“什么都能做”。 - 提示词没有边界，导致回答发散。 - 示例对话太短，看不出效果。 - 只展示结果，不写反思和修改过程。 ## 相关关系 - 这条挑战支持 `kb-course-001` 的 Week 1 课程导览。 - 这条挑战可配合 `kb-prompt-001` 的提示词样例一起使用。 - 它还依赖“提示词工程基础”这类前置能力。 ## Agent Notes 当学生问“第一个 AI 助手挑战怎么做”“这个挑战要交什么”“怎么判断我做得好不好”时，应优先检索这条知识，并同时联动相关提示词和课程条目一起返回。",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T08:43:29.981Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# 构建你的第一个 AI 助手\n\n## 用途\n\n这是一条面向新同学的入门挑战，用来帮助学习者第一次把“想法”变成一个可演示的小型 AI 助手，而不是只停留在聊天体验上。\n\n## 适用对象与场景\n\n适合刚进入课程的学生，也适合老师拿来做第一周挑战说明。后续如果接入 Agent，这条知识也可以作为“如何完成第一个 AI 助手挑战”的标准上下文。\n\n## 场景 Situation\n\n很多同学第一次接触这个项目时，会觉得“做 AI 助手”听起来很大，但不知道到底要交什么、从哪里开始。所以这条挑战要把任务拆清楚，让学生能围绕一个具体场景，比如背单词、复习代码、规划学习时间，做出一个小而完整的 AI 助手。\n\n## 本体 / 结构说明\n\n这条挑战涉及四个核心对象：\n\n1. 使用场景：助手到底服务什么问题。\n2. 助手角色：它是谁，负责什么，不负责什么。\n3. 提示词：它如何被指挥工作。\n4. 评估方式：怎么判断这个助手是不是有用。\n\n## 流程 Workflow\n\n```text\n选择一个真实场景\n-> 定义助手角色与边界\n-> 编写系统提示或指令提示\n-> 测试 2 到 3 轮对话\n-> 观察输出问题\n-> 修改提示词\n-> 提交结果与反思\n```\n\n## 技能 Skill\n\n完成这条挑战时，学生会练到三类关键能力：\n\n- 场景拆解：把一个模糊想法变成具体任务。\n- 提示词编写：能清楚告诉 AI 要做什么、不该做什么。\n- 输出评估：不只看“能不能回答”，还看“回得有没有帮助”。\n\n## 评估 Evaluation\n\n这条挑战建议从下面四点判断是否完成得好：\n\n1. 场景是否具体，不空泛。\n2. 助手角色是否清晰，有边界。\n3. 示例对话是否能体现这个助手真的在工作。\n4. 反思是否说明了你修改过什么、为什么修改。\n\n## 知识增长 Knowledge Growth\n\n这条挑战不是做完就结束，它还会继续回流到知识库：\n\n- 好的提示词可以沉淀到提示词库。\n- 常见问题可以沉淀到 FAQ。\n- 优秀作品可以沉淀为项目案例。\n- 高频能力点可以沉淀为概念或技能节点。\n\n## 详细内容\n\n### 任务说明\n\n请你围绕一个真实的小场景，设计一个 AI 助手。这个助手不需要很复杂，但必须清楚说明：\n\n- 它服务谁；\n- 它解决什么问题；\n- 它会怎么回答；\n- 它不能越界做什么。\n\n### 建议选题\n\n可以从下面这些方向里任选一个：\n\n- 帮助自己规划一周学习任务；\n- 帮助解释一段报错代码；\n- 帮助整理课堂笔记；\n- 帮助复习英语单词；\n- 帮助完成课程问题答疑。\n\n### 交付要求\n\n至少提交下面 4 样东西：\n\n1. 助手简介：一句话说清它是谁、做什么。\n2. 提示词：你的系统提示或核心指令。\n3. 示例对话：至少 2 轮。\n4. 简短反思：你测试后改了什么、发现了什么问题。\n\n### 常见错误\n\n- 角色定义太大，比如“什么都能做”。\n- 提示词没有边界，导致回答发散。\n- 示例对话太短，看不出效果。\n- 只展示结果，不写反思和修改过程。\n\n## 相关关系\n\n- 这条挑战支持 `kb-course-001` 的 Week 1 课程导览。\n- 这条挑战可配合 `kb-prompt-001` 的提示词样例一起使用。\n- 它还依赖“提示词工程基础”这类前置能力。\n\n## Agent Notes\n\n当学生问“第一个 AI 助手挑战怎么做”“这个挑战要交什么”“怎么判断我做得好不好”时，应优先检索这条知识，并同时联动相关提示词和课程条目一起返回。",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# 构建你的第一个 AI 助手",
+          "type": "heading",
+          "heading": "构建你的第一个 AI 助手"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## 用途",
+          "type": "heading",
+          "heading": "用途"
+        },
+        {
+          "id": "chunk-2",
+          "text": "这是一条面向新同学的入门挑战，用来帮助学习者第一次把“想法”变成一个可演示的小型 AI 助手，而不是只停留在聊天体验上。",
+          "type": "paragraph",
+          "heading": "用途"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## 适用对象与场景",
+          "type": "heading",
+          "heading": "适用对象与场景"
+        },
+        {
+          "id": "chunk-4",
+          "text": "适合刚进入课程的学生，也适合老师拿来做第一周挑战说明。后续如果接入 Agent，这条知识也可以作为“如何完成第一个 AI 助手挑战”的标准上下文。",
+          "type": "paragraph",
+          "heading": "适用对象与场景"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## 场景 Situation",
+          "type": "heading",
+          "heading": "场景 Situation"
+        },
+        {
+          "id": "chunk-6",
+          "text": "很多同学第一次接触这个项目时，会觉得“做 AI 助手”听起来很大，但不知道到底要交什么、从哪里开始。所以这条挑战要把任务拆清楚，让学生能围绕一个具体场景，比如背单词、复习代码、规划学习时间，做出一个小而完整的 AI 助手。",
+          "type": "paragraph",
+          "heading": "场景 Situation"
+        },
+        {
+          "id": "chunk-7",
+          "text": "## 本体 / 结构说明",
+          "type": "heading",
+          "heading": "本体 / 结构说明"
+        },
+        {
+          "id": "chunk-8",
+          "text": "这条挑战涉及四个核心对象：",
+          "type": "paragraph",
+          "heading": "本体 / 结构说明"
+        },
+        {
+          "id": "chunk-9",
+          "text": "1. 使用场景：助手到底服务什么问题。\n2. 助手角色：它是谁，负责什么，不负责什么。\n3. 提示词：它如何被指挥工作。\n4. 评估方式：怎么判断这个助手是不是有用。",
+          "type": "paragraph",
+          "heading": "本体 / 结构说明"
+        },
+        {
+          "id": "chunk-10",
+          "text": "## 流程 Workflow",
+          "type": "heading",
+          "heading": "流程 Workflow"
+        },
+        {
+          "id": "chunk-11",
+          "text": "```text\n选择一个真实场景\n-> 定义助手角色与边界\n-> 编写系统提示或指令提示\n-> 测试 2 到 3 轮对话\n-> 观察输出问题\n-> 修改提示词\n-> 提交结果与反思\n```",
+          "type": "paragraph",
+          "heading": "流程 Workflow"
+        },
+        {
+          "id": "chunk-12",
+          "text": "## 技能 Skill",
+          "type": "heading",
+          "heading": "技能 Skill"
+        },
+        {
+          "id": "chunk-13",
+          "text": "完成这条挑战时，学生会练到三类关键能力：",
+          "type": "paragraph",
+          "heading": "技能 Skill"
+        },
+        {
+          "id": "chunk-14",
+          "text": "- 场景拆解：把一个模糊想法变成具体任务。\n- 提示词编写：能清楚告诉 AI 要做什么、不该做什么。\n- 输出评估：不只看“能不能回答”，还看“回得有没有帮助”。",
+          "type": "paragraph",
+          "heading": "技能 Skill"
+        },
+        {
+          "id": "chunk-15",
+          "text": "## 评估 Evaluation",
+          "type": "heading",
+          "heading": "评估 Evaluation"
+        },
+        {
+          "id": "chunk-16",
+          "text": "这条挑战建议从下面四点判断是否完成得好：",
+          "type": "paragraph",
+          "heading": "评估 Evaluation"
+        },
+        {
+          "id": "chunk-17",
+          "text": "1. 场景是否具体，不空泛。\n2. 助手角色是否清晰，有边界。\n3. 示例对话是否能体现这个助手真的在工作。\n4. 反思是否说明了你修改过什么、为什么修改。",
+          "type": "paragraph",
+          "heading": "评估 Evaluation"
+        },
+        {
+          "id": "chunk-18",
+          "text": "## 知识增长 Knowledge Growth",
+          "type": "heading",
+          "heading": "知识增长 Knowledge Growth"
+        },
+        {
+          "id": "chunk-19",
+          "text": "这条挑战不是做完就结束，它还会继续回流到知识库：",
+          "type": "paragraph",
+          "heading": "知识增长 Knowledge Growth"
+        },
+        {
+          "id": "chunk-20",
+          "text": "- 好的提示词可以沉淀到提示词库。\n- 常见问题可以沉淀到 FAQ。\n- 优秀作品可以沉淀为项目案例。\n- 高频能力点可以沉淀为概念或技能节点。",
+          "type": "paragraph",
+          "heading": "知识增长 Knowledge Growth"
+        },
+        {
+          "id": "chunk-21",
+          "text": "## 详细内容",
+          "type": "heading",
+          "heading": "详细内容"
+        },
+        {
+          "id": "chunk-22",
+          "text": "### 任务说明",
+          "type": "heading",
+          "heading": "任务说明"
+        },
+        {
+          "id": "chunk-23",
+          "text": "请你围绕一个真实的小场景，设计一个 AI 助手。这个助手不需要很复杂，但必须清楚说明：",
+          "type": "paragraph",
+          "heading": "任务说明"
+        },
+        {
+          "id": "chunk-24",
+          "text": "- 它服务谁；\n- 它解决什么问题；\n- 它会怎么回答；\n- 它不能越界做什么。",
+          "type": "paragraph",
+          "heading": "任务说明"
+        },
+        {
+          "id": "chunk-25",
+          "text": "### 建议选题",
+          "type": "heading",
+          "heading": "建议选题"
+        },
+        {
+          "id": "chunk-26",
+          "text": "可以从下面这些方向里任选一个：",
+          "type": "paragraph",
+          "heading": "建议选题"
+        },
+        {
+          "id": "chunk-27",
+          "text": "- 帮助自己规划一周学习任务；\n- 帮助解释一段报错代码；\n- 帮助整理课堂笔记；\n- 帮助复习英语单词；\n- 帮助完成课程问题答疑。",
+          "type": "paragraph",
+          "heading": "建议选题"
+        },
+        {
+          "id": "chunk-28",
+          "text": "### 交付要求",
+          "type": "heading",
+          "heading": "交付要求"
+        },
+        {
+          "id": "chunk-29",
+          "text": "至少提交下面 4 样东西：",
+          "type": "paragraph",
+          "heading": "交付要求"
+        },
+        {
+          "id": "chunk-30",
+          "text": "1. 助手简介：一句话说清它是谁、做什么。\n2. 提示词：你的系统提示或核心指令。\n3. 示例对话：至少 2 轮。\n4. 简短反思：你测试后改了什么、发现了什么问题。",
+          "type": "paragraph",
+          "heading": "交付要求"
+        },
+        {
+          "id": "chunk-31",
+          "text": "### 常见错误",
+          "type": "heading",
+          "heading": "常见错误"
+        },
+        {
+          "id": "chunk-32",
+          "text": "- 角色定义太大，比如“什么都能做”。\n- 提示词没有边界，导致回答发散。\n- 示例对话太短，看不出效果。\n- 只展示结果，不写反思和修改过程。",
+          "type": "paragraph",
+          "heading": "常见错误"
+        },
+        {
+          "id": "chunk-33",
+          "text": "## 相关关系",
+          "type": "heading",
+          "heading": "相关关系"
+        },
+        {
+          "id": "chunk-34",
+          "text": "- 这条挑战支持 `kb-course-001` 的 Week 1 课程导览。\n- 这条挑战可配合 `kb-prompt-001` 的提示词样例一起使用。\n- 它还依赖“提示词工程基础”这类前置能力。",
+          "type": "paragraph",
+          "heading": "相关关系"
+        },
+        {
+          "id": "chunk-35",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-36",
+          "text": "当学生问“第一个 AI 助手挑战怎么做”“这个挑战要交什么”“怎么判断我做得好不好”时，应优先检索这条知识，并同时联动相关提示词和课程条目一起返回。",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    },
+    {
+      "id": "kb-prompt-001",
+      "title": "Coding Coach Prompt",
+      "type": "prompt",
+      "status": "sample",
+      "audience": [
+        "学生",
+        "Agent"
+      ],
+      "tags": [
+        "coding-coach",
+        "debugging",
+        "learning"
+      ],
+      "keywords": [
+        "提示词",
+        "编程教练",
+        "代码调试",
+        "Coding Coach",
+        "debugging",
+        "Prompt",
+        "指令"
+      ],
+      "concepts": [
+        "coaching",
+        "debugging",
+        "guided-learning"
+      ],
+      "skills": [
+        "ask-clarifying-question",
+        "explain-code-issue",
+        "create-practice-task"
+      ],
+      "related": [
+        "kb-course-001",
+        "kb-challenge-001"
+      ],
+      "relationships": [
+        {
+          "predicate": "supports",
+          "target": "kb-challenge-001"
+        },
+        {
+          "predicate": "supports",
+          "target": "kb-course-001"
+        }
+      ],
+      "summary": "Help a student debug code while still learning the underlying concept.",
+      "situation": "适合在查找可复用提示词和指令模式时使用。",
+      "ontology": "Purpose、Prompt、Input Needed、Expected Output、Graph Notes",
+      "workflow": "选择场景 -> 复用提示词 -> 测试输出 -> 根据结果调整。",
+      "skill": "ask-clarifying-question、explain-code-issue、create-practice-task",
+      "evaluation": "提示词是否能稳定支撑具体任务并保持输出质量。",
+      "knowledgeGrowth": "高质量提示词和调试经验会继续沉淀为最佳实践和 FAQ。",
+      "source": "../knowledge-base/03-prompts/sample-coding-coach-prompt.md",
+      "searchText": "kb-prompt-001 Coding Coach Prompt prompt student agent coding-coach debugging learning 提示词 编程教练 代码调试 Coding Coach debugging coaching debugging guided-learning ask-clarifying-question explain-code-issue create-practice-task kb-course-001 kb-challenge-001 Coding Coach Prompt Purpose Prompt Input Needed Expected Output Graph Notes Agent Notes # Coding Coach Prompt ## Purpose Help a student debug code while still learning the underlying concept. ## Prompt You are my coding coach. Help me understand the problem before giving the final answer. Ask one clarifying question if needed. Then explain the issue, show the smallest useful fix, and give me one practice task to confirm I understand. ## Input Needed - Code snippet. - Error message or unexpected behavior. - What the student already tried. ## Expected Output - Diagnosis. - Explanation. - Minimal fix. - Practice task. ## Graph Notes This entry can become a future `Prompt` node that supports coding challenges and course units. ## Agent Notes Use this prompt pattern when the learner needs coaching rather than direct answer dumping.",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T09:05:03.152Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# Coding Coach Prompt\n\n## Purpose\n\nHelp a student debug code while still learning the underlying concept.\n\n## Prompt\n\nYou are my coding coach. Help me understand the problem before giving the final answer. Ask one clarifying question if needed. Then explain the issue, show the smallest useful fix, and give me one practice task to confirm I understand.\n\n## Input Needed\n\n- Code snippet.\n- Error message or unexpected behavior.\n- What the student already tried.\n\n## Expected Output\n\n- Diagnosis.\n- Explanation.\n- Minimal fix.\n- Practice task.\n\n## Graph Notes\n\nThis entry can become a future `Prompt` node that supports coding challenges and course units.\n\n## Agent Notes\n\nUse this prompt pattern when the learner needs coaching rather than direct answer dumping.",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# Coding Coach Prompt",
+          "type": "heading",
+          "heading": "Coding Coach Prompt"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Purpose",
+          "type": "heading",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Help a student debug code while still learning the underlying concept.",
+          "type": "paragraph",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Prompt",
+          "type": "heading",
+          "heading": "Prompt"
+        },
+        {
+          "id": "chunk-4",
+          "text": "You are my coding coach. Help me understand the problem before giving the final answer. Ask one clarifying question if needed. Then explain the issue, show the smallest useful fix, and give me one practice task to confirm I understand.",
+          "type": "paragraph",
+          "heading": "Prompt"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## Input Needed",
+          "type": "heading",
+          "heading": "Input Needed"
+        },
+        {
+          "id": "chunk-6",
+          "text": "- Code snippet.\n- Error message or unexpected behavior.\n- What the student already tried.",
+          "type": "paragraph",
+          "heading": "Input Needed"
+        },
+        {
+          "id": "chunk-7",
+          "text": "## Expected Output",
+          "type": "heading",
+          "heading": "Expected Output"
+        },
+        {
+          "id": "chunk-8",
+          "text": "- Diagnosis.\n- Explanation.\n- Minimal fix.\n- Practice task.",
+          "type": "paragraph",
+          "heading": "Expected Output"
+        },
+        {
+          "id": "chunk-9",
+          "text": "## Graph Notes",
+          "type": "heading",
+          "heading": "Graph Notes"
+        },
+        {
+          "id": "chunk-10",
+          "text": "This entry can become a future `Prompt` node that supports coding challenges and course units.",
+          "type": "paragraph",
+          "heading": "Graph Notes"
+        },
+        {
+          "id": "chunk-11",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-12",
+          "text": "Use this prompt pattern when the learner needs coaching rather than direct answer dumping.",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    },
+    {
+      "id": "kb-faq-001",
+      "title": "Student FAQ",
+      "type": "faq",
+      "status": "sample",
+      "audience": [
+        "学生",
+        "Agent"
+      ],
+      "tags": [
+        "faq",
+        "student",
+        "learning-support"
+      ],
+      "keywords": [
+        "FAQ",
+        "常见问题",
+        "问答"
+      ],
+      "concepts": [
+        "学习支持",
+        "AI 协作规范",
+        "作业提交"
+      ],
+      "skills": [
+        "拆解挑战任务",
+        "负责任地使用 AI",
+        "撰写学习反思"
+      ],
+      "related": [],
+      "relationships": [],
+      "summary": "常见问题：What should I do if I do not understand a challenge?；Can I use AI to complete assignments?；What should I submit?",
+      "situation": "适合在回答高频问题、减少重复解释时使用。",
+      "ontology": "Q: What should I do if I do not understand a challenge?、Q: Can I use AI to complete assignments?、Q: What should I submit?、Agent Notes",
+      "workflow": "定位问题 -> 查看标准回答 -> 跟进相关条目或执行建议。",
+      "skill": "拆解挑战任务、负责任地使用 AI、撰写学习反思",
+      "evaluation": "用户能否通过 FAQ 独立解决高频问题。",
+      "knowledgeGrowth": "新的高频问题可以继续补充到 FAQ 中，优化检索命中率。",
+      "source": "../knowledge-base/04-faq/student-faq.md",
+      "searchText": "kb-faq-001 Student FAQ faq student agent faq student learning-support 学习支持 AI 协作规范 作业提交 拆解挑战任务 负责任地使用 AI 撰写学习反思 Student FAQ Q: What should I do if I do not understand a challenge? Q: Can I use AI to complete assignments? Q: What should I submit? Agent Notes # Student FAQ ## Q: What should I do if I do not understand a challenge? Start by reading the challenge goal, deliverables, and rubric. Then ask a Coding Coach agent to explain the task in smaller steps. ## Q: Can I use AI to complete assignments? Yes, but you should show your process. The goal is not only to get an answer, but to learn how to work with AI responsibly. ## Q: What should I submit? Submit the required deliverables listed in the challenge, plus a short reflection on how you used AI. ## Agent Notes Retrieve this entry for common student onboarding and assignment questions.",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T09:05:03.152Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# Student FAQ\n\n## Q: What should I do if I do not understand a challenge?\n\nStart by reading the challenge goal, deliverables, and rubric. Then ask a Coding Coach agent to explain the task in smaller steps.\n\n## Q: Can I use AI to complete assignments?\n\nYes, but you should show your process. The goal is not only to get an answer, but to learn how to work with AI responsibly.\n\n## Q: What should I submit?\n\nSubmit the required deliverables listed in the challenge, plus a short reflection on how you used AI.\n\n## Agent Notes\n\nRetrieve this entry for common student onboarding and assignment questions.",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# Student FAQ",
+          "type": "heading",
+          "heading": "Student FAQ"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Q: What should I do if I do not understand a challenge?",
+          "type": "heading",
+          "heading": "Q: What should I do if I do not understand a challenge?"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Start by reading the challenge goal, deliverables, and rubric. Then ask a Coding Coach agent to explain the task in smaller steps.",
+          "type": "paragraph",
+          "heading": "Q: What should I do if I do not understand a challenge?"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Q: Can I use AI to complete assignments?",
+          "type": "heading",
+          "heading": "Q: Can I use AI to complete assignments?"
+        },
+        {
+          "id": "chunk-4",
+          "text": "Yes, but you should show your process. The goal is not only to get an answer, but to learn how to work with AI responsibly.",
+          "type": "paragraph",
+          "heading": "Q: Can I use AI to complete assignments?"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## Q: What should I submit?",
+          "type": "heading",
+          "heading": "Q: What should I submit?"
+        },
+        {
+          "id": "chunk-6",
+          "text": "Submit the required deliverables listed in the challenge, plus a short reflection on how you used AI.",
+          "type": "paragraph",
+          "heading": "Q: What should I submit?"
+        },
+        {
+          "id": "chunk-7",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-8",
+          "text": "Retrieve this entry for common student onboarding and assignment questions.",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    },
+    {
+      "id": "kb-faq-002",
+      "title": "Teacher FAQ",
+      "type": "faq",
+      "status": "sample",
+      "audience": [
+        "教师",
+        "Agent"
+      ],
+      "tags": [
+        "faq",
+        "teacher",
+        "instruction"
+      ],
+      "keywords": [
+        "FAQ",
+        "常见问题",
+        "问答"
+      ],
+      "concepts": [
+        "课程复用",
+        "AI 作业评估",
+        "学习成果导向"
+      ],
+      "skills": [
+        "按周计划备课",
+        "评估 AI 协助过程",
+        "制定评价标准"
+      ],
+      "related": [],
+      "relationships": [],
+      "summary": "常见问题：How can I reuse this course?；How should I evaluate AI-assisted work?；What if students use different AI tools?",
+      "situation": "适合在回答高频问题、减少重复解释时使用。",
+      "ontology": "Q: How can I reuse this course?、Q: How should I evaluate AI-assisted work?、Q: What if students use different AI tools?",
+      "workflow": "定位问题 -> 查看标准回答 -> 跟进相关条目或执行建议。",
+      "skill": "按周计划备课、评估 AI 协助过程、制定评价标准",
+      "evaluation": "用户能否通过 FAQ 独立解决高频问题。",
+      "knowledgeGrowth": "新的高频问题可以继续补充到 FAQ 中，优化检索命中率。",
+      "source": "../knowledge-base/04-faq/teacher-faq.md",
+      "searchText": "kb-faq-002 Teacher FAQ faq teacher agent faq teacher instruction 课程复用 AI 作业评估 学习成果导向 按周计划备课 评估 AI 协助过程 制定评价标准 Teacher FAQ Q: How can I reuse this course? Q: How should I evaluate AI-assisted work? Q: What if students use different AI tools? # Teacher FAQ ## Q: How can I reuse this course? Start from the weekly plan, select matching challenges, and use the teacher notes to prepare each session. ## Q: How should I evaluate AI-assisted work? Evaluate the final output, the student's process, and the quality of reflection. ## Q: What if students use different AI tools? Focus on learning outcomes and documented process instead of requiring one specific tool.",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T09:05:03.152Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# Teacher FAQ\n\n## Q: How can I reuse this course?\n\nStart from the weekly plan, select matching challenges, and use the teacher notes to prepare each session.\n\n## Q: How should I evaluate AI-assisted work?\n\nEvaluate the final output, the student's process, and the quality of reflection.\n\n## Q: What if students use different AI tools?\n\nFocus on learning outcomes and documented process instead of requiring one specific tool.",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# Teacher FAQ",
+          "type": "heading",
+          "heading": "Teacher FAQ"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Q: How can I reuse this course?",
+          "type": "heading",
+          "heading": "Q: How can I reuse this course?"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Start from the weekly plan, select matching challenges, and use the teacher notes to prepare each session.",
+          "type": "paragraph",
+          "heading": "Q: How can I reuse this course?"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Q: How should I evaluate AI-assisted work?",
+          "type": "heading",
+          "heading": "Q: How should I evaluate AI-assisted work?"
+        },
+        {
+          "id": "chunk-4",
+          "text": "Evaluate the final output, the student's process, and the quality of reflection.",
+          "type": "paragraph",
+          "heading": "Q: How should I evaluate AI-assisted work?"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## Q: What if students use different AI tools?",
+          "type": "heading",
+          "heading": "Q: What if students use different AI tools?"
+        },
+        {
+          "id": "chunk-6",
+          "text": "Focus on learning outcomes and documented process instead of requiring one specific tool.",
+          "type": "paragraph",
+          "heading": "Q: What if students use different AI tools?"
+        }
+      ]
+    },
+    {
+      "id": "kb-faq-003",
+      "title": "Builder FAQ",
+      "type": "faq",
+      "status": "sample",
+      "audience": [
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "faq",
+        "builder",
+        "contribution"
+      ],
+      "keywords": [
+        "FAQ",
+        "常见问题",
+        "问答"
+      ],
+      "concepts": [
+        "知识条目分类",
+        "metadata 规范",
+        "草稿状态"
+      ],
+      "skills": [
+        "选择正确知识类型",
+        "填写 metadata",
+        "标注条目状态"
+      ],
+      "related": [],
+      "relationships": [],
+      "summary": "常见问题：Where should I put a new knowledge item?；Do I need metadata?；Can I submit draft content?",
+      "situation": "适合在回答高频问题、减少重复解释时使用。",
+      "ontology": "Q: Where should I put a new knowledge item?、Q: Do I need metadata?、Q: Can I submit draft content?",
+      "workflow": "定位问题 -> 查看标准回答 -> 跟进相关条目或执行建议。",
+      "skill": "选择正确知识类型、填写 metadata、标注条目状态",
+      "evaluation": "用户能否通过 FAQ 独立解决高频问题。",
+      "knowledgeGrowth": "新的高频问题可以继续补充到 FAQ 中，优化检索命中率。",
+      "source": "../knowledge-base/04-faq/builder-faq.md",
+      "searchText": "kb-faq-003 Builder FAQ faq builder agent faq builder contribution 知识条目分类 metadata 规范 草稿状态 选择正确知识类型 填写 metadata 标注条目状态 Builder FAQ Q: Where should I put a new knowledge item? Q: Do I need metadata? Q: Can I submit draft content? # Builder FAQ ## Q: Where should I put a new knowledge item? Choose the folder that matches the primary use case. If it supports multiple modules, choose the main category and add related links. ## Q: Do I need metadata? Yes. Metadata makes the item easier to search, review, and use with agents later. ## Q: Can I submit draft content? Yes. Mark `status: draft` in the frontmatter.",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T09:05:03.152Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# Builder FAQ\n\n## Q: Where should I put a new knowledge item?\n\nChoose the folder that matches the primary use case. If it supports multiple modules, choose the main category and add related links.\n\n## Q: Do I need metadata?\n\nYes. Metadata makes the item easier to search, review, and use with agents later.\n\n## Q: Can I submit draft content?\n\nYes. Mark `status: draft` in the frontmatter.",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# Builder FAQ",
+          "type": "heading",
+          "heading": "Builder FAQ"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Q: Where should I put a new knowledge item?",
+          "type": "heading",
+          "heading": "Q: Where should I put a new knowledge item?"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Choose the folder that matches the primary use case. If it supports multiple modules, choose the main category and add related links.",
+          "type": "paragraph",
+          "heading": "Q: Where should I put a new knowledge item?"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Q: Do I need metadata?",
+          "type": "heading",
+          "heading": "Q: Do I need metadata?"
+        },
+        {
+          "id": "chunk-4",
+          "text": "Yes. Metadata makes the item easier to search, review, and use with agents later.",
+          "type": "paragraph",
+          "heading": "Q: Do I need metadata?"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## Q: Can I submit draft content?",
+          "type": "heading",
+          "heading": "Q: Can I submit draft content?"
+        },
+        {
+          "id": "chunk-6",
+          "text": "Yes. Mark `status: draft` in the frontmatter.",
+          "type": "paragraph",
+          "heading": "Q: Can I submit draft content?"
+        }
+      ]
+    },
+    {
+      "id": "kb-best-practice-001",
+      "title": "Builder Documentation Practice",
+      "type": "best-practice",
+      "status": "sample",
+      "audience": [
+        "Builder",
+        "教师",
+        "Agent"
+      ],
+      "tags": [
+        "documentation",
+        "builder",
+        "github"
+      ],
+      "keywords": [
+        "最佳实践",
+        "实践",
+        "方法"
+      ],
+      "concepts": [
+        "可复用文档",
+        "面向读者写作",
+        "GitHub 提交规范"
+      ],
+      "skills": [
+        "写清晰文档",
+        "定义读者与用途",
+        "准备 GitHub 提交"
+      ],
+      "related": [],
+      "relationships": [],
+      "summary": "Help builders write documentation that other teams can reuse.",
+      "situation": "适合在沉淀可复用经验、避免重复踩坑时使用。",
+      "ontology": "Purpose、Practice、Checklist、Agent Notes",
+      "workflow": "Write documentation as if another team will need to use it next week without asking you for context.",
+      "skill": "Write documentation as if another team will need to use it next week without asking you for context.",
+      "evaluation": "他人是否可以直接照着实践完成同类工作。",
+      "knowledgeGrowth": "新的经验和反馈会不断更新最佳实践条目。",
+      "source": "../knowledge-base/05-best-practices/builder-documentation-practice.md",
+      "searchText": "kb-best-practice-001 Builder Documentation Practice best-practice builder teacher agent documentation builder github 可复用文档 面向读者写作 GitHub 提交规范 写清晰文档 定义读者与用途 准备 GitHub 提交 Builder Documentation Practice Purpose Practice Checklist Agent Notes # Builder Documentation Practice ## Purpose Help builders write documentation that other teams can reuse. ## Practice Write documentation as if another team will need to use it next week without asking you for context. ## Checklist - State the purpose. - Define the audience. - Include examples. - Link related files. - Mark draft or stable status. - Keep file names clear and searchable. ## Agent Notes Retrieve this entry when a builder asks how to document a module or prepare a GitHub submission.",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T09:05:03.152Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# Builder Documentation Practice\n\n## Purpose\n\nHelp builders write documentation that other teams can reuse.\n\n## Practice\n\nWrite documentation as if another team will need to use it next week without asking you for context.\n\n## Checklist\n\n- State the purpose.\n- Define the audience.\n- Include examples.\n- Link related files.\n- Mark draft or stable status.\n- Keep file names clear and searchable.\n\n## Agent Notes\n\nRetrieve this entry when a builder asks how to document a module or prepare a GitHub submission.",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# Builder Documentation Practice",
+          "type": "heading",
+          "heading": "Builder Documentation Practice"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Purpose",
+          "type": "heading",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Help builders write documentation that other teams can reuse.",
+          "type": "paragraph",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Practice",
+          "type": "heading",
+          "heading": "Practice"
+        },
+        {
+          "id": "chunk-4",
+          "text": "Write documentation as if another team will need to use it next week without asking you for context.",
+          "type": "paragraph",
+          "heading": "Practice"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## Checklist",
+          "type": "heading",
+          "heading": "Checklist"
+        },
+        {
+          "id": "chunk-6",
+          "text": "- State the purpose.\n- Define the audience.\n- Include examples.\n- Link related files.\n- Mark draft or stable status.\n- Keep file names clear and searchable.",
+          "type": "paragraph",
+          "heading": "Checklist"
+        },
+        {
+          "id": "chunk-7",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-8",
+          "text": "Retrieve this entry when a builder asks how to document a module or prepare a GitHub submission.",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    },
+    {
+      "id": "kb-best-practice-002",
+      "title": "AI-Assisted Learning Practice",
+      "type": "best-practice",
+      "status": "sample",
+      "audience": [
+        "学生",
+        "教师",
+        "Agent"
+      ],
+      "tags": [
+        "ai-learning",
+        "reflection",
+        "learning-process"
+      ],
+      "keywords": [
+        "最佳实践",
+        "实践",
+        "方法"
+      ],
+      "concepts": [
+        "健康的 AI 使用模式",
+        "学习反思",
+        "独立思考"
+      ],
+      "skills": [
+        "用 AI 澄清与对比",
+        "复盘错误",
+        "提出反思问题"
+      ],
+      "related": [],
+      "relationships": [],
+      "summary": "Define a healthy pattern for using AI during learning.",
+      "situation": "适合在沉淀可复用经验、避免重复踩坑时使用。",
+      "ontology": "Purpose、Practice、Reflection Questions",
+      "workflow": "Use AI to clarify, compare, generate examples, review mistakes, and improve drafts. Do not use AI as a shortcut that hides your thinking.",
+      "skill": "Use AI to clarify, compare, generate examples, review mistakes, and improve drafts. Do not use AI as a shortcut that hides your thinking.",
+      "evaluation": "他人是否可以直接照着实践完成同类工作。",
+      "knowledgeGrowth": "新的经验和反馈会不断更新最佳实践条目。",
+      "source": "../knowledge-base/05-best-practices/ai-assisted-learning-practice.md",
+      "searchText": "kb-best-practice-002 AI-Assisted Learning Practice best-practice student teacher agent ai-learning reflection learning-process 健康的 AI 使用模式 学习反思 独立思考 用 AI 澄清与对比 复盘错误 提出反思问题 AI-Assisted Learning Practice Purpose Practice Reflection Questions # AI-Assisted Learning Practice ## Purpose Define a healthy pattern for using AI during learning. ## Practice Use AI to clarify, compare, generate examples, review mistakes, and improve drafts. Do not use AI as a shortcut that hides your thinking. ## Reflection Questions - What did AI help me understand? - What did I still need to decide myself? - What changed between my first attempt and final output? - What would I ask differently next time?",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T09:05:03.152Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# AI-Assisted Learning Practice\n\n## Purpose\n\nDefine a healthy pattern for using AI during learning.\n\n## Practice\n\nUse AI to clarify, compare, generate examples, review mistakes, and improve drafts. Do not use AI as a shortcut that hides your thinking.\n\n## Reflection Questions\n\n- What did AI help me understand?\n- What did I still need to decide myself?\n- What changed between my first attempt and final output?\n- What would I ask differently next time?",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# AI-Assisted Learning Practice",
+          "type": "heading",
+          "heading": "AI-Assisted Learning Practice"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Purpose",
+          "type": "heading",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Define a healthy pattern for using AI during learning.",
+          "type": "paragraph",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Practice",
+          "type": "heading",
+          "heading": "Practice"
+        },
+        {
+          "id": "chunk-4",
+          "text": "Use AI to clarify, compare, generate examples, review mistakes, and improve drafts. Do not use AI as a shortcut that hides your thinking.",
+          "type": "paragraph",
+          "heading": "Practice"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## Reflection Questions",
+          "type": "heading",
+          "heading": "Reflection Questions"
+        },
+        {
+          "id": "chunk-6",
+          "text": "- What did AI help me understand?\n- What did I still need to decide myself?\n- What changed between my first attempt and final output?\n- What would I ask differently next time?",
+          "type": "paragraph",
+          "heading": "Reflection Questions"
+        }
+      ]
+    },
+    {
+      "id": "kb-project-001",
+      "title": "Sample AI Study Assistant Project",
+      "type": "project",
+      "status": "sample",
+      "audience": [
+        "学生",
+        "教师",
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "project-case",
+        "ai-assistant",
+        "learning-support"
+      ],
+      "keywords": [
+        "项目",
+        "项目案例",
+        "学习助手",
+        "AI 学习助手",
+        "project case",
+        "案例"
+      ],
+      "concepts": [
+        "ai-study-assistant",
+        "study-planning",
+        "learning-reflection"
+      ],
+      "skills": [
+        "define-user-situation",
+        "design-assistant-prompt",
+        "evaluate-learning-support"
+      ],
+      "related": [
+        "kb-challenge-001",
+        "kb-prompt-001"
+      ],
+      "relationships": [
+        {
+          "predicate": "supports",
+          "target": "kb-challenge-001"
+        },
+        {
+          "predicate": "usesPrompt",
+          "target": "kb-prompt-001"
+        }
+      ],
+      "summary": "Show what a simple project case entry should include.",
+      "situation": "Students need a lightweight assistant that helps plan study sessions and review progress.",
+      "ontology": "Key concepts include learner, study goal, available time, difficulty, study plan, progress review, and reflection prompt.",
+      "workflow": "Collect learning goal -> collect time and difficulty -> generate study plan -> ask reflection question -> review usefulness -> improve assistant prompt",
+      "skill": "This project uses situation modeling, assistant prompt design, structured conversation design, and output evaluation.",
+      "evaluation": "Evaluate whether the assistant produces a useful plan, asks relevant questions, and helps the learner reflect.",
+      "knowledgeGrowth": "This project can add reusable assets back into the Knowledge Cognitive Cell: A study-planning prompt. A project case. FAQ entries about learning with AI. Skill nodes for study planning and reflection.",
+      "source": "../knowledge-base/06-projects/sample-project-case.md",
+      "searchText": "kb-project-001 Sample AI Study Assistant Project project student teacher builder agent project-case ai-assistant learning-support 项目 项目案例 学习助手 AI 学习助手 project case ai-study-assistant study-planning learning-reflection define-user-situation design-assistant-prompt evaluate-learning-support kb-challenge-001 kb-prompt-001 Sample AI Study Assistant Project Purpose Situation Ontology Workflow Skills Solution Deliverables Evaluation Knowledge Growth Reuse Notes Agent Notes # Sample AI Study Assistant Project ## Purpose Show what a simple project case entry should include. ## Situation Students need a lightweight assistant that helps plan study sessions and review progress. ## Ontology Key concepts include learner, study goal, available time, difficulty, study plan, progress review, and reflection prompt. ## Workflow ```text Collect learning goal -> collect time and difficulty -> generate study plan -> ask reflection question -> review usefulness -> improve assistant prompt ``` ## Skills This project uses situation modeling, assistant prompt design, structured conversation design, and output evaluation. ## Solution Create an AI assistant that asks for the learning goal, time available, and current difficulty, then generates a study plan and reflection prompt. ## Deliverables - Assistant prompt. - Example conversation. - Short demo. - Reflection notes. ## Evaluation Evaluate whether the assistant produces a useful plan, asks relevant questions, and helps the learner reflect. ## Knowledge Growth This project can add reusable assets back into the Knowledge Cognitive Cell: - A study-planning prompt. - A project case. - FAQ entries about learning with AI. - Skill nodes for study planning and reflection. ## Reuse Notes This case can be reused as a starter example for the first AI assistant challenge. ## Agent Notes Retrieve this entry when a student or builder needs a simple example of an AI assistant project.",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T08:43:29.981Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# Sample AI Study Assistant Project\n\n## Purpose\n\nShow what a simple project case entry should include.\n\n## Situation\n\nStudents need a lightweight assistant that helps plan study sessions and review progress.\n\n## Ontology\n\nKey concepts include learner, study goal, available time, difficulty, study plan, progress review, and reflection prompt.\n\n## Workflow\n\n```text\nCollect learning goal\n-> collect time and difficulty\n-> generate study plan\n-> ask reflection question\n-> review usefulness\n-> improve assistant prompt\n```\n\n## Skills\n\nThis project uses situation modeling, assistant prompt design, structured conversation design, and output evaluation.\n\n## Solution\n\nCreate an AI assistant that asks for the learning goal, time available, and current difficulty, then generates a study plan and reflection prompt.\n\n## Deliverables\n\n- Assistant prompt.\n- Example conversation.\n- Short demo.\n- Reflection notes.\n\n## Evaluation\n\nEvaluate whether the assistant produces a useful plan, asks relevant questions, and helps the learner reflect.\n\n## Knowledge Growth\n\nThis project can add reusable assets back into the Knowledge Cognitive Cell:\n\n- A study-planning prompt.\n- A project case.\n- FAQ entries about learning with AI.\n- Skill nodes for study planning and reflection.\n\n## Reuse Notes\n\nThis case can be reused as a starter example for the first AI assistant challenge.\n\n## Agent Notes\n\nRetrieve this entry when a student or builder needs a simple example of an AI assistant project.",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# Sample AI Study Assistant Project",
+          "type": "heading",
+          "heading": "Sample AI Study Assistant Project"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Purpose",
+          "type": "heading",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Show what a simple project case entry should include.",
+          "type": "paragraph",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Situation",
+          "type": "heading",
+          "heading": "Situation"
+        },
+        {
+          "id": "chunk-4",
+          "text": "Students need a lightweight assistant that helps plan study sessions and review progress.",
+          "type": "paragraph",
+          "heading": "Situation"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## Ontology",
+          "type": "heading",
+          "heading": "Ontology"
+        },
+        {
+          "id": "chunk-6",
+          "text": "Key concepts include learner, study goal, available time, difficulty, study plan, progress review, and reflection prompt.",
+          "type": "paragraph",
+          "heading": "Ontology"
+        },
+        {
+          "id": "chunk-7",
+          "text": "## Workflow",
+          "type": "heading",
+          "heading": "Workflow"
+        },
+        {
+          "id": "chunk-8",
+          "text": "```text\nCollect learning goal\n-> collect time and difficulty\n-> generate study plan\n-> ask reflection question\n-> review usefulness\n-> improve assistant prompt\n```",
+          "type": "paragraph",
+          "heading": "Workflow"
+        },
+        {
+          "id": "chunk-9",
+          "text": "## Skills",
+          "type": "heading",
+          "heading": "Skills"
+        },
+        {
+          "id": "chunk-10",
+          "text": "This project uses situation modeling, assistant prompt design, structured conversation design, and output evaluation.",
+          "type": "paragraph",
+          "heading": "Skills"
+        },
+        {
+          "id": "chunk-11",
+          "text": "## Solution",
+          "type": "heading",
+          "heading": "Solution"
+        },
+        {
+          "id": "chunk-12",
+          "text": "Create an AI assistant that asks for the learning goal, time available, and current difficulty, then generates a study plan and reflection prompt.",
+          "type": "paragraph",
+          "heading": "Solution"
+        },
+        {
+          "id": "chunk-13",
+          "text": "## Deliverables",
+          "type": "heading",
+          "heading": "Deliverables"
+        },
+        {
+          "id": "chunk-14",
+          "text": "- Assistant prompt.\n- Example conversation.\n- Short demo.\n- Reflection notes.",
+          "type": "paragraph",
+          "heading": "Deliverables"
+        },
+        {
+          "id": "chunk-15",
+          "text": "## Evaluation",
+          "type": "heading",
+          "heading": "Evaluation"
+        },
+        {
+          "id": "chunk-16",
+          "text": "Evaluate whether the assistant produces a useful plan, asks relevant questions, and helps the learner reflect.",
+          "type": "paragraph",
+          "heading": "Evaluation"
+        },
+        {
+          "id": "chunk-17",
+          "text": "## Knowledge Growth",
+          "type": "heading",
+          "heading": "Knowledge Growth"
+        },
+        {
+          "id": "chunk-18",
+          "text": "This project can add reusable assets back into the Knowledge Cognitive Cell:",
+          "type": "paragraph",
+          "heading": "Knowledge Growth"
+        },
+        {
+          "id": "chunk-19",
+          "text": "- A study-planning prompt.\n- A project case.\n- FAQ entries about learning with AI.\n- Skill nodes for study planning and reflection.",
+          "type": "paragraph",
+          "heading": "Knowledge Growth"
+        },
+        {
+          "id": "chunk-20",
+          "text": "## Reuse Notes",
+          "type": "heading",
+          "heading": "Reuse Notes"
+        },
+        {
+          "id": "chunk-21",
+          "text": "This case can be reused as a starter example for the first AI assistant challenge.",
+          "type": "paragraph",
+          "heading": "Reuse Notes"
+        },
+        {
+          "id": "chunk-22",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-23",
+          "text": "Retrieve this entry when a student or builder needs a simple example of an AI assistant project.",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    },
+    {
+      "id": "kb-agent-001",
+      "title": "Knowledge Librarian Agent",
+      "type": "agent",
+      "status": "sample",
+      "audience": [
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "knowledge-librarian",
+        "retrieval",
+        "agent"
+      ],
+      "keywords": [
+        "Agent",
+        "智能体",
+        "检索"
+      ],
+      "concepts": [
+        "Agent 角色定义",
+        "知识检索",
+        "相关条目推荐"
+      ],
+      "skills": [
+        "按类型/受众/标签检索",
+        "推荐相关条目",
+        "检查 metadata 完整性"
+      ],
+      "related": [],
+      "relationships": [],
+      "summary": "Define a future agent role that helps users find, organize, and improve knowledge-base entries.",
+      "situation": "适合在说明未来 Agent 如何调用和使用知识条目时使用。",
+      "ontology": "Purpose、Role、Capabilities、Agent Notes",
+      "workflow": "查看 Agent 角色 -> 理解输入输出 -> 对接知识条目或上下文。",
+      "skill": "Search by type, audience, and tags. Recommend related entries. Check whether an entry has complete metadata. Suggest the right template for new content.",
+      "evaluation": "Agent 是否能正确识别并调用这类知识条目。",
+      "knowledgeGrowth": "随着后端和 Agent 接入，条目会继续补充接口、能力和调用规则。",
+      "source": "../knowledge-base/07-agents/knowledge-librarian-agent.md",
+      "searchText": "kb-agent-001 Knowledge Librarian Agent agent builder agent knowledge-librarian retrieval agent Agent 角色定义 知识检索 相关条目推荐 按类型/受众/标签检索 推荐相关条目 检查 metadata 完整性 Knowledge Librarian Agent Purpose Role Capabilities Agent Notes # Knowledge Librarian Agent ## Purpose Define a future agent role that helps users find, organize, and improve knowledge-base entries. ## Role The Knowledge Librarian Agent helps students, teachers, and builders locate the right knowledge item and suggests where new knowledge should be added. ## Capabilities - Search by type, audience, and tags. - Recommend related entries. - Check whether an entry has complete metadata. - Suggest the right template for new content. ## Agent Notes This is a design placeholder for future Agent Team integration.",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T09:05:03.152Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# Knowledge Librarian Agent\n\n## Purpose\n\nDefine a future agent role that helps users find, organize, and improve knowledge-base entries.\n\n## Role\n\nThe Knowledge Librarian Agent helps students, teachers, and builders locate the right knowledge item and suggests where new knowledge should be added.\n\n## Capabilities\n\n- Search by type, audience, and tags.\n- Recommend related entries.\n- Check whether an entry has complete metadata.\n- Suggest the right template for new content.\n\n## Agent Notes\n\nThis is a design placeholder for future Agent Team integration.",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# Knowledge Librarian Agent",
+          "type": "heading",
+          "heading": "Knowledge Librarian Agent"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Purpose",
+          "type": "heading",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Define a future agent role that helps users find, organize, and improve knowledge-base entries.",
+          "type": "paragraph",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Role",
+          "type": "heading",
+          "heading": "Role"
+        },
+        {
+          "id": "chunk-4",
+          "text": "The Knowledge Librarian Agent helps students, teachers, and builders locate the right knowledge item and suggests where new knowledge should be added.",
+          "type": "paragraph",
+          "heading": "Role"
+        },
+        {
+          "id": "chunk-5",
+          "text": "## Capabilities",
+          "type": "heading",
+          "heading": "Capabilities"
+        },
+        {
+          "id": "chunk-6",
+          "text": "- Search by type, audience, and tags.\n- Recommend related entries.\n- Check whether an entry has complete metadata.\n- Suggest the right template for new content.",
+          "type": "paragraph",
+          "heading": "Capabilities"
+        },
+        {
+          "id": "chunk-7",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-8",
+          "text": "This is a design placeholder for future Agent Team integration.",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    },
+    {
+      "id": "kb-agent-002",
+      "title": "Knowledge Cognitive Cell",
+      "type": "agent",
+      "status": "draft",
+      "audience": [
+        "Builder",
+        "教师",
+        "Agent"
+      ],
+      "tags": [
+        "cognitive-cell",
+        "knowledge-base",
+        "knowledge-agent",
+        "nseap"
+      ],
+      "keywords": [
+        "Agent",
+        "智能体",
+        "知识认知细胞",
+        "知识仓库",
+        "Knowledge Cognitive Cell",
+        "检索"
+      ],
+      "concepts": [
+        "认知细胞架构",
+        "共享知识层",
+        "静态到演化路径"
+      ],
+      "skills": [
+        "组织多类型知识",
+        "提供贡献模板",
+        "为 Agent 检索准备接口"
+      ],
+      "related": [],
+      "relationships": [],
+      "summary": "Define the Knowledge Base as a Cognitive Cell in the NSEAP AI Learning Operating System.",
+      "situation": "适合在说明未来 Agent 如何调用和使用知识条目时使用。",
+      "ontology": "The Knowledge Cognitive Cell is the shared knowledge layer owned by the Knowledge Team. It serves students, teachers, builders, and agents by turning scattered course and project outputs into reusable knowledge assets.",
+      "workflow": "MVP stage: Static Cognitive Cell -> stable knowledge structure -> templates -> metadata -> GitHub review Future stage: Evolutionary Cognitive Cell -> Knowledge Librarian Agent -> ontology -> memory -> evaluation -> KSTAR update loop",
+      "skill": "Current MVP capabilities: Organize course, challenge, prompt, FAQ, best practice, project, and agent knowledge. Provide templates for consistent contribution. Add metadata for future retrieval. Support GitHub review and versioning. Provide examples that other teams can copy. Future capabilities: Retrieve relevant knowledge for agents. Recommend related entries. Check metadata quality. Suggest templates for new content. Learn from feedback and update knowledge.",
+      "evaluation": "Agent 是否能正确识别并调用这类知识条目。",
+      "knowledgeGrowth": "随着后端和 Agent 接入，条目会继续补充接口、能力和调用规则。",
+      "source": "../knowledge-base/07-agents/knowledge-cognitive-cell.md",
+      "searchText": "kb-agent-002 Knowledge Cognitive Cell agent builder teacher agent cognitive-cell knowledge-base knowledge-agent nseap Agent 智能体 知识认知细胞 知识仓库 Knowledge Cognitive Cell 认知细胞架构 共享知识层 静态到演化路径 组织多类型知识 提供贡献模板 为 Agent 检索准备接口 Knowledge Cognitive Cell Purpose Identity Capability Interface Static to Evolutionary Path Agent Notes # Knowledge Cognitive Cell ## Purpose Define the Knowledge Base as a Cognitive Cell in the NSEAP AI Learning Operating System. ## Identity The Knowledge Cognitive Cell is the shared knowledge layer owned by the Knowledge Team. It serves students, teachers, builders, and agents by turning scattered course and project outputs into reusable knowledge assets. ## Capability Current MVP capabilities: - Organize course, challenge, prompt, FAQ, best practice, project, and agent knowledge. - Provide templates for consistent contribution. - Add metadata for future retrieval. - Support GitHub review and versioning. - Provide examples that other teams can copy. Future capabilities: - Retrieve relevant knowledge for agents. - Recommend related entries. - Check metadata quality. - Suggest templates for new content. - Learn from feedback and update knowledge. ## Interface Current interfaces: - Markdown. - YAML frontmatter. - JSON Schema. - GitHub pull request workflow. Future interfaces: - Search API. - Agent retrieval API. - MCP integration. - Documentation portal. - Knowledge graph. ## Static to Evolutionary Path MVP stage: ```text Static Cognitive Cell -> stable knowledge structure -> templates -> metadata -> GitHub review ``` Future stage: ```text Evolutionary Cognitive Cell -> Knowledge Librarian Agent -> ontology -> memory -> evaluation -> KSTAR update loop ``` ## Agent Notes Retrieve this entry when explaining how Knowledge Team aligns with the Cognitive Cell architecture.",
+      "createdAt": "2026-07-06T08:43:29.981Z",
+      "updatedAt": "2026-07-06T09:05:03.152Z",
+      "importedFrom": "knowledge-base",
+      "extractedText": "# Knowledge Cognitive Cell\n\n## Purpose\n\nDefine the Knowledge Base as a Cognitive Cell in the NSEAP AI Learning Operating System.\n\n## Identity\n\nThe Knowledge Cognitive Cell is the shared knowledge layer owned by the Knowledge Team.\n\nIt serves students, teachers, builders, and agents by turning scattered course and project outputs into reusable knowledge assets.\n\n## Capability\n\nCurrent MVP capabilities:\n\n- Organize course, challenge, prompt, FAQ, best practice, project, and agent knowledge.\n- Provide templates for consistent contribution.\n- Add metadata for future retrieval.\n- Support GitHub review and versioning.\n- Provide examples that other teams can copy.\n\nFuture capabilities:\n\n- Retrieve relevant knowledge for agents.\n- Recommend related entries.\n- Check metadata quality.\n- Suggest templates for new content.\n- Learn from feedback and update knowledge.\n\n## Interface\n\nCurrent interfaces:\n\n- Markdown.\n- YAML frontmatter.\n- JSON Schema.\n- GitHub pull request workflow.\n\nFuture interfaces:\n\n- Search API.\n- Agent retrieval API.\n- MCP integration.\n- Documentation portal.\n- Knowledge graph.\n\n## Static to Evolutionary Path\n\nMVP stage:\n\n```text\nStatic Cognitive Cell\n-> stable knowledge structure\n-> templates\n-> metadata\n-> GitHub review\n```\n\nFuture stage:\n\n```text\nEvolutionary Cognitive Cell\n-> Knowledge Librarian Agent\n-> ontology\n-> memory\n-> evaluation\n-> KSTAR update loop\n```\n\n## Agent Notes\n\nRetrieve this entry when explaining how Knowledge Team aligns with the Cognitive Cell architecture.",
+      "chunks": [
+        {
+          "id": "chunk-0",
+          "text": "# Knowledge Cognitive Cell",
+          "type": "heading",
+          "heading": "Knowledge Cognitive Cell"
+        },
+        {
+          "id": "chunk-1",
+          "text": "## Purpose",
+          "type": "heading",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-2",
+          "text": "Define the Knowledge Base as a Cognitive Cell in the NSEAP AI Learning Operating System.",
+          "type": "paragraph",
+          "heading": "Purpose"
+        },
+        {
+          "id": "chunk-3",
+          "text": "## Identity",
+          "type": "heading",
+          "heading": "Identity"
+        },
+        {
+          "id": "chunk-4",
+          "text": "The Knowledge Cognitive Cell is the shared knowledge layer owned by the Knowledge Team.",
+          "type": "paragraph",
+          "heading": "Identity"
+        },
+        {
+          "id": "chunk-5",
+          "text": "It serves students, teachers, builders, and agents by turning scattered course and project outputs into reusable knowledge assets.",
+          "type": "paragraph",
+          "heading": "Identity"
+        },
+        {
+          "id": "chunk-6",
+          "text": "## Capability",
+          "type": "heading",
+          "heading": "Capability"
+        },
+        {
+          "id": "chunk-7",
+          "text": "Current MVP capabilities:",
+          "type": "paragraph",
+          "heading": "Capability"
+        },
+        {
+          "id": "chunk-8",
+          "text": "- Organize course, challenge, prompt, FAQ, best practice, project, and agent knowledge.\n- Provide templates for consistent contribution.\n- Add metadata for future retrieval.\n- Support GitHub review and versioning.\n- Provide examples that other teams can copy.",
+          "type": "paragraph",
+          "heading": "Capability"
+        },
+        {
+          "id": "chunk-9",
+          "text": "Future capabilities:",
+          "type": "paragraph",
+          "heading": "Capability"
+        },
+        {
+          "id": "chunk-10",
+          "text": "- Retrieve relevant knowledge for agents.\n- Recommend related entries.\n- Check metadata quality.\n- Suggest templates for new content.\n- Learn from feedback and update knowledge.",
+          "type": "paragraph",
+          "heading": "Capability"
+        },
+        {
+          "id": "chunk-11",
+          "text": "## Interface",
+          "type": "heading",
+          "heading": "Interface"
+        },
+        {
+          "id": "chunk-12",
+          "text": "Current interfaces:",
+          "type": "paragraph",
+          "heading": "Interface"
+        },
+        {
+          "id": "chunk-13",
+          "text": "- Markdown.\n- YAML frontmatter.\n- JSON Schema.\n- GitHub pull request workflow.",
+          "type": "paragraph",
+          "heading": "Interface"
+        },
+        {
+          "id": "chunk-14",
+          "text": "Future interfaces:",
+          "type": "paragraph",
+          "heading": "Interface"
+        },
+        {
+          "id": "chunk-15",
+          "text": "- Search API.\n- Agent retrieval API.\n- MCP integration.\n- Documentation portal.\n- Knowledge graph.",
+          "type": "paragraph",
+          "heading": "Interface"
+        },
+        {
+          "id": "chunk-16",
+          "text": "## Static to Evolutionary Path",
+          "type": "heading",
+          "heading": "Static to Evolutionary Path"
+        },
+        {
+          "id": "chunk-17",
+          "text": "MVP stage:",
+          "type": "paragraph",
+          "heading": "Static to Evolutionary Path"
+        },
+        {
+          "id": "chunk-18",
+          "text": "```text\nStatic Cognitive Cell\n-> stable knowledge structure\n-> templates\n-> metadata\n-> GitHub review\n```",
+          "type": "paragraph",
+          "heading": "Static to Evolutionary Path"
+        },
+        {
+          "id": "chunk-19",
+          "text": "Future stage:",
+          "type": "paragraph",
+          "heading": "Static to Evolutionary Path"
+        },
+        {
+          "id": "chunk-20",
+          "text": "```text\nEvolutionary Cognitive Cell\n-> Knowledge Librarian Agent\n-> ontology\n-> memory\n-> evaluation\n-> KSTAR update loop\n```",
+          "type": "paragraph",
+          "heading": "Static to Evolutionary Path"
+        },
+        {
+          "id": "chunk-21",
+          "text": "## Agent Notes",
+          "type": "heading",
+          "heading": "Agent Notes"
+        },
+        {
+          "id": "chunk-22",
+          "text": "Retrieve this entry when explaining how Knowledge Team aligns with the Cognitive Cell architecture.",
+          "type": "paragraph",
+          "heading": "Agent Notes"
+        }
+      ]
+    }
+  ]
+}

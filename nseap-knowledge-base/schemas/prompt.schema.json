@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NSEAP Prompt Item",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "type",
+    "summary",
+    "audience",
+    "keywords",
+    "status",
+    "source",
+    "prompt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^kb-prompt-[0-9]{3}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "type": {
+      "const": "prompt"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 10
+    },
+    "source": {
+      "type": "string",
+      "minLength": 3
+    },
+    "audience": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["student", "teacher", "builder", "agent"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 3,
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "concepts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "related": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["predicate"],
+        "properties": {
+          "predicate": {
+            "type": "string",
+            "enum": ["includes", "requires", "supports", "assessedBy", "usesPrompt", "relatedTo"]
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "targetLabel": {
+            "type": "string",
+            "minLength": 1
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "anyOf": [
+          {
+            "required": ["target"]
+          },
+          {
+            "required": ["targetLabel"]
+          }
+        ]
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "review", "stable", "sample", "deprecated"]
+    },
+    "updated": {
+      "type": "string",
+      "format": "date"
+    },
+    "prompt": {
+      "type": "string",
+      "minLength": 10
+    },
+    "inputNeeded": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "expectedOutput": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "usageNotes": {
+      "type": "string"
+    },
+    "agentNotes": {
+      "type": "string"
+    }
+  }
+}

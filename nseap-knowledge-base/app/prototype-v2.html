@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NSEAP 知识认知细胞 v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:#D4DAE2;border-radius:999px;border:3px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-thumb:hover{background:#B8C0CC;background-clip:content-box;border:3px solid transparent}
+.noscroll::-webkit-scrollbar{height:6px}
+body{font-family:'IBM Plex Sans','IBM Plex Sans SC',system-ui,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#F1F3F6;color:#161A20;-webkit-font-smoothing:antialiased}
+#app{height:100vh;min-height:640px;display:flex;flex-direction:column}
+
+/* Header */
+.hdr{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;height:56px;padding:0 22px;background:#12161D;color:#E8ECF2}
+.hdr .logo{display:flex;align-items:center;gap:12px}
+.hdr .logo-icon{position:relative;width:28px;height:28px;display:grid;place-items:center}
+.hdr .logo-bg{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0E7C6B,#3A5BD9)}
+.hdr .logo-dot{position:absolute;width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.16)}
+.hdr .logo-text{display:flex;flex-direction:column;line-height:1.15}
+.hdr .logo-text .t1{font-family:'Space Grotesk','IBM Plex Sans SC',sans-serif;font-weight:700;font-size:14px}
+.hdr .logo-text .t2{font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#7E8AA0}
+.hdr .right{display:flex;align-items:center;gap:12px}
+.hdr .right .team{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8892A6}
+.hdr .right .ver{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#C7D0DE}
+
+/* Nav */
+.nav{flex:0 0 auto;width:78px;background:#fff;border-right:1px solid #E4E8ED;display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0}
+.nav-btn{width:60px;display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 0;border:0;border-radius:12px;cursor:pointer;font-family:inherit;background:transparent;color:#8A94A3}
+.nav-btn:hover{background:#F4F6F9}
+.nav-btn.active{background:#E6F3F0;color:#0A5A4E}
+.nav-btn span{font-size:11px;font-weight:600}
+
+/* Layout */
+.body{flex:1 1 auto;min-height:0;display:flex}
+.main{flex:1 1 auto;min-height:0;position:relative;overflow:hidden}
+
+/* Home */
+.home-wrap{height:100%;overflow-y:auto}
+.home-inner{max-width:960px;margin:0 auto;padding:32px 28px 60px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0E7C6B;margin:0 0 8px}
+.home-inner h1{font-family:'Space Grotesk','IBM Plex Sans SC',sans-serif;font-size:27px;line-height:1.3;font-weight:600;margin:0 0 8px}
+.home-inner .lede{font-size:14px;color:#5A6473;line-height:1.6;margin:0 0 24px;max-width:560px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
+.stat-card{padding:16px;border:1px solid #E4E8ED;border-radius:14px;background:#fff}
+.stat-card .num{font-family:'Space Grotesk',monospace;font-size:26px;font-weight:600}
+.stat-card .lbl{font-size:12px;color:#8A94A3;margin-top:2px}
+.getstarted{padding:20px;border:1px solid #D9E6E2;border-radius:16px;background:linear-gradient(180deg,#F3FAF8,#FBFDFC);margin-bottom:28px}
+.getstarted .gs-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#0A5A4E;margin:0 0 14px}
+.gs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
+.gs-step{display:flex;gap:11px}
+.gs-num{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:#0E7C6B;color:#fff;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600}
+.gs-step p{font-size:12px;color:#6A7382;line-height:1.5;margin:0}
+.gs-step .gs-title{font-size:13px;font-weight:600;margin:0 0 3px;color:#161A20}
+.gs-btn{height:40px;padding:0 20px;border:0;border-radius:10px;background:#0E7C6B;color:#fff;font-weight:600;font-size:13px;font-family:inherit;cursor:pointer}
+.gs-btn:hover{background:#0A5A4E}
+.sec-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sec-h h2{font-size:15px;font-weight:600}
+.sec-h .meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8A94A3}
+.card-grid{display:grid;gap:10px}
+.card-grid.c2{grid-template-columns:repeat(2,1fr);margin-bottom:26px}
+.card-grid.c3{grid-template-columns:repeat(3,1fr);margin-bottom:28px}
+.kcard{display:block;text-align:left;cursor:pointer;font-family:inherit;padding:14px;border:1px solid #E7EAEF;border-radius:12px;background:#fff;text-decoration:none;color:inherit}
+.kcard:hover{border-color:#0E7C6B}
+.kcard .kc-row{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.kcard .kc-summary{font-size:12px;color:#6A7382;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.action-card{display:block;text-align:left;cursor:pointer;font-family:inherit;padding:18px;border:1px solid #E4E8ED;border-radius:14px;background:#fff;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit}
+.action-card:hover{border-color:#0E7C6B;box-shadow:0 8px 24px rgba(15,23,42,.06)}
+.action-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center}
+.action-card p{font-size:12px;color:#6A7382;line-height:1.5}
+.action-card .ac-title{font-size:14px;font-weight:600;margin:0 0 3px;color:#161A20}
+.ladder-wrap{padding:16px 18px;border:1px solid #E4E8ED;border-radius:14px;background:#fff}
+.ladder-row{display:flex;align-items:stretch;gap:6px;overflow-x:auto}
+.ladder-item{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:88px;flex:1}
+.ladder-code{width:100%;height:28px;display:flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid;font-family:'IBM Plex Mono',monospace;font-size:12px}
+.ladder-label{font-size:10px;color:#7A8494;text-align:center;line-height:1.25}
+
+/* Explore */
+.exp-wrap{height:100%;display:flex;flex-direction:column}
+.exp-top{flex:0 0 auto;padding:15px 20px 12px;border-bottom:1px solid #EEF1F5;background:#fff}
+.exp-search-row{display:flex;align-items:center;gap:12px;margin-bottom:11px;flex-wrap:wrap}
+.search-box{position:relative;flex:1 1 320px;max-width:540px}
+.search-box svg{position:absolute;left:12px;top:50%;transform:translateY(-50%)}
+.search-box input{width:100%;height:40px;padding:0 12px 0 36px;border:1px solid #DDE3EA;border-radius:10px;background:#F8FAFB;color:#161A20;font-size:13px;font-family:inherit}
+.search-box input:focus{outline:none;border-color:#0E7C6B;background:#fff;box-shadow:0 0 0 3px rgba(14,124,107,.12)}
+.result-count{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5A6473;background:#EEF1F5;padding:5px 11px;border-radius:999px}
+.chips{display:flex;gap:7px;overflow-x:auto;padding-bottom:3px}
+.chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 13px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:12.5px;border:1px solid #DDE3EA;background:#fff;color:#4A5361;font-weight:500}
+.chip:hover{border-color:#0E7C6B}
+.chip.active{border-color:#0E7C6B;background:#0E7C6B;color:#fff;font-weight:600}
+.chip .cnt{font-family:'IBM Plex Mono',monospace;font-size:10.5px;opacity:.7}
+.exp-body{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(300px,360px) minmax(0,1fr)}
+.exp-list{min-height:0;overflow-y:auto;border-right:1px solid #EEF1F5;padding:14px;display:flex;flex-direction:column;gap:9px}
+.exp-detail{min-height:0;overflow-y:auto;padding:22px}
+.search-info{padding:8px 10px;border-radius:8px;background:#FEF6D9;color:#8A6108;font-size:11.5px;font-family:'IBM Plex Mono',monospace;line-height:1.5}
+.list-empty{display:grid;place-items:center;min-height:260px;text-align:center;color:#9AA3B0}
+.lcard{width:100%;display:block;text-align:left;cursor:pointer;font-family:inherit;padding:14px;border-radius:12px;border:1px solid #E7EAEF;background:#fff;transition:transform .12s,border-color .12s}
+.lcard:hover{border-color:#0E7C6B;transform:translateY(-1px)}
+.lcard.active{border-color:#0E7C6B;background:#E6F3F0;box-shadow:inset 4px 0 0 #0E7C6B}
+.lcard h3{font-size:14px;font-weight:600;margin:0 0 6px}
+.lcard .lc-sum{font-size:12px;color:#6A7382;line-height:1.5;margin:0 0 9px}
+.pill-row{display:flex;flex-wrap:wrap;gap:5px}
+.pill{display:inline-flex;align-items:center;height:21px;padding:0 8px;border-radius:6px;font-size:10.5px;font-weight:600}
+
+/* Detail */
+.detail-empty{display:grid;place-items:center;min-height:340px;text-align:center;color:#9AA3B0}
+.detail-empty .de-icon{width:56px;height:56px;margin:0 auto 14px;border-radius:16px;background:#F1F3F6;display:grid;place-items:center}
+.d-title{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:6px}
+.d-title h2{font-size:22px;line-height:1.3;font-weight:600;font-family:'Space Grotesk','IBM Plex Sans SC',sans-serif}
+.save-btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 13px;border-radius:9px;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600;border:1px solid #DDE3EA;background:#fff;color:#5A6473}
+.save-btn:hover{border-color:#0E7C6B}
+.save-btn.saved{border-color:#BFE3DC;background:#E6F3F0;color:#0A5A4E}
+.d-meta-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.d-id{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8A94A3}
+.d-sep{color:#D4DAE2}
+.d-summary{font-size:14px;color:#3A424E;line-height:1.65;margin:0 0 4px}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.meta-box{padding:12px;border:1px solid #EEF1F5;border-radius:11px;background:#F8FAFB}
+.meta-box .mb-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#8A94A3;margin-bottom:8px}
+.meta-box .mb-tags{display:flex;flex-wrap:wrap;gap:5px}
+.mtag{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:6px;font-size:11px;font-weight:500}
+.mtag.kw{background:#E6F3F0;color:#0A5A4E}
+.mtag.aud{background:#EEF1F5;color:#4A5361}
+.mtag.empty{font-size:12px;color:#9AA3B0;background:none;padding:0;height:auto}
+/* Flow */
+.flow-wrap{margin:18px 0;padding:16px;border:1px solid #D9E6E2;border-radius:14px;background:linear-gradient(180deg,#F3FAF8,#FBFDFC)}
+.flow-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.flow-hdr .fh-l{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#0A5A4E}
+.flow-hdr .fh-r{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#0E7C6B;background:#E6F3F0;padding:3px 9px;border-radius:999px}
+.flow-row{display:flex;align-items:flex-start;gap:0;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+.flow-node{display:flex;align-items:flex-start;flex:0 0 auto}
+.flow-node-inner{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:58px}
+.flow-circle{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;transition:all .3s}
+.flow-circle.lit{background:#0E7C6B;color:#fff;border:1px solid #0E7C6B}
+.flow-circle.dim{background:#F4F6F9;color:#8A94A3;border:1px solid #E4E8ED}
+.flow-label{font-size:10.5px;color:#3A424E;font-weight:500;white-space:nowrap}
+.flow-arrow{color:#B4C4BE;font-size:15px;margin:10px 2px 0}
+.flow-desc{font-size:11.5px;color:#5E7770;line-height:1.55;margin:12px 0 0}
+/* Structured info */
+.struct{display:flex;flex-direction:column;margin:18px 0;border:1px solid #EEF1F5;border-radius:12px;overflow:hidden}
+.struct-row{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:13px 15px;border-bottom:1px solid #F1F3F6}
+.struct-row:last-child{border-bottom:0}
+.struct-num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0E7C6B;display:block}
+.struct-label{font-size:12.5px;font-weight:600;display:block;margin-top:1px}
+.struct-en{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#9AA3B0}
+.struct-val{font-size:13px;color:#3A424E;line-height:1.6;align-self:center}
+/* Relationships */
+.rel-sec{margin:18px 0}
+.rel-sec .rs-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3}
+.rel-list{display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.rel-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #EEF1F5;border-radius:10px;background:#F8FAFB}
+.rel-pred{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0A5A4E;background:#E6F3F0;padding:3px 9px;border-radius:6px;white-space:nowrap}
+.rel-arrow{color:#B4BCC8;font-size:13px}
+.rel-target{font-size:13px;font-weight:500;cursor:pointer}
+.rel-target.link{color:#3A5BD9}
+.rel-target.link:hover{text-decoration:underline}
+.rel-target.nolink{color:#8A94A3;cursor:default}
+/* Agent lens */
+.agent-lens{margin:18px 0;padding:16px;border:1px solid #D3DAF6;border-radius:14px;background:linear-gradient(180deg,#F3F5FE,#FBFCFE)}
+.agent-lens .al-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
+.agent-lens .al-l{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#2740A8}
+.agent-lens .al-r{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#2740A8;background:#E5E9FF;padding:3px 9px;border-radius:999px}
+.agent-row{display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start;margin-bottom:11px}
+.agent-row .ar-l{font-size:12px;color:#6A7382;font-weight:600}
+.agent-row .ar-v{font-size:12.5px;color:#3A424E;line-height:1.55}
+.agent-tag{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:6px;font-size:11px;font-weight:500;background:#E5E9FF;color:#2740A8}
+/* Trail */
+.trail-sec{margin:18px 0}
+.trail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.trail-card{display:block;text-align:left;cursor:pointer;font-family:inherit;padding:12px 13px;border:1px solid #E7EAEF;border-radius:11px;background:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit}
+.trail-card:hover{border-color:#0E7C6B}
+.trail-card .tc-arrow{margin-left:auto;color:#B4C4BE}
+/* Source */
+.source-sec{margin-top:18px;padding-top:14px;border-top:1px solid #EEF1F5}
+.source-sec .ss-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3}
+.source-link{display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#3A5BD9;text-decoration:none;margin-top:8px}
+.source-link:hover{text-decoration:underline}
+
+/* Contribute */
+.contr-wrap{height:100%;overflow-y:auto}
+.contr-inner{max-width:720px;margin:0 auto;padding:32px 28px 56px}
+.contr-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:start}
+.contr-form{display:flex;flex-direction:column;gap:13px;padding:18px;border:1px solid #E4E8ED;border-radius:14px;background:#fff}
+.contr-form label{display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px}
+.contr-form input,.contr-form select,.contr-form textarea{width:100%;border:1px solid #DDE3EA;border-radius:9px;background:#F8FAFB;font-size:13px;font-family:inherit;color:#161A20}
+.contr-form input,.contr-form select{height:38px;padding:0 11px}
+.contr-form textarea{padding:9px 11px;line-height:1.55;resize:vertical}
+.contr-form input:focus,.contr-form select:focus,.contr-form textarea:focus{outline:none;border-color:#0E7C6B;background:#fff}
+.contr-form button{height:40px;border:0;border-radius:10px;background:#0E7C6B;color:#fff;cursor:pointer;font-weight:600;font-size:13px;font-family:inherit;margin-top:2px}
+.contr-form button:hover{background:#0A5A4E}
+.submit-warn{padding:9px 11px;border-radius:9px;background:#FBEACB;color:#8A5A08;font-size:12px;font-weight:600}
+.submit-ok{padding:11px;border-radius:10px;background:#E6F3F0;border:1px solid #BFE3DC}
+.submit-ok p{font-size:12px;font-weight:600;color:#0A5A4E;margin:0 0 4px}
+.submit-ok .ok-sub{font-size:11.5px;color:#6A7382;margin:0;line-height:1.5;font-weight:400}
+.contr-side{position:sticky;top:0;display:flex;flex-direction:column;gap:12px}
+.preview-card{padding:15px;border:1px dashed #C6D3D0;border-radius:14px;background:#F8FBFA}
+.preview-card .pc-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3}
+.preview-card h3{font-size:15px;font-weight:600;margin:10px 0 8px}
+.preview-card .pc-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px}
+.preview-card p{font-size:12px;color:#6A7382;line-height:1.55;margin:0}
+.drafts-card{padding:14px;border:1px solid #E4E8ED;border-radius:14px;background:#fff}
+.drafts-card .dc-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.drafts-card .dc-title{font-size:12px;font-weight:600}
+.drafts-card .dc-cnt{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#3A5BD9}
+.draft-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #EEF1F5;border-radius:9px;background:#F8FAFB;margin-bottom:7px}
+.draft-item:last-child{margin-bottom:0}
+.draft-type{flex:0 0 auto;display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:5px;font-size:9.5px;font-weight:600}
+.draft-title{font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+@media(max-width:900px){.exp-body{grid-template-columns:1fr!important}.exp-detail{display:none!important}.exp-body.showdetail .exp-list{display:none!important}.exp-body.showdetail .exp-detail{display:block!important}.stat-grid{grid-template-columns:repeat(2,1fr)}.gs-grid,.card-grid.c3{grid-template-columns:1fr}.contr-grid{grid-template-columns:1fr}.meta-grid{grid-template-columns:1fr}.trail-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+// ===== DATA =====
+const CATEGORIES=[{id:"all",label:"全部"},{id:"overview",label:"概览"},{id:"course",label:"课程"},{id:"challenge",label:"挑战"},{id:"prompt",label:"提示词"},{id:"faq",label:"FAQ"},{id:"best-practice",label:"最佳实践"},{id:"project",label:"项目案例"},{id:"agent",label:"Agent"}];
+const FLOW=["场景","本体","流程","技能","评估","学习","知识增长"];
+const LADDER=[{code:"L0",label:"散落文档"},{code:"L1",label:"文档库"},{code:"L2",label:"标准化知识库"},{code:"L3",label:"Agent-Ready"},{code:"L4",label:"认知细胞"},{code:"L5",label:"进化型细胞"}];
+const FEATURED_IDS=["kb-overview-001","kb-course-001","kb-challenge-001","kb-prompt-001"];
+const TYPE_META={overview:{label:"概览",bg:"#EDE9FE",ink:"#5B21B6"},course:{label:"课程",bg:"#E0EDFF",ink:"#1D4ED8"},challenge:{label:"挑战",bg:"#FBEACB",ink:"#8A5A08"},prompt:{label:"提示词",bg:"#DBF0E4",ink:"#136A40"},faq:{label:"FAQ",bg:"#FBE3EE",ink:"#9C2760"},"best-practice":{label:"最佳实践",bg:"#E4E8FF",ink:"#3A34A0"},project:{label:"项目案例",bg:"#FBE4D2",ink:"#98461A"},agent:{label:"Agent",bg:"#E6F3F0",ink:"#0A5A4E"}};
+const STATUS_META={sample:{label:"sample",bg:"#EEF1F5",ink:"#5A6473"},draft:{label:"draft",bg:"#FBEACB",ink:"#8A5A08"},stable:{label:"stable",bg:"#DBF0E4",ink:"#136A40"},review:{label:"review",bg:"#E0EDFF",ink:"#1D4ED8"}};
+
+const ENTRIES=[
+{id:"kb-overview-001",title:"NSEAP 知识库介绍",type:"overview",status:"sample",audience:["学生","教师","Builder","Agent"],tags:["nseap","knowledge-base","elite20"],keywords:[],concepts:[],skills:[],related:[],relationships:[],summary:"解释 Knowledge Base 在 Elite20 Builder Program 中的角色——NSEAP AI Learning OS 的共享记忆层。",situation:"项目需要一个统一的知识层来存储和复用课程产出。",ontology:"知识条目、课程、挑战、提示词、FAQ、最佳实践、项目案例、Agent 上下文。",workflow:"收集产出 → 标准化元数据 → 评审 → 发布 → 检索 → 改进。",skill:"知识组织、元数据标注、检索准备。",evaluation:"新 Builder 能否理解知识库的结构和用途。",knowledgeGrowth:"使用反馈持续改进分类和模板。",source:"../knowledge-base/00-overview/nseap-knowledge-base-intro.md",searchText:"NSEAP Knowledge Base Intro Purpose Content When To Use Agent Notes"},
+{id:"kb-course-001",title:"Week 1 课程概览",type:"course",status:"sample",audience:["学生","教师","Agent"],tags:["elite20","vibe-coding","week-1"],keywords:["课程","第一周","Week 1","学习路径","Vibe Coding"],concepts:["AI Native 学习","Vibe Coding","学习流程"],skills:["AI 工具配置","反思式学习","基础提示词能力"],related:["kb-challenge-001","kb-prompt-001"],relationships:[{predicate:"includes",target:"kb-challenge-001"},{predicate:"usesPrompt",target:"kb-prompt-001"}],summary:"Week 1 的课程起点,连接学习目标、第一个挑战和配套提示词。",situation:"学生或老师需要一个清晰的第一周学习路径。",ontology:"课程单元、学习目标、挑战、提示词、反思。",workflow:"配置工具 → 理解 AI Native 学习方式 → 完成第一个引导任务 → 做学习反思。",skill:"AI 工具配置、基础提示词、反思式学习。",evaluation:"检查学习者是否理解第一周目标,并能完成一个小型 AI 辅助任务。",knowledgeGrowth:"Week 1 中出现的高频问题、优秀例子和常见错误,可以沉淀为 FAQ、提示词和挑战说明。",source:"../knowledge-base/01-course/sample-week-1-overview.md",searchText:"Week 1 Overview Purpose Learning Goal Content Graph Notes Example Activities Related Agent Notes"},
+{id:"kb-challenge-001",title:"构建你的第一个 AI Assistant",type:"challenge",status:"sample",audience:["学生","教师","Agent"],tags:["challenge","ai-assistant","prompt-engineering"],keywords:["挑战","任务","AI 助手","AI Assistant","prompt engineering"],concepts:["AI Assistant","提示词工程","学习任务"],skills:["定义 Agent 角色","编写指令提示词","评估 AI 输出"],related:["kb-course-001","kb-prompt-001"],relationships:[{predicate:"requires",target:"提示词工程"},{predicate:"usesPrompt",target:"kb-prompt-001"},{predicate:"supports",target:"kb-course-001"}],summary:"第一个 PBL 挑战:让学生围绕真实场景设计并测试一个小型 AI Assistant。",situation:"学习者需要通过一个具体任务理解 AI Agent 是如何被设计出来的。",ontology:"AI Assistant、角色、提示词、对话、评估、反思。",workflow:"选择场景 → 定义助手角色 → 编写提示词 → 测试对话 → 评估效果 → 修改迭代。",skill:"提示词工程、角色定义、AI 输出评估。",evaluation:"从场景清晰度、助手行为具体性、样例对话质量和反思质量进行评价。",knowledgeGrowth:"优秀提示词可进入 Prompt Studio;常见错误可进入 FAQ;优秀作品可进入项目案例库。",source:"../knowledge-base/02-challenges/sample-challenge-knowledge.md",searchText:"Build Your First AI Assistant Purpose Situation Ontology Workflow Skill Task Deliverables Evaluation Knowledge Growth Rubric Graph Notes Common Mistakes Agent Notes"},
+{id:"kb-prompt-001",title:"Coding Coach 提示词",type:"prompt",status:"sample",audience:["学生","Agent"],tags:["coding-coach","debugging","learning"],keywords:["提示词","编程教练","代码调试","Coding Coach","debugging"],concepts:["学习教练","代码调试","引导式学习"],skills:["提出澄清问题","解释代码问题","设计练习任务"],related:["kb-course-001","kb-challenge-001"],relationships:[{predicate:"supports",target:"kb-challenge-001"},{predicate:"supports",target:"kb-course-001"}],summary:"一个可复用的提示词模式,用于帮助学生调试代码,同时保留学习过程。",situation:"学生遇到代码问题,需要教练式帮助,而不是直接抄答案。",ontology:"教练、学习者、代码片段、错误、解释、练习任务。",workflow:"收集代码和错误 → 提出澄清问题 → 解释问题 → 给出最小修改 → 布置练习。",skill:"调试解释、引导提问、练习设计。",evaluation:"回答应该帮助学生理解概念,并能在类似问题中再次应用。",knowledgeGrowth:"反复出现的调试模式可以沉淀为 FAQ 或最佳实践条目。",source:"../knowledge-base/03-prompts/sample-coding-coach-prompt.md",searchText:"Coding Coach Prompt Purpose Prompt Input Needed Expected Output Graph Notes Agent Notes"},
+{id:"kb-faq-001",title:"学生 FAQ",type:"faq",status:"sample",audience:["学生","Agent"],tags:["faq","student","learning-support"],keywords:[],concepts:[],skills:[],related:[],relationships:[],summary:"学生常见问题:不理解挑战怎么办、能否用 AI 完成作业、需要提交什么。",situation:"学生在课程中遇到常见问题。",ontology:"学生、挑战、AI 使用、提交要求。",workflow:"阅读挑战说明 → 用 Coding Coach 解释 → 展示过程 → 提交交付物 + 反思。",skill:"问题理解、AI 使用规范、反思。",evaluation:"学生是否能独立找到答案并展示过程。",knowledgeGrowth:"高频问题持续补充到 FAQ 库。",source:"../knowledge-base/04-faq/student-faq.md",searchText:"Student FAQ What should I do if I do not understand a challenge Can I use AI to complete assignments What should I submit Agent Notes"},
+{id:"kb-faq-002",title:"教师 FAQ",type:"faq",status:"sample",audience:["教师","Agent"],tags:["faq","teacher","instruction"],keywords:[],concepts:[],skills:[],related:[],relationships:[],summary:"教师常见问题:如何复用课程、如何评估 AI 辅助作业、学生用不同 AI 工具怎么办。",situation:"教师需要了解如何使用和评估这套课程。",ontology:"教师、课程复用、评估、AI 工具。",workflow:"从周计划开始 → 选择匹配挑战 → 用教师笔记备课 → 评估过程+产出+反思。",skill:"课程复用、AI 辅助评估、灵活工具策略。",evaluation:"教师能否独立开课并评估学生。",knowledgeGrowth:"教师反馈改进课程说明和评估标准。",source:"../knowledge-base/04-faq/teacher-faq.md",searchText:"Teacher FAQ How can I reuse this course How should I evaluate AI-assisted work What if students use different AI tools"},
+{id:"kb-faq-003",title:"Builder FAQ",type:"faq",status:"sample",audience:["Builder","Agent"],tags:["faq","builder","contribution"],keywords:[],concepts:[],skills:[],related:[],relationships:[],summary:"Builder 常见问题:新知识条目放哪、是否需要 metadata、能否提交草稿。",situation:"Builder 需要了解如何贡献知识条目。",ontology:"Builder、知识条目、metadata、GitHub 提交流程。",workflow:"选择目录 → 复制模板 → 填写内容和 metadata → 提交 PR → Review → Merge。",skill:"知识贡献、metadata 标注、GitHub 协作。",evaluation:"新 Builder 能否不依赖额外指导完成提交。",knowledgeGrowth:"提交反馈改进模板和流程。",source:"../knowledge-base/04-faq/builder-faq.md",searchText:"Builder FAQ Where should I put a new knowledge item Do I need metadata Can I submit draft content"},
+{id:"kb-best-practice-001",title:"Builder 文档实践",type:"best-practice",status:"sample",audience:["Builder","教师","Agent"],tags:["documentation","builder","github"],keywords:[],concepts:[],skills:[],related:[],relationships:[],summary:"帮助 Builder 写出其他团队能直接复用的文档——假设下周就有人要用,而他们无法问你。",situation:"Builder 需要为模块或提交写文档。",ontology:"文档、受众、示例、状态、文件命名。",workflow:"声明目的 → 定义受众 → 包含示例 → 关联文件 → 标记状态 → 保持文件名清晰。",skill:"文档写作、受众意识、规范化。",evaluation:"另一个团队能否不问你就用这份文档。",knowledgeGrowth:"文档反馈改进模板和最佳实践。",source:"../knowledge-base/05-best-practices/builder-documentation-practice.md",searchText:"Builder Documentation Practice Purpose Practice Checklist Agent Notes"},
+{id:"kb-best-practice-002",title:"AI 辅助学习实践",type:"best-practice",status:"sample",audience:["学生","教师","Agent"],tags:["ai-learning","reflection","learning-process"],keywords:[],concepts:[],skills:[],related:[],relationships:[],summary:"定义使用 AI 辅助学习的健康模式:用 AI 澄清、比较、生成示例、审查错误和改进草稿,而非用 AI 替代思考。",situation:"学生需要知道如何正确使用 AI 学习。",ontology:"AI 使用、学习过程、反思。",workflow:"用 AI 澄清 → 比较 → 生成示例 → 审查 → 改进 → 反思。",skill:"AI 辅助学习、反思式学习。",evaluation:"学生能否区分 AI 帮助了什么和自己决定了什么。",knowledgeGrowth:"反思模式沉淀为最佳实践。",source:"../knowledge-base/05-best-practices/ai-assisted-learning-practice.md",searchText:"AI-Assisted Learning Practice Purpose Practice Reflection Questions"},
+{id:"kb-project-001",title:"AI 学习助手项目案例",type:"project",status:"sample",audience:["学生","教师","Builder","Agent"],tags:["project-case","ai-assistant","learning-support"],keywords:["项目","项目案例","学习助手","AI 学习助手","project case"],concepts:["AI 学习助手","学习计划","学习反思"],skills:["定义用户场景","设计助手提示词","评估学习支持效果"],related:["kb-challenge-001","kb-prompt-001"],relationships:[{predicate:"supports",target:"kb-challenge-001"},{predicate:"usesPrompt",target:"kb-prompt-001"}],summary:"一个项目案例:如何设计一个用于学习计划和反思的小型 AI Assistant。",situation:"学生需要一个轻量助手来规划学习时间,并复盘学习进展。",ontology:"学习者、学习目标、可用时间、难点、学习计划、反思提示。",workflow:"收集学习目标 → 收集时间和难度 → 生成学习计划 → 提出反思问题 → 改进提示词。",skill:"场景建模、助手提示词设计、结构化对话设计。",evaluation:"评估学习计划是否有用、问题是否相关、是否能促进反思。",knowledgeGrowth:"可复用的学习计划提示词、项目样例和技能节点可以回流到知识认知细胞。",source:"../knowledge-base/06-projects/sample-project-case.md",searchText:"Sample AI Study Assistant Project Purpose Situation Ontology Workflow Skills Solution Deliverables Evaluation Knowledge Growth Reuse Notes Agent Notes"},
+{id:"kb-agent-001",title:"Knowledge Librarian Agent",type:"agent",status:"draft",audience:["Builder","Agent"],tags:["knowledge-librarian","retrieval","agent"],keywords:[],concepts:[],skills:[],related:["kb-agent-002"],relationships:[{predicate:"relatedTo",target:"kb-agent-002"}],summary:"未来 Agent 角色:帮助用户查找、组织和改进知识库条目。",situation:"项目需要一个 Agent 来管理知识检索和组织。",ontology:"Agent、知识检索、条目组织、metadata 校验、模板推荐。",workflow:"搜索 → 推荐关联 → 检查 metadata → 推荐模板 → 改进。",skill:"知识检索、metadata 校验、模板推荐。",evaluation:"Agent 能否帮助用户找到正确知识并建议改进。",knowledgeGrowth:"Agent 使用反馈改进检索策略和推荐逻辑。",source:"../knowledge-base/07-agents/knowledge-librarian-agent.md",searchText:"Knowledge Librarian Agent Purpose Role Capabilities Agent Notes"},
+{id:"kb-agent-002",title:"知识认知细胞",type:"agent",status:"draft",audience:["Builder","教师","Agent"],tags:["cognitive-cell","knowledge-base","knowledge-agent","nseap"],keywords:["Agent","智能体","知识认知细胞","知识仓库","Knowledge Cognitive Cell"],concepts:["认知细胞","知识仓库","提示词工作室","FDE Workbench"],skills:["组织知识","检索上下文","校验元数据","推荐模板"],related:["kb-course-001","kb-challenge-001","kb-prompt-001"],relationships:[{predicate:"includes",target:"kb-course-001"},{predicate:"includes",target:"kb-challenge-001"},{predicate:"includes",target:"kb-prompt-001"}],summary:"把第 6 组的知识模块建模为一个具有身份、能力和接口的认知细胞。",situation:"项目需要一个同时服务人和 Agent 的共享知识层。",ontology:"知识条目、提示词、挑战、项目、概念、技能、关系、Agent。",workflow:"收集产出 → 标准化元数据 → 评审 → 发布 → 检索 → 改进。",skill:"知识组织、元数据校验、检索准备。",evaluation:"成功标准是新 Builder 能提交条目,Agent 能识别可用上下文。",knowledgeGrowth:"使用反馈应持续改进模板、元数据字段和检索质量。",source:"../knowledge-base/07-agents/knowledge-cognitive-cell.md",searchText:"Knowledge Cognitive Cell Purpose Identity Capability Interface Static to Evolutionary Path Agent Notes"}
+];
+
+// ===== STATE =====
+const S={view:"home",category:"all",search:"",selectedId:null,flowStep:6,form:{title:"",type:"course",keywords:"",summary:""},submitResult:null,recent:[],saved:[],viewed:[],drafts:[]};
+let flowTimer=null;
+
+function loadState(){try{const p=JSON.parse(localStorage.getItem("kcc.v2")||"{}")||{};S.recent=p.recent||[];S.saved=p.saved||[];S.viewed=p.viewed||[];S.drafts=p.drafts||[]}catch(e){}}
+function persist(){try{localStorage.setItem("kcc.v2",JSON.stringify({recent:S.recent,saved:S.saved,viewed:S.viewed,drafts:S.drafts}))}catch(e){}}
+function byId(id){return ENTRIES.find(e=>e.id===id)}
+function typeLabel(t){return(TYPE_META[t]||{}).label||t}
+
+function setView(v){S.view=v;render()}
+function setCategory(id){S.category=id;render()}
+function selectEntry(id){const recent=[id,...S.recent.filter(x=>x!==id)].slice(0,8);const viewed=S.viewed.includes(id)?S.viewed:[...S.viewed,id];S.selectedId=id;S.view="explore";S.recent=recent;S.viewed=viewed;persist();render();startFlow()}
+function toggleSave(id){S.saved=S.saved.includes(id)?S.saved.filter(x=>x!==id):[...S.saved,id];persist();render()}
+function onSearch(e){S.search=e.target.value;render()}
+function onFormTitle(e){S.form.title=e.target.value;render()}
+function onFormType(e){S.form.type=e.target.value;render()}
+function onFormKeywords(e){S.form.keywords=e.target.value;render()}
+function onFormSummary(e){S.form.summary=e.target.value;render()}
+
+function startFlow(){clearInterval(flowTimer);S.flowStep=0;render();let i=0;flowTimer=setInterval(()=>{i++;if(i>=6){clearInterval(flowTimer);S.flowStep=6;render();return}S.flowStep=i;render()},260)}
+
+function searchEntries(query,entries){
+  const q=query.toLowerCase().trim();if(!q)return entries.map(e=>({entry:e,matchedFields:[]}));
+  const tokens=q.split(/\s+/);
+  const check=vals=>{if(!vals)return false;const arr=Array.isArray(vals)?vals:[vals];return arr.some(v=>{const s=String(v).toLowerCase();return tokens.some(t=>s.includes(t))})};
+  return entries.map(e=>{
+    const m=[];
+    if(check(e.keywords))m.push("keywords");if(check(e.title))m.push("title");if(check(e.tags))m.push("tags");
+    if(check(e.concepts))m.push("concepts");if(check(e.skills))m.push("skills");
+    if(e.type&&e.type.toLowerCase().includes(q))m.push("type");if(check(e.audience))m.push("audience");
+    if(e.summary&&e.summary.toLowerCase().includes(q))m.push("summary");
+    if(e.searchText&&e.searchText.toLowerCase().includes(q))m.push("content");
+    return{entry:e,matchedFields:[...new Set(m)]}
+  }).filter(r=>r.matchedFields.length>0).sort((a,b)=>{
+    if(b.matchedFields.length!==a.matchedFields.length)return b.matchedFields.length-a.matchedFields.length;
+    const pr=["keywords","title","tags","concepts","skills","type","audience","summary","content"];
+    return Math.min(...a.matchedFields.map(f=>pr.indexOf(f)))-Math.min(...b.matchedFields.map(f=>pr.indexOf(f)))
+  })
+}
+
+function submit(){
+  const{title,type,keywords,summary}=S.form;
+  if(!title.trim()){S.submitResult={state:"warning",message:"请输入标题"};render();return}
+  const id="kb-"+type+"-"+String(Date.now()).slice(-4);
+  const kw=keywords?keywords.split(/[,，]/).map(s=>s.trim()).filter(Boolean):[];
+  const draft={id,title:title.trim(),type,keywords:kw,summary:summary||"",createdAt:Date.now()};
+  S.drafts=[draft,...S.drafts].slice(0,20);
+  S.submitResult={state:"success",id};
+  S.form={title:"",type,keywords:"",summary:""};
+  persist();render()
+}
+
+// ===== RENDER =====
+function pill(bg,ink,text){return`<span class="pill" style="background:${bg};color:${ink}">${text}</span>`}
+function mtag(cls,text){return`<span class="mtag ${cls}">${text}</span>`}
+
+function cardHTML(e){
+  const tm=TYPE_META[e.type]||{label:e.type,bg:"#EEF1F5",ink:"#5A6473"};
+  return`<div class="kcard" onclick="selectEntry('${e.id}')"><div class="kc-row">${pill(tm.bg,tm.ink,tm.label)}<h3 style="font-size:13.5px;font-weight:600;margin:0">${e.title}</h3></div><p class="kc-summary">${e.summary||""}</p></div>`
+}
+
+function renderHome(){
+  const recentCards=S.recent.map(byId).filter(Boolean).slice(0,4);
+  const savedCards=S.saved.map(byId).filter(Boolean).slice(0,4);
+  const featured=FEATURED_IDS.map(byId).filter(Boolean);
+  const firstRun=S.viewed.length===0&&S.drafts.length===0&&S.saved.length===0;
+  const ladderStyles={past:{bg:"#EDEFF3",ink:"#9AA3B0",border:"#E4E8ED",weight:"500"},current:{bg:"#0E7C6B",ink:"#fff",border:"#0E7C6B",weight:"700"},next:{bg:"#ECEFFC",ink:"#2740A8",border:"#3A5BD9",weight:"600"},future:{bg:"#F4F6F9",ink:"#AEB6C1",border:"#E4E8ED",weight:"500"}};
+  const ladderHTML=LADDER.map((n,i)=>{const st=i<2?"past":i===2?"current":i===3?"next":"future";const s=ladderStyles[st];return`<div class="ladder-item"><div class="ladder-code" style="background:${s.bg};color:${s.ink};border-color:${s.border};font-weight:${s.weight}">${n.code}</div><span class="ladder-label">${n.label}</span></div>`}).join("");
+
+  let html=`<div class="home-wrap"><div class="home-inner">
+  <p class="eyebrow">知识层 · 第六模块</p>
+  <h1>把每天的产出,变成会复利的知识资产。</h1>
+  <p class="lede">搜索既有知识、沉淀新的经验、让 Agent 可靠检索——每一次使用都在为你和团队累积。</p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num" style="color:#0E7C6B">${ENTRIES.length}</div><div class="lbl">条目总数</div></div>
+    <div class="stat-card"><div class="num">${S.viewed.length}</div><div class="lbl">你已浏览</div></div>
+    <div class="stat-card"><div class="num">${S.saved.length}</div><div class="lbl">你已收藏</div></div>
+    <div class="stat-card"><div class="num" style="color:#3A5BD9">${S.drafts.length}</div><div class="lbl">你已沉淀</div></div>
+  </div>`;
+  if(firstRun){
+    html+=`<div class="getstarted"><p class="gs-eyebrow">3 步快速上手 · Get Started</p>
+    <div class="gs-grid">
+      <div class="gs-step"><div class="gs-num">1</div><div><p class="gs-title">搜索一个词</p><p>试试「提示词」或「挑战」,metadata-first 会精准命中。</p></div></div>
+      <div class="gs-step"><div class="gs-num">2</div><div><p class="gs-title">打开一条知识</p><p>看它的 metadata、显式关系与知识增长闭环。</p></div></div>
+      <div class="gs-step"><div class="gs-num">3</div><div><p class="gs-title">收藏或沉淀</p><p>让知识库记住你的轨迹,下次回来就能续上、复利。</p></div></div>
+    </div>
+    <button class="gs-btn" onclick="setView('explore')">开始浏览 →</button></div>`;
+  }
+  if(recentCards.length>0){
+    html+=`<div style="margin-bottom:26px"><div class="sec-h"><h2>继续阅读</h2><span class="meta">上次看到这里</span></div><div class="card-grid c2">${recentCards.map(cardHTML).join("")}</div></div>`;
+  }
+  if(savedCards.length>0){
+    html+=`<div style="margin-bottom:26px"><div class="sec-h"><h2>我的收藏</h2><span class="meta">${S.saved.length} 条</span></div><div class="card-grid c2">${savedCards.map(cardHTML).join("")}</div></div>`;
+  }
+  html+=`<h2 style="font-size:15px;font-weight:600;margin:0 0 12px">你想做什么</h2>
+  <div class="card-grid c3">
+    <div class="action-card" onclick="setView('explore')"><div class="action-icon" style="background:#E6F3F0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7C6B" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></div><div><p class="ac-title">找一条可复用知识</p><p>按分类与关键词检索课程、挑战、提示词与案例。</p></div></div>
+    <div class="action-card" onclick="setView('contribute')"><div class="action-icon" style="background:#E6F3F0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7C6B" stroke-width="1.9" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div><p class="ac-title">沉淀一条新知识</p><p>用统一模板把经验变成可检索、可复用的条目。</p></div></div>
+    <div class="action-card" onclick="S.category='agent';setView('explore')"><div class="action-icon" style="background:#ECEFFC"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3A5BD9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"/><line x1="12" y1="4" x2="12" y2="7"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/></svg></div><div><p class="ac-title">看 Agent 能检索什么</p><p>查看为未来 Agent 检索准备的上下文条目。</p></div></div>
+  </div>`;
+  html+=`<h2 style="font-size:15px;font-weight:600;margin:0 0 12px">精选条目</h2><div class="card-grid c2" style="margin-bottom:30px">${featured.map(cardHTML).join("")}</div>`;
+  html+=`<div class="ladder-wrap"><div class="sec-h"><span class="meta" style="text-transform:uppercase">产品成熟度 · Maturity</span><span class="meta">当前 L2 · 下一步 L3</span></div><div class="ladder-row noscroll">${ladderHTML}</div></div>`;
+  html+=`</div></div>`;
+  return html
+}
+
+function renderExplore(){
+  const chips=CATEGORIES.map(c=>{
+    const count=c.id==="all"?ENTRIES.length:ENTRIES.filter(e=>e.type===c.id).length;
+    const active=c.id===S.category;
+    return`<button class="chip ${active?'active':''}" onclick="setCategory('${c.id}')"><span>${c.label}</span><span class="cnt">${count}</span></button>`
+  }).join("");
+  let filtered=S.category==="all"?ENTRIES:ENTRIES.filter(e=>e.type===S.category);
+  let results,searchInfo="";
+  if(S.search.trim()){
+    results=searchEntries(S.search,filtered);
+    searchInfo=results.length===0?`"${S.search}" 在 ${filtered.length} 条中无匹配`:`"${S.search}" → ${results.length} 条命中 · 按 metadata 优先级排序`;
+  }else{results=filtered.map(e=>({entry:e,matchedFields:[]}))}
+  const listItems=results.map(({entry,matchedFields})=>{
+    const active=entry.id===S.selectedId;
+    const tm=TYPE_META[entry.type]||{label:entry.type,bg:"#EEF1F5",ink:"#5A6473"};
+    const sm=STATUS_META[entry.status]||{label:entry.status,bg:"#EEF1F5",ink:"#5A6473"};
+    let pills=pill(tm.bg,tm.ink,tm.label)+pill(sm.bg,sm.ink,sm.label);
+    if(matchedFields.length)pills+=pill("#FEF6D9","#8A6108","命中 "+matchedFields.slice(0,2).join(" · "));
+    (entry.tags||[]).slice(0,3).forEach(t=>pills+=pill("#F2F4F7","#6A7382",t));
+    return`<div class="lcard ${active?'active':''}" onclick="selectEntry('${entry.id}')"><h3 style="color:${active?'#0A5A4E':'#161A20'}">${entry.title}</h3><p class="lc-sum">${entry.summary||""}</p><div class="pill-row">${pills}</div></div>`
+  }).join("");
+
+  const sel=byId(S.selectedId);
+  let detailHTML;
+  if(!sel){
+    detailHTML=`<div class="detail-empty"><div class="de-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B4BCC8" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><line x1="4" y1="9" x2="20" y2="9"/><line x1="9" y1="9" x2="9" y2="20"/></svg></div><p style="font-size:14px;color:#6A7382;margin:0">选择左侧任意条目查看详情</p><p style="font-size:12px;margin:6px 0 0">metadata、显式关系、知识增长闭环与 Agent 检索上下文</p></div>`;
+  }else{
+    const tm=TYPE_META[sel.type]||{label:sel.type,bg:"#EEF1F5",ink:"#5A6473"};
+    const sm=STATUS_META[sel.status]||{label:sel.status,bg:"#EEF1F5",ink:"#5A6473"};
+    const flowNodes=FLOW.map((label,i)=>{const lit=i<=S.flowStep;return`<div class="flow-node"><div class="flow-node-inner"><div class="flow-circle ${lit?'lit':'dim'}">${String(i+1).padStart(2,"0")}</div><span class="flow-label">${label}</span></div>${i<FLOW.length-1?'<span class="flow-arrow">→</span>':''}</div>`}).join("");
+    const rels=(sel.relationships||[]).map(r=>{const t=byId(r.target);return`<div class="rel-item"><span class="rel-pred">${r.predicate}</span><span class="rel-arrow">→</span><span class="rel-target ${t?'link':'nolink'}" ${t?`onclick="selectEntry('${t.id}')"`:''}>${t?t.title:r.target}</span></div>`}).join("");
+    const retrSet=[],seen=new Set();const pushR=txt=>{const k=String(txt).toLowerCase();if(!seen.has(k)){seen.add(k);retrSet.push(txt)}};pushR(tm.label);(sel.keywords||[]).slice(0,3).forEach(pushR);if(retrSet.length<3)(sel.tags||[]).slice(0,3).forEach(pushR);(sel.audience||[]).slice(0,2).forEach(a=>pushR(a+" 视角"));
+    const trailIds=[...new Set([...(sel.related||[]),...(sel.relationships||[]).map(r=>r.target)])].filter(id=>byId(id)&&id!==sel.id);
+    const trailHTML=trailIds.slice(0,4).map(id=>{const e=byId(id);const t2=TYPE_META[e.type]||{label:e.type,bg:"#EEF1F5",ink:"#5A6473"};return`<div class="trail-card" onclick="selectEntry('${e.id}')">${pill(t2.bg,t2.ink,t2.label)}<span style="font-size:12.5px;font-weight:500">${e.title}</span><span class="tc-arrow">→</span></div>`}).join("");
+    const isSaved=S.saved.includes(sel.id);
+    const audHTML=(sel.audience||[]).length?(sel.audience||[]).map(a=>mtag("aud",a)).join(""):mtag("empty","未标注");
+    const kwHTML=(sel.keywords||[]).length?(sel.keywords||[]).map(k=>mtag("kw",k)).join(""):mtag("empty","未标注");
+    const conHTML=(sel.concepts||[]).length?(sel.concepts||[]).map(c=>mtag("aud",c)).join(""):mtag("empty","未标注");
+    const skiHTML=(sel.skills||[]).length?(sel.skills||[]).map(s=>mtag("aud",s)).join(""):mtag("empty","未标注");
+
+    detailHTML=`<div>
+    <div class="d-title"><h2>${sel.title}</h2><button class="save-btn ${isSaved?'saved':''}" onclick="toggleSave('${sel.id}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="${isSaved?'#0E7C6B':'none'}" stroke="${isSaved?'#0A5A4E':'#5A6473'}" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v16l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>${isSaved?"已收藏":"收藏"}</button></div>
+    <div class="d-meta-row"><span class="d-id">${sel.id}</span><span class="d-sep">·</span>${pill(tm.bg,tm.ink,tm.label)}${pill(sm.bg,sm.ink,sm.label)}</div>
+    <p class="d-summary">${sel.summary||""}</p>
+    <div class="meta-grid">
+      <div class="meta-box"><span class="mb-label">适用对象 · Audience</span><div class="mb-tags">${audHTML}</div></div>
+      <div class="meta-box"><span class="mb-label">关键词 · Keywords</span><div class="mb-tags">${kwHTML}</div></div>
+      <div class="meta-box"><span class="mb-label">概念 · Concepts</span><div class="mb-tags">${conHTML}</div></div>
+      <div class="meta-box"><span class="mb-label">技能 · Skills</span><div class="mb-tags">${skiHTML}</div></div>
+    </div>
+    <div class="flow-wrap"><div class="flow-hdr"><span class="fh-l">知识增长闭环 · Knowledge Growth Loop</span><span class="fh-r">闭环 ↺</span></div><div class="flow-row noscroll">${flowNodes}</div><p class="flow-desc">场景触发需求 → 经本体、流程、技能沉淀 → 评估与学习驱动增长 → 回流为新的可复用条目。</p></div>
+    <div class="struct">
+      <div class="struct-row"><div><span class="struct-num">01</span><span class="struct-label">场景</span><span class="struct-en">Situation</span></div><p class="struct-val">${sel.situation||"未标注"}</p></div>
+      <div class="struct-row"><div><span class="struct-num">02</span><span class="struct-label">本体</span><span class="struct-en">Ontology</span></div><p class="struct-val">${sel.ontology||"未标注"}</p></div>
+      <div class="struct-row"><div><span class="struct-num">03</span><span class="struct-label">流程</span><span class="struct-en">Workflow</span></div><p class="struct-val">${sel.workflow||"未标注"}</p></div>
+      <div class="struct-row"><div><span class="struct-num">04</span><span class="struct-label">技能</span><span class="struct-en">Skill</span></div><p class="struct-val">${sel.skill||"未标注"}</p></div>
+      <div class="struct-row"><div><span class="struct-num">05</span><span class="struct-label">评估</span><span class="struct-en">Evaluation</span></div><p class="struct-val">${sel.evaluation||"未标注"}</p></div>
+      <div class="struct-row"><div><span class="struct-num">06</span><span class="struct-label">知识增长</span><span class="struct-en">Growth</span></div><p class="struct-val">${sel.knowledgeGrowth||"未标注"}</p></div>
+    </div>
+    <div class="rel-sec"><span class="rs-label">显式关系 · Relationships</span>${rels?`<div class="rel-list">${rels}</div>`:'<p style="font-size:13px;color:#9AA3B0;margin:10px 0 0">暂无显式关系</p>'}</div>
+    <div class="agent-lens"><div class="al-hdr"><span class="al-l">Agent 视角 · Retrieval Context</span><span class="al-r">agent-ready</span></div><div class="agent-row"><span class="ar-l">检索触发</span><div>${retrSet.map(r=>`<span class="agent-tag">${r}</span>`).join(" ")}</div></div><div class="agent-row"><span class="ar-l">可回答</span><p class="ar-v">${sel.summary||""}</p></div><div class="agent-row" style="align-items:center"><span class="ar-l">状态门槛</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#3A424E">status = ${sel.status} · 仅 stable 条目对外检索</span></div></div>
+    ${trailIds.length?`<div class="trail-sec"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span class="rs-label">接下来可以看 · Keep Exploring</span></div><div class="trail-grid">${trailHTML}</div></div>`:''}
+    <div class="source-sec"><span class="ss-label">源文件 · Source</span><br><a class="source-link" href="${sel.source}" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A5BD9" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>${sel.source}</a></div>
+    </div>`;
+  }
+
+  return`<div class="exp-wrap"><div class="exp-top">
+    <div class="exp-search-row"><div class="search-box"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3B0" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg><input type="search" value="${S.search}" oninput="onSearch(event)" placeholder="搜索关键词、标题、概念、技能…"></div><span class="result-count">${results.length} 条</span></div>
+    <div class="chips noscroll">${chips}</div>
+    </div>
+    <div class="exp-body ${sel?'showdetail':''}">
+      <div class="exp-list">${searchInfo?`<div class="search-info">${searchInfo}</div>`:''}${listItems||`<div class="list-empty"><div><div style="font-size:14px;margin-bottom:6px">没有匹配的知识条目</div><div style="font-size:12px">试试其他关键词或切换分类</div></div></div>`}</div>
+      <div class="exp-detail">${detailHTML}</div>
+    </div></div>`
+}
+
+function renderContribute(){
+  const f=S.form;const ptm=TYPE_META[f.type]||{label:f.type,bg:"#EEF1F5",ink:"#5A6473"};
+  const pkw=f.keywords?f.keywords.split(/[,，]/).map(s=>s.trim()).filter(Boolean):[];
+  let previewPills=pill(ptm.bg,ptm.ink,ptm.label)+pill("#FBEACB","#8A5A08","draft");
+  pkw.slice(0,4).forEach(k=>previewPills+=pill("#E6F3F0","#0A5A4E",k));
+  const previewTitle=f.title.trim()||"(未命名知识)";
+  const previewSummary=f.summary.trim()||"填写摘要后,这里会实时预览你的知识卡片。";
+  const draftCards=S.drafts.map(d=>{const tm=TYPE_META[d.type]||{label:d.type,bg:"#EEF1F5",ink:"#5A6473"};return`<div class="draft-item"><span class="draft-type" style="background:${tm.bg};color:${tm.ink}">${tm.label}</span><span class="draft-title">${d.title}</span></div>`}).join("");
+  const sr=S.submitResult;
+  return`<div class="contr-wrap"><div class="contr-inner">
+    <p class="eyebrow">Contribute</p>
+    <h1 style="font-family:'Space Grotesk','IBM Plex Sans SC',sans-serif;font-size:24px;font-weight:600;margin:0 0 6px">沉淀一条知识</h1>
+    <p style="font-size:13.5px;color:#5A6473;line-height:1.6;margin:0 0 24px">每次沉淀都在给知识库复利,并让 Agent 未来能可靠检索到它。</p>
+    <div class="contr-grid">
+      <form class="contr-form" onsubmit="event.preventDefault();submit()">
+        <div><label>知识类型</label><select onchange="onFormType(event)"><option value="course" ${f.type==='course'?'selected':''}>课程</option><option value="challenge" ${f.type==='challenge'?'selected':''}>挑战</option><option value="prompt" ${f.type==='prompt'?'selected':''}>提示词</option><option value="faq" ${f.type==='faq'?'selected':''}>FAQ</option><option value="best-practice" ${f.type==='best-practice'?'selected':''}>最佳实践</option><option value="project" ${f.type==='project'?'selected':''}>项目案例</option><option value="agent" ${f.type==='agent'?'selected':''}>Agent</option></select></div>
+        <div><label>标题</label><input type="text" value="${f.title}" oninput="onFormTitle(event)" placeholder="例如:第 2 周项目复盘"></div>
+        <div><label>一句话摘要</label><textarea rows="3" oninput="onFormSummary(event)" placeholder="用一句话说明这条知识解决什么、可以怎么复用">${f.summary}</textarea></div>
+        <div><label>关键词(逗号分隔)</label><input type="text" value="${f.keywords}" oninput="onFormKeywords(event)" placeholder="例如:挑战, AI助手, 学习"></div>
+        <button type="submit">生成并沉淀知识卡片</button>
+        ${sr&&sr.state==='warning'?`<div class="submit-warn">⚠ ${sr.message}</div>`:''}
+        ${sr&&sr.state==='success'?`<div class="submit-ok"><p>✓ 已沉淀 · id ${sr.id}</p><p class="ok-sub">下一步:补充 concepts / skills / relationships,提交 GitHub PR 进入 review。</p></div>`:''}
+      </form>
+      <div class="contr-side">
+        <div class="preview-card"><span class="pc-label">实时预览 · KnowledgeItem</span><h3 style="color:${f.title.trim()?'#161A20':'#9AA3B0'}">${previewTitle}</h3><div class="pc-pills">${previewPills}</div><p>${previewSummary}</p></div>
+        ${S.drafts.length?`<div class="drafts-card"><div class="dc-hdr"><span class="dc-title">你已沉淀</span><span class="dc-cnt">${S.drafts.length} 条</span></div>${draftCards}</div>`:''}
+      </div>
+    </div>
+  </div></div>`
+}
+
+function render(){
+  const app=document.getElementById("app");
+  const navBtn=(id,label,svg,active)=>`<button class="nav-btn ${active?'active':''}" onclick="setView('${id}')">${svg}<span>${label}</span></button>`;
+  const homeSVG=`<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.4 12 5l8 6.4"/><path d="M6 10.5V19h12v-8.5"/></svg>`;
+  const exploreSVG=`<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>`;
+  const contributeSVG=`<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><line x1="12" y1="8.5" x2="12" y2="15.5"/><line x1="8.5" y1="12" x2="15.5" y2="12"/></svg>`;
+
+  let mainHTML="";
+  if(S.view==="home")mainHTML=renderHome();
+  else if(S.view==="explore")mainHTML=renderExplore();
+  else if(S.view==="contribute")mainHTML=renderContribute();
+
+  app.innerHTML=`<header class="hdr"><div class="logo"><div class="logo-icon"><div class="logo-bg"></div><div class="logo-dot"></div></div><div class="logo-text"><span class="t1">NSEAP 知识认知细胞</span><span class="t2">Knowledge Cognitive Cell</span></div></div><div class="right"><span class="team">第 6 组 · Knowledge Team</span><span class="ver">v0.1 MVP</span></div></header><div class="body"><nav class="nav">${navBtn('home','开始',homeSVG,S.view==='home')}${navBtn('explore','浏览',exploreSVG,S.view==='explore')}${navBtn('contribute','沉淀',contributeSVG,S.view==='contribute')}</nav><main class="main">${mainHTML}</main></div>`;
+
+  // Restore search input focus
+  if(S.view==="explore"){const si=document.querySelector('.search-box input');if(si&&S._wasFocused){si.focus()}}
+}
+
+// ===== INIT =====
+loadState();
+render();
+</script>
+</body>
+</html>

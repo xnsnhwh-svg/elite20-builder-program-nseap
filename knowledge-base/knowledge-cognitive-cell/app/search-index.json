@@ -1,0 +1,574 @@
+[
+  {
+    "id": "kb-agent-001",
+    "title": "Knowledge Librarian Agent",
+    "type": "agent",
+    "source": "../knowledge-base/07-agents/knowledge-librarian-agent.md",
+    "tags": [
+      "knowledge-librarian",
+      "retrieval",
+      "agent"
+    ],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Knowledge Librarian Agent",
+      "Purpose",
+      "Role",
+      "Capabilities",
+      "Agent Notes"
+    ],
+    "searchText": "kb-agent-001 Knowledge Librarian Agent agent builder agent knowledge-librarian retrieval agent Knowledge Librarian Agent Purpose Role Capabilities Agent Notes # Knowledge Librarian Agent ## Purpose Define a future agent role that helps users find, organize, and improve knowledge-base entries. ## Role The Knowledge Librarian Agent helps students, teachers, and builders locate the right knowledge item and suggests where new knowledge should be added. ## Capabilities - Search by type, audience, and tags. - Recommend related entries. - Check whether an entry has complete metadata. - Suggest the right template for new content. ## Agent Notes This is a design placeholder for future Agent Team integration."
+  },
+  {
+    "id": "kb-agent-002",
+    "title": "Knowledge Cognitive Cell",
+    "type": "agent",
+    "source": "../knowledge-base/07-agents/knowledge-cognitive-cell.md",
+    "tags": [
+      "cognitive-cell",
+      "knowledge-base",
+      "knowledge-agent",
+      "nseap"
+    ],
+    "keywords": [
+      "Agent",
+      "智能体",
+      "知识认知细胞",
+      "知识仓库",
+      "Knowledge Cognitive Cell"
+    ],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Knowledge Cognitive Cell",
+      "Purpose",
+      "Identity",
+      "Capability",
+      "Interface",
+      "Static to Evolutionary Path",
+      "Agent Notes"
+    ],
+    "searchText": "kb-agent-002 Knowledge Cognitive Cell agent builder teacher agent cognitive-cell knowledge-base knowledge-agent nseap Agent 智能体 知识认知细胞 知识仓库 Knowledge Cognitive Cell Knowledge Cognitive Cell Purpose Identity Capability Interface Static to Evolutionary Path Agent Notes # Knowledge Cognitive Cell ## Purpose Define the Knowledge Base as a Cognitive Cell in the NSEAP AI Learning Operating System. ## Identity The Knowledge Cognitive Cell is the shared knowledge layer owned by the Knowledge Team. It serves students, teachers, builders, and agents by turning scattered course and project outputs into reusable knowledge assets. ## Capability Current MVP capabilities: - Organize course, challenge, prompt, FAQ, best practice, project, and agent knowledge. - Provide templates for consistent contribution. - Add metadata for future retrieval. - Support GitHub review and versioning. - Provide examples that other teams can copy. Future capabilities: - Retrieve relevant knowledge for agents. - Recommend related entries. - Check metadata quality. - Suggest templates for new content. - Learn from feedback and update knowledge. ## Interface Current interfaces: - Markdown. - YAML frontmatter. - JSON Schema. - GitHub pull request workflow. Future interfaces: - Search API. - Agent retrieval API. - MCP integration. - Documentation portal. - Knowledge graph. ## Static to Evolutionary Path MVP stage: ```text Static Cognitive Cell -> stable knowledge structure -> templates -> metadata -> GitHub review ``` Future stage: ```text Evolutionary Cognitive Cell -> Knowledge Librarian Agent -> ontology -> memory -> evaluation -> KSTAR update loop ``` ## Agent Notes Retrieve this entry when explaining how Knowledge Team aligns with the Cognitive Cell architecture."
+  },
+  {
+    "id": "kb-best-practice-001",
+    "title": "Builder Documentation Practice",
+    "type": "best-practice",
+    "source": "../knowledge-base/05-best-practices/builder-documentation-practice.md",
+    "tags": [
+      "documentation",
+      "builder",
+      "github"
+    ],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Builder Documentation Practice",
+      "Purpose",
+      "Practice",
+      "Checklist",
+      "Agent Notes"
+    ],
+    "searchText": "kb-best-practice-001 Builder Documentation Practice best-practice builder teacher agent documentation builder github Builder Documentation Practice Purpose Practice Checklist Agent Notes # Builder Documentation Practice ## Purpose Help builders write documentation that other teams can reuse. ## Practice Write documentation as if another team will need to use it next week without asking you for context. ## Checklist - State the purpose. - Define the audience. - Include examples. - Link related files. - Mark draft or stable status. - Keep file names clear and searchable. ## Agent Notes Retrieve this entry when a builder asks how to document a module or prepare a GitHub submission."
+  },
+  {
+    "id": "kb-best-practice-002",
+    "title": "AI-Assisted Learning Practice",
+    "type": "best-practice",
+    "source": "../knowledge-base/05-best-practices/ai-assisted-learning-practice.md",
+    "tags": [
+      "ai-learning",
+      "reflection",
+      "learning-process"
+    ],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "AI-Assisted Learning Practice",
+      "Purpose",
+      "Practice",
+      "Reflection Questions"
+    ],
+    "searchText": "kb-best-practice-002 AI-Assisted Learning Practice best-practice student teacher agent ai-learning reflection learning-process AI-Assisted Learning Practice Purpose Practice Reflection Questions # AI-Assisted Learning Practice ## Purpose Define a healthy pattern for using AI during learning. ## Practice Use AI to clarify, compare, generate examples, review mistakes, and improve drafts. Do not use AI as a shortcut that hides your thinking. ## Reflection Questions - What did AI help me understand? - What did I still need to decide myself? - What changed between my first attempt and final output? - What would I ask differently next time?"
+  },
+  {
+    "id": "kb-best-practice-003",
+    "title": "Metadata-First 大数据任务实践",
+    "type": "best-practice",
+    "source": "../knowledge-base/05-best-practices/metadata-first-big-data-practice.md",
+    "tags": [
+      "best-practice",
+      "big-data",
+      "metadata",
+      "ai-collaboration"
+    ],
+    "keywords": [
+      "Metadata-First",
+      "大数据",
+      "数据字典",
+      "语义对齐",
+      "特征工程",
+      "AI 协作"
+    ],
+    "concepts": [
+      "元数据先行",
+      "数据语义",
+      "业务约束",
+      "人机协同建模"
+    ],
+    "skills": [
+      "编写数据字典",
+      "描述业务规则",
+      "审查伪代码",
+      "评估 AI 输出"
+    ],
+    "headings": [
+      "Metadata-First 大数据任务实践",
+      "用途",
+      "场景 Situation",
+      "本体 / 结构说明",
+      "流程 Workflow",
+      "技能 Skill",
+      "实践 Checklist",
+      "评估 Evaluation",
+      "知识增长 Knowledge Growth",
+      "Agent Notes"
+    ],
+    "searchText": "kb-best-practice-003 Metadata-First 大数据任务实践 best-practice student teacher builder agent best-practice big-data metadata ai-collaboration Metadata-First 大数据 数据字典 语义对齐 特征工程 AI 协作 元数据先行 数据语义 业务约束 人机协同建模 编写数据字典 描述业务规则 审查伪代码 评估 AI 输出 kb-project-002 kb-prompt-001 Metadata-First 大数据任务实践 用途 场景 Situation 本体 / 结构说明 流程 Workflow 技能 Skill 实践 Checklist 评估 Evaluation 知识增长 Knowledge Growth Agent Notes # Metadata-First 大数据任务实践 ## 用途 这条最佳实践用于解决“AI 代码能跑，但业务逻辑错了”的问题。它要求学生在让 AI 处理数据之前，先把字段含义、业务规则、异常边界和目标指标讲清楚。 ## 场景 Situation 在大数据应用、数据清洗、特征工程和分析建模中，AI 经常因为缺少业务语义而误解字段。例如价格字段不能为负、用户状态有枚举值、缺失值处理方式和业务目标有关。如果直接让 AI 写代码，结果可能语法正确但不可用。 ## 本体 / 结构说明 这个实践包含五个对象： - 数据字段：字段名、含义、类型、单位。 - 业务约束：哪些值合法，哪些值异常。 - 任务目标：要清洗、预测、分类还是生成报告。 - AI 行动：根据元数据生成代码或分析步骤。 - 人类审查：检查输出是否符合业务逻辑。 ## 流程 Workflow ```text 列出字段 -> 写出字段含义和单位 -> 标注合法值和异常值 -> 说明任务目标 -> 先让 AI 写伪代码 -> 人类审查逻辑 -> 再让 AI 生成正式代码 -> 复盘 Prompt 数量和错误类型 ``` ## 技能 Skill 学生需要练习三类能力： - 元数据表达：把字段和业务约束讲清楚。 - 逻辑审查：先看伪代码是否合理，再看代码是否能跑。 - 协作复盘：记录 AI 哪些地方帮到了，哪些地方需要人类判断。 ## 实践 Checklist - 是否提供了字段名、含义、类型和单位。 - 是否说明了异常值、缺失值和边界条件。 - 是否明确告诉 AI 当前任务目标。 - 是否先审查伪代码，再生成正式代码。 - 是否记录了 AI 输出错误的原因。 - 是否在 AAR 中总结下一次如何减少无效 Prompt。 ## 评估 Evaluation 如果使用这条实践后，AI 生成的代码更少出现业务语义错误，学生能更快发现逻辑问题，并能在 AAR 中说清楚改进点，就说明这条实践是有效的。 ## 知识增长 Knowledge Growth 这条实践可以继续扩展为数据字典模板、数据分析 Prompt 模板、伪代码审查清单和大数据项目 FAQ。 ## Agent Notes 当用户问“AI 为什么听不懂我的数据分析需求”“大数据任务怎么写 Prompt”“怎么减少 AI 生成无效代码”时，应优先召回本条。"
+  },
+  {
+    "id": "kb-challenge-001",
+    "title": "构建你的第一个 AI 助手",
+    "type": "challenge",
+    "source": "../knowledge-base/02-challenges/sample-challenge-knowledge.md",
+    "tags": [
+      "challenge",
+      "ai-assistant",
+      "week-1"
+    ],
+    "keywords": [
+      "挑战",
+      "任务",
+      "AI 助手",
+      "入门项目",
+      "Challenge"
+    ],
+    "concepts": [
+      "场景定义",
+      "角色设计",
+      "提示词工程"
+    ],
+    "skills": [
+      "拆解任务",
+      "编写系统提示",
+      "评估输出质量"
+    ],
+    "headings": [
+      "构建你的第一个 AI 助手",
+      "用途",
+      "适用对象与场景",
+      "场景 Situation",
+      "本体 / 结构说明",
+      "流程 Workflow",
+      "技能 Skill",
+      "评估 Evaluation",
+      "知识增长 Knowledge Growth",
+      "详细内容",
+      "任务说明",
+      "建议选题",
+      "交付要求",
+      "常见错误",
+      "相关关系",
+      "Agent Notes"
+    ],
+    "searchText": "kb-challenge-001 构建你的第一个 AI 助手 challenge student teacher agent challenge ai-assistant week-1 挑战 任务 AI 助手 入门项目 Challenge 场景定义 角色设计 提示词工程 拆解任务 编写系统提示 评估输出质量 kb-course-001 kb-prompt-001 构建你的第一个 AI 助手 用途 适用对象与场景 场景 Situation 本体 / 结构说明 流程 Workflow 技能 Skill 评估 Evaluation 知识增长 Knowledge Growth 详细内容 任务说明 建议选题 交付要求 常见错误 相关关系 Agent Notes # 构建你的第一个 AI 助手 ## 用途 这是一条面向新同学的入门挑战，用来帮助学习者第一次把“想法”变成一个可演示的小型 AI 助手，而不是只停留在聊天体验上。 ## 适用对象与场景 适合刚进入课程的学生，也适合老师拿来做第一周挑战说明。后续如果接入 Agent，这条知识也可以作为“如何完成第一个 AI 助手挑战”的标准上下文。 ## 场景 Situation 很多同学第一次接触这个项目时，会觉得“做 AI 助手”听起来很大，但不知道到底要交什么、从哪里开始。所以这条挑战要把任务拆清楚，让学生能围绕一个具体场景，比如背单词、复习代码、规划学习时间，做出一个小而完整的 AI 助手。 ## 本体 / 结构说明 这条挑战涉及四个核心对象： 1. 使用场景：助手到底服务什么问题。 2. 助手角色：它是谁，负责什么，不负责什么。 3. 提示词：它如何被指挥工作。 4. 评估方式：怎么判断这个助手是不是有用。 ## 流程 Workflow ```text 选择一个真实场景 -> 定义助手角色与边界 -> 编写系统提示或指令提示 -> 测试 2 到 3 轮对话 -> 观察输出问题 -> 修改提示词 -> 提交结果与反思 ``` ## 技能 Skill 完成这条挑战时，学生会练到三类关键能力： - 场景拆解：把一个模糊想法变成具体任务。 - 提示词编写：能清楚告诉 AI 要做什么、不该做什么。 - 输出评估：不只看“能不能回答”，还看“回得有没有帮助”。 ## 评估 Evaluation 这条挑战建议从下面四点判断是否完成得好： 1. 场景是否具体，不空泛。 2. 助手角色是否清晰，有边界。 3. 示例对话是否能体现这个助手真的在工作。 4. 反思是否说明了你修改过什么、为什么修改。 ## 知识增长 Knowledge Growth 这条挑战不是做完就结束，它还会继续回流到知识库： - 好的提示词可以沉淀到提示词库。 - 常见问题可以沉淀到 FAQ。 - 优秀作品可以沉淀为项目案例。 - 高频能力点可以沉淀为概念或技能节点。 ## 详细内容 ### 任务说明 请你围绕一个真实的小场景，设计一个 AI 助手。这个助手不需要很复杂，但必须清楚说明： - 它服务谁； - 它解决什么问题； - 它会怎么回答； - 它不能越界做什么。 ### 建议选题 可以从下面这些方向里任选一个： - 帮助自己规划一周学习任务； - 帮助解释一段报错代码； - 帮助整理课堂笔记； - 帮助复习英语单词； - 帮助完成课程问题答疑。 ### 交付要求 至少提交下面 4 样东西： 1. 助手简介：一句话说清它是谁、做什么。 2. 提示词：你的系统提示或核心指令。 3. 示例对话：至少 2 轮。 4. 简短反思：你测试后改了什么、发现了什么问题。 ### 常见错误 - 角色定义太大，比如“什么都能做”。 - 提示词没有边界，导致回答发散。 - 示例对话太短，看不出效果。 - 只展示结果，不写反思和修改过程。 ## 相关关系 - 这条挑战支持 `kb-course-001` 的 Week 1 课程导览。 - 这条挑战可配合 `kb-prompt-001` 的提示词样例一起使用。 - 它还依赖“提示词工程基础”这类前置能力。 ## Agent Notes 当学生问“第一个 AI 助手挑战怎么做”“这个挑战要交什么”“怎么判断我做得好不好”时，应优先检索这条知识，并同时联动相关提示词和课程条目一起返回。"
+  },
+  {
+    "id": "kb-course-001",
+    "title": "Week 1 Overview",
+    "type": "course",
+    "source": "../knowledge-base/01-course/sample-week-1-overview.md",
+    "tags": [
+      "elite20",
+      "vibe-coding",
+      "week-1"
+    ],
+    "keywords": [
+      "课程",
+      "第一周",
+      "Week 1",
+      "学习路径",
+      "Vibe Coding"
+    ],
+    "concepts": [
+      "ai-native-learning",
+      "vibe-coding",
+      "learning-workflow"
+    ],
+    "skills": [
+      "ai-tool-setup",
+      "reflective-learning",
+      "prompting-basics"
+    ],
+    "headings": [
+      "Week 1 Overview",
+      "Purpose",
+      "Learning Goal",
+      "Content",
+      "Graph Notes",
+      "Example Activities",
+      "Related",
+      "Agent Notes"
+    ],
+    "searchText": "kb-course-001 Week 1 Overview course student teacher agent elite20 vibe-coding week-1 课程 第一周 Week 1 学习路径 Vibe Coding ai-native-learning vibe-coding learning-workflow ai-tool-setup reflective-learning prompting-basics kb-challenge-001 kb-prompt-001 Week 1 Overview Purpose Learning Goal Content Graph Notes Example Activities Related Agent Notes # Week 1 Overview ## Purpose Give students and teachers a clear starting point for Week 1 of the Vibe Coding course. ## Learning Goal Understand what an AI-native learning workflow looks like and complete the first small AI-assisted creation task. ## Content Week 1 should introduce the course purpose, expected learning behavior, basic AI tool usage, and the first challenge. ## Graph Notes This entry can become a future `CourseUnit` node. It includes the first challenge and uses a coding coach prompt as support. ## Example Activities - Set up required accounts and tools. - Ask an AI assistant to explain a coding concept. - Complete a small guided creation task. - Reflect on what AI helped with and what still required human judgment. ## Related - `knowledge-base/02-challenges/sample-challenge-knowledge.md` - `knowledge-base/03-prompts/sample-coding-coach-prompt.md` ## Agent Notes Retrieve this entry when a student asks how to start Week 1 or when a teacher asks what Week 1 should cover."
+  },
+  {
+    "id": "kb-faq-001",
+    "title": "Student FAQ",
+    "type": "faq",
+    "source": "../knowledge-base/04-faq/student-faq.md",
+    "tags": [
+      "faq",
+      "student",
+      "learning-support"
+    ],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Student FAQ",
+      "Q: What should I do if I do not understand a challenge?",
+      "Q: Can I use AI to complete assignments?",
+      "Q: What should I submit?",
+      "Agent Notes"
+    ],
+    "searchText": "kb-faq-001 Student FAQ faq student agent faq student learning-support Student FAQ Q: What should I do if I do not understand a challenge? Q: Can I use AI to complete assignments? Q: What should I submit? Agent Notes # Student FAQ ## Q: What should I do if I do not understand a challenge? Start by reading the challenge goal, deliverables, and rubric. Then ask a Coding Coach agent to explain the task in smaller steps. ## Q: Can I use AI to complete assignments? Yes, but you should show your process. The goal is not only to get an answer, but to learn how to work with AI responsibly. ## Q: What should I submit? Submit the required deliverables listed in the challenge, plus a short reflection on how you used AI. ## Agent Notes Retrieve this entry for common student onboarding and assignment questions."
+  },
+  {
+    "id": "kb-faq-002",
+    "title": "Teacher FAQ",
+    "type": "faq",
+    "source": "../knowledge-base/04-faq/teacher-faq.md",
+    "tags": [
+      "faq",
+      "teacher",
+      "instruction"
+    ],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Teacher FAQ",
+      "Q: How can I reuse this course?",
+      "Q: How should I evaluate AI-assisted work?",
+      "Q: What if students use different AI tools?"
+    ],
+    "searchText": "kb-faq-002 Teacher FAQ faq teacher agent faq teacher instruction Teacher FAQ Q: How can I reuse this course? Q: How should I evaluate AI-assisted work? Q: What if students use different AI tools? # Teacher FAQ ## Q: How can I reuse this course? Start from the weekly plan, select matching challenges, and use the teacher notes to prepare each session. ## Q: How should I evaluate AI-assisted work? Evaluate the final output, the student's process, and the quality of reflection. ## Q: What if students use different AI tools? Focus on learning outcomes and documented process instead of requiring one specific tool."
+  },
+  {
+    "id": "kb-faq-003",
+    "title": "Builder FAQ",
+    "type": "faq",
+    "source": "../knowledge-base/04-faq/builder-faq.md",
+    "tags": [
+      "faq",
+      "builder",
+      "contribution"
+    ],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Builder FAQ",
+      "Q: Where should I put a new knowledge item?",
+      "Q: Do I need metadata?",
+      "Q: Can I submit draft content?"
+    ],
+    "searchText": "kb-faq-003 Builder FAQ faq builder agent faq builder contribution Builder FAQ Q: Where should I put a new knowledge item? Q: Do I need metadata? Q: Can I submit draft content? # Builder FAQ ## Q: Where should I put a new knowledge item? Choose the folder that matches the primary use case. If it supports multiple modules, choose the main category and add related links. ## Q: Do I need metadata? Yes. Metadata makes the item easier to search, review, and use with agents later. ## Q: Can I submit draft content? Yes. Mark `status: draft` in the frontmatter."
+  },
+  {
+    "id": "kb-overview-001",
+    "title": "NSEAP Knowledge Base Intro",
+    "type": "overview",
+    "source": "../knowledge-base/00-overview/nseap-knowledge-base-intro.md",
+    "tags": [
+      "nseap",
+      "knowledge-base",
+      "elite20"
+    ],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "NSEAP Knowledge Base Intro",
+      "Purpose",
+      "Content",
+      "When To Use",
+      "Agent Notes"
+    ],
+    "searchText": "kb-overview-001 NSEAP Knowledge Base Intro overview student teacher builder agent nseap knowledge-base elite20 NSEAP Knowledge Base Intro Purpose Content When To Use Agent Notes # NSEAP Knowledge Base Intro ## Purpose Explain the role of the Knowledge Base in the Elite20 Builder Program. ## Content The Knowledge Base is the shared memory layer for the NSEAP AI Learning Operating System. It stores course knowledge, challenge guidance, prompts, FAQs, best practices, project cases, and agent context in a consistent format. ## When To Use Use this entry when introducing why the Knowledge Team exists and how it supports other teams. ## Agent Notes Retrieve this entry when a user asks what the Knowledge Base is, why it matters, or how it supports the project."
+  },
+  {
+    "id": "kb-project-001",
+    "title": "Sample AI Study Assistant Project",
+    "type": "project",
+    "source": "../knowledge-base/06-projects/sample-project-case.md",
+    "tags": [
+      "project-case",
+      "ai-assistant",
+      "learning-support"
+    ],
+    "keywords": [
+      "项目",
+      "项目案例",
+      "学习助手",
+      "AI 学习助手",
+      "project case"
+    ],
+    "concepts": [
+      "ai-study-assistant",
+      "study-planning",
+      "learning-reflection"
+    ],
+    "skills": [
+      "define-user-situation",
+      "design-assistant-prompt",
+      "evaluate-learning-support"
+    ],
+    "headings": [
+      "Sample AI Study Assistant Project",
+      "Purpose",
+      "Situation",
+      "Ontology",
+      "Workflow",
+      "Skills",
+      "Solution",
+      "Deliverables",
+      "Evaluation",
+      "Knowledge Growth",
+      "Reuse Notes",
+      "Agent Notes"
+    ],
+    "searchText": "kb-project-001 Sample AI Study Assistant Project project student teacher builder agent project-case ai-assistant learning-support 项目 项目案例 学习助手 AI 学习助手 project case ai-study-assistant study-planning learning-reflection define-user-situation design-assistant-prompt evaluate-learning-support kb-challenge-001 kb-prompt-001 Sample AI Study Assistant Project Purpose Situation Ontology Workflow Skills Solution Deliverables Evaluation Knowledge Growth Reuse Notes Agent Notes # Sample AI Study Assistant Project ## Purpose Show what a simple project case entry should include. ## Situation Students need a lightweight assistant that helps plan study sessions and review progress. ## Ontology Key concepts include learner, study goal, available time, difficulty, study plan, progress review, and reflection prompt. ## Workflow ```text Collect learning goal -> collect time and difficulty -> generate study plan -> ask reflection question -> review usefulness -> improve assistant prompt ``` ## Skills This project uses situation modeling, assistant prompt design, structured conversation design, and output evaluation. ## Solution Create an AI assistant that asks for the learning goal, time available, and current difficulty, then generates a study plan and reflection prompt. ## Deliverables - Assistant prompt. - Example conversation. - Short demo. - Reflection notes. ## Evaluation Evaluate whether the assistant produces a useful plan, asks relevant questions, and helps the learner reflect. ## Knowledge Growth This project can add reusable assets back into the Knowledge Cognitive Cell: - A study-planning prompt. - A project case. - FAQ entries about learning with AI. - Skill nodes for study planning and reflection. ## Reuse Notes This case can be reused as a starter example for the first AI assistant challenge. ## Agent Notes Retrieve this entry when a student or builder needs a simple example of an AI assistant project."
+  },
+  {
+    "id": "kb-project-002",
+    "title": "C2S 大数据应用挑战项目案例",
+    "type": "project",
+    "source": "../knowledge-base/06-projects/c2s-big-data-challenge-case.md",
+    "tags": [
+      "project-case",
+      "big-data",
+      "ai-x",
+      "portfolio"
+    ],
+    "keywords": [
+      "C2S",
+      "大数据",
+      "AI+X",
+      "项目案例",
+      "KSTAR",
+      "AAR",
+      "Metadata-First",
+      "语义对齐"
+    ],
+    "concepts": [
+      "AI+X 范式",
+      "KSTAR",
+      "人机协同建模",
+      "元数据先行",
+      "作品集评估"
+    ],
+    "skills": [
+      "术语翻译",
+      "结构化阅读",
+      "场景化提案",
+      "AAR 复盘",
+      "大数据任务拆解"
+    ],
+    "headings": [
+      "C2S 大数据应用挑战项目案例",
+      "用途",
+      "场景 Situation",
+      "本体 / 结构说明",
+      "流程 Workflow",
+      "技能 Skills",
+      "解决方案 Solution",
+      "交付物 Deliverables",
+      "评估 Evaluation",
+      "知识增长 Knowledge Growth",
+      "复用说明 Reuse Notes",
+      "Agent Notes"
+    ],
+    "searchText": "kb-project-002 C2S 大数据应用挑战项目案例 project student teacher builder agent project-case big-data ai-x portfolio C2S 大数据 AI+X 项目案例 KSTAR AAR Metadata-First 语义对齐 AI+X 范式 KSTAR 人机协同建模 元数据先行 作品集评估 术语翻译 结构化阅读 场景化提案 AAR 复盘 大数据任务拆解 kb-best-practice-003 kb-challenge-001 kb-agent-002 C2S 大数据应用挑战项目案例 用途 场景 Situation 本体 / 结构说明 流程 Workflow 技能 Skills 解决方案 Solution 交付物 Deliverables 评估 Evaluation 知识增长 Knowledge Growth 复用说明 Reuse Notes Agent Notes # C2S 大数据应用挑战项目案例 ## 用途 这条知识用来证明知识库可以沉淀真实学生项目，而不只是存放示例文本。它把一次 C2S 挑战的完整产出整理成可检索、可复用、可被 Agent 调用的项目案例。 ## 场景 Situation 学生需要阅读 AI+X 与共生智能相关材料，并结合自己的专业方向完成作品集提交。这个案例选择“大数据应用”作为专业场景，重点讨论 AI 在数据清洗、特征工程和业务语义对齐中可能出现的问题。 ## 本体 / 结构说明 本案例包含四类核心对象： - 原始学习材料：AI+X、共生智能、KSTAR、NEOLAF、双回路教学法等概念。 - 学生产出：双语术语表、结构化理解、改进提案、AAR 复盘。 - 专业场景：大数据应用、数据编排、特征工程、业务约束。 - 可复用方法：Metadata-First 协议、伪代码审查、Prompt 数量效率指标。 ## 流程 Workflow ```text 阅读 AI+X 材料 -> 提取关键术语 -> 形成双语术语表 -> 从大数据专业视角解释 L1/L2/L3 -> 用 KSTAR 描述真实问题 -> 提出优化方案 -> 完成 AAR 复盘 -> 沉淀为知识库项目案例 ``` ## 技能 Skills 这个项目训练了五类能力： - 将英文理论材料转成可理解的中文术语。 - 用结构化方式解释 AI+X、L1/L2/L3、KSTAR 等概念。 - 把抽象教育理论落到大数据专业场景中。 - 用 KSTAR 描述“AI 听不懂业务语义”的真实痛点。 - 通过 AAR 复盘人和 AI 的分工、调整和成长。 ## 解决方案 Solution 项目提出的关键改进是 Metadata-First 协议：在让 AI 生成数据分析或特征工程代码之前，先提供字段含义、业务约束、异常规则和目标指标。这样可以减少“代码语法正确但业务逻辑错误”的情况。 项目还建议在正式写代码前增加伪代码审查，让学生先说明逻辑流程，再让 AI 协助生成代码。AAR 部分则建议记录完成任务所需的 Prompt 数量，用来衡量人机协作效率是否提升。 ## 交付物 Deliverables - 20 个核心术语的双语术语表。 - AI+X 理论的结构化阅读笔记。 - 面向大数据应用的 Phase 3 优化提案。 - 基于 AAR 的学习过程复盘。 - 可沉淀进知识库的 Metadata-First 最佳实践。 ## 评估 Evaluation 这个案例可以从四个角度评估： 1. 是否准确解释 AI+X、KSTAR、双回路教学法等核心概念。 2. 是否能结合大数据应用提出真实问题，而不是只复述材料。 3. 是否给出可操作的改进方案，例如数据字典、伪代码审查和 Prompt 效率指标。 4. 是否通过 AAR 说明自己和 AI 分别做了什么，以及下一次如何改进。 ## 知识增长 Knowledge Growth 这个案例可以继续沉淀出多类知识： - 项目案例：作为学生如何完成 C2S 挑战的参考。 - 最佳实践：Metadata-First 大数据任务协议。 - FAQ：AI 生成的数据处理代码为什么可能逻辑错误。 - Prompt：数据字典生成、伪代码审查、AAR 引导提示词。 - Agent 上下文：当用户问“大数据场景如何做 AI+X 项目”时优先召回。 ## 复用说明 Reuse Notes 其他学生可以复用这个案例的结构：先做术语和理解，再结合自己的专业提出一个具体痛点，最后用 KSTAR 和 AAR 把方案与学习过程讲清楚。 ## Agent Notes 当用户搜索“大数据”“C2S”“Metadata-First”“语义对齐”“KSTAR”“AAR”“作品集案例”时，应优先召回本条，并联动 `kb-best-practice-003` 说明可复用方法。"
+  },
+  {
+    "id": "kb-prompt-001",
+    "title": "Coding Coach Prompt",
+    "type": "prompt",
+    "source": "../knowledge-base/03-prompts/sample-coding-coach-prompt.md",
+    "tags": [
+      "coding-coach",
+      "debugging",
+      "learning"
+    ],
+    "keywords": [
+      "提示词",
+      "编程教练",
+      "代码调试",
+      "Coding Coach",
+      "debugging"
+    ],
+    "concepts": [
+      "coaching",
+      "debugging",
+      "guided-learning"
+    ],
+    "skills": [
+      "ask-clarifying-question",
+      "explain-code-issue",
+      "create-practice-task"
+    ],
+    "headings": [
+      "Coding Coach Prompt",
+      "Purpose",
+      "Prompt",
+      "Input Needed",
+      "Expected Output",
+      "Graph Notes",
+      "Agent Notes"
+    ],
+    "searchText": "kb-prompt-001 Coding Coach Prompt prompt student agent coding-coach debugging learning 提示词 编程教练 代码调试 Coding Coach debugging coaching debugging guided-learning ask-clarifying-question explain-code-issue create-practice-task kb-course-001 kb-challenge-001 Coding Coach Prompt Purpose Prompt Input Needed Expected Output Graph Notes Agent Notes # Coding Coach Prompt ## Purpose Help a student debug code while still learning the underlying concept. ## Prompt You are my coding coach. Help me understand the problem before giving the final answer. Ask one clarifying question if needed. Then explain the issue, show the smallest useful fix, and give me one practice task to confirm I understand. ## Input Needed - Code snippet. - Error message or unexpected behavior. - What the student already tried. ## Expected Output - Diagnosis. - Explanation. - Minimal fix. - Practice task. ## Graph Notes This entry can become a future `Prompt` node that supports coding challenges and course units. ## Agent Notes Use this prompt pattern when the learner needs coaching rather than direct answer dumping."
+  },
+  {
+    "id": "knowledge-base/00-overview/README.md",
+    "title": "Overview",
+    "type": "unknown",
+    "source": "../knowledge-base/00-overview/README.md",
+    "tags": [],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Overview"
+    ],
+    "searchText": "Overview # Overview This folder explains what the knowledge base is, who it serves, and how it connects to other NSEAP modules."
+  },
+  {
+    "id": "knowledge-base/01-course/README.md",
+    "title": "Course Knowledge",
+    "type": "unknown",
+    "source": "../knowledge-base/01-course/README.md",
+    "tags": [],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Course Knowledge"
+    ],
+    "searchText": "Course Knowledge # Course Knowledge This folder stores course-level knowledge such as weekly overviews, learning objectives, teacher notes, and learning paths."
+  },
+  {
+    "id": "knowledge-base/02-challenges/README.md",
+    "title": "Challenge Knowledge",
+    "type": "unknown",
+    "source": "../knowledge-base/02-challenges/README.md",
+    "tags": [],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Challenge Knowledge"
+    ],
+    "searchText": "Challenge Knowledge # Challenge Knowledge This folder stores challenge descriptions, goals, steps, deliverables, rubrics, and common mistakes."
+  },
+  {
+    "id": "knowledge-base/03-prompts/README.md",
+    "title": "Prompt Library",
+    "type": "unknown",
+    "source": "../knowledge-base/03-prompts/README.md",
+    "tags": [],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Prompt Library"
+    ],
+    "searchText": "Prompt Library # Prompt Library This folder stores reusable prompts for learning, building, reviewing, and agent operation."
+  },
+  {
+    "id": "knowledge-base/04-faq/README.md",
+    "title": "FAQ",
+    "type": "unknown",
+    "source": "../knowledge-base/04-faq/README.md",
+    "tags": [],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "FAQ"
+    ],
+    "searchText": "FAQ # FAQ This folder stores common questions from students, teachers, and builders."
+  },
+  {
+    "id": "knowledge-base/05-best-practices/README.md",
+    "title": "Best Practices",
+    "type": "unknown",
+    "source": "../knowledge-base/05-best-practices/README.md",
+    "tags": [],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Best Practices"
+    ],
+    "searchText": "Best Practices # Best Practices This folder stores reusable operating practices for learning, building, documenting, and reviewing."
+  },
+  {
+    "id": "knowledge-base/06-projects/README.md",
+    "title": "Project Cases",
+    "type": "unknown",
+    "source": "../knowledge-base/06-projects/README.md",
+    "tags": [],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Project Cases"
+    ],
+    "searchText": "Project Cases # Project Cases This folder stores project examples, case studies, and reusable references."
+  },
+  {
+    "id": "knowledge-base/07-agents/README.md",
+    "title": "Agent Knowledge",
+    "type": "unknown",
+    "source": "../knowledge-base/07-agents/README.md",
+    "tags": [],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Agent Knowledge"
+    ],
+    "searchText": "Agent Knowledge # Agent Knowledge This folder stores agent roles, context requirements, instructions, and knowledge-use patterns."
+  },
+  {
+    "id": "knowledge-base/README.md",
+    "title": "Knowledge Base",
+    "type": "unknown",
+    "source": "../knowledge-base/README.md",
+    "tags": [],
+    "keywords": [],
+    "concepts": [],
+    "skills": [],
+    "headings": [
+      "Knowledge Base",
+      "Folders"
+    ],
+    "searchText": "Knowledge Base Folders # Knowledge Base This folder stores reusable knowledge entries for the NSEAP AI Learning Operating System. Use the matching folder and template for each new item. ## Folders - `00-overview`: system-level explanations. - `01-course`: course knowledge. - `02-challenges`: challenge knowledge. - `03-prompts`: reusable prompts. - `04-faq`: common questions. - `05-best-practices`: best practices and operating methods. - `06-projects`: project cases and examples. - `07-agents`: agent roles, context, and usage notes."
+  }
+]

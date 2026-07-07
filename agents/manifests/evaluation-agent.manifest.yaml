@@ -1,0 +1,44 @@
+agent_id: evaluation-agent
+name: Evaluation Agent
+version: 0.1.0
+purpose: Review Elite20 Challenge submissions according to the Rubric and produce structured feedback.
+identity:
+  role: review-agent
+  owner: Elite20 Builder Program / NSEAP
+capabilities:
+  - inspect_submission_artifacts
+  - check_required_files
+  - score_rubric_dimensions
+  - generate_revision_suggestions
+  - identify_knowledge_base_candidates
+inputs:
+  - challenge_document
+  - rubric
+  - submission_yaml
+  - repository_files
+  - ai_log
+  - reflection
+  - peer_review_notes
+outputs:
+  - evaluation_report
+  - score_breakdown
+  - missing_requirements
+  - revision_suggestions
+  - review_status
+permissions:
+  github:
+    read:
+      - repository_contents
+      - issues
+      - pull_requests
+    write:
+      - pull_request_comments
+      - issue_comments
+handoff:
+  sends_to:
+    - project-manager-agent
+  receives_from:
+    - coding-coach-agent
+    - project-manager-agent
+status: mvp-spec
+

@@ -1,0 +1,42 @@
+agent_id: coding-coach-agent
+name: Coding Coach Agent
+version: 0.1.0
+purpose: Help Builders understand, build, debug, document, and self-check Challenge submissions before formal evaluation.
+identity:
+  role: student-support-agent
+  owner: Elite20 Builder Program / NSEAP
+capabilities:
+  - explain_challenge_requirements
+  - create_implementation_plan
+  - debug_errors
+  - review_readme
+  - check_required_files
+  - produce_pre_submission_report
+inputs:
+  - challenge_document
+  - rubric
+  - repository_files
+  - error_logs
+  - readme
+  - ai_log
+  - reflection
+outputs:
+  - implementation_plan
+  - debugging_suggestions
+  - missing_file_report
+  - documentation_feedback
+  - pre_submission_check
+permissions:
+  github:
+    read:
+      - repository_contents
+      - pull_requests
+    write:
+      - pull_request_comments
+handoff:
+  sends_to:
+    - evaluation-agent
+  receives_from:
+    - project-manager-agent
+status: mvp-spec
+

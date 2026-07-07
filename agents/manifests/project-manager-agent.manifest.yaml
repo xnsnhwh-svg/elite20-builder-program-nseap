@@ -1,0 +1,40 @@
+agent_id: project-manager-agent
+name: Project Manager Agent
+version: 0.1.0
+purpose: Track Elite20 Builder Program Challenge progress, submissions, reviews, and blockers.
+identity:
+  role: coordination-agent
+  owner: Elite20 Builder Program / NSEAP
+capabilities:
+  - summarize_active_challenges
+  - track_submission_status
+  - identify_review_queue
+  - identify_blockers
+  - generate_progress_report
+inputs:
+  - challenge_list
+  - issue_list
+  - pull_request_list
+  - submission_records
+  - review_reports
+outputs:
+  - progress_report
+  - missing_submission_list
+  - review_queue
+  - blocker_summary
+permissions:
+  github:
+    read:
+      - issues
+      - pull_requests
+      - repository_contents
+    write:
+      - issue_comments
+handoff:
+  sends_to:
+    - coding-coach-agent
+    - evaluation-agent
+  receives_from:
+    - evaluation-agent
+status: mvp-spec
+

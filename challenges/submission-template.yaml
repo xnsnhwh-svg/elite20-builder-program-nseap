@@ -1,0 +1,31 @@
+challenge_id: CXX
+student:
+  name:
+  student_id:
+  major:
+submission:
+  repo_url:
+  branch:
+  commit:
+  demo_url:
+  files:
+    - README.md
+    - ai-log.md
+    - reflection.md
+ai_collaboration:
+  tools:
+    - ChatGPT
+    - Codex
+  models:
+    - 
+  prompts_or_skills:
+    - 
+  estimated_time:
+  estimated_tokens:
+self_check:
+  runs_successfully: false
+  readme_complete: false
+  ai_log_complete: false
+  reflection_complete: false
+  ready_for_review: false
+

@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NSEAP Knowledge Item",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "type",
+    "summary",
+    "audience",
+    "keywords",
+    "status",
+    "source"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^kb-[a-z-]+-[0-9]{3}$",
+      "description": "Stable knowledge item id, for example kb-challenge-001."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "overview",
+        "course",
+        "challenge",
+        "prompt",
+        "faq",
+        "best-practice",
+        "project",
+        "agent"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 10,
+      "description": "One-sentence explanation of what this item does and who should use it."
+    },
+    "source": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Source file path, upstream reference, or original origin of this knowledge item."
+    },
+    "audience": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["student", "teacher", "builder", "agent"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 3,
+      "uniqueItems": true,
+      "description": "Metadata-first search keywords covering natural search terms, type terms, and core objects."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "concepts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "description": "Concepts represented by this knowledge item. Used for future ontology or knowledge graph mapping."
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "description": "Skills connected to this knowledge item. Used for learning path and challenge mapping."
+    },
+    "related": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "description": "Related knowledge item IDs or file paths."
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["predicate"],
+        "properties": {
+          "predicate": {
+            "type": "string",
+            "enum": ["includes", "requires", "supports", "assessedBy", "usesPrompt", "relatedTo"]
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Preferred stable target item id."
+          },
+          "targetLabel": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Fallback label when a stable target id does not exist yet."
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "anyOf": [
+          {
+            "required": ["target"]
+          },
+          {
+            "required": ["targetLabel"]
+          }
+        ]
+      },
+      "description": "Optional graph-like relationships for future ontology mapping."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "review", "stable", "sample", "deprecated"]
+    },
+    "updated": {
+      "type": "string",
+      "format": "date"
+    },
+    "situation": {
+      "type": "string"
+    },
+    "ontology": {
+      "type": "string"
+    },
+    "workflow": {
+      "type": "string"
+    },
+    "skill": {
+      "type": "string"
+    },
+    "evaluation": {
+      "type": "string"
+    },
+    "knowledgeGrowth": {
+      "type": "string"
+    },
+    "agentNotes": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "updatedBy": {
+      "type": "string"
+    }
+  }
+}

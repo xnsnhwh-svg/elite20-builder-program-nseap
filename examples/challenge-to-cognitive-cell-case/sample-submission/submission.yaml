@@ -1,0 +1,33 @@
+challenge_id: C01
+student:
+  name: Sample Student
+  student_id: "000000"
+  major: AI+X
+submission:
+  repo_url: https://github.com/example/c01-sample-submission
+  branch: main
+  commit: sample
+  demo_url:
+  files:
+    - README.md
+    - submission.yaml
+    - ai-log.md
+    - reflection.md
+ai_collaboration:
+  tools:
+    - ChatGPT
+    - Codex
+  models:
+    - GPT-style model
+  prompts_or_skills:
+    - README improvement
+    - submission checklist
+  estimated_time: 2 hours
+  estimated_tokens: unknown
+self_check:
+  runs_successfully: true
+  readme_complete: true
+  ai_log_complete: true
+  reflection_complete: true
+  ready_for_review: true
+

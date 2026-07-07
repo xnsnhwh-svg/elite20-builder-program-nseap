@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./embedded-data.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:#D4DAE2;border-radius:999px;border:3px solid transparent;background-clip:content-box}
+  ::-webkit-scrollbar-thumb:hover{background:#B8C0CC;background-clip:content-box;border:3px solid transparent}
+  .noscroll::-webkit-scrollbar{height:6px}
+  @media(max-width:900px){.exp-body{grid-template-columns:1fr!important}.exp-detail{display:none!important}.exp-body.showdetail .exp-list{display:none!important}.exp-body.showdetail .exp-detail{display:block!important}}
+</style>
+</helmet>
+
+<div style="height:100vh;min-height:640px;display:flex;flex-direction:column;background:{{ shell.appBg }};color:#161A20;font-family:'IBM Plex Sans','IBM Plex Sans SC',system-ui,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;-webkit-font-smoothing:antialiased">
+
+  <header style="flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;height:56px;padding:0 22px;background:{{ shell.headerBg }};color:{{ shell.headerInk }}">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="position:relative;width:28px;height:28px;display:grid;place-items:center">
+        <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,{{ shell.primary }},{{ shell.secondary }})"></div>
+        <div style="position:absolute;width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.16)"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;line-height:1.15">
+        <span style="font-family:'Space Grotesk','IBM Plex Sans SC',sans-serif;font-weight:700;font-size:14px">NSEAP 知识认知细胞</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:{{ shell.headerMuted }}">Knowledge Cognitive Cell</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{ shell.headerMuted }}">第 6 组 · Knowledge Team</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#C7D0DE">v0.2 MVP</span>
+      <button onClick="{{ onOpenSettings }}" title="设置" style="width:32px;height:32px;border-radius:9px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#E8ECF2;display:grid;place-items:center;cursor:pointer" style-hover="background:rgba(255,255,255,.14)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8ECF2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.5A3.5 3.5 0 1 0 12 8a3.5 3.5 0 0 0 0 7.5z"></path><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1A2 2 0 0 1 4.2 17l.1-.1A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.6-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1A2 2 0 0 1 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.6V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1A2 2 0 0 1 19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.1a2 2 0 0 1 0 4H21a1.7 1.7 0 0 0-1.6 1z"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <div style="flex:1 1 auto;min-height:0;display:flex">
+
+    <nav style="flex:0 0 auto;width:78px;background:#fff;border-right:1px solid #E4E8ED;display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0">
+      <button onClick="{{ nav.home.onClick }}" style="width:60px;display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 0;border:0;border-radius:12px;cursor:pointer;font-family:inherit;background:{{ nav.home.bg }};color:{{ nav.home.ink }}">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="{{ nav.home.ink }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.4 12 5l8 6.4"></path><path d="M6 10.5V19h12v-8.5"></path></svg>
+        <span style="font-size:11px;font-weight:600">开始</span>
+      </button>
+      <button onClick="{{ nav.explore.onClick }}" style="width:60px;display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 0;border:0;border-radius:12px;cursor:pointer;font-family:inherit;background:{{ nav.explore.bg }};color:{{ nav.explore.ink }}">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="{{ nav.explore.ink }}" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+        <span style="font-size:11px;font-weight:600">浏览</span>
+      </button>
+      <button onClick="{{ nav.contribute.onClick }}" style="width:60px;display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 0;border:0;border-radius:12px;cursor:pointer;font-family:inherit;background:{{ nav.contribute.bg }};color:{{ nav.contribute.ink }}">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="{{ nav.contribute.ink }}" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"></rect><line x1="12" y1="8.5" x2="12" y2="15.5"></line><line x1="8.5" y1="12" x2="15.5" y2="12"></line></svg>
+        <span style="font-size:11px;font-weight:600">新增</span>
+      </button>
+    </nav>
+
+    <main style="flex:1 1 auto;min-height:0;position:relative;overflow:hidden">
+
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+        <div style="height:100%;overflow-y:auto">
+          <div style="max-width:960px;margin:0 auto;padding:32px 28px 60px">
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0E7C6B;margin:0 0 8px">知识层 · 第六模块</p>
+            <h1 style="font-family:'Space Grotesk','IBM Plex Sans SC',sans-serif;font-size:27px;line-height:1.3;font-weight:600;margin:0 0 8px">把每天的产出,变成会复利的知识资产。</h1>
+            <p style="font-size:14px;color:#5A6473;line-height:1.6;margin:0 0 24px;max-width:560px">搜索既有知识、沉淀新的经验、让 Agent 可靠检索——每一次使用都在为你和团队累积。</p>
+
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px">
+              <div style="padding:16px;border:1px solid #E4E8ED;border-radius:14px;background:#fff">
+                <div style="font-family:'Space Grotesk',monospace;font-size:26px;font-weight:600;color:#0E7C6B">{{ home.total }}</div>
+                <div style="font-size:12px;color:#8A94A3;margin-top:2px">条目总数</div>
+              </div>
+              <div style="padding:16px;border:1px solid #E4E8ED;border-radius:14px;background:#fff">
+                <div style="font-family:'Space Grotesk',monospace;font-size:26px;font-weight:600;color:#161A20">{{ home.viewed }}</div>
+                <div style="font-size:12px;color:#8A94A3;margin-top:2px">你已浏览</div>
+              </div>
+              <div style="padding:16px;border:1px solid #E4E8ED;border-radius:14px;background:#fff">
+                <div style="font-family:'Space Grotesk',monospace;font-size:26px;font-weight:600;color:#161A20">{{ home.saved }}</div>
+                <div style="font-size:12px;color:#8A94A3;margin-top:2px">你已收藏</div>
+              </div>
+              <div style="padding:16px;border:1px solid #E4E8ED;border-radius:14px;background:#fff">
+                <div style="font-family:'Space Grotesk',monospace;font-size:26px;font-weight:600;color:#3A5BD9">{{ home.contributed }}</div>
+                <div style="font-size:12px;color:#8A94A3;margin-top:2px">草稿数量</div>
+              </div>
+            </div>
+
+            <sc-if value="{{ home.firstRun }}" hint-placeholder-val="{{ true }}">
+              <div style="padding:20px;border:1px solid #D9E6E2;border-radius:16px;background:linear-gradient(180deg,#F3FAF8,#FBFDFC);margin-bottom:28px">
+                <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#0A5A4E;margin:0 0 14px">3 步快速上手 · Get Started</p>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px">
+                  <div style="display:flex;gap:11px">
+                    <div style="flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:#0E7C6B;color:#fff;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600">1</div>
+                    <div><p style="font-size:13px;font-weight:600;margin:0 0 3px">搜索一个词</p><p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0">试试「提示词」或「挑战」,metadata-first 会精准命中。</p></div>
+                  </div>
+                  <div style="display:flex;gap:11px">
+                    <div style="flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:#0E7C6B;color:#fff;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600">2</div>
+                    <div><p style="font-size:13px;font-weight:600;margin:0 0 3px">打开一条知识</p><p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0">看它的 metadata、显式关系与知识增长闭环。</p></div>
+                  </div>
+                  <div style="display:flex;gap:11px">
+                    <div style="flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:#0E7C6B;color:#fff;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600">3</div>
+                    <div><p style="font-size:13px;font-weight:600;margin:0 0 3px">收藏或新增</p><p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0">把新的资料先保存为草稿,后续再完善和复用。</p></div>
+                  </div>
+                </div>
+                <button onClick="{{ home.onExplore }}" style="height:40px;padding:0 20px;border:0;border-radius:10px;background:#0E7C6B;color:#fff;font-weight:600;font-size:13px;font-family:inherit;cursor:pointer" style-hover="background:#0A5A4E">开始浏览 →</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ home.hasRecent }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-bottom:26px">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><h2 style="font-size:15px;font-weight:600;margin:0">继续阅读</h2><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8A94A3">上次看到这里</span></div>
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+                  <sc-for list="{{ home.recent }}" as="c" hint-placeholder-count="2">
+                    <button onClick="{{ c.onClick }}" style="text-align:left;cursor:pointer;font-family:inherit;padding:13px 14px;border:1px solid #E7EAEF;border-radius:12px;background:#fff" style-hover="border-color:#0E7C6B">
+                      <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px"><span style="display:inline-flex;align-items:center;height:19px;padding:0 7px;border-radius:5px;font-size:10px;font-weight:600;background:{{ c.typeBg }};color:{{ c.typeInk }}">{{ c.typeLabel }}</span><h3 style="font-size:13.5px;font-weight:600;margin:0">{{ c.title }}</h3></div>
+                      <p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden">{{ c.summary }}</p>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ home.hasSaved }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-bottom:26px">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><h2 style="font-size:15px;font-weight:600;margin:0">我的收藏</h2><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8A94A3">{{ home.saved }} 条</span></div>
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+                  <sc-for list="{{ home.savedItems }}" as="c" hint-placeholder-count="2">
+                    <button onClick="{{ c.onClick }}" style="text-align:left;cursor:pointer;font-family:inherit;padding:13px 14px;border:1px solid #E7EAEF;border-radius:12px;background:#fff" style-hover="border-color:#0E7C6B">
+                      <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px"><span style="display:inline-flex;align-items:center;height:19px;padding:0 7px;border-radius:5px;font-size:10px;font-weight:600;background:{{ c.typeBg }};color:{{ c.typeInk }}">{{ c.typeLabel }}</span><h3 style="font-size:13.5px;font-weight:600;margin:0">{{ c.title }}</h3></div>
+                      <p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden">{{ c.summary }}</p>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <h2 style="font-size:15px;font-weight:600;margin:0 0 12px">你想做什么</h2>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px">
+              <button onClick="{{ home.onExplore }}" style="text-align:left;cursor:pointer;font-family:inherit;padding:18px;border:1px solid #E4E8ED;border-radius:14px;background:#fff;display:flex;flex-direction:column;gap:8px" style-hover="border-color:#0E7C6B;box-shadow:0 8px 24px rgba(15,23,42,.06)">
+                <div style="width:34px;height:34px;border-radius:10px;background:#E6F3F0;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7C6B" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></div>
+                <div><p style="font-size:14px;font-weight:600;margin:0 0 3px">找一条可复用知识</p><p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0">按分类与关键词检索课程、挑战、提示词与案例。</p></div>
+              </button>
+              <button onClick="{{ home.onContribute }}" style="text-align:left;cursor:pointer;font-family:inherit;padding:18px;border:1px solid #E4E8ED;border-radius:14px;background:#fff;display:flex;flex-direction:column;gap:8px" style-hover="border-color:#0E7C6B;box-shadow:0 8px 24px rgba(15,23,42,.06)">
+                <div style="width:34px;height:34px;border-radius:10px;background:#E6F3F0;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7C6B" stroke-width="1.9" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
+                <div><p style="font-size:14px;font-weight:600;margin:0 0 3px">新增知识草稿</p><p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0">上传资料或填写表单,先进入 draft 再审核完善。</p></div>
+              </button>
+              <button onClick="{{ home.onAgent }}" style="text-align:left;cursor:pointer;font-family:inherit;padding:18px;border:1px solid #E4E8ED;border-radius:14px;background:#fff;display:flex;flex-direction:column;gap:8px" style-hover="border-color:#3A5BD9;box-shadow:0 8px 24px rgba(15,23,42,.06)">
+                <div style="width:34px;height:34px;border-radius:10px;background:#ECEFFC;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3A5BD9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"></rect><line x1="12" y1="4" x2="12" y2="7"></line><circle cx="9" cy="13" r="1"></circle><circle cx="15" cy="13" r="1"></circle></svg></div>
+                <div><p style="font-size:14px;font-weight:600;margin:0 0 3px">看 Agent 能检索什么</p><p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0">查看为未来 Agent 检索准备的上下文条目。</p></div>
+              </button>
+            </div>
+
+            <h2 style="font-size:15px;font-weight:600;margin:0 0 12px">精选条目</h2>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:30px">
+              <sc-for list="{{ home.featured }}" as="c" hint-placeholder-count="4">
+                <button onClick="{{ c.onClick }}" style="text-align:left;cursor:pointer;font-family:inherit;padding:14px;border:1px solid #E7EAEF;border-radius:12px;background:#fff" style-hover="border-color:#0E7C6B">
+                  <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px"><span style="display:inline-flex;align-items:center;height:19px;padding:0 7px;border-radius:5px;font-size:10px;font-weight:600;background:{{ c.typeBg }};color:{{ c.typeInk }}">{{ c.typeLabel }}</span><h3 style="font-size:13.5px;font-weight:600;margin:0">{{ c.title }}</h3></div>
+                  <p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ c.summary }}</p>
+                </button>
+              </sc-for>
+            </div>
+
+            <div style="padding:16px 18px;border:1px solid #E4E8ED;border-radius:14px;background:#fff">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3">产品成熟度 · Maturity</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8A94A3">当前 L2 · 下一步 L3</span></div>
+              <div style="display:flex;align-items:stretch;gap:6px;overflow-x:auto" class="noscroll">
+                <sc-for list="{{ ladder }}" as="n" hint-placeholder-count="6">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:5px;min-width:88px;flex:1">
+                    <div style="width:100%;height:28px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:{{ n.bg }};border:1px solid {{ n.border }};color:{{ n.ink }};font-weight:{{ n.weight }};font-family:'IBM Plex Mono',monospace;font-size:12px">{{ n.code }}</div>
+                    <span style="font-size:10px;color:#7A8494;text-align:center;line-height:1.25">{{ n.label }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isExplore }}" hint-placeholder-val="{{ false }}">
+        <div style="height:100%;display:flex;flex-direction:column">
+          <div style="flex:0 0 auto;padding:15px 20px 12px;border-bottom:1px solid #EEF1F5;background:#fff">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:11px;flex-wrap:wrap">
+              <div style="position:relative;flex:1 1 320px;max-width:540px">
+                <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);display:flex"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3B0" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></span>
+                <input value="{{ searchValue }}" onChange="{{ onSearchInput }}" type="search" placeholder="搜索关键词、标题、概念、技能…" style="width:100%;height:40px;padding:0 12px 0 36px;border:1px solid #DDE3EA;border-radius:10px;background:#F8FAFB;color:#161A20;font-size:13px;font-family:inherit" style-focus="outline:none;border-color:#0E7C6B;background:#fff;box-shadow:0 0 0 3px rgba(14,124,107,.12)">
+              </div>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5A6473;background:#EEF1F5;padding:5px 11px;border-radius:999px">{{ resultCount }} 条</span>
+            </div>
+            <div style="display:flex;gap:7px;overflow-x:auto;padding-bottom:3px" class="noscroll">
+              <sc-for list="{{ exploreChips }}" as="chip" hint-placeholder-count="9">
+                <button onClick="{{ chip.onClick }}" style="flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 13px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:12.5px;border:1px solid {{ chip.border }};background:{{ chip.bg }};color:{{ chip.ink }};font-weight:{{ chip.weight }}" style-hover="border-color:#0E7C6B">
+                  <span>{{ chip.label }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;opacity:.7">{{ chip.count }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div class="exp-body" style="flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(300px,360px) minmax(0,1fr)">
+            <div class="exp-list" style="min-height:0;overflow-y:auto;border-right:1px solid #EEF1F5;padding:14px;display:flex;flex-direction:column;gap:9px">
+              <sc-if value="{{ searchInfoVisible }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:8px 10px;border-radius:8px;background:#FEF6D9;color:#8A6108;font-size:11.5px;font-family:'IBM Plex Mono',monospace;line-height:1.5">{{ searchInfo.text }}</div>
+              </sc-if>
+              <sc-if value="{{ listEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;place-items:center;min-height:260px;text-align:center;color:#9AA3B0"><div><div style="font-size:14px;margin-bottom:6px">没有匹配的知识条目</div><div style="font-size:12px">试试其他关键词或切换分类</div></div></div>
+              </sc-if>
+              <sc-for list="{{ listItems }}" as="item" hint-placeholder-count="6">
+                <button onClick="{{ item.onClick }}" style="width:100%;text-align:left;cursor:pointer;font-family:inherit;padding:14px;border-radius:12px;border:1px solid {{ item.border }};background:{{ item.bg }};box-shadow:inset 4px 0 0 {{ item.leftBar }};transition:transform .12s,border-color .12s" style-hover="border-color:#0E7C6B;transform:translateY(-1px)">
+                  <h3 style="font-size:14px;font-weight:600;color:{{ item.titleInk }};margin:0 0 6px">{{ item.title }}</h3>
+                  <p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0 0 9px">{{ item.summary }}</p>
+                  <div style="display:flex;flex-wrap:wrap;gap:5px">
+                    <sc-for list="{{ item.pills }}" as="pill" hint-placeholder-count="3"><span style="display:inline-flex;align-items:center;height:21px;padding:0 8px;border-radius:6px;font-size:10.5px;font-weight:600;background:{{ pill.bg }};color:{{ pill.ink }}">{{ pill.text }}</span></sc-for>
+                  </div>
+                </button>
+              </sc-for>
+            </div>
+
+            <div class="exp-detail" style="min-height:0;overflow-y:auto;padding:22px">
+              <sc-if value="{{ deleteOk }}" hint-placeholder-val="{{ false }}">
+                <div style="margin:0 0 14px;padding:10px 12px;border-radius:10px;background:#E6F3F0;border:1px solid #BFE3DC;color:#0A5A4E;font-size:12.5px;font-weight:600">{{ deleteResult.message }}</div>
+              </sc-if>
+              <sc-if value="{{ deleteWarn }}" hint-placeholder-val="{{ false }}">
+                <div style="margin:0 0 14px;padding:10px 12px;border-radius:10px;background:#FBEACB;border:1px solid #E8C779;color:#8A5A08;font-size:12.5px;font-weight:600">{{ deleteResult.message }}</div>
+              </sc-if>
+              <sc-if value="{{ noSelected }}" hint-placeholder-val="{{ true }}">
+                <div style="display:grid;place-items:center;min-height:340px;text-align:center;color:#9AA3B0"><div>
+                  <div style="width:56px;height:56px;margin:0 auto 14px;border-radius:16px;background:#F1F3F6;display:grid;place-items:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B4BCC8" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"></rect><line x1="4" y1="9" x2="20" y2="9"></line><line x1="9" y1="9" x2="9" y2="20"></line></svg></div>
+                  <p style="font-size:14px;color:#6A7382;margin:0">选择左侧任意条目查看详情</p>
+                  <p style="font-size:12px;margin:6px 0 0">metadata、显式关系、知识增长闭环与 Agent 检索上下文</p>
+                </div></div>
+              </sc-if>
+
+              <sc-if value="{{ hasSelected }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:6px">
+                    <h2 style="font-size:22px;line-height:1.3;font-weight:600;font-family:'Space Grotesk','IBM Plex Sans SC',sans-serif;margin:0">{{ selected.title }}</h2>
+                    <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px">
+                      <button onClick="{{ selected.onToggleSave }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 13px;border-radius:9px;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600;border:1px solid {{ selected.saveBorder }};background:{{ selected.saveBg }};color:{{ selected.saveInk }}" style-hover="border-color:#0E7C6B">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="{{ selected.saveFill }}" stroke="{{ selected.saveInk }}" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v16l-7-4-7 4V4a1 1 0 0 1 1-1z"></path></svg>{{ selected.saveLabel }}
+                      </button>
+                      <button onClick="{{ selected.onDeleteRequest }}" title="删除知识" style="width:32px;height:32px;border-radius:9px;border:1px solid #E4E8ED;background:#fff;color:#8A94A3;display:grid;place-items:center;cursor:pointer" style-hover="border-color:#F0B5B5;background:#FFF5F5;color:#B42318">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A94A3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M6 7l1 14h10l1-14"></path><path d="M9 7V4h6v3"></path></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8A94A3">{{ selected.id }}</span><span style="color:#D4DAE2">·</span>
+                    <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:6px;font-size:10.5px;font-weight:600;background:{{ selected.typeBg }};color:{{ selected.typeInk }}">{{ selected.typeLabel }}</span>
+                    <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:6px;font-size:10.5px;font-weight:600;background:{{ selected.statusBg }};color:{{ selected.statusInk }}">{{ selected.statusLabel }}</span>
+                  </div>
+                  <sc-if value="{{ selected.deleteConfirm }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin:0 0 14px;padding:12px;border:1px solid #F0B5B5;border-radius:12px;background:#FFF7F7;display:flex;align-items:center;justify-content:space-between;gap:12px">
+                      <div><p style="font-size:13px;font-weight:600;color:#B42318;margin:0 0 4px">确认删除这条知识?</p><p style="font-size:12px;color:#6A7382;line-height:1.5;margin:0">删除后会从浏览列表和搜索结果中移除。</p></div>
+                      <div style="display:flex;align-items:center;gap:8px;flex:0 0 auto">
+                        <button onClick="{{ selected.onDeleteCancel }}" style="height:32px;padding:0 12px;border-radius:8px;border:1px solid #DDE3EA;background:#fff;color:#5A6473;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="border-color:#9AA3B0">取消</button>
+                        <button onClick="{{ selected.onDeleteConfirm }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:#B42318;color:#fff;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#8F1D14">{{ selected.deleteConfirmLabel }}</button>
+                      </div>
+                    </div>
+                  </sc-if>
+                  <p style="font-size:14px;color:#3A424E;line-height:1.65;margin:0 0 4px">{{ selected.summary }}</p>
+                  <sc-if value="{{ selected.analysisVisible }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin:12px 0 4px;padding:10px 12px;border:1px solid {{ selected.analysisBorder }};border-radius:10px;background:{{ selected.analysisBg }}">
+                      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:{{ selected.analysisInk }}">分析来源 · {{ selected.analysisLabel }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:{{ selected.analysisInk }}">confidence {{ selected.analysisConfidence }}</span></div>
+                      <p style="font-size:12px;color:#5A6473;line-height:1.5;margin:0">{{ selected.analysisNote }}</p>
+                    </div>
+                  </sc-if>
+
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0">
+                    <div style="padding:12px;border:1px solid #EEF1F5;border-radius:11px;background:#F8FAFB"><span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#8A94A3;margin-bottom:8px">适用对象 · Audience</span><div style="display:flex;flex-wrap:wrap;gap:5px"><sc-for list="{{ selected.audience }}" as="a" hint-placeholder-count="3"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:6px;font-size:11px;font-weight:500;background:#EEF1F5;color:#4A5361">{{ a.text }}</span></sc-for><sc-if value="{{ selected.emptyAudience }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#9AA3B0">未标注</span></sc-if></div></div>
+                    <div style="padding:12px;border:1px solid #EEF1F5;border-radius:11px;background:#F8FAFB"><span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#8A94A3;margin-bottom:8px">关键词 · Keywords</span><div style="display:flex;flex-wrap:wrap;gap:5px"><sc-for list="{{ selected.keywords }}" as="k" hint-placeholder-count="3"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:6px;font-size:11px;font-weight:500;background:#E6F3F0;color:#0A5A4E">{{ k.text }}</span></sc-for><sc-if value="{{ selected.emptyKeywords }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#9AA3B0">未标注</span></sc-if></div></div>
+                    <div style="padding:12px;border:1px solid #EEF1F5;border-radius:11px;background:#F8FAFB"><span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#8A94A3;margin-bottom:8px">概念 · Concepts</span><div style="display:flex;flex-wrap:wrap;gap:5px"><sc-for list="{{ selected.concepts }}" as="c" hint-placeholder-count="2"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:6px;font-size:11px;font-weight:500;background:#EEF1F5;color:#4A5361">{{ c.text }}</span></sc-for><sc-if value="{{ selected.emptyConcepts }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#9AA3B0">未标注</span></sc-if></div></div>
+                    <div style="padding:12px;border:1px solid #EEF1F5;border-radius:11px;background:#F8FAFB"><span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#8A94A3;margin-bottom:8px">技能 · Skills</span><div style="display:flex;flex-wrap:wrap;gap:5px"><sc-for list="{{ selected.skills }}" as="s" hint-placeholder-count="2"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:6px;font-size:11px;font-weight:500;background:#EEF1F5;color:#4A5361">{{ s.text }}</span></sc-for><sc-if value="{{ selected.emptySkills }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#9AA3B0">未标注</span></sc-if></div></div>
+                  </div>
+
+                  <div style="margin:18px 0;padding:16px;border:1px solid #D9E6E2;border-radius:14px;background:#F8FBFA">
+                    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
+                      <div><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#0A5A4E">完善 metadata · Draft Review</span><p style="font-size:12px;color:#6A7382;line-height:1.5;margin:5px 0 0">上传后不用再传一次文件,在这里补充 metadata 并保存。</p></div>
+                      <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#0A5A4E;background:#E6F3F0;padding:4px 9px;border-radius:999px">id {{ selected.id }}</span>
+                    </div>
+                    <form onSubmit="{{ onMetadataSubmit }}" style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
+                      <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">关键词</label><input value="{{ metadataKeywords }}" onChange="{{ onMetadataKeywords }}" type="text" placeholder="大数据, C2S, 挑战" style="width:100%;height:36px;padding:0 10px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#0E7C6B"></div>
+                      <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">适用对象</label><input value="{{ metadataAudience }}" onChange="{{ onMetadataAudience }}" type="text" placeholder="学生, 教师, Agent" style="width:100%;height:36px;padding:0 10px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#0E7C6B"></div>
+                      <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">概念</label><input value="{{ metadataConcepts }}" onChange="{{ onMetadataConcepts }}" type="text" placeholder="AI+X, KSTAR, 元数据" style="width:100%;height:36px;padding:0 10px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#0E7C6B"></div>
+                      <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">技能</label><input value="{{ metadataSkills }}" onChange="{{ onMetadataSkills }}" type="text" placeholder="结构化阅读, 任务拆解" style="width:100%;height:36px;padding:0 10px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#0E7C6B"></div>
+                      <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">状态</label><select value="{{ metadataStatus }}" onChange="{{ onMetadataStatus }}" style="width:100%;height:36px;padding:0 10px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20"><option value="draft">draft</option><option value="review">review</option><option value="stable">stable</option></select></div>
+                      <div style="display:flex;align-items:end;gap:8px"><button type="submit" style="height:36px;padding:0 14px;border:0;border-radius:9px;background:#0E7C6B;color:#fff;font-size:12.5px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#0A5A4E">保存 metadata</button></div>
+                    </form>
+                    <sc-if value="{{ metadataOk }}" hint-placeholder-val="{{ false }}"><div style="margin-top:10px;padding:9px 11px;border-radius:9px;background:#E6F3F0;color:#0A5A4E;font-size:12px;font-weight:600">{{ metadataResult.message }}</div></sc-if>
+                    <sc-if value="{{ metadataWarn }}" hint-placeholder-val="{{ false }}"><div style="margin-top:10px;padding:9px 11px;border-radius:9px;background:#FBEACB;color:#8A5A08;font-size:12px;font-weight:600">{{ metadataResult.message }}</div></sc-if>
+                  </div>
+
+                  <div style="margin:18px 0;padding:16px;border:1px solid #D9E6E2;border-radius:14px;background:linear-gradient(180deg,#F3FAF8,#FBFDFC)">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#0A5A4E">知识增长闭环 · Knowledge Growth Loop</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#0E7C6B;background:#E6F3F0;padding:3px 9px;border-radius:999px">闭环 ↺</span></div>
+                    <div style="display:flex;align-items:flex-start;gap:0;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px" class="noscroll">
+                      <sc-for list="{{ selected.flowNodes }}" as="node" hint-placeholder-count="7">
+                        <div style="display:flex;align-items:flex-start;flex:0 0 auto">
+                          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;min-width:58px">
+                            <div style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;background:{{ node.bg }};color:{{ node.ink }};border:1px solid {{ node.border }};transition:all .3s">{{ node.index }}</div>
+                            <span style="font-size:10.5px;color:#3A424E;font-weight:500;white-space:nowrap">{{ node.label }}</span>
+                          </div>
+                          <sc-if value="{{ node.showArrow }}" hint-placeholder-val="{{ true }}"><span style="color:#B4C4BE;font-size:15px;margin:10px 2px 0">→</span></sc-if>
+                        </div>
+                      </sc-for>
+                    </div>
+                    <p style="font-size:11.5px;color:#5E7770;line-height:1.55;margin:12px 0 0">场景触发需求 → 经本体、流程、技能沉淀 → 评估与学习驱动增长 → 回流为新的可复用条目。</p>
+                  </div>
+
+                  <div style="display:flex;flex-direction:column;margin:18px 0;border:1px solid #EEF1F5;border-radius:12px;overflow:hidden">
+                    <div style="display:grid;grid-template-columns:118px 1fr;gap:14px;padding:13px 15px;border-bottom:1px solid #F1F3F6"><div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0E7C6B;display:block">01</span><span style="font-size:12.5px;font-weight:600;display:block;margin-top:1px">场景</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#9AA3B0">Situation</span></div><p style="font-size:13px;color:#3A424E;line-height:1.6;margin:0;align-self:center">{{ selected.situation }}</p></div>
+                    <div style="display:grid;grid-template-columns:118px 1fr;gap:14px;padding:13px 15px;border-bottom:1px solid #F1F3F6"><div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0E7C6B;display:block">02</span><span style="font-size:12.5px;font-weight:600;display:block;margin-top:1px">本体</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#9AA3B0">Ontology</span></div><p style="font-size:13px;color:#3A424E;line-height:1.6;margin:0;align-self:center">{{ selected.ontology }}</p></div>
+                    <div style="display:grid;grid-template-columns:118px 1fr;gap:14px;padding:13px 15px;border-bottom:1px solid #F1F3F6"><div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0E7C6B;display:block">03</span><span style="font-size:12.5px;font-weight:600;display:block;margin-top:1px">流程</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#9AA3B0">Workflow</span></div><p style="font-size:13px;color:#3A424E;line-height:1.6;margin:0;align-self:center">{{ selected.workflow }}</p></div>
+                    <div style="display:grid;grid-template-columns:118px 1fr;gap:14px;padding:13px 15px;border-bottom:1px solid #F1F3F6"><div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0E7C6B;display:block">04</span><span style="font-size:12.5px;font-weight:600;display:block;margin-top:1px">技能</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#9AA3B0">Skill</span></div><p style="font-size:13px;color:#3A424E;line-height:1.6;margin:0;align-self:center">{{ selected.skillText }}</p></div>
+                    <div style="display:grid;grid-template-columns:118px 1fr;gap:14px;padding:13px 15px;border-bottom:1px solid #F1F3F6"><div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0E7C6B;display:block">05</span><span style="font-size:12.5px;font-weight:600;display:block;margin-top:1px">评估</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#9AA3B0">Evaluation</span></div><p style="font-size:13px;color:#3A424E;line-height:1.6;margin:0;align-self:center">{{ selected.evaluation }}</p></div>
+                    <div style="display:grid;grid-template-columns:118px 1fr;gap:14px;padding:13px 15px"><div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0E7C6B;display:block">06</span><span style="font-size:12.5px;font-weight:600;display:block;margin-top:1px">知识增长</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#9AA3B0">Growth</span></div><p style="font-size:13px;color:#3A424E;line-height:1.6;margin:0;align-self:center">{{ selected.knowledgeGrowth }}</p></div>
+                  </div>
+
+                  <div style="margin:18px 0">
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3">显式关系 · Relationships</span>
+                    <sc-if value="{{ selected.hasRelationships }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:7px;margin-top:10px"><sc-for list="{{ selected.relationships }}" as="rel" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #EEF1F5;border-radius:10px;background:#F8FAFB"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0A5A4E;background:#E6F3F0;padding:3px 9px;border-radius:6px;white-space:nowrap">{{ rel.predicate }}</span><span style="color:#B4BCC8;font-size:13px">→</span><span onClick="{{ rel.onClick }}" style="font-size:13px;color:{{ rel.color }};font-weight:500;cursor:{{ rel.cursor }}" style-hover="text-decoration:underline">{{ rel.targetTitle }}</span></div></sc-for></div></sc-if>
+                    <sc-if value="{{ selected.noRelationships }}" hint-placeholder-val="{{ false }}"><p style="font-size:13px;color:#9AA3B0;margin:10px 0 0">暂无显式关系</p></sc-if>
+                  </div>
+
+                  <sc-if value="{{ showAgentLens }}" hint-placeholder-val="{{ true }}">
+                    <div style="margin:18px 0;padding:16px;border:1px solid #D3DAF6;border-radius:14px;background:linear-gradient(180deg,#F3F5FE,#FBFCFE)">
+                      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#2740A8">Agent 视角 · Retrieval Context</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#2740A8;background:#E5E9FF;padding:3px 9px;border-radius:999px">agent-ready</span></div>
+                      <div style="display:flex;flex-direction:column;gap:11px">
+                        <div style="display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start"><span style="font-size:12px;color:#6A7382;font-weight:600">检索触发</span><div style="display:flex;flex-wrap:wrap;gap:5px"><sc-for list="{{ selected.agentRetrievers }}" as="ar" hint-placeholder-count="4"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:6px;font-size:11px;font-weight:500;background:#E5E9FF;color:#2740A8">{{ ar.text }}</span></sc-for></div></div>
+                        <div style="display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start"><span style="font-size:12px;color:#6A7382;font-weight:600">可回答</span><p style="font-size:12.5px;color:#3A424E;line-height:1.55;margin:0">{{ selected.agentAnswer }}</p></div>
+                        <div style="display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:center"><span style="font-size:12px;color:#6A7382;font-weight:600">状态门槛</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#3A424E">status = {{ selected.agentStatus }} · 仅 stable 条目对外检索</span></div>
+                      </div>
+                    </div>
+                  </sc-if>
+
+                  <sc-if value="{{ selected.hasTrail }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin:18px 0">
+                      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#0A5A4E">接下来可以看 · Keep Exploring</span></div>
+                      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                        <sc-for list="{{ selected.trail }}" as="t" hint-placeholder-count="2">
+                          <button onClick="{{ t.onClick }}" style="text-align:left;cursor:pointer;font-family:inherit;padding:12px 13px;border:1px solid #E7EAEF;border-radius:11px;background:#fff;display:flex;align-items:center;gap:9px" style-hover="border-color:#0E7C6B">
+                            <span style="flex:0 0 auto;display:inline-flex;align-items:center;height:19px;padding:0 7px;border-radius:5px;font-size:10px;font-weight:600;background:{{ t.typeBg }};color:{{ t.typeInk }}">{{ t.typeLabel }}</span>
+                            <span style="font-size:12.5px;font-weight:500;color:#161A20">{{ t.title }}</span>
+                            <span style="margin-left:auto;color:#B4C4BE">→</span>
+                          </button>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </sc-if>
+
+                  <div style="margin-top:18px;padding-top:14px;border-top:1px solid #EEF1F5">
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3">源文件 · Source</span>
+                    <div style="margin-top:8px"><a href="{{ selected.source }}" target="_blank" style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#3A5BD9;text-decoration:none" style-hover="text-decoration:underline"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A5BD9" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path></svg>{{ selected.source }}</a></div>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isContribute }}" hint-placeholder-val="{{ false }}">
+        <div style="height:100%;overflow-y:auto">
+          <div style="max-width:720px;margin:0 auto;padding:32px 28px 56px">
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0E7C6B;margin:0 0 8px">Contribute</p>
+            <h1 style="font-family:'Space Grotesk','IBM Plex Sans SC',sans-serif;font-size:24px;line-height:1.3;font-weight:600;margin:0 0 6px">新增知识草稿</h1>
+            <p style="font-size:13.5px;color:#5A6473;line-height:1.6;margin:0 0 24px">先把文件或经验放进知识库,生成 draft 条目,再补充 metadata 和关系。</p>
+
+            <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:start">
+              <div style="display:flex;flex-direction:column;gap:13px">
+              <div style="padding:16px;border:1px solid #D9E6E2;border-radius:14px;background:#F8FBFA">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#0A5A4E">上传资料 · Upload</span>
+                <h2 style="font-size:15px;font-weight:600;margin:8px 0 6px">从文件生成草稿</h2>
+                <p style="font-size:12px;color:#6A7382;line-height:1.55;margin:0 0 12px">学生作业、老师材料或 Builder 整理稿都可以先上传为 draft。</p>
+                <label style="height:40px;padding:0 14px;border:1px dashed #9DCBC2;border-radius:10px;background:#fff;color:#0A5A4E;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:8px;cursor:pointer">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A5A4E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M20 16v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3"></path></svg>
+                  选择文件
+                  <input onChange="{{ onUploadFile }}" type="file" accept=".md,.txt,.json,.csv,.doc,.docx,.pdf" style="display:none">
+                </label>
+                <sc-if value="{{ uploadBusy }}" hint-placeholder-val="{{ false }}"><p style="font-size:12px;color:#6A7382;margin:10px 0 0">正在上传并生成草稿...</p></sc-if>
+                <sc-if value="{{ uploadOk }}" hint-placeholder-val="{{ false }}"><div style="margin-top:10px;padding:10px;border-radius:10px;background:#E6F3F0;border:1px solid #BFE3DC"><p style="font-size:12px;font-weight:600;color:#0A5A4E;margin:0 0 4px">已生成草稿 · {{ uploadResult.title }}</p><p style="font-size:11.5px;color:#6A7382;margin:0;line-height:1.5">{{ uploadResult.note }}</p></div></sc-if>
+                <sc-if value="{{ uploadWarn }}" hint-placeholder-val="{{ false }}"><div style="margin-top:10px;padding:9px 11px;border-radius:9px;background:#FBEACB;color:#8A5A08;font-size:12px;font-weight:600">{{ uploadResult.message }}</div></sc-if>
+              </div>
+              <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:13px;padding:18px;border:1px solid #E4E8ED;border-radius:14px;background:#fff">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3">手动新增 · Manual Draft</span>
+                <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">知识类型</label>
+                  <select value="{{ formType }}" onChange="{{ onFormType }}" style="width:100%;height:38px;padding:0 11px;border:1px solid #DDE3EA;border-radius:9px;background:#F8FAFB;font-size:13px;font-family:inherit;color:#161A20">
+                    <option value="course">课程</option><option value="challenge">挑战</option><option value="prompt">提示词</option><option value="faq">FAQ</option><option value="best-practice">最佳实践</option><option value="project">项目案例</option><option value="agent">Agent</option>
+                  </select></div>
+                <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">标题</label>
+                  <input value="{{ formTitle }}" onChange="{{ onFormTitle }}" type="text" placeholder="例如:第 2 周项目复盘" style="width:100%;height:38px;padding:0 11px;border:1px solid #DDE3EA;border-radius:9px;background:#F8FAFB;font-size:13px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#0E7C6B;background:#fff"></div>
+                <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">一句话摘要</label>
+                  <textarea value="{{ formSummary }}" onChange="{{ onFormSummary }}" rows="3" placeholder="用一句话说明这条知识解决什么、可以怎么复用" style="width:100%;padding:9px 11px;border:1px solid #DDE3EA;border-radius:9px;background:#F8FAFB;font-size:13px;font-family:inherit;color:#161A20;line-height:1.55;resize:vertical" style-focus="outline:none;border-color:#0E7C6B;background:#fff"></textarea></div>
+                <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">关键词(逗号分隔)</label>
+                  <input value="{{ formKeywords }}" onChange="{{ onFormKeywords }}" type="text" placeholder="例如:挑战, AI助手, 学习" style="width:100%;height:38px;padding:0 11px;border:1px solid #DDE3EA;border-radius:9px;background:#F8FAFB;font-size:13px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#0E7C6B;background:#fff"></div>
+                <button type="submit" style="height:40px;border:0;border-radius:10px;background:#0E7C6B;color:#fff;cursor:pointer;font-weight:600;font-size:13px;font-family:inherit;margin-top:2px" style-hover="background:#0A5A4E">保存为知识草稿</button>
+                <sc-if value="{{ submitWarn }}" hint-placeholder-val="{{ false }}"><div style="padding:9px 11px;border-radius:9px;background:#FBEACB;color:#8A5A08;font-size:12px;font-weight:600">⚠ {{ submitResult.message }}</div></sc-if>
+                <sc-if value="{{ submitOk }}" hint-placeholder-val="{{ false }}"><div style="padding:11px;border-radius:10px;background:#E6F3F0;border:1px solid #BFE3DC"><p style="font-size:12px;font-weight:600;color:#0A5A4E;margin:0 0 4px">✓ 已保存草稿 · id {{ submitResult.id }}</p><p style="font-size:11.5px;color:#6A7382;margin:0;line-height:1.5">下一步:补充 concepts / skills / relationships,进入 review。</p></div></sc-if>
+              </form>
+              </div>
+
+              <div style="position:sticky;top:0;display:flex;flex-direction:column;gap:12px">
+                <div style="padding:15px;border:1px dashed #C6D3D0;border-radius:14px;background:#F8FBFA">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3">实时预览 · KnowledgeItem</span>
+                  <h3 style="font-size:15px;font-weight:600;margin:10px 0 8px;color:{{ preview.titleInk }}">{{ preview.title }}</h3>
+                  <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px"><sc-for list="{{ preview.pills }}" as="p" hint-placeholder-count="2"><span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:6px;font-size:10.5px;font-weight:600;background:{{ p.bg }};color:{{ p.ink }}">{{ p.text }}</span></sc-for></div>
+                  <p style="font-size:12px;color:#6A7382;line-height:1.55;margin:0">{{ preview.summary }}</p>
+                </div>
+                <sc-if value="{{ hasDrafts }}" hint-placeholder-val="{{ false }}">
+                  <div style="padding:14px;border:1px solid #E4E8ED;border-radius:14px;background:#fff">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:12px;font-weight:600;color:#161A20">已保存草稿</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#3A5BD9">{{ home.contributed }} 条</span></div>
+                    <div style="display:flex;flex-direction:column;gap:7px">
+                      <sc-for list="{{ drafts }}" as="d" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #EEF1F5;border-radius:9px;background:#F8FAFB"><span style="flex:0 0 auto;display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:5px;font-size:9.5px;font-weight:600;background:{{ d.typeBg }};color:{{ d.typeInk }}">{{ d.typeLabel }}</span><span style="font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ d.title }}</span></div></sc-for>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ settingsOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;inset:0;z-index:40;background:rgba(18,22,29,.42);display:flex;justify-content:flex-end">
+          <div style="width:min(460px,100%);height:100%;background:#fff;box-shadow:-18px 0 44px rgba(15,23,42,.18);display:flex;flex-direction:column">
+            <div style="flex:0 0 auto;height:58px;padding:0 18px;border-bottom:1px solid #EEF1F5;display:flex;align-items:center;justify-content:space-between;gap:12px">
+              <div>
+                <h2 style="font-size:16px;font-weight:600;margin:0;color:#161A20">设置</h2>
+                <p style="font-size:11.5px;color:#8A94A3;margin:3px 0 0">模型配置与演示界面偏好</p>
+              </div>
+              <button onClick="{{ onCloseSettings }}" title="关闭" style="width:32px;height:32px;border-radius:9px;border:1px solid #DDE3EA;background:#fff;color:#5A6473;display:grid;place-items:center;cursor:pointer" style-hover="border-color:#9AA3B0;background:#F8FAFB">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5A6473" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
+              </button>
+            </div>
+
+            <div style="flex:1 1 auto;min-height:0;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px">
+              <form onSubmit="{{ onSettingsSubmit }}" style="display:flex;flex-direction:column;gap:12px;padding:16px;border:1px solid #E4E8ED;border-radius:14px;background:#F8FAFB">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+                  <div><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3">LLM</span><h3 style="font-size:14px;font-weight:600;margin:6px 0 0;color:#161A20">自动分类模型</h3></div>
+                  <span style="display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;background:{{ settingsStatusBg }};color:{{ settingsStatusInk }};font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600">{{ settingsStatusText }}</span>
+                </div>
+                <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">Base URL</label><input value="{{ settingsBaseUrl }}" onChange="{{ onSettingsBaseUrl }}" type="text" placeholder="https://api.openai.com/v1" style="width:100%;height:38px;padding:0 11px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:'IBM Plex Mono','IBM Plex Sans SC',monospace;color:#161A20" style-focus="outline:none;border-color:#0E7C6B"></div>
+                <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">模型名称</label><input value="{{ settingsModel }}" onChange="{{ onSettingsModel }}" type="text" placeholder="gpt-4o-mini / doubao-..." style="width:100%;height:38px;padding:0 11px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:'IBM Plex Mono','IBM Plex Sans SC',monospace;color:#161A20" style-focus="outline:none;border-color:#0E7C6B"></div>
+                <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">API Key</label><input value="{{ settingsApiKey }}" onChange="{{ onSettingsApiKey }}" type="password" placeholder="{{ settingsApiKeyPlaceholder }}" style="width:100%;height:38px;padding:0 11px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:'IBM Plex Mono','IBM Plex Sans SC',monospace;color:#161A20" style-focus="outline:none;border-color:#0E7C6B"><p style="font-size:11.5px;color:#8A94A3;line-height:1.5;margin:6px 0 0">保存后只显示配置状态,页面不会回显 Key 明文。</p></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:2px">
+                  <span style="font-size:11.5px;color:#8A94A3">{{ settingsModelHint }}</span>
+                  <button type="submit" style="height:36px;padding:0 14px;border:0;border-radius:9px;background:#0E7C6B;color:#fff;font-size:12.5px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#0A5A4E">{{ settingsSaveLabel }}</button>
+                </div>
+                <sc-if value="{{ settingsOk }}" hint-placeholder-val="{{ false }}"><div style="padding:9px 11px;border-radius:9px;background:#E6F3F0;color:#0A5A4E;font-size:12px;font-weight:600">{{ settingsResult.message }}</div></sc-if>
+                <sc-if value="{{ settingsWarn }}" hint-placeholder-val="{{ false }}"><div style="padding:9px 11px;border-radius:9px;background:#FBEACB;color:#8A5A08;font-size:12px;font-weight:600">{{ settingsResult.message }}</div></sc-if>
+              </form>
+
+              <div style="padding:16px;border:1px solid #E4E8ED;border-radius:14px;background:#fff">
+                <div style="margin-bottom:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3">Theme</span><h3 style="font-size:14px;font-weight:600;margin:6px 0 0;color:#161A20">界面色系</h3></div>
+                <div style="display:grid;grid-template-columns:1fr;gap:8px">
+                  <sc-for list="{{ themeOptions }}" as="theme" hint-placeholder-count="3">
+                    <button type="button" onClick="{{ theme.onClick }}" style="height:44px;width:100%;display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:10px;border:1px solid {{ theme.border }};background:{{ theme.bg }};cursor:pointer;font-family:inherit;text-align:left" style-hover="border-color:{{ theme.primary }}">
+                      <span style="display:flex;align-items:center;gap:4px;flex:0 0 auto"><span style="width:18px;height:18px;border-radius:6px;background:{{ theme.primary }}"></span><span style="width:18px;height:18px;border-radius:6px;background:{{ theme.secondary }}"></span><span style="width:18px;height:18px;border-radius:6px;background:{{ theme.headerBg }}"></span></span>
+                      <span style="font-size:13px;font-weight:600;color:#161A20;flex:1">{{ theme.label }}</span>
+                      <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:{{ theme.ink }}">{{ theme.state }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1360,&quot;height&quot;:880},&quot;showAgentLens&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;内容&quot;},&quot;loopAnimated&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;交互&quot;}}">
+class Component extends DCLogic {
+  buildEntries(){
+    const embedded = window.__NSEAP_EMBEDDED_DATA__ || {};
+    const searchLookup = new Map((embedded.searchIndex || []).map(item => [item.id, item.searchText || ""]));
+    const entries = embedded.knowledgeData && Array.isArray(embedded.knowledgeData.entries)
+      ? embedded.knowledgeData.entries
+      : [];
+
+    return entries.map((entry) => ({
+      ...entry,
+      audience: Array.isArray(entry.audience) ? entry.audience : [],
+      tags: Array.isArray(entry.tags) ? entry.tags : [],
+      keywords: Array.isArray(entry.keywords) ? entry.keywords : [],
+      concepts: Array.isArray(entry.concepts) ? entry.concepts : [],
+      skills: Array.isArray(entry.skills) ? entry.skills : [],
+      related: Array.isArray(entry.related) ? entry.related : [],
+      relationships: Array.isArray(entry.relationships) ? entry.relationships : [],
+      searchText: entry.searchText || searchLookup.get(entry.id) || ""
+    }));
+  }
+
+  categories = window.__NSEAP_EMBEDDED_DATA__ && window.__NSEAP_EMBEDDED_DATA__.knowledgeData && Array.isArray(window.__NSEAP_EMBEDDED_DATA__.knowledgeData.categories) && window.__NSEAP_EMBEDDED_DATA__.knowledgeData.categories.length
+    ? window.__NSEAP_EMBEDDED_DATA__.knowledgeData.categories
+    : [
+        {id:"all",label:"\u5168\u90e8"},
+        {id:"overview",label:"\u6982\u89c8"},
+        {id:"course",label:"\u8bfe\u7a0b"},
+        {id:"challenge",label:"\u6311\u6218"},
+        {id:"prompt",label:"\u63d0\u793a\u8bcd"},
+        {id:"faq",label:"FAQ"},
+        {id:"best-practice",label:"\u6700\u4f73\u5b9e\u8df5"},
+        {id:"project",label:"\u9879\u76ee\u6848\u4f8b"},
+        {id:"agent",label:"Agent"}
+      ];
+  flow = window.__NSEAP_EMBEDDED_DATA__ && window.__NSEAP_EMBEDDED_DATA__.knowledgeData && Array.isArray(window.__NSEAP_EMBEDDED_DATA__.knowledgeData.flow) && window.__NSEAP_EMBEDDED_DATA__.knowledgeData.flow.length
+    ? window.__NSEAP_EMBEDDED_DATA__.knowledgeData.flow
+    : ["\u573a\u666f","\u672c\u4f53","\u6d41\u7a0b","\u6280\u80fd","\u8bc4\u4f30","\u5b66\u4e60","\u77e5\u8bc6\u589e\u957f"];
+  ladder = [
+    {code:"L0",label:"\u6563\u843d\u6587\u6863"},{code:"L1",label:"\u6587\u6863\u5e93"},{code:"L2",label:"\u6807\u51c6\u5316\u77e5\u8bc6\u5e93"},{code:"L3",label:"Agent-Ready"},{code:"L4",label:"\u8ba4\u77e5\u7ec6\u80de"},{code:"L5",label:"\u8fdb\u5316\u578b\u7ec6\u80de"}
+  ];
+  featuredIds = ["kb-overview-001","kb-challenge-001","kb-prompt-001","kb-project-001"];
+  typeMeta = {
+    overview:{label:"\u6982\u89c8",bg:"#EDE9FE",ink:"#5B21B6"},course:{label:"\u8bfe\u7a0b",bg:"#E0EDFF",ink:"#1D4ED8"},challenge:{label:"\u6311\u6218",bg:"#FBEACB",ink:"#8A5A08"},prompt:{label:"\u63d0\u793a\u8bcd",bg:"#DBF0E4",ink:"#136A40"},faq:{label:"FAQ",bg:"#FBE3EE",ink:"#9C2760"},"best-practice":{label:"\u6700\u4f73\u5b9e\u8df5",bg:"#E4E8FF",ink:"#3A34A0"},project:{label:"\u9879\u76ee\u6848\u4f8b",bg:"#FBE4D2",ink:"#98461A"},agent:{label:"Agent",bg:"#E6F3F0",ink:"#0A5A4E"}
+  };
+  statusMeta = {
+    sample:{label:"sample",bg:"#EEF1F5",ink:"#5A6473"},draft:{label:"draft",bg:"#FBEACB",ink:"#8A5A08"},stable:{label:"stable",bg:"#DBF0E4",ink:"#136A40"},review:{label:"review",bg:"#E0EDFF",ink:"#1D4ED8"}
+  };
+  themes = {
+    emerald:{label:"知识绿",primary:"#0E7C6B",primaryInk:"#0A5A4E",primaryWash:"#E6F3F0",secondary:"#3A5BD9",appBg:"#F1F3F6",headerBg:"#12161D",headerInk:"#E8ECF2",headerMuted:"#8892A6"},
+    blue:{label:"科技蓝",primary:"#2563EB",primaryInk:"#1D4ED8",primaryWash:"#EAF1FF",secondary:"#14B8A6",appBg:"#F3F6FB",headerBg:"#0F172A",headerInk:"#E8ECF2",headerMuted:"#9AA8C7"},
+    graphite:{label:"深色灰",primary:"#64748B",primaryInk:"#334155",primaryWash:"#EEF2F7",secondary:"#22C55E",appBg:"#ECEFF3",headerBg:"#1F2937",headerInk:"#F3F4F6",headerMuted:"#AAB4C2"}
+  };
+  entries = this.buildEntries();
+
+  state = { view:"home", category:"all", search:"", selectedId:null, flowStep:6, form:{title:"",type:"course",keywords:"",summary:""}, metadataForm:{entryId:"",keywords:"",concepts:"",skills:"",audience:"",status:"draft"}, settingsForm:{baseUrl:"",model:"",apiKey:""}, settings:null, settingsOpen:false, settingsBusy:false, settingsResult:null, theme:"emerald", deleteConfirmId:null, deleteBusy:false, deleteResult:null, submitResult:null, metadataResult:null, uploadResult:null, uploadBusy:false, recent:[], saved:[], viewed:[], drafts:[], apiMode:"embedded", apiSearchResults:null };
+
+  componentDidMount(){
+    let p = {};
+    try { p = JSON.parse(localStorage.getItem("kcc.teacher.v2") || "{}") || {}; } catch(e) {}
+    this.setState({ recent:p.recent||[], saved:p.saved||[], viewed:p.viewed||[], drafts:p.drafts||[], theme:this.themes[p.theme] ? p.theme : "emerald" });
+    this.loadFromApi();
+    this.loadSettings();
+  }
+  componentWillUnmount(){ clearInterval(this._t); clearTimeout(this._searchTimer); }
+
+  async loadFromApi(){
+    try {
+      const response = await fetch("/api/knowledge", { cache:"no-store" });
+      if(!response.ok) throw new Error("API request failed");
+      const data = await response.json();
+      if(!data || !Array.isArray(data.entries)) throw new Error("API payload is invalid");
+      if(Array.isArray(data.categories) && data.categories.length) this.categories = data.categories;
+      if(Array.isArray(data.flow) && data.flow.length) this.flow = data.flow;
+      this.entries = data.entries.map((entry) => ({
+        ...entry,
+        audience: Array.isArray(entry.audience) ? entry.audience : [],
+        tags: Array.isArray(entry.tags) ? entry.tags : [],
+        keywords: Array.isArray(entry.keywords) ? entry.keywords : [],
+        concepts: Array.isArray(entry.concepts) ? entry.concepts : [],
+        skills: Array.isArray(entry.skills) ? entry.skills : [],
+        related: Array.isArray(entry.related) ? entry.related : [],
+        relationships: Array.isArray(entry.relationships) ? entry.relationships : []
+      }));
+      const nextSelectedId = this.entries.some(entry => entry.id === this.state.selectedId)
+        ? this.state.selectedId
+        : (this.entries[0] ? this.entries[0].id : null);
+      const nextSelected = this.entries.find(entry => entry.id === nextSelectedId);
+      this.setState({ apiMode:"api", selectedId:nextSelectedId, metadataForm:this.metadataFormFor(nextSelected), metadataResult:null }, () => this.searchFromApi());
+    } catch(e) {
+      this.setState({ apiMode:"embedded" });
+    }
+  }
+
+  persist(){
+    const s = this.state;
+    try { localStorage.setItem("kcc.teacher.v2", JSON.stringify({recent:s.recent, saved:s.saved, viewed:s.viewed, drafts:s.drafts, theme:s.theme})); } catch(e) {}
+  }
+
+  themeFor(id){
+    return this.themes[id] || this.themes.emerald;
+  }
+
+  async loadSettings(){
+    try {
+      const response = await fetch("/api/settings", { cache:"no-store" });
+      if(!response.ok) throw new Error("设置接口不可用");
+      const data = await response.json();
+      const llm = data && data.llm ? data.llm : {};
+      this.setState({
+        settings:data,
+        settingsForm:{
+          baseUrl:llm.baseUrl || "https://api.openai.com/v1",
+          model:llm.model || "gpt-4o-mini",
+          apiKey:""
+        },
+        settingsResult:null
+      });
+    } catch(e) {
+      this.setState({
+        settings:null,
+        settingsResult:{state:"warning",message:"暂时无法读取后端设置，请确认 npm run dev 已启动。"}
+      });
+    }
+  }
+
+  openSettings(){
+    this.setState({settingsOpen:true, settingsResult:null}, () => this.loadSettings());
+  }
+
+  closeSettings(){
+    this.setState({settingsOpen:false});
+  }
+
+  setTheme(id){
+    if(!this.themes[id]) return;
+    this.setState({theme:id}, () => this.persist());
+  }
+
+  async saveSettings(){
+    const f = this.state.settingsForm || {};
+    this.setState({settingsBusy:true, settingsResult:null});
+    try {
+      const payload = {
+        llm:{
+          baseUrl:f.baseUrl,
+          model:f.model
+        }
+      };
+      if(String(f.apiKey || "").trim()) payload.llm.apiKey = f.apiKey;
+      const response = await fetch("/api/settings", {
+        method:"PATCH",
+        headers:{ "Content-Type":"application/json" },
+        body:JSON.stringify(payload)
+      });
+      const data = await response.json();
+      if(!response.ok) throw new Error(data.error || "设置保存失败");
+      const llm = data && data.llm ? data.llm : {};
+      this.setState({
+        settings:data,
+        settingsBusy:false,
+        settingsForm:{
+          baseUrl:llm.baseUrl || f.baseUrl || "https://api.openai.com/v1",
+          model:llm.model || f.model || "gpt-4o-mini",
+          apiKey:""
+        },
+        settingsResult:{state:"success",message:"设置已保存，后续上传会使用新的模型配置。"}
+      });
+    } catch(e) {
+      this.setState({settingsBusy:false, settingsResult:{state:"warning",message:e.message || "设置保存失败"}});
+    }
+  }
+
+  startFlow(){
+    clearInterval(this._t);
+    const animated = this.props.loopAnimated ?? true;
+    if(!animated){ this.setState({flowStep:6}); return; }
+    this.setState({flowStep:0});
+    let i = 0;
+    this._t = setInterval(() => { i++; if(i>=6){ clearInterval(this._t); this.setState({flowStep:6}); return; } this.setState({flowStep:i}); }, 260);
+  }
+
+  setView(v){ this.setState({view:v}); }
+  setCategory(id){ this.setState({category:id, apiSearchResults:null}, () => this.searchFromApi()); }
+
+  setSearch(value){
+    this.setState({search:value, apiSearchResults:null}, () => this.searchFromApi());
+  }
+
+  async searchFromApi(){
+    const query = this.state.search.trim();
+    if(this.state.apiMode !== "api" || !query) return;
+
+    clearTimeout(this._searchTimer);
+    this._searchTimer = setTimeout(async () => {
+      try {
+        const params = new URLSearchParams({ q:query, category:this.state.category });
+        const response = await fetch("/api/search?" + params.toString(), { cache:"no-store" });
+        if(!response.ok) throw new Error("Search API request failed");
+        const data = await response.json();
+        const byId = new Map(this.entries.map(entry => [entry.id, entry]));
+        const results = (data.results || []).map(entry => ({
+          entry: byId.get(entry.id) || entry,
+          matchedFields: Array.isArray(entry.matchedFields) ? entry.matchedFields : []
+        }));
+        this.setState({ apiSearchResults:results });
+      } catch(e) {
+        this.setState({ apiSearchResults:null });
+      }
+    }, 160);
+  }
+
+  isTextUpload(file){
+    const name = (file && file.name || "").toLowerCase();
+    return (file && file.type && file.type.startsWith("text/")) || /\.(md|txt|json|csv)$/i.test(name);
+  }
+
+  readFileAsText(file){
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ""));
+      reader.onerror = () => reject(reader.error || new Error("文件读取失败"));
+      reader.readAsText(file, "utf-8");
+    });
+  }
+
+  readFileAsDataUrl(file){
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ""));
+      reader.onerror = () => reject(reader.error || new Error("文件读取失败"));
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async uploadFile(event){
+    const file = event && event.target && event.target.files && event.target.files[0];
+    if(!file) return;
+    if(file.size > 8 * 1024 * 1024){
+      this.setState({uploadResult:{state:"warning",message:"文件太大,当前 MVP 建议上传 8MB 以内的资料。"}});
+      event.target.value = "";
+      return;
+    }
+
+    this.setState({uploadBusy:true, uploadResult:null});
+
+    try {
+      const payload = {
+        fileName:file.name,
+        fileType:file.type || "application/octet-stream",
+        fileSize:file.size
+      };
+
+      if(this.isTextUpload(file)) payload.text = await this.readFileAsText(file);
+      else payload.dataUrl = await this.readFileAsDataUrl(file);
+
+      const response = await fetch("/api/upload", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body:JSON.stringify(payload)
+      });
+      const saved = await response.json();
+      if(!response.ok) throw new Error(saved.error || "上传失败");
+
+      const entry = saved.entry;
+      this.entries = [entry, ...this.entries.filter(item => item.id !== entry.id)];
+      this.setState(s => ({
+        selectedId:entry.id,
+        drafts:[entry, ...s.drafts].slice(0,20),
+        uploadBusy:false,
+        uploadResult:{state:"success",id:entry.id,title:entry.title,note:entry.analysisNote || "文件已保存,草稿已经进入知识库并可搜索。"},
+        metadataForm:this.metadataFormFor(entry),
+        metadataResult:null,
+        apiMode:"api"
+      }), () => this.persist());
+    } catch(e) {
+      this.setState({uploadBusy:false, uploadResult:{state:"warning",message:e.message || "上传失败"}});
+    } finally {
+      event.target.value = "";
+    }
+  }
+
+  selectEntry(id){
+    const entry = this.entries.find(e => e.id === id);
+    this.setState(s => {
+      const recent = [id, ...s.recent.filter(x => x !== id)].slice(0,8);
+      const viewed = s.viewed.includes(id) ? s.viewed : [...s.viewed, id];
+      return { selectedId:id, view:"explore", recent, viewed, metadataForm:this.metadataFormFor(entry), metadataResult:null, deleteConfirmId:null, deleteResult:null };
+    }, () => { this.persist(); this.startFlow(); });
+  }
+  toggleSave(id){
+    this.setState(s => ({ saved: s.saved.includes(id) ? s.saved.filter(x => x !== id) : [...s.saved, id] }), () => this.persist());
+  }
+
+  requestDelete(id){
+    this.setState({deleteConfirmId:id, deleteResult:null});
+  }
+
+  cancelDelete(){
+    this.setState({deleteConfirmId:null, deleteResult:null});
+  }
+
+  async deleteEntry(id){
+    const entry = this.entries.find(item => item.id === id);
+    if(!entry) return;
+    const deletedIndex = this.entries.findIndex(item => item.id === id);
+    this.setState({deleteBusy:true, deleteResult:null});
+
+    try {
+      const response = await fetch("/api/knowledge/" + encodeURIComponent(id), { method:"DELETE" });
+      const payload = await response.json();
+      if(!response.ok) throw new Error(payload.error || "删除失败");
+
+      const remaining = this.entries.filter(item => item.id !== id);
+      this.entries = remaining;
+      const nextSelected = remaining[deletedIndex] || remaining[deletedIndex - 1] || remaining[0] || null;
+      this.setState(s => ({
+        selectedId:nextSelected ? nextSelected.id : null,
+        metadataForm:this.metadataFormFor(nextSelected),
+        deleteConfirmId:null,
+        deleteBusy:false,
+        deleteResult:{state:"success",message:"已删除知识条目: " + entry.title},
+        saved:s.saved.filter(itemId => itemId !== id),
+        recent:s.recent.filter(itemId => itemId !== id),
+        viewed:s.viewed.filter(itemId => itemId !== id),
+        drafts:s.drafts.filter(item => item.id !== id),
+        apiSearchResults:Array.isArray(s.apiSearchResults) ? s.apiSearchResults.filter(result => result.entry && result.entry.id !== id) : s.apiSearchResults,
+        apiMode:"api"
+      }), () => {
+        this.persist();
+        this.searchFromApi();
+      });
+    } catch(e) {
+      this.setState({deleteBusy:false, deleteResult:{state:"warning",message:e.message || "删除失败"}});
+    }
+  }
+
+  arrayToInput(value){
+    return Array.isArray(value) ? value.join(", ") : "";
+  }
+
+  inputToArray(value){
+    return String(value || "").split(/[,，\n]/).map(item => item.trim()).filter(Boolean);
+  }
+
+  metadataFormFor(entry){
+    if(!entry) return {entryId:"",keywords:"",concepts:"",skills:"",audience:"",status:"draft"};
+    return {
+      entryId:entry.id,
+      keywords:this.arrayToInput(entry.keywords),
+      concepts:this.arrayToInput(entry.concepts),
+      skills:this.arrayToInput(entry.skills),
+      audience:this.arrayToInput(entry.audience),
+      status:entry.status || "draft"
+    };
+  }
+
+  typeLabel(t){ return (this.typeMeta[t]||{}).label || t; }
+
+  card(entry){
+    const tm = this.typeMeta[entry.type] || {label:entry.type,bg:"#EEF1F5",ink:"#5A6473"};
+    return { id:entry.id, title:entry.title, summary:entry.summary||"", typeLabel:tm.label, typeBg:tm.bg, typeInk:tm.ink, onClick:()=>this.selectEntry(entry.id) };
+  }
+
+  searchEntries(query, entries){
+    const tokens = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    if(!tokens.length) return [];
+
+    const matchesAllTokens = (value) => {
+      if(!value) return false;
+      const text = (Array.isArray(value) ? value.join(" ") : String(value)).toLowerCase();
+      return tokens.every(token => text.includes(token));
+    };
+
+    const results = entries.map(entry => {
+      const metadataMatches = [];
+      const contentMatches = [];
+
+      if(matchesAllTokens(entry.keywords)) metadataMatches.push("keywords");
+      if(matchesAllTokens(entry.title)) metadataMatches.push("title");
+      if(matchesAllTokens([entry.type, this.typeLabel(entry.type)])) metadataMatches.push("type");
+      if(matchesAllTokens(entry.tags)) metadataMatches.push("tags");
+      if(matchesAllTokens(entry.concepts)) metadataMatches.push("concepts");
+      if(matchesAllTokens(entry.skills)) metadataMatches.push("skills");
+      if(matchesAllTokens(entry.audience)) metadataMatches.push("audience");
+      if(matchesAllTokens(entry.summary)) contentMatches.push("summary");
+      if(matchesAllTokens(entry.searchText)) contentMatches.push("content");
+
+      return {
+        entry,
+        matchedFields: metadataMatches.length ? metadataMatches : contentMatches,
+        matchLevel: metadataMatches.length ? "metadata" : (contentMatches.length ? "content" : null)
+      };
+    }).filter(result => result.matchLevel);
+
+    const metadataResults = results.filter(result => result.matchLevel === "metadata");
+    const finalResults = metadataResults.length ? metadataResults : results;
+    const priority = ["keywords","title","type","tags","concepts","skills","audience","summary","content"];
+
+    return finalResults.sort((a, b) => {
+      const firstA = Math.min(...a.matchedFields.map(field => priority.indexOf(field)).filter(index => index >= 0));
+      const firstB = Math.min(...b.matchedFields.map(field => priority.indexOf(field)).filter(index => index >= 0));
+      if(firstA !== firstB) return firstA - firstB;
+      if(b.matchedFields.length !== a.matchedFields.length) return b.matchedFields.length - a.matchedFields.length;
+      return a.entry.title.localeCompare(b.entry.title, "zh-CN");
+    });
+  }
+
+  async submit(){
+    const { title, type, keywords, summary } = this.state.form;
+    if(!title.trim()){ this.setState({submitResult:{state:"warning",message:"请输入标题"}}); return; }
+    const id = "kb-" + type + "-" + String(Date.now()).slice(-4);
+    const kw = keywords ? keywords.split(/[,，]/).map(s=>s.trim()).filter(Boolean) : [];
+    const draft = { id, title:title.trim(), type, keywords:kw, summary:summary||"", createdAt:Date.now() };
+    try {
+      const response = await fetch("/api/knowledge", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body:JSON.stringify({ ...draft, status:"draft", audience:["Builder"], tags:["api-created"] })
+      });
+      if(!response.ok) throw new Error("API submit failed");
+      const saved = await response.json();
+      this.entries = [saved, ...this.entries.filter(entry => entry.id !== saved.id)];
+      this.setState(s => ({ selectedId:saved.id, view:"explore", drafts:[saved, ...s.drafts].slice(0,20), submitResult:{state:"success",id:saved.id}, metadataForm:this.metadataFormFor(saved), metadataResult:null, form:{title:"",type,keywords:"",summary:""}, apiMode:"api" }), () => this.persist());
+    } catch(e) {
+      this.setState(s => ({ drafts:[draft, ...s.drafts].slice(0,20), submitResult:{state:"success",id}, form:{title:"",type,keywords:"",summary:""} }), () => this.persist());
+    }
+  }
+
+  async updateMetadata(){
+    const f = this.state.metadataForm;
+    if(!f.entryId){ this.setState({metadataResult:{state:"warning",message:"请先选择一条知识草稿"}}); return; }
+
+    try {
+      const response = await fetch("/api/knowledge/" + encodeURIComponent(f.entryId), {
+        method:"PATCH",
+        headers:{ "Content-Type":"application/json" },
+        body:JSON.stringify({
+          keywords:this.inputToArray(f.keywords),
+          concepts:this.inputToArray(f.concepts),
+          skills:this.inputToArray(f.skills),
+          audience:this.inputToArray(f.audience),
+          status:f.status || "draft"
+        })
+      });
+      const updated = await response.json();
+      if(!response.ok) throw new Error(updated.error || "metadata 保存失败");
+
+      this.entries = this.entries.map(entry => entry.id === updated.id ? updated : entry);
+      this.setState({ metadataForm:this.metadataFormFor(updated), metadataResult:{state:"success",message:"metadata 已保存"} });
+    } catch(e) {
+      this.setState({ metadataResult:{state:"warning",message:e.message || "metadata 保存失败"} });
+    }
+  }
+
+  renderVals(){
+    const S = this.state;
+    const shell = this.themeFor(S.theme);
+    const primary = shell.primary, primaryInk = shell.primaryInk, primaryWash = shell.primaryWash;
+    const showAgentLens = this.props.showAgentLens ?? true;
+    const navStyle = active => ({ bg: active ? primaryWash : "transparent", ink: active ? primaryInk : "#8A94A3" });
+
+    const nav = {
+      home:{ ...navStyle(S.view==="home"), onClick:()=>this.setView("home") },
+      explore:{ ...navStyle(S.view==="explore"), onClick:()=>this.setView("explore") },
+      contribute:{ ...navStyle(S.view==="contribute"), onClick:()=>this.setView("contribute") }
+    };
+
+    const byId = id => this.entries.find(e => e.id === id);
+
+    // HOME
+    const recentCards = S.recent.map(byId).filter(Boolean).slice(0,4).map(e => this.card(e));
+    const savedCards = S.saved.map(byId).filter(Boolean).slice(0,4).map(e => this.card(e));
+    const featured = this.featuredIds.map(byId).filter(Boolean).map(e => this.card(e));
+    const draftCards = S.drafts.map(d => { const tm=this.typeMeta[d.type]||{label:d.type,bg:"#EEF1F5",ink:"#5A6473"}; return { title:d.title, typeLabel:tm.label, typeBg:tm.bg, typeInk:tm.ink }; });
+    const home = {
+      total:this.entries.length, viewed:S.viewed.length, saved:S.saved.length, contributed:S.drafts.length,
+      firstRun: S.viewed.length===0 && S.drafts.length===0 && S.saved.length===0,
+      hasRecent: recentCards.length>0, recent:recentCards,
+      hasSaved: savedCards.length>0, savedItems:savedCards,
+      featured,
+      onExplore:()=>this.setView("explore"),
+      onContribute:()=>this.setView("contribute"),
+      onAgent:()=>this.setState({view:"explore",category:"agent"})
+    };
+
+    // EXPLORE chips
+    const exploreChips = this.categories.map(c => {
+      const count = c.id==="all" ? this.entries.length : this.entries.filter(e=>e.type===c.id).length;
+      const active = c.id===S.category;
+      return { label:c.label, count, onClick:()=>this.setCategory(c.id), bg: active?primary:"#fff", border: active?primary:"#DDE3EA", ink: active?"#fff":"#4A5361", weight: active?"600":"500" };
+    });
+
+    let filtered = S.category==="all" ? this.entries : this.entries.filter(e=>e.type===S.category);
+    let results, searchInfo = {visible:false,text:""};
+    if(S.search.trim()){
+      results = S.apiMode === "api" && Array.isArray(S.apiSearchResults)
+        ? S.apiSearchResults
+        : this.searchEntries(S.search, filtered);
+      const searchSource = S.apiMode === "api" && Array.isArray(S.apiSearchResults) ? "backend-api" : S.apiMode;
+      searchInfo = results.length===0 ? {visible:true,text:"“"+S.search+"” 在 "+filtered.length+" 条中无匹配 · 数据源 "+searchSource} : {visible:true,text:"“"+S.search+"” → "+results.length+" 条命中 · 按 metadata 优先级排序 · 数据源 "+searchSource};
+    } else { results = filtered.map(e=>({entry:e,matchedFields:[]})); }
+
+    const listItems = results.map(({entry,matchedFields}) => {
+      const active = entry.id===S.selectedId;
+      const tm = this.typeMeta[entry.type]||{label:entry.type,bg:"#EEF1F5",ink:"#5A6473"};
+      const sm = this.statusMeta[entry.status]||{label:entry.status,bg:"#EEF1F5",ink:"#5A6473"};
+      const pills = [{bg:tm.bg,ink:tm.ink,text:tm.label},{bg:sm.bg,ink:sm.ink,text:sm.label}];
+      if(matchedFields.length) pills.push({bg:"#FEF6D9",ink:"#8A6108",text:"命中 "+matchedFields.slice(0,2).join(" · ")});
+      (entry.tags||[]).slice(0,3).forEach(t=>pills.push({bg:"#F2F4F7",ink:"#6A7382",text:t}));
+      return { id:entry.id,title:entry.title,summary:entry.summary||"",pills,onClick:()=>this.selectEntry(entry.id), bg:active?primaryWash:"#fff", border:active?primary:"#E7EAEF", leftBar:active?primary:"transparent", titleInk:active?primaryInk:"#161A20" };
+    });
+
+    // DETAIL
+    const sel = byId(S.selectedId) || null;
+    let selected = null;
+    if(sel){
+      const tm = this.typeMeta[sel.type]||{label:sel.type,bg:"#EEF1F5",ink:"#5A6473"};
+      const sm = this.statusMeta[sel.status]||{label:sel.status,bg:"#EEF1F5",ink:"#5A6473"};
+      const toChips = arr => (arr||[]).map(x=>({text:x}));
+      const flowNodes = this.flow.map((label,i)=>{ const lit=i<=S.flowStep; return {label,index:String(i+1).padStart(2,"0"),showArrow:i<this.flow.length-1,bg:lit?primary:"#F4F6F9",ink:lit?"#fff":"#8A94A3",border:lit?primary:"#E4E8ED"}; });
+      const relationships = (sel.relationships||[]).map(r=>{ const t=r.target ? byId(r.target) : null; return {predicate:r.predicate,targetTitle:t?t.title:(r.targetLabel||r.target||"\u672a\u547d\u540d\u5bf9\u8c61"),onClick:t?()=>this.selectEntry(t.id):null,color:t?"#3A5BD9":"#8A94A3",cursor:t?"pointer":"default"}; });
+      const retrSet=[], seen=new Set();
+      const pushR = txt => { const k=String(txt).toLowerCase(); if(!seen.has(k)){ seen.add(k); retrSet.push({text:txt}); } };
+      pushR(tm.label); (sel.keywords||[]).slice(0,3).forEach(pushR); if(retrSet.length<3)(sel.tags||[]).slice(0,3).forEach(pushR); (sel.audience||[]).slice(0,2).forEach(a=>pushR(a+" 视角"));
+      const trailIds = [...new Set([...(sel.related||[]), ...(sel.relationships||[]).map(r=>r.target)])].filter(id=>byId(id) && id!==sel.id);
+      const trail = trailIds.slice(0,4).map(id=>{ const e=byId(id); const t2=this.typeMeta[e.type]||{label:e.type,bg:"#EEF1F5",ink:"#5A6473"}; return {title:e.title,typeLabel:t2.label,typeBg:t2.bg,typeInk:t2.ink,onClick:()=>this.selectEntry(e.id)}; });
+      const isSaved = S.saved.includes(sel.id);
+      const analysisByLlm = sel.metadataGeneratedBy === "llm";
+      selected = {
+        id:sel.id, title:sel.title, summary:sel.summary||"",
+        typeBg:tm.bg,typeInk:tm.ink,typeLabel:tm.label,statusBg:sm.bg,statusInk:sm.ink,statusLabel:sm.label,
+        audience:toChips(sel.audience),emptyAudience:(sel.audience||[]).length===0,
+        keywords:toChips(sel.keywords),emptyKeywords:(sel.keywords||[]).length===0,
+        concepts:toChips(sel.concepts),emptyConcepts:(sel.concepts||[]).length===0,
+        skills:toChips(sel.skills),emptySkills:(sel.skills||[]).length===0,
+        flowNodes,
+        situation:sel.situation||"未标注",ontology:sel.ontology||"未标注",workflow:sel.workflow||"未标注",skillText:sel.skill||"未标注",evaluation:sel.evaluation||"未标注",knowledgeGrowth:sel.knowledgeGrowth||"未标注",
+        relationships,hasRelationships:relationships.length>0,noRelationships:relationships.length===0,
+        agentRetrievers:retrSet,agentAnswer:sel.summary||"",agentStatus:sel.status,
+        analysisVisible:!!(sel.analysisStatus || sel.analysisNote || sel.metadataGeneratedBy),
+        analysisLabel:analysisByLlm ? "LLM 自动分析" : "规则兜底",
+        analysisNote:sel.analysisNote || (analysisByLlm ? "已由 LLM 生成 metadata。" : "当前条目使用规则或人工方式生成 metadata。"),
+        analysisConfidence:sel.analysisConfidence == null ? "-" : String(sel.analysisConfidence),
+        analysisBg:analysisByLlm ? "#F3F5FE" : "#FFF8E7",
+        analysisBorder:analysisByLlm ? "#D3DAF6" : "#F0D7A0",
+        analysisInk:analysisByLlm ? "#2740A8" : "#8A6108",
+        trail,hasTrail:trail.length>0,
+        source:sel.source||"",
+        onToggleSave:()=>this.toggleSave(sel.id),
+        onDeleteRequest:()=>this.requestDelete(sel.id),
+        onDeleteCancel:()=>this.cancelDelete(),
+        onDeleteConfirm:()=>this.deleteEntry(sel.id),
+        deleteConfirm:S.deleteConfirmId===sel.id,
+        deleteConfirmLabel:S.deleteBusy ? "删除中..." : "确认删除",
+        saveLabel:isSaved?"已收藏":"收藏",
+        saveBg:isSaved?"#E6F3F0":"#fff", saveInk:isSaved?"#0A5A4E":"#5A6473", saveBorder:isSaved?"#BFE3DC":"#DDE3EA", saveFill:isSaved?"#0E7C6B":"none"
+      };
+    }
+
+    const ladderStyles = { past:{bg:"#EDEFF3",ink:"#9AA3B0",border:"#E4E8ED",weight:"500"},current:{bg:primary,ink:"#fff",border:primary,weight:"700"},next:{bg:"#ECEFFC",ink:"#2740A8",border:"#3A5BD9",weight:"600"},future:{bg:"#F4F6F9",ink:"#AEB6C1",border:"#E4E8ED",weight:"500"} };
+    const ladder = this.ladder.map((n,i)=>{ const st=i<2?"past":i===2?"current":i===3?"next":"future"; return {code:n.code,label:n.label,...ladderStyles[st]}; });
+
+    // CONTRIBUTE preview
+    const f = S.form;
+    const ptm = this.typeMeta[f.type]||{label:f.type,bg:"#EEF1F5",ink:"#5A6473"};
+    const pkw = f.keywords ? f.keywords.split(/[,，]/).map(s=>s.trim()).filter(Boolean) : [];
+    const previewPills = [{bg:ptm.bg,ink:ptm.ink,text:ptm.label},{bg:"#FBEACB",ink:"#8A5A08",text:"draft"}];
+    pkw.slice(0,4).forEach(k=>previewPills.push({bg:"#E6F3F0",ink:"#0A5A4E",text:k}));
+    const preview = {
+      title: f.title.trim() || "(未命名知识)",
+      titleInk: f.title.trim() ? "#161A20" : "#9AA3B0",
+      summary: f.summary.trim() || "填写摘要后,这里会实时预览你的知识卡片。",
+      pills: previewPills
+    };
+    const sr = S.submitResult;
+    const mf = S.metadataForm || {entryId:"",keywords:"",concepts:"",skills:"",audience:"",status:"draft"};
+    const mr = S.metadataResult;
+    const dr = S.deleteResult;
+    const sf = S.settingsForm || {baseUrl:"",model:"",apiKey:""};
+    const llm = S.settings && S.settings.llm ? S.settings.llm : {};
+    const settingsConfigured = !!llm.apiKeyConfigured;
+    const settingsResult = S.settingsResult;
+    const themeOptions = Object.keys(this.themes).map(id => {
+      const t = this.themes[id];
+      const active = id === S.theme;
+      return {
+        id,
+        label:t.label,
+        primary:t.primary,
+        secondary:t.secondary,
+        headerBg:t.headerBg,
+        bg:active ? t.primaryWash : "#fff",
+        border:active ? t.primary : "#E4E8ED",
+        ink:active ? t.primaryInk : "#8A94A3",
+        state:active ? "当前" : "切换",
+        onClick:()=>this.setTheme(id)
+      };
+    });
+
+    return {
+      shell,
+      nav,
+      isHome:S.view==="home", isExplore:S.view==="explore", isContribute:S.view==="contribute",
+      home, ladder,
+      exploreChips,
+      searchValue:S.search, onSearchInput:e=>this.setSearch(e.target.value),
+      searchInfo, searchInfoVisible:searchInfo.visible,
+      listItems, listEmpty:listItems.length===0, resultCount:listItems.length,
+      hasSelected:!!selected, noSelected:!selected, selected, showAgentLens,
+      formTitle:f.title, formType:f.type, formKeywords:f.keywords, formSummary:f.summary,
+      onFormTitle:e=>this.setState({form:{...f,title:e.target.value}}),
+      onFormType:e=>this.setState({form:{...f,type:e.target.value}}),
+      onFormKeywords:e=>this.setState({form:{...f,keywords:e.target.value}}),
+      onFormSummary:e=>this.setState({form:{...f,summary:e.target.value}}),
+      onSubmit:e=>{e.preventDefault();this.submit();},
+      onUploadFile:e=>this.uploadFile(e),
+      metadataKeywords:mf.keywords, metadataConcepts:mf.concepts, metadataSkills:mf.skills, metadataAudience:mf.audience, metadataStatus:mf.status,
+      onMetadataKeywords:e=>this.setState({metadataForm:{...mf,keywords:e.target.value}}),
+      onMetadataConcepts:e=>this.setState({metadataForm:{...mf,concepts:e.target.value}}),
+      onMetadataSkills:e=>this.setState({metadataForm:{...mf,skills:e.target.value}}),
+      onMetadataAudience:e=>this.setState({metadataForm:{...mf,audience:e.target.value}}),
+      onMetadataStatus:e=>this.setState({metadataForm:{...mf,status:e.target.value}}),
+      onMetadataSubmit:e=>{e.preventDefault();this.updateMetadata();},
+      settingsOpen:S.settingsOpen,
+      onOpenSettings:()=>this.openSettings(),
+      onCloseSettings:()=>this.closeSettings(),
+      settingsBaseUrl:sf.baseUrl,
+      settingsModel:sf.model,
+      settingsApiKey:sf.apiKey,
+      settingsApiKeyPlaceholder:settingsConfigured ? "已配置，留空则保持不变" : "粘贴你的 API Key",
+      settingsStatusText:settingsConfigured ? "已配置" : "未配置",
+      settingsStatusBg:settingsConfigured ? "#E6F3F0" : "#FBEACB",
+      settingsStatusInk:settingsConfigured ? "#0A5A4E" : "#8A5A08",
+      settingsModelHint:llm.model ? "当前模型: " + llm.model : "保存后上传文件会调用该模型分析",
+      settingsSaveLabel:S.settingsBusy ? "保存中..." : "保存设置",
+      onSettingsBaseUrl:e=>this.setState({settingsForm:{...sf,baseUrl:e.target.value}}),
+      onSettingsModel:e=>this.setState({settingsForm:{...sf,model:e.target.value}}),
+      onSettingsApiKey:e=>this.setState({settingsForm:{...sf,apiKey:e.target.value}}),
+      onSettingsSubmit:e=>{e.preventDefault();this.saveSettings();},
+      themeOptions,
+      preview, drafts:draftCards, hasDrafts:draftCards.length>0,
+      submitResult:sr, submitOk:!!(sr&&sr.state==="success"), submitWarn:!!(sr&&sr.state==="warning"),
+      metadataResult:mr, metadataOk:!!(mr&&mr.state==="success"), metadataWarn:!!(mr&&mr.state==="warning"),
+      deleteResult:dr, deleteOk:!!(dr&&dr.state==="success"), deleteWarn:!!(dr&&dr.state==="warning"),
+      settingsResult, settingsOk:!!(settingsResult&&settingsResult.state==="success"), settingsWarn:!!(settingsResult&&settingsResult.state==="warning"),
+      uploadResult:S.uploadResult, uploadBusy:S.uploadBusy, uploadOk:!!(S.uploadResult&&S.uploadResult.state==="success"), uploadWarn:!!(S.uploadResult&&S.uploadResult.state==="warning")
+    };
+  }
+}
+</script>
+</body>
+</html>

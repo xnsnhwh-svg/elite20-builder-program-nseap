@@ -1,0 +1,230 @@
+{
+  "meta": {
+    "name": "NSEAP 知识认知细胞 API MVP",
+    "version": "0.2.0",
+    "level": "轻量前后端 MVP",
+    "sourceMode": "json-database"
+  },
+  "categories": [
+    {
+      "id": "all",
+      "label": "全部"
+    },
+    {
+      "id": "overview",
+      "label": "概览"
+    },
+    {
+      "id": "course",
+      "label": "课程"
+    },
+    {
+      "id": "challenge",
+      "label": "挑战"
+    },
+    {
+      "id": "prompt",
+      "label": "提示词"
+    },
+    {
+      "id": "faq",
+      "label": "FAQ"
+    },
+    {
+      "id": "best-practice",
+      "label": "最佳实践"
+    },
+    {
+      "id": "project",
+      "label": "项目案例"
+    },
+    {
+      "id": "agent",
+      "label": "Agent"
+    }
+  ],
+  "flow": [
+    "场景",
+    "本体",
+    "流程",
+    "技能",
+    "评估",
+    "学习",
+    "知识增长"
+  ],
+  "entries": [
+    {
+      "id": "kb-project-002",
+      "title": "C2S 大数据应用挑战项目案例",
+      "type": "project",
+      "status": "sample",
+      "audience": [
+        "学生",
+        "教师",
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "project-case",
+        "big-data",
+        "ai-x",
+        "portfolio"
+      ],
+      "keywords": [
+        "C2S",
+        "大数据",
+        "AI+X",
+        "项目案例",
+        "KSTAR",
+        "AAR",
+        "Metadata-First",
+        "语义对齐"
+      ],
+      "concepts": [
+        "AI+X 范式",
+        "KSTAR",
+        "人机协同建模",
+        "元数据先行",
+        "作品集评估"
+      ],
+      "skills": [
+        "术语翻译",
+        "结构化阅读",
+        "场景化提案",
+        "AAR 复盘",
+        "大数据任务拆解"
+      ],
+      "related": [
+        "kb-best-practice-003"
+      ],
+      "relationships": [
+        {
+          "predicate": "usesPractice",
+          "target": "kb-best-practice-003",
+          "targetLabel": "Metadata-First 大数据任务实践"
+        }
+      ],
+      "summary": "一个真实学生项目案例：围绕 AI+X 论文完成术语翻译、结构化理解、面向大数据应用的改进方案和 AAR 复盘。",
+      "situation": "学生需要阅读 AI+X 与共生智能相关材料，并结合自己的专业方向完成作品集提交。这个案例选择大数据应用作为专业场景，重点讨论 AI 在数据清洗、特征工程和业务语义对齐中可能出现的问题。",
+      "ontology": "本案例包含四类核心对象：原始学习材料、学生产出、专业场景和可复用方法。专业场景是大数据应用，可复用方法是 Metadata-First 协议、伪代码审查和 Prompt 效率复盘。",
+      "workflow": "阅读 AI+X 材料 -> 提取关键术语 -> 形成双语术语表 -> 从大数据专业视角解释 L1/L2/L3 -> 用 KSTAR 描述真实问题 -> 提出优化方案 -> 完成 AAR 复盘 -> 沉淀为知识库项目案例",
+      "skill": "术语翻译、结构化阅读、场景化提案、AAR 复盘、大数据任务拆解。",
+      "evaluation": "可以从四个角度评估：是否准确解释 AI+X、KSTAR 等核心概念；是否能结合大数据应用提出真实问题；是否给出可操作的改进方案；是否通过 AAR 说明自己和 AI 分别做了什么以及下一次如何改进。",
+      "knowledgeGrowth": "这个案例可以继续沉淀出项目案例、Metadata-First 最佳实践、数据分析 Prompt、FAQ 和 Agent 检索上下文。",
+      "source": "../knowledge-base/06-projects/c2s-big-data-challenge-case.md",
+      "searchText": "C2S 大数据应用挑战项目案例 AI+X KSTAR AAR Metadata-First 语义对齐 数据清洗 特征工程 业务约束 人机协同 作品集 项目案例"
+    },
+    {
+      "id": "kb-upload-1782957815322",
+      "title": "C2S Challenge",
+      "type": "challenge",
+      "status": "draft",
+      "audience": [
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "uploaded-file",
+        "docx"
+      ],
+      "keywords": [
+        "C2S Challenge",
+        "C2S Challenge.docx",
+        "docx",
+        "上传文件",
+        "知识草稿"
+      ],
+      "concepts": [],
+      "skills": [],
+      "related": [],
+      "relationships": [],
+      "summary": "由上传文件 C2S Challenge.docx 自动生成的知识草稿，后续需要补充 metadata。",
+      "situation": "用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。",
+      "ontology": "原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。",
+      "workflow": "上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。",
+      "skill": "资料归档、metadata 标注、知识整理、审核发布。",
+      "evaluation": "文件是否保存成功，草稿是否能被搜索到，后续 metadata 是否补充完整。",
+      "knowledgeGrowth": "上传资料经过整理和审核后，可以沉淀为课程、挑战、项目案例、FAQ、最佳实践或 Agent 上下文。",
+      "source": "/uploads/1782957815319-C2S_Challenge.docx",
+      "searchText": "C2S Challenge challenge Builder Agent uploaded-file docx C2S Challenge C2S Challenge.docx docx 上传文件 知识草稿 由上传文件 C2S Challenge.docx 自动生成的知识草稿，后续需要补充 metadata。 用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。 原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。 上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。 C2S Challenge C2S Challenge.docx 上传文件 知识草稿 ",
+      "createdAt": "2026-07-02T02:03:35.322Z",
+      "updatedAt": "2026-07-02T02:03:35.323Z"
+    },
+    {
+      "id": "kb-upload-1782957986593",
+      "title": "C2S Submission V2 BigData",
+      "type": "challenge",
+      "status": "draft",
+      "audience": [
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "uploaded-file",
+        "md"
+      ],
+      "keywords": [
+        "C2S Submission V2 BigData",
+        "C2S_Submission_V2_BigData.md",
+        "md",
+        "上传文件",
+        "知识草稿"
+      ],
+      "concepts": [],
+      "skills": [],
+      "related": [],
+      "relationships": [],
+      "summary": "# C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa",
+      "situation": "用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。",
+      "ontology": "原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。",
+      "workflow": "上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。",
+      "skill": "资料归档、metadata 标注、知识整理、审核发布。",
+      "evaluation": "文件是否保存成功，草稿是否能被搜索到，后续 metadata 是否补充完整。",
+      "knowledgeGrowth": "上传资料经过整理和审核后，可以沉淀为课程、挑战、项目案例、FAQ、最佳实践或 Agent 上下文。",
+      "source": "/uploads/1782957986590-C2S_Submission_V2_BigData.md",
+      "searchText": "C2S Submission V2 BigData challenge Builder Agent uploaded-file md C2S Submission V2 BigData C2S_Submission_V2_BigData.md md 上传文件 知识草稿 # C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa 用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。 原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。 上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。 C2S Submission V2 BigData C2S_Submission_V2_BigData.md 上传文件 知识草稿 # C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa",
+      "createdAt": "2026-07-02T02:06:26.593Z",
+      "updatedAt": "2026-07-02T02:06:26.593Z"
+    },
+    {
+      "id": "kb-upload-1782963978597",
+      "title": "C2S Submission V2 BigData",
+      "type": "challenge",
+      "status": "draft",
+      "audience": [
+        "Builder",
+        "Agent"
+      ],
+      "tags": [
+        "uploaded-file",
+        "md"
+      ],
+      "keywords": [
+        "C2S Submission V2 BigData",
+        "C2S_Submission_V2_BigData.md",
+        "md",
+        "上传文件",
+        "知识草稿"
+      ],
+      "concepts": [],
+      "skills": [],
+      "related": [],
+      "relationships": [],
+      "summary": "# C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa",
+      "situation": "用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。",
+      "ontology": "原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。",
+      "workflow": "上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。",
+      "skill": "资料归档、metadata 标注、知识整理、审核发布。",
+      "evaluation": "文件是否保存成功，草稿是否能被搜索到，后续 metadata 是否补充完整。",
+      "knowledgeGrowth": "上传资料经过整理和审核后，可以沉淀为课程、挑战、项目案例、FAQ、最佳实践或 Agent 上下文。",
+      "source": "/uploads/1782963978194-C2S_Submission_V2_BigData.md",
+      "searchText": "C2S Submission V2 BigData challenge Builder Agent uploaded-file md C2S Submission V2 BigData C2S_Submission_V2_BigData.md md 上传文件 知识草稿 # C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa 用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。 原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。 上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。 C2S Submission V2 BigData C2S_Submission_V2_BigData.md 上传文件 知识草稿 # C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa",
+      "metadataGeneratedBy": "rule",
+      "analysisStatus": "llm-failed",
+      "analysisNote": "LLM 分析失败，已使用规则兜底生成草稿：The model or endpoint gpt-4o-mini does not exist or you do not have access to it. Request id: 0217829639721873eaa913d5647b2fad75946504dc58ef34c32a9",
+      "analysisConfidence": 0.25,
+      "createdAt": "2026-07-02T03:46:18.597Z",
+      "updatedAt": "2026-07-02T03:46:18.597Z"
+    }
+  ]
+}

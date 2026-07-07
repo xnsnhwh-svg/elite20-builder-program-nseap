@@ -1,4 +1,4 @@
-﻿---
+---
 id: kb-course-001
 title: Week 1 Overview
 type: course
@@ -16,6 +16,7 @@ keywords:
   - Week 1
   - 学习路径
   - Vibe Coding
+  - 课程安排
 concepts:
   - ai-native-learning
   - vibe-coding
@@ -32,9 +33,12 @@ relationships:
     target: kb-challenge-001
   - predicate: usesPrompt
     target: kb-prompt-001
-status: sample
-updated: 2026-06-28
+status: stable
+updated: 2026-07-07
 ---
+
+
+
 
 # Week 1 Overview
 

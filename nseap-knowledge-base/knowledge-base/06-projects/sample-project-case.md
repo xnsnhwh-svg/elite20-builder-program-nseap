@@ -1,4 +1,4 @@
-﻿---
+---
 id: kb-project-001
 title: Sample AI Study Assistant Project
 type: project
@@ -17,6 +17,7 @@ keywords:
   - 学习助手
   - AI 学习助手
   - project case
+  - 案例
 concepts:
   - ai-study-assistant
   - study-planning
@@ -33,9 +34,12 @@ relationships:
     target: kb-challenge-001
   - predicate: usesPrompt
     target: kb-prompt-001
-status: sample
-updated: 2026-06-28
+status: stable
+updated: 2026-07-07
 ---
+
+
+
 
 # Sample AI Study Assistant Project
 

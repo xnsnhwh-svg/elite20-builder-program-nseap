@@ -1,4 +1,4 @@
-﻿---
+---
 id: kb-prompt-001
 title: Coding Coach Prompt
 type: prompt
@@ -15,6 +15,8 @@ keywords:
   - 代码调试
   - Coding Coach
   - debugging
+  - Prompt
+  - 指令
 concepts:
   - coaching
   - debugging
@@ -31,9 +33,12 @@ relationships:
     target: kb-challenge-001
   - predicate: supports
     target: kb-course-001
-status: sample
-updated: 2026-07-06
+status: stable
+updated: 2026-07-07
 ---
+
+
+
 
 # Coding Coach Prompt
 

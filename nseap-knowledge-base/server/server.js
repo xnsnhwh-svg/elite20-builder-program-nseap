@@ -364,6 +364,73 @@ function compactKnowledgeEntry(entry) {
   };
 }
 
+// ---- Agent 检索上下文（DESIGN 7.4 / 9.1，V0.3 预留基础版）----
+
+// 状态可信度：让 Agent 优先拿到可信内容。archived 已在 visibleEntries 过滤。
+const statusTrust = { stable: 4, sample: 3, review: 2, draft: 1, deprecated: 0 };
+
+// role 到 audience 的匹配：audience 中英混存，两边都要能命中。
+const roleAudienceAliases = {
+  student: ["student", "学生"],
+  teacher: ["teacher", "教师", "老师"],
+  builder: ["builder", "Builder"],
+  agent: ["agent", "Agent", "智能体"]
+};
+
+function entryMatchesRole(entry, role) {
+  if (!role) return true;
+  const wanted = roleAudienceAliases[String(role).toLowerCase()] || [String(role)];
+  const wantedLower = wanted.map((v) => v.toLowerCase());
+  const audience = normalizeArray(entry.audience).map((v) => String(v).toLowerCase());
+  return audience.some((a) => wantedLower.includes(a));
+}
+
+// 把一条知识整理成 Agent 可直接引用的结构化上下文（带出处与显式关系）。
+function toAgentContextItem(entry, matchedFields = [], score = 0) {
+  return {
+    id: entry.id,
+    title: entry.title,
+    type: entry.type,
+    typeLabel: typeMeta[entry.type] || entry.type,
+    status: entry.status,
+    summary: entry.summary || "",
+    audience: normalizeArray(entry.audience),
+    keywords: normalizeArray(entry.keywords),
+    concepts: normalizeArray(entry.concepts),
+    skills: normalizeArray(entry.skills),
+    relationships: (Array.isArray(entry.relationships) ? entry.relationships : []).map((r) => ({
+      predicate: r.predicate,
+      target: r.target || "",
+      targetLabel: r.targetLabel || ""
+    })),
+    citation: { id: entry.id, title: entry.title, source: entry.source || "" },
+    matchedFields,
+    score
+  };
+}
+
+function buildAgentContext(entries, { query = "", role = "", type = "all", limit = 8 } = {}) {
+  const category = allowedTypes.has(type) ? type : "all";
+  const ranked = searchEntries(entries, query, category)
+    .filter((r) => entryMatchesRole(r.entry, role));
+
+  // 无查询词时 searchEntries 返回 score=0 的全量，此时按可信度+更新时间排序兜底。
+  const sorted = query.trim()
+    ? ranked.sort((a, b) => {
+        const t = (statusTrust[b.entry.status] || 0) - (statusTrust[a.entry.status] || 0);
+        if (t !== 0) return t;
+        return b.score - a.score;
+      })
+    : ranked.sort((a, b) => {
+        const t = (statusTrust[b.entry.status] || 0) - (statusTrust[a.entry.status] || 0);
+        if (t !== 0) return t;
+        return String(b.entry.updatedAt || "").localeCompare(String(a.entry.updatedAt || ""));
+      });
+
+  const capped = Math.max(1, Math.min(Number(limit) || 8, 20));
+  return sorted.slice(0, capped).map((r) => toAgentContextItem(r.entry, r.matchedFields, r.score));
+}
+
 function slugText(value) {
   const encoded = encodeURIComponent(String(value || "").trim().toLowerCase());
   return encoded
@@ -1876,6 +1943,24 @@ async function handleApi(req, res, url) {
     return;
   }
 
+  if (req.method === "GET" && url.pathname === "/api/agent/context") {
+    const query = url.searchParams.get("q") || "";
+    const role = url.searchParams.get("role") || "";
+    const type = url.searchParams.get("type") || "all";
+    const limit = url.searchParams.get("limit") || 8;
+    const context = buildAgentContext(db.entries, { query, role, type, limit });
+    sendJson(res, 200, {
+      query,
+      role: role || null,
+      type,
+      count: context.length,
+      generatedAt: new Date().toISOString(),
+      note: "Agent 检索上下文（V0.3 预留基础版）：按可信状态与相关性排序，含出处与显式关系。",
+      context
+    });
+    return;
+  }
+
   if (req.method === "POST" && url.pathname === "/api/search/deep") {
     const rawBody = await readRequestBody(req);
     const body = rawBody ? parseJsonObject(rawBody) : {};
@@ -2289,18 +2374,21 @@ async function handleApi(req, res, url) {
     if (index === -1) { sendJson(res, 404, { error: "条目未找到" }); return; }
     const entry = db.entries[index];
     const current = entry.status || "draft";
+    // 状态流转规则，对齐 DESIGN 8.3 定义的 draft/review/stable/sample/deprecated（+archived 归档）
     const validTransitions = {
-      draft:   ["review"],
-      review:  ["stable", "draft"],
-      stable:  ["archived", "draft"],
-      archived:["draft"]
+      draft:      ["review"],
+      review:     ["stable", "draft"],
+      stable:     ["deprecated", "archived", "draft"],
+      sample:     ["review", "deprecated", "archived", "draft"],
+      deprecated: ["draft", "archived"],
+      archived:   ["draft"]
     };
     const allowed = validTransitions[current] || [];
     if (!allowed.includes(targetStatus)) {
       sendJson(res, 400, { error: "不允许的状态转换: " + current + " → " + targetStatus + "（允许: " + allowed.join(", ") + "）" });
       return;
     }
-    if (targetStatus === "review" && current === "draft") {
+    if (targetStatus === "review") {
       const kw = normalizeArray(entry.keywords);
       const au = normalizeArray(entry.audience);
       if (kw.length < 3) { sendJson(res, 400, { error: "进入 review 需要至少 3 个关键词" }); return; }

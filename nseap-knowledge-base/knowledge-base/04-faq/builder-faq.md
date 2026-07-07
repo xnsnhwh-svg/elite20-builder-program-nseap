@@ -9,6 +9,10 @@ tags:
   - faq
   - builder
   - contribution
+keywords:
+  - FAQ
+  - 常见问题
+  - 问答
 concepts:
   - 知识条目分类
   - metadata 规范
@@ -18,8 +22,11 @@ skills:
   - 填写 metadata
   - 标注条目状态
 status: sample
-updated: 2026-06-28
+updated: 2026-07-07
 ---
+
+
+
 
 # Builder FAQ
 
@@ -34,4 +41,3 @@ Yes. Metadata makes the item easier to search, review, and use with agents later
 ## Q: Can I submit draft content?
 
 Yes. Mark `status: draft` in the frontmatter.
-

@@ -17,6 +17,7 @@ keywords:
   - 知识认知细胞
   - 知识仓库
   - Knowledge Cognitive Cell
+  - 检索
 concepts:
   - 认知细胞架构
   - 共享知识层
@@ -26,8 +27,11 @@ skills:
   - 提供贡献模板
   - 为 Agent 检索准备接口
 status: draft
-updated: 2026-06-29
+updated: 2026-07-07
 ---
+
+
+
 
 # Knowledge Cognitive Cell
 

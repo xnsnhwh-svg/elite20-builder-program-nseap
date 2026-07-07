@@ -9,6 +9,10 @@ tags:
   - knowledge-librarian
   - retrieval
   - agent
+keywords:
+  - Agent
+  - 智能体
+  - 检索
 concepts:
   - Agent 角色定义
   - 知识检索
@@ -18,8 +22,11 @@ skills:
   - 推荐相关条目
   - 检查 metadata 完整性
 status: sample
-updated: 2026-06-28
+updated: 2026-07-07
 ---
+
+
+
 
 # Knowledge Librarian Agent
 
@@ -41,4 +48,3 @@ The Knowledge Librarian Agent helps students, teachers, and builders locate the 
 ## Agent Notes
 
 This is a design placeholder for future Agent Team integration.
-

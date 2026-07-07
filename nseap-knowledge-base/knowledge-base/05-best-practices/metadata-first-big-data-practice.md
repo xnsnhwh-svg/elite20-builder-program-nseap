@@ -2,12 +2,16 @@
 id: kb-best-practice-003
 title: Metadata-First 大数据任务实践
 type: best-practice
-summary: 面向大数据和数据分析任务的实践规则：先给 AI 数据字典和业务约束，再让 AI 执行清洗、特征工程或分析代码生成。
 audience:
   - student
   - teacher
   - builder
   - agent
+tags:
+  - best-practice
+  - big-data
+  - metadata
+  - ai-collaboration
 keywords:
   - Metadata-First
   - 大数据
@@ -15,11 +19,6 @@ keywords:
   - 语义对齐
   - 特征工程
   - AI 协作
-tags:
-  - best-practice
-  - big-data
-  - metadata
-  - ai-collaboration
 concepts:
   - 元数据先行
   - 数据语义
@@ -32,16 +31,16 @@ skills:
   - 评估 AI 输出
 related:
   - kb-project-002
-  - kb-prompt-001
 relationships:
-  - predicate: extractedFrom
-    target: kb-project-002
   - predicate: supports
-    target: kb-prompt-001
-status: sample
-updated: 2026-07-01
-source: ../../例子/C2S_Final_BigData_Submission/C2S_Submission_V2_BigData.md
+    target: kb-project-002
+    targetLabel: C2S 大数据应用挑战项目案例
+status: stable
+updated: 2026-07-07
 ---
+
+
+
 
 # Metadata-First 大数据任务实践
 

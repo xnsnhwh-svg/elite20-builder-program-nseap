@@ -2,21 +2,21 @@
 id: kb-challenge-001
 title: 构建你的第一个 AI 助手
 type: challenge
-summary: 面向第一周学习者的入门挑战，要求围绕一个真实场景设计小型 AI 助手，并提交提示词、示例对话和反思。
 audience:
   - student
   - teacher
   - agent
+tags:
+  - challenge
+  - ai-assistant
+  - week-1
 keywords:
   - 挑战
   - 任务
   - AI 助手
   - 入门项目
   - Challenge
-tags:
-  - challenge
-  - ai-assistant
-  - week-1
+  - 练习
 concepts:
   - 场景定义
   - 角色设计
@@ -35,10 +35,12 @@ relationships:
     target: kb-prompt-001
   - predicate: requires
     targetLabel: 提示词工程基础
-status: sample
-updated: 2026-07-01
-source: ../knowledge-base/02-challenges/sample-challenge-knowledge.md
+status: stable
+updated: 2026-07-07
 ---
+
+
+
 
 # 构建你的第一个 AI 助手
 

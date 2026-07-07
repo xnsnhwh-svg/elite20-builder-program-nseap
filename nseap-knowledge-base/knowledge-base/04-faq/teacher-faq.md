@@ -9,6 +9,10 @@ tags:
   - faq
   - teacher
   - instruction
+keywords:
+  - FAQ
+  - 常见问题
+  - 问答
 concepts:
   - 课程复用
   - AI 作业评估
@@ -18,8 +22,11 @@ skills:
   - 评估 AI 协助过程
   - 制定评价标准
 status: sample
-updated: 2026-06-28
+updated: 2026-07-07
 ---
+
+
+
 
 # Teacher FAQ
 
@@ -34,4 +41,3 @@ Evaluate the final output, the student's process, and the quality of reflection.
 ## Q: What if students use different AI tools?
 
 Focus on learning outcomes and documented process instead of requiring one specific tool.
-

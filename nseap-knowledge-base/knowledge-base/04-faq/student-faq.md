@@ -9,6 +9,10 @@ tags:
   - faq
   - student
   - learning-support
+keywords:
+  - FAQ
+  - 常见问题
+  - 问答
 concepts:
   - 学习支持
   - AI 协作规范
@@ -18,8 +22,11 @@ skills:
   - 负责任地使用 AI
   - 撰写学习反思
 status: sample
-updated: 2026-06-28
+updated: 2026-07-07
 ---
+
+
+
 
 # Student FAQ
 
@@ -38,4 +45,3 @@ Submit the required deliverables listed in the challenge, plus a short reflectio
 ## Agent Notes
 
 Retrieve this entry for common student onboarding and assignment questions.
-

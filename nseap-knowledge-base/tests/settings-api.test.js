@@ -810,3 +810,92 @@ test("guided path API uses LLM when a model is configured", async (t) => {
   assert.equal(fakeLlm.requests.length, 1);
   assert.equal(fakeLlm.requests[0].model, "fake-guided-model");
 });
+
+test("agent context API returns cited, trust-ranked, role-filtered knowledge", async (t) => {
+  const backup = fs.readFileSync(dbPath, "utf8");
+
+  const child = spawn(process.execPath, ["server/server.js"], {
+    cwd: rootDir,
+    env: isolatedServerEnv(t),
+    stdio: "pipe"
+  });
+
+  t.after(() => {
+    child.kill();
+    fs.writeFileSync(dbPath, backup, "utf8");
+  });
+
+  await waitForHealth();
+
+  const stamp = Date.now();
+  const stableId = `kb-agent-stable-${stamp}`;
+  const draftId = `kb-agent-draft-${stamp}`;
+  const teacherId = `kb-agent-teacher-${stamp}`;
+
+  for (const item of [
+    {
+      id: draftId, title: "Agent 上下文草稿条目", type: "challenge", status: "draft",
+      audience: ["student", "agent"], keywords: ["agentctx-shared", "挑战", "草稿"],
+      summary: "同一关键词下的草稿条目，用于验证可信度排序。"
+    },
+    {
+      id: stableId, title: "Agent 上下文稳定条目", type: "challenge", status: "draft",
+      audience: ["student", "agent"], keywords: ["agentctx-shared", "挑战", "稳定"],
+      summary: "同一关键词下的条目，稍后推到 stable，应排在草稿之前。",
+      relationships: [{ predicate: "supports", target: draftId, targetLabel: "Agent 上下文草稿条目" }]
+    },
+    {
+      id: teacherId, title: "Agent 上下文教师条目", type: "faq", status: "draft",
+      audience: ["teacher"], keywords: ["agentctx-shared", "教师", "FAQ"],
+      summary: "只面向教师的条目，role=student 时应被过滤掉。"
+    }
+  ]) {
+    const r = await fetch(`${baseUrl}/api/knowledge`, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(item)
+    });
+    assert.equal(r.status, 201);
+  }
+
+  // 把 stableId 推到 stable：draft -> review -> stable
+  for (const target of ["review", "stable"]) {
+    const tr = await fetch(`${baseUrl}/api/knowledge/${encodeURIComponent(stableId)}/transition`, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status: target })
+    });
+    assert.equal(tr.status, 200);
+  }
+
+  // 1) 基本检索 + 可信度排序：stable 应排在 draft 之前
+  const ctxRes = await fetch(`${baseUrl}/api/agent/context?q=${encodeURIComponent("agentctx-shared")}&limit=10`);
+  assert.equal(ctxRes.status, 200);
+  const ctxBody = await ctxRes.json();
+  assert.ok(Array.isArray(ctxBody.context));
+  const ours = ctxBody.context.filter((c) => [stableId, draftId, teacherId].includes(c.id));
+  const stablePos = ours.findIndex((c) => c.id === stableId);
+  const draftPos = ours.findIndex((c) => c.id === draftId);
+  assert.ok(stablePos !== -1 && draftPos !== -1);
+  assert.ok(stablePos < draftPos, "stable 条目应排在 draft 之前");
+
+  // 2) 每条都带引用（citation）与结构化字段
+  const stableItem = ctxBody.context.find((c) => c.id === stableId);
+  assert.equal(stableItem.citation.id, stableId);
+  assert.ok(stableItem.citation.title.length > 0);
+  assert.equal(stableItem.status, "stable");
+  assert.ok(Array.isArray(stableItem.relationships));
+  assert.equal(stableItem.relationships[0].predicate, "supports");
+  assert.equal(stableItem.relationships[0].target, draftId);
+
+  // 3) role 过滤：role=student 时，仅面向教师的条目应被过滤
+  const studentRes = await fetch(`${baseUrl}/api/agent/context?q=${encodeURIComponent("agentctx-shared")}&role=student&limit=10`);
+  const studentBody = await studentRes.json();
+  const studentIds = studentBody.context.map((c) => c.id);
+  assert.ok(studentIds.includes(stableId));
+  assert.ok(!studentIds.includes(teacherId), "role=student 不应返回仅面向教师的条目");
+
+  // 4) type 过滤：type=faq 只返回 faq
+  const faqRes = await fetch(`${baseUrl}/api/agent/context?q=${encodeURIComponent("agentctx-shared")}&type=faq&limit=10`);
+  const faqBody = await faqRes.json();
+  assert.ok(faqBody.context.every((c) => c.type === "faq"));
+  assert.ok(faqBody.context.some((c) => c.id === teacherId));
+});

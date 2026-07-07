@@ -10,6 +10,10 @@ tags:
   - ai-learning
   - reflection
   - learning-process
+keywords:
+  - 最佳实践
+  - 实践
+  - 方法
 concepts:
   - 健康的 AI 使用模式
   - 学习反思
@@ -19,8 +23,11 @@ skills:
   - 复盘错误
   - 提出反思问题
 status: sample
-updated: 2026-06-28
+updated: 2026-07-07
 ---
+
+
+
 
 # AI-Assisted Learning Practice
 
@@ -38,4 +45,3 @@ Use AI to clarify, compare, generate examples, review mistakes, and improve draf
 - What did I still need to decide myself?
 - What changed between my first attempt and final output?
 - What would I ask differently next time?
-

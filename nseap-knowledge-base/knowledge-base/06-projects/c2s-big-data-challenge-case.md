@@ -2,12 +2,16 @@
 id: kb-project-002
 title: C2S 大数据应用挑战项目案例
 type: project
-summary: 一个真实学生项目案例：围绕 AI+X 论文完成术语翻译、结构化理解、面向大数据应用的改进方案和 AAR 复盘。
 audience:
   - student
   - teacher
   - builder
   - agent
+tags:
+  - project-case
+  - big-data
+  - ai-x
+  - portfolio
 keywords:
   - C2S
   - 大数据
@@ -17,11 +21,6 @@ keywords:
   - AAR
   - Metadata-First
   - 语义对齐
-tags:
-  - project-case
-  - big-data
-  - ai-x
-  - portfolio
 concepts:
   - AI+X 范式
   - KSTAR
@@ -36,19 +35,24 @@ skills:
   - 大数据任务拆解
 related:
   - kb-best-practice-003
-  - kb-challenge-001
-  - kb-agent-002
+  - kb-upload-1782957815322
+  - kb-upload-1782963978597
 relationships:
   - predicate: usesPractice
     target: kb-best-practice-003
-  - predicate: supports
-    target: kb-challenge-001
-  - predicate: alignsWith
-    target: kb-agent-002
-status: sample
-updated: 2026-07-01
-source: ../../例子/C2S_Final_BigData_Submission/C2S_Submission_V2_BigData.md
+    targetLabel: Metadata-First 大数据任务实践
+  - predicate: includes
+    target: kb-upload-1782957815322
+    targetLabel: C2S Challenge
+  - predicate: includes
+    target: kb-upload-1782963978597
+    targetLabel: C2S Submission V2 BigData
+status: stable
+updated: 2026-07-07
 ---
+
+
+
 
 # C2S 大数据应用挑战项目案例
 

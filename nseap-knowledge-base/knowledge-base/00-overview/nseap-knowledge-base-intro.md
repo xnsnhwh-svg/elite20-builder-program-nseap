@@ -11,6 +11,10 @@ tags:
   - nseap
   - knowledge-base
   - elite20
+keywords:
+  - 概览
+  - 知识库
+  - 介绍
 concepts:
   - 知识层
   - 共享记忆
@@ -19,8 +23,11 @@ skills:
   - 理解知识库定位
   - 认识知识分类结构
 status: draft
-updated: 2026-06-28
+updated: 2026-07-07
 ---
+
+
+
 
 # NSEAP Knowledge Base Intro
 
@@ -41,4 +48,3 @@ Use this entry when introducing why the Knowledge Team exists and how it support
 ## Agent Notes
 
 Retrieve this entry when a user asks what the Knowledge Base is, why it matters, or how it supports the project.
-

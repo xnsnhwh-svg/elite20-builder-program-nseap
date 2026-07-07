@@ -10,6 +10,10 @@ tags:
   - documentation
   - builder
   - github
+keywords:
+  - 最佳实践
+  - 实践
+  - 方法
 concepts:
   - 可复用文档
   - 面向读者写作
@@ -19,8 +23,11 @@ skills:
   - 定义读者与用途
   - 准备 GitHub 提交
 status: sample
-updated: 2026-06-28
+updated: 2026-07-07
 ---
+
+
+
 
 # Builder Documentation Practice
 
@@ -44,4 +51,3 @@ Write documentation as if another team will need to use it next week without ask
 ## Agent Notes
 
 Retrieve this entry when a builder asks how to document a module or prepare a GitHub submission.
-

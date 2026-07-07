@@ -101,6 +101,24 @@ function main() {
   console.log(`✓ 导入完成：新增 ${added} 条${updateMode ? `，刷新 ${updated} 条` : ""}，库内共 ${db.entries.length} 条`);
   if (addedIds.length) console.log("  新增:", addedIds.join(", "));
   if (updatedIds.length) console.log("  刷新:", updatedIds.join(", "));
+
+  // 把最新 JSON 同步进 SQLite 运行时库（若已存在），避免 md 导入后运行库仍是旧数据。
+  try {
+    const sqlitePath = process.env.KB_SQLITE_PATH
+      ? path.resolve(process.env.KB_SQLITE_PATH)
+      : path.join(rootDir, "data", "knowledge.db");
+    if (fs.existsSync(sqlitePath)) {
+      const { KnowledgeStore } = require("../server/store");
+      const store = new KnowledgeStore({ sqlitePath, jsonMirrorPath: dbPath, seedJsonPath: dbPath });
+      const n = store.reseedFromJson(dbPath);
+      store.close();
+      console.log(`  已同步进 SQLite 运行时库（${n} 条）。`);
+    } else {
+      console.log("  提示：SQLite 运行时库尚未创建，后端首次启动会自动从此 JSON 播种。");
+    }
+  } catch (err) {
+    console.log("  ⚠ 同步 SQLite 失败（不影响 JSON 库）：" + err.message);
+  }
   console.log("  提示：extractedText / chunks 将在后端下次启动时由 migrateAllEntries() 自动回填。");
 }
 

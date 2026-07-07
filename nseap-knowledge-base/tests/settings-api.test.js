@@ -14,10 +14,16 @@ const baseUrl = `http://127.0.0.1:${port}`;
 function isolatedServerEnv(t, overrides = {}) {
   const configDir = fs.mkdtempSync(path.join(os.tmpdir(), "nseap-kb-test-"));
   t.after(() => fs.rmSync(configDir, { recursive: true, force: true }));
+  // 每个 spawn 出来的服务用独立的临时 SQLite + JSON 镜像，从真实数据播种。
+  // 这样测试互不干扰，也不会污染仓库里的 data/knowledge.db 或 knowledge-db.json。
+  const seedMirror = path.join(configDir, "knowledge-db.json");
+  fs.copyFileSync(dbPath, seedMirror);
   return {
     ...process.env,
     PORT: String(port),
     RUNTIME_CONFIG_PATH: path.join(configDir, "runtime-config.json"),
+    KB_SQLITE_PATH: path.join(configDir, "knowledge.db"),
+    KB_DB_PATH: seedMirror,
     ...overrides
   };
 }
@@ -898,4 +904,61 @@ test("agent context API returns cited, trust-ranked, role-filtered knowledge", a
   const faqBody = await faqRes.json();
   assert.ok(faqBody.context.every((c) => c.type === "faq"));
   assert.ok(faqBody.context.some((c) => c.id === teacherId));
+});
+
+test("revisions API records content history across create and edits", async (t) => {
+  const backup = fs.readFileSync(dbPath, "utf8");
+
+  const child = spawn(process.execPath, ["server/server.js"], {
+    cwd: rootDir,
+    env: isolatedServerEnv(t),
+    stdio: "pipe"
+  });
+
+  t.after(() => {
+    child.kill();
+    fs.writeFileSync(dbPath, backup, "utf8");
+  });
+
+  await waitForHealth();
+
+  const id = `kb-revision-test-${Date.now()}`;
+  const createRes = await fetch(`${baseUrl}/api/knowledge`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      id,
+      title: "修订历史测试",
+      type: "project",
+      status: "draft",
+      audience: ["student"],
+      keywords: ["revision-test", "修订", "历史"],
+      summary: "初始版本。"
+    })
+  });
+  assert.equal(createRes.status, 201);
+
+  // 创建后应有 1 条修订
+  const afterCreate = await (await fetch(`${baseUrl}/api/knowledge/${encodeURIComponent(id)}/revisions`)).json();
+  assert.equal(afterCreate.count, 1, "创建后应有 1 条修订");
+  assert.equal(afterCreate.revisions[0].status, "draft");
+
+  // 状态流转 draft -> review 会改内容 -> 应新增修订
+  const tr = await fetch(`${baseUrl}/api/knowledge/${encodeURIComponent(id)}/transition`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status: "review" })
+  });
+  assert.equal(tr.status, 200);
+
+  const afterEdit = await (await fetch(`${baseUrl}/api/knowledge/${encodeURIComponent(id)}/revisions`)).json();
+  assert.ok(afterEdit.count >= 2, "流转后修订数应增加");
+  // 修订按新 -> 旧排序，最新一条应反映最新状态
+  assert.equal(afterEdit.revisions[0].status, "review");
+  // content_hash 应随内容变化
+  assert.notEqual(afterEdit.revisions[0].contentHash, afterEdit.revisions[afterEdit.revisions.length - 1].contentHash);
+
+  // 未知条目返回 404
+  const missing = await fetch(`${baseUrl}/api/knowledge/does-not-exist-xyz/revisions`);
+  assert.equal(missing.status, 404);
 });

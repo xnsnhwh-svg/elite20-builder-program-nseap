@@ -1,5 +1,9 @@
 node_modules/
 data/runtime-config.json
+# SQLite 运行时库（真源）及其 WAL/SHM 边文件 —— 由 knowledge-db.json 播种/镜像，不入库
+data/knowledge.db
+data/knowledge.db-wal
+data/knowledge.db-shm
 .env
 .env.*
 output/playwright/

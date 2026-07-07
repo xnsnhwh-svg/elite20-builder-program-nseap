@@ -2,10 +2,18 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const zlib = require("zlib");
+const { KnowledgeStore } = require("./store");
 
 const rootDir = path.resolve(__dirname, "..");
 const appDir = path.join(rootDir, "app");
-const dbPath = path.join(rootDir, "data", "knowledge-db.json");
+// JSON 镜像路径（仍供 GitHub review / 导出；可用 KB_DB_PATH 覆盖，测试用）
+const dbPath = process.env.KB_DB_PATH
+  ? path.resolve(process.env.KB_DB_PATH)
+  : path.join(rootDir, "data", "knowledge-db.json");
+// SQLite 运行时真源（可用 KB_SQLITE_PATH 覆盖，测试指向临时文件）
+const sqlitePath = process.env.KB_SQLITE_PATH
+  ? path.resolve(process.env.KB_SQLITE_PATH)
+  : path.join(rootDir, "data", "knowledge.db");
 const runtimeConfigPath = process.env.RUNTIME_CONFIG_PATH
   ? path.resolve(process.env.RUNTIME_CONFIG_PATH)
   : path.join(rootDir, "data", "runtime-config.json");
@@ -67,12 +75,25 @@ const allowedStatuses = new Set(["draft", "review", "stable", "sample", "depreca
 const archivedStatuses = new Set(["archived"]);
 const allowedPredicates = new Set(["includes", "requires", "supports", "assessedBy", "usesPrompt", "relatedTo", "usesPractice"]);
 
+let _store = null;
+function getStore() {
+  if (!_store) {
+    _store = new KnowledgeStore({
+      sqlitePath,
+      jsonMirrorPath: dbPath,
+      seedJsonPath: dbPath // \u9996\u6B21\u542F\u52A8\u4ECE\u73B0\u6709 JSON \u5E93\u64AD\u79CD
+    });
+  }
+  return _store;
+}
+
+// \u6570\u636E\u8BBF\u95EE\u5C42\u59D4\u6258\u7ED9 SQLite \u5B58\u50A8\uFF1B\u8FD4\u56DE\u5BF9\u8C61\u7ED3\u6784\u4E0E\u65E7 JSON \u5E93\u5B8C\u5168\u4E00\u81F4\uFF0CAPI \u5951\u7EA6\u4E0D\u53D8\u3002
 function readDb() {
-  return JSON.parse(fs.readFileSync(dbPath, "utf8").replace(/^\uFEFF/, ""));
+  return getStore().loadDb();
 }
 
 function writeDb(db) {
-  fs.writeFileSync(dbPath, `${JSON.stringify(db, null, 2)}\n`, "utf8");
+  getStore().saveDb(db);
 }
 
 function readRuntimeConfig() {
@@ -2344,7 +2365,7 @@ async function handleApi(req, res, url) {
   }
 
   const knowledgeIdMatch = url.pathname.match(/^\/api\/knowledge\/([^/]+)$/);
-  const knowledgeActionMatch = url.pathname.match(/^\/api\/knowledge\/([^/]+)\/(transition|review|audit-log)$/);
+  const knowledgeActionMatch = url.pathname.match(/^\/api\/knowledge\/([^/]+)\/(transition|review|audit-log|revisions)$/);
 
   if (req.method === "PATCH" && knowledgeIdMatch) {
     const id = decodeURIComponent(knowledgeIdMatch[1]);
@@ -2448,6 +2469,17 @@ async function handleApi(req, res, url) {
     if (index === -1) { sendJson(res, 404, { error: "条目未找到" }); return; }
     const entry = db.entries[index];
     sendJson(res, 200, { auditLog: Array.isArray(entry.auditLog) ? entry.auditLog : [] });
+    return;
+  }
+
+  // 修订历史（DESIGN 9.2 knowledge_revisions）：每次内容变化的快照，新 -> 旧
+  if (req.method === "GET" && knowledgeActionMatch && knowledgeActionMatch[2] === "revisions") {
+    const id = decodeURIComponent(knowledgeActionMatch[1]);
+    const exists = db.entries.some((item) => item.id === id);
+    if (!exists) { sendJson(res, 404, { error: "条目未找到" }); return; }
+    const limit = Math.min(Number(url.searchParams.get("limit")) || 50, 100);
+    const revisions = getStore().listRevisions(id, limit);
+    sendJson(res, 200, { id, count: revisions.length, revisions });
     return;
   }
 

@@ -32,7 +32,8 @@
         "faq",
         "best-practice",
         "project",
-        "agent"
+        "agent",
+        "rubric"
       ]
     },
     "summary": {

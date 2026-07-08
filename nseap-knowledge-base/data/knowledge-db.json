@@ -41,6 +41,10 @@
     {
       "id": "agent",
       "label": "Agent"
+    },
+    {
+      "id": "rubric",
+      "label": "Rubric"
     }
   ],
   "flow": [
@@ -319,7 +323,8 @@
           "timestamp": "2026-07-07T02:10:36.320Z"
         }
       ],
-      "updatedAt": "2026-07-07T02:10:36.320Z"
+      "updatedAt": "2026-07-07T07:52:01.842Z",
+      "agentNotes": "触发条件：用户搜索大数据、C2S、Metadata-First、语义对齐、KSTAR、AAR、作品集案例时检索。能力范围：展示一个完整的学生项目案例：术语翻译→结构化理解→改进方案→AAR 复盘。限制：是特定学生的作品记录，不可直接作为通用模板；实操方法论需联动 kb-best-practice-003。"
     },
     {
       "id": "kb-best-practice-003",
@@ -528,7 +533,8 @@
           "timestamp": "2026-07-07T02:10:36.355Z"
         }
       ],
-      "updatedAt": "2026-07-07T02:10:36.355Z"
+      "updatedAt": "2026-07-07T07:52:01.843Z",
+      "agentNotes": "触发条件：用户问 AI 为什么听不懂数据分析需求、大数据任务怎么写 Prompt、怎么减少 AI 生成无效代码时检索。能力范围：提供 Metadata-First 方法论——先给 AI 数据字典、业务约束和目标指标，再执行分析。限制：适用于结构化数据分析场景；非结构化文本任务（如写作、翻译）不适用此方法。联动：kb-project-002（C2S 项目案例演示此方法）。"
     },
     {
       "id": "kb-upload-1782957815322",
@@ -564,7 +570,8 @@
       "source": "/uploads/1782957815319-C2S_Challenge.docx",
       "searchText": "C2S Challenge challenge Builder Agent uploaded-file docx C2S Challenge C2S Challenge.docx docx 上传文件 知识草稿 由上传文件 C2S Challenge.docx 自动生成的知识草稿，后续需要补充 metadata。 用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。 原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。 上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。 C2S Challenge C2S Challenge.docx 上传文件 知识草稿 ",
       "createdAt": "2026-07-02T02:03:35.322Z",
-      "updatedAt": "2026-07-02T02:03:35.323Z"
+      "updatedAt": "2026-07-07T07:52:01.843Z",
+      "agentNotes": "触发条件：查找 C2S Challenge 原始文档或了解 C2S 挑战的完整定义时检索。能力范围：提供 C2S Challenge 的原始要求文档（由 docx 上传生成的草稿）。限制：这是自动生成草稿，metadata 不完整；权威版本以教师发布的最终 Challenge 为准。"
     },
     {
       "id": "kb-upload-1782957986593",
@@ -600,7 +607,8 @@
       "source": "/uploads/1782957986590-C2S_Submission_V2_BigData.md",
       "searchText": "C2S Submission V2 BigData challenge Builder Agent uploaded-file md C2S Submission V2 BigData C2S_Submission_V2_BigData.md md 上传文件 知识草稿 # C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa 用于把学生、老师或 Builder 提交的原始资料先纳入知识库，形成可继续整理的草稿。 原始文件 -> 知识草稿 -> metadata 标注 -> 审核 -> 正式知识条目。 上传文件 -> 后端保存文件 -> 自动生成 draft 条目 -> 人工补充分类、关键词、概念和关系 -> 审核发布。 C2S Submission V2 BigData C2S_Submission_V2_BigData.md 上传文件 知识草稿 # C2S Challenge: Translate, Read, and Propose — Big Data Application Focus **Elite 20 Digital Portfolio Submission (Gold Tier)** --- ## Part 1: Bilingual Glossa",
       "createdAt": "2026-07-02T02:06:26.593Z",
-      "updatedAt": "2026-07-02T02:06:26.593Z"
+      "updatedAt": "2026-07-07T07:52:01.843Z",
+      "agentNotes": "触发条件：查看 C2S 大数据方向提交范例或学生实际提交物时检索。能力范围：提供一份聚焦大数据应用的 C2S Challenge 学生提交实例。限制：是特定学生提交的原始记录，不代表标准答案；评估需结合 Rubric 条目。"
     },
     {
       "id": "kb-upload-1783135052354",
@@ -710,7 +718,8 @@
       "extractedTextPreview": "--- name: ontology-extraction version: \"2.1.0\" updated: \"2026-07-02\" changelog: | v2.1.0（2026-07-02）新增5项： ① T1强制确认步骤（新实体升T1时不可跳过） ② A-Box completeness语义定义（compl",
       "archivedAt": null,
       "createdAt": "2026-07-04T03:17:32.354Z",
-      "updatedAt": "2026-07-04T03:17:32.355Z"
+      "updatedAt": "2026-07-07T07:52:01.843Z",
+      "agentNotes": "触发条件：需要了解本体抽取方法论、T-Box/R-Box/A-Box 概念或如何从文档生成结构化本体时检索。能力范围：提供本体抽取的专用技能定义，将领域文档转化为三元组结构。限制：是方法论描述，不含可直接执行的代码脚本；具体实现需对接 Ontology Team 工具链。"
     },
     {
       "id": "kb-overview-001",
@@ -754,7 +763,7 @@
       "source": "../knowledge-base/00-overview/nseap-knowledge-base-intro.md",
       "searchText": "kb-overview-001 NSEAP Knowledge Base Intro overview student teacher builder agent nseap knowledge-base elite20 概览 知识库 介绍 知识层 共享记忆 模块定位 理解知识库定位 认识知识分类结构 NSEAP Knowledge Base Intro Purpose Content When To Use Agent Notes # NSEAP Knowledge Base Intro ## Purpose Explain the role of the Knowledge Base in the Elite20 Builder Program. ## Content The Knowledge Base is the shared memory layer for the NSEAP AI Learning Operating System. It stores course knowledge, challenge guidance, prompts, FAQs, best practices, project cases, and agent context in a consistent format. ## When To Use Use this entry when introducing why the Knowledge Team exists and how it supports other teams. ## Agent Notes Retrieve this entry when a user asks what the Knowledge Base is, why it matters, or how it supports the project.",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:03:41.831Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# NSEAP Knowledge Base Intro\n\n## Purpose\n\nExplain the role of the Knowledge Base in the Elite20 Builder Program.\n\n## Content\n\nThe Knowledge Base is the shared memory layer for the NSEAP AI Learning Operating System.\n\nIt stores course knowledge, challenge guidance, prompts, FAQs, best practices, project cases, and agent context in a consistent format.\n\n## When To Use\n\nUse this entry when introducing why the Knowledge Team exists and how it supports other teams.\n\n## Agent Notes\n\nRetrieve this entry when a user asks what the Knowledge Base is, why it matters, or how it supports the project.",
       "chunks": [
@@ -818,7 +827,8 @@
           "type": "paragraph",
           "heading": "Agent Notes"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：用户问知识库是什么、Knowledge Base 有什么用、NSEAP 知识层介绍时检索。能力范围：解释知识库在 Elite20 Builder Program 中的定位、设计目标和使用方式。限制：不含具体操作指南或 API 调用方法，需联动 kb-agent-002 补充架构细节。"
     },
     {
       "id": "kb-course-001",
@@ -877,7 +887,7 @@
       "source": "../knowledge-base/01-course/sample-week-1-overview.md",
       "searchText": "kb-course-001 Week 1 Overview course student teacher agent elite20 vibe-coding week-1 课程 第一周 Week 1 学习路径 Vibe Coding 课程安排 ai-native-learning vibe-coding learning-workflow ai-tool-setup reflective-learning prompting-basics kb-challenge-001 kb-prompt-001 Week 1 Overview Purpose Learning Goal Content Graph Notes Example Activities Related Agent Notes # Week 1 Overview ## Purpose Give students and teachers a clear starting point for Week 1 of the Vibe Coding course. ## Learning Goal Understand what an AI-native learning workflow looks like and complete the first small AI-assisted creation task. ## Content Week 1 should introduce the course purpose, expected learning behavior, basic AI tool usage, and the first challenge. ## Graph Notes This entry can become a future `CourseUnit` node. It includes the first challenge and uses a coding coach prompt as support. ## Example Activities - Set up required accounts and tools. - Ask an AI assistant to explain a coding concept. - Complete a small guided creation task. - Reflect on what AI helped with and what still required human judgment. ## Related - `knowledge-base/02-challenges/sample-challenge-knowledge.md` - `knowledge-base/03-prompts/sample-coding-coach-prompt.md` ## Agent Notes Retrieve this entry when a student asks how to start Week 1 or when a teacher asks what Week 1 should cover.",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:10:36.337Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# Week 1 Overview\n\n## Purpose\n\nGive students and teachers a clear starting point for Week 1 of the Vibe Coding course.\n\n## Learning Goal\n\nUnderstand what an AI-native learning workflow looks like and complete the first small AI-assisted creation task.\n\n## Content\n\nWeek 1 should introduce the course purpose, expected learning behavior, basic AI tool usage, and the first challenge.\n\n## Graph Notes\n\nThis entry can become a future `CourseUnit` node. It includes the first challenge and uses a coding coach prompt as support.\n\n## Example Activities\n\n- Set up required accounts and tools.\n- Ask an AI assistant to explain a coding concept.\n- Complete a small guided creation task.\n- Reflect on what AI helped with and what still required human judgment.\n\n## Related\n\n- `knowledge-base/02-challenges/sample-challenge-knowledge.md`\n- `knowledge-base/03-prompts/sample-coding-coach-prompt.md`\n\n## Agent Notes\n\nRetrieve this entry when a student asks how to start Week 1 or when a teacher asks what Week 1 should cover.",
       "chunks": [
@@ -987,7 +997,8 @@
           "note": "L1/L2完整,关系齐全,审核通过",
           "timestamp": "2026-07-07T02:10:36.337Z"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：学生问第一周学什么、Week 1 怎么开始、课程安排，或教师问 Week 1 覆盖哪些内容时检索。能力范围：提供 Vibe Coding 第一周的学习路径、目标和节奏安排。限制：仅覆盖 Week 1，后续周次需查阅对应课程条目；不包含具体挑战的提交规则。"
     },
     {
       "id": "kb-challenge-001",
@@ -1050,7 +1061,7 @@
       "source": "../knowledge-base/02-challenges/sample-challenge-knowledge.md",
       "searchText": "kb-challenge-001 构建你的第一个 AI 助手 challenge student teacher agent challenge ai-assistant week-1 挑战 任务 AI 助手 入门项目 Challenge 练习 场景定义 角色设计 提示词工程 拆解任务 编写系统提示 评估输出质量 kb-course-001 kb-prompt-001 构建你的第一个 AI 助手 用途 适用对象与场景 场景 Situation 本体 / 结构说明 流程 Workflow 技能 Skill 评估 Evaluation 知识增长 Knowledge Growth 详细内容 任务说明 建议选题 交付要求 常见错误 相关关系 Agent Notes # 构建你的第一个 AI 助手 ## 用途 这是一条面向新同学的入门挑战，用来帮助学习者第一次把“想法”变成一个可演示的小型 AI 助手，而不是只停留在聊天体验上。 ## 适用对象与场景 适合刚进入课程的学生，也适合老师拿来做第一周挑战说明。后续如果接入 Agent，这条知识也可以作为“如何完成第一个 AI 助手挑战”的标准上下文。 ## 场景 Situation 很多同学第一次接触这个项目时，会觉得“做 AI 助手”听起来很大，但不知道到底要交什么、从哪里开始。所以这条挑战要把任务拆清楚，让学生能围绕一个具体场景，比如背单词、复习代码、规划学习时间，做出一个小而完整的 AI 助手。 ## 本体 / 结构说明 这条挑战涉及四个核心对象： 1. 使用场景：助手到底服务什么问题。 2. 助手角色：它是谁，负责什么，不负责什么。 3. 提示词：它如何被指挥工作。 4. 评估方式：怎么判断这个助手是不是有用。 ## 流程 Workflow ```text 选择一个真实场景 -> 定义助手角色与边界 -> 编写系统提示或指令提示 -> 测试 2 到 3 轮对话 -> 观察输出问题 -> 修改提示词 -> 提交结果与反思 ``` ## 技能 Skill 完成这条挑战时，学生会练到三类关键能力： - 场景拆解：把一个模糊想法变成具体任务。 - 提示词编写：能清楚告诉 AI 要做什么、不该做什么。 - 输出评估：不只看“能不能回答”，还看“回得有没有帮助”。 ## 评估 Evaluation 这条挑战建议从下面四点判断是否完成得好： 1. 场景是否具体，不空泛。 2. 助手角色是否清晰，有边界。 3. 示例对话是否能体现这个助手真的在工作。 4. 反思是否说明了你修改过什么、为什么修改。 ## 知识增长 Knowledge Growth 这条挑战不是做完就结束，它还会继续回流到知识库： - 好的提示词可以沉淀到提示词库。 - 常见问题可以沉淀到 FAQ。 - 优秀作品可以沉淀为项目案例。 - 高频能力点可以沉淀为概念或技能节点。 ## 详细内容 ### 任务说明 请你围绕一个真实的小场景，设计一个 AI 助手。这个助手不需要很复杂，但必须清楚说明： - 它服务谁； - 它解决什么问题； - 它会怎么回答； - 它不能越界做什么。 ### 建议选题 可以从下面这些方向里任选一个： - 帮助自己规划一周学习任务； - 帮助解释一段报错代码； - 帮助整理课堂笔记； - 帮助复习英语单词； - 帮助完成课程问题答疑。 ### 交付要求 至少提交下面 4 样东西： 1. 助手简介：一句话说清它是谁、做什么。 2. 提示词：你的系统提示或核心指令。 3. 示例对话：至少 2 轮。 4. 简短反思：你测试后改了什么、发现了什么问题。 ### 常见错误 - 角色定义太大，比如“什么都能做”。 - 提示词没有边界，导致回答发散。 - 示例对话太短，看不出效果。 - 只展示结果，不写反思和修改过程。 ## 相关关系 - 这条挑战支持 `kb-course-001` 的 Week 1 课程导览。 - 这条挑战可配合 `kb-prompt-001` 的提示词样例一起使用。 - 它还依赖“提示词工程基础”这类前置能力。 ## Agent Notes 当学生问“第一个 AI 助手挑战怎么做”“这个挑战要交什么”“怎么判断我做得好不好”时，应优先检索这条知识，并同时联动相关提示词和课程条目一起返回。",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:10:36.254Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# 构建你的第一个 AI 助手\n\n## 用途\n\n这是一条面向新同学的入门挑战，用来帮助学习者第一次把“想法”变成一个可演示的小型 AI 助手，而不是只停留在聊天体验上。\n\n## 适用对象与场景\n\n适合刚进入课程的学生，也适合老师拿来做第一周挑战说明。后续如果接入 Agent，这条知识也可以作为“如何完成第一个 AI 助手挑战”的标准上下文。\n\n## 场景 Situation\n\n很多同学第一次接触这个项目时，会觉得“做 AI 助手”听起来很大，但不知道到底要交什么、从哪里开始。所以这条挑战要把任务拆清楚，让学生能围绕一个具体场景，比如背单词、复习代码、规划学习时间，做出一个小而完整的 AI 助手。\n\n## 本体 / 结构说明\n\n这条挑战涉及四个核心对象：\n\n1. 使用场景：助手到底服务什么问题。\n2. 助手角色：它是谁，负责什么，不负责什么。\n3. 提示词：它如何被指挥工作。\n4. 评估方式：怎么判断这个助手是不是有用。\n\n## 流程 Workflow\n\n```text\n选择一个真实场景\n-> 定义助手角色与边界\n-> 编写系统提示或指令提示\n-> 测试 2 到 3 轮对话\n-> 观察输出问题\n-> 修改提示词\n-> 提交结果与反思\n```\n\n## 技能 Skill\n\n完成这条挑战时，学生会练到三类关键能力：\n\n- 场景拆解：把一个模糊想法变成具体任务。\n- 提示词编写：能清楚告诉 AI 要做什么、不该做什么。\n- 输出评估：不只看“能不能回答”，还看“回得有没有帮助”。\n\n## 评估 Evaluation\n\n这条挑战建议从下面四点判断是否完成得好：\n\n1. 场景是否具体，不空泛。\n2. 助手角色是否清晰，有边界。\n3. 示例对话是否能体现这个助手真的在工作。\n4. 反思是否说明了你修改过什么、为什么修改。\n\n## 知识增长 Knowledge Growth\n\n这条挑战不是做完就结束，它还会继续回流到知识库：\n\n- 好的提示词可以沉淀到提示词库。\n- 常见问题可以沉淀到 FAQ。\n- 优秀作品可以沉淀为项目案例。\n- 高频能力点可以沉淀为概念或技能节点。\n\n## 详细内容\n\n### 任务说明\n\n请你围绕一个真实的小场景，设计一个 AI 助手。这个助手不需要很复杂，但必须清楚说明：\n\n- 它服务谁；\n- 它解决什么问题；\n- 它会怎么回答；\n- 它不能越界做什么。\n\n### 建议选题\n\n可以从下面这些方向里任选一个：\n\n- 帮助自己规划一周学习任务；\n- 帮助解释一段报错代码；\n- 帮助整理课堂笔记；\n- 帮助复习英语单词；\n- 帮助完成课程问题答疑。\n\n### 交付要求\n\n至少提交下面 4 样东西：\n\n1. 助手简介：一句话说清它是谁、做什么。\n2. 提示词：你的系统提示或核心指令。\n3. 示例对话：至少 2 轮。\n4. 简短反思：你测试后改了什么、发现了什么问题。\n\n### 常见错误\n\n- 角色定义太大，比如“什么都能做”。\n- 提示词没有边界，导致回答发散。\n- 示例对话太短，看不出效果。\n- 只展示结果，不写反思和修改过程。\n\n## 相关关系\n\n- 这条挑战支持 `kb-course-001` 的 Week 1 课程导览。\n- 这条挑战可配合 `kb-prompt-001` 的提示词样例一起使用。\n- 它还依赖“提示词工程基础”这类前置能力。\n\n## Agent Notes\n\n当学生问“第一个 AI 助手挑战怎么做”“这个挑战要交什么”“怎么判断我做得好不好”时，应优先检索这条知识，并同时联动相关提示词和课程条目一起返回。",
       "chunks": [
@@ -1292,7 +1303,8 @@
           "note": "L1/L2完整,关系齐全,审核通过",
           "timestamp": "2026-07-07T02:10:36.254Z"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：学生问第一个 AI 助手怎么做、入门挑战要交什么、怎么判断做得好不好时检索。能力范围：提供挑战目标、必交材料清单、评估维度和参考路径。限制：不含 Rubric 评分细节（需查 Rubric 条目）；不能替代教师评审判断。联动：kb-prompt-001（编程教练提示词）、kb-course-001（课程上下文）。"
     },
     {
       "id": "kb-prompt-001",
@@ -1351,7 +1363,7 @@
       "source": "../knowledge-base/03-prompts/sample-coding-coach-prompt.md",
       "searchText": "kb-prompt-001 Coding Coach Prompt prompt student agent coding-coach debugging learning 提示词 编程教练 代码调试 Coding Coach debugging Prompt 指令 coaching debugging guided-learning ask-clarifying-question explain-code-issue create-practice-task kb-course-001 kb-challenge-001 Coding Coach Prompt Purpose Prompt Input Needed Expected Output Graph Notes Agent Notes # Coding Coach Prompt ## Purpose Help a student debug code while still learning the underlying concept. ## Prompt You are my coding coach. Help me understand the problem before giving the final answer. Ask one clarifying question if needed. Then explain the issue, show the smallest useful fix, and give me one practice task to confirm I understand. ## Input Needed - Code snippet. - Error message or unexpected behavior. - What the student already tried. ## Expected Output - Diagnosis. - Explanation. - Minimal fix. - Practice task. ## Graph Notes This entry can become a future `Prompt` node that supports coding challenges and course units. ## Agent Notes Use this prompt pattern when the learner needs coaching rather than direct answer dumping.",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:10:36.280Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# Coding Coach Prompt\n\n## Purpose\n\nHelp a student debug code while still learning the underlying concept.\n\n## Prompt\n\nYou are my coding coach. Help me understand the problem before giving the final answer. Ask one clarifying question if needed. Then explain the issue, show the smallest useful fix, and give me one practice task to confirm I understand.\n\n## Input Needed\n\n- Code snippet.\n- Error message or unexpected behavior.\n- What the student already tried.\n\n## Expected Output\n\n- Diagnosis.\n- Explanation.\n- Minimal fix.\n- Practice task.\n\n## Graph Notes\n\nThis entry can become a future `Prompt` node that supports coding challenges and course units.\n\n## Agent Notes\n\nUse this prompt pattern when the learner needs coaching rather than direct answer dumping.",
       "chunks": [
@@ -1449,7 +1461,8 @@
           "note": "L1/L2完整,关系齐全,审核通过",
           "timestamp": "2026-07-07T02:10:36.280Z"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：Agent 需要以教练方式引导学生调试代码、而非直接给出答案时检索。能力范围：提供 Coding Coach 提示词模板，适用于帮助学生在调试中学习底层概念。限制：仅适用于编程调试场景；不适用于写作、设计或非代码类任务。联动：kb-challenge-001（挑战背景）。"
     },
     {
       "id": "kb-faq-001",
@@ -1492,7 +1505,7 @@
       "source": "../knowledge-base/04-faq/student-faq.md",
       "searchText": "kb-faq-001 Student FAQ faq student agent faq student learning-support FAQ 常见问题 问答 学习支持 AI 协作规范 作业提交 拆解挑战任务 负责任地使用 AI 撰写学习反思 Student FAQ Q: What should I do if I do not understand a challenge? Q: Can I use AI to complete assignments? Q: What should I submit? Agent Notes # Student FAQ ## Q: What should I do if I do not understand a challenge? Start by reading the challenge goal, deliverables, and rubric. Then ask a Coding Coach agent to explain the task in smaller steps. ## Q: Can I use AI to complete assignments? Yes, but you should show your process. The goal is not only to get an answer, but to learn how to work with AI responsibly. ## Q: What should I submit? Submit the required deliverables listed in the challenge, plus a short reflection on how you used AI. ## Agent Notes Retrieve this entry for common student onboarding and assignment questions.",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:03:41.831Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# Student FAQ\n\n## Q: What should I do if I do not understand a challenge?\n\nStart by reading the challenge goal, deliverables, and rubric. Then ask a Coding Coach agent to explain the task in smaller steps.\n\n## Q: Can I use AI to complete assignments?\n\nYes, but you should show your process. The goal is not only to get an answer, but to learn how to work with AI responsibly.\n\n## Q: What should I submit?\n\nSubmit the required deliverables listed in the challenge, plus a short reflection on how you used AI.\n\n## Agent Notes\n\nRetrieve this entry for common student onboarding and assignment questions.",
       "chunks": [
@@ -1550,7 +1563,8 @@
           "type": "paragraph",
           "heading": "Agent Notes"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：学生问不理解挑战怎么办、能用 AI 完成作业吗、提交格式是什么等新手入门问题时检索。能力范围：覆盖学生常见的课程理解、提交流程和 AI 使用规范问题。限制：仅回答学生视角问题；教师和 Builder 问题分别见 kb-faq-002 和 kb-faq-003。"
     },
     {
       "id": "kb-faq-002",
@@ -1593,7 +1607,7 @@
       "source": "../knowledge-base/04-faq/teacher-faq.md",
       "searchText": "kb-faq-002 Teacher FAQ faq teacher agent faq teacher instruction FAQ 常见问题 问答 课程复用 AI 作业评估 学习成果导向 按周计划备课 评估 AI 协助过程 制定评价标准 Teacher FAQ Q: How can I reuse this course? Q: How should I evaluate AI-assisted work? Q: What if students use different AI tools? # Teacher FAQ ## Q: How can I reuse this course? Start from the weekly plan, select matching challenges, and use the teacher notes to prepare each session. ## Q: How should I evaluate AI-assisted work? Evaluate the final output, the student's process, and the quality of reflection. ## Q: What if students use different AI tools? Focus on learning outcomes and documented process instead of requiring one specific tool.",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:03:41.831Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# Teacher FAQ\n\n## Q: How can I reuse this course?\n\nStart from the weekly plan, select matching challenges, and use the teacher notes to prepare each session.\n\n## Q: How should I evaluate AI-assisted work?\n\nEvaluate the final output, the student's process, and the quality of reflection.\n\n## Q: What if students use different AI tools?\n\nFocus on learning outcomes and documented process instead of requiring one specific tool.",
       "chunks": [
@@ -1639,7 +1653,8 @@
           "type": "paragraph",
           "heading": "Q: What if students use different AI tools?"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：教师问怎么复用这个课程、如何评估 AI 辅助作业、教学设计建议时检索。能力范围：覆盖教师对课程复用、AI 辅助评估和教学实施的常见疑问。限制：仅面向教师视角；不含学生操作指南或技术开发问题。"
     },
     {
       "id": "kb-faq-003",
@@ -1682,7 +1697,7 @@
       "source": "../knowledge-base/04-faq/builder-faq.md",
       "searchText": "kb-faq-003 Builder FAQ faq builder agent faq builder contribution FAQ 常见问题 问答 知识条目分类 metadata 规范 草稿状态 选择正确知识类型 填写 metadata 标注条目状态 Builder FAQ Q: Where should I put a new knowledge item? Q: Do I need metadata? Q: Can I submit draft content? # Builder FAQ ## Q: Where should I put a new knowledge item? Choose the folder that matches the primary use case. If it supports multiple modules, choose the main category and add related links. ## Q: Do I need metadata? Yes. Metadata makes the item easier to search, review, and use with agents later. ## Q: Can I submit draft content? Yes. Mark `status: draft` in the frontmatter.",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:03:41.831Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# Builder FAQ\n\n## Q: Where should I put a new knowledge item?\n\nChoose the folder that matches the primary use case. If it supports multiple modules, choose the main category and add related links.\n\n## Q: Do I need metadata?\n\nYes. Metadata makes the item easier to search, review, and use with agents later.\n\n## Q: Can I submit draft content?\n\nYes. Mark `status: draft` in the frontmatter.",
       "chunks": [
@@ -1728,7 +1743,8 @@
           "type": "paragraph",
           "heading": "Q: Can I submit draft content?"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：Builder 问新知识条目放哪里、需要填 metadata 吗、怎么贡献知识时检索。能力范围：覆盖 Builder 在知识库贡献流程、元数据规范和条目结构方面的常见问题。限制：不含 API 技术实现细节；不适用于最终用户（学生/教师）的使用问题。"
     },
     {
       "id": "kb-best-practice-001",
@@ -1772,7 +1788,7 @@
       "source": "../knowledge-base/05-best-practices/builder-documentation-practice.md",
       "searchText": "kb-best-practice-001 Builder Documentation Practice best-practice builder teacher agent documentation builder github 最佳实践 实践 方法 可复用文档 面向读者写作 GitHub 提交规范 写清晰文档 定义读者与用途 准备 GitHub 提交 Builder Documentation Practice Purpose Practice Checklist Agent Notes # Builder Documentation Practice ## Purpose Help builders write documentation that other teams can reuse. ## Practice Write documentation as if another team will need to use it next week without asking you for context. ## Checklist - State the purpose. - Define the audience. - Include examples. - Link related files. - Mark draft or stable status. - Keep file names clear and searchable. ## Agent Notes Retrieve this entry when a builder asks how to document a module or prepare a GitHub submission.",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:03:41.831Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# Builder Documentation Practice\n\n## Purpose\n\nHelp builders write documentation that other teams can reuse.\n\n## Practice\n\nWrite documentation as if another team will need to use it next week without asking you for context.\n\n## Checklist\n\n- State the purpose.\n- Define the audience.\n- Include examples.\n- Link related files.\n- Mark draft or stable status.\n- Keep file names clear and searchable.\n\n## Agent Notes\n\nRetrieve this entry when a builder asks how to document a module or prepare a GitHub submission.",
       "chunks": [
@@ -1830,7 +1846,8 @@
           "type": "paragraph",
           "heading": "Agent Notes"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：Builder 问怎么写文档、模块文档规范是什么、GitHub 提交包怎么准备时检索。能力范围：提供文档撰写最佳实践，确保其他团队可复用。限制：聚焦文档写作规范，不涉及代码实现或部署流程。"
     },
     {
       "id": "kb-best-practice-002",
@@ -1874,7 +1891,7 @@
       "source": "../knowledge-base/05-best-practices/ai-assisted-learning-practice.md",
       "searchText": "kb-best-practice-002 AI-Assisted Learning Practice best-practice student teacher agent ai-learning reflection learning-process 最佳实践 实践 方法 健康的 AI 使用模式 学习反思 独立思考 用 AI 澄清与对比 复盘错误 提出反思问题 AI-Assisted Learning Practice Purpose Practice Reflection Questions # AI-Assisted Learning Practice ## Purpose Define a healthy pattern for using AI during learning. ## Practice Use AI to clarify, compare, generate examples, review mistakes, and improve drafts. Do not use AI as a shortcut that hides your thinking. ## Reflection Questions - What did AI help me understand? - What did I still need to decide myself? - What changed between my first attempt and final output? - What would I ask differently next time?",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:03:41.831Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# AI-Assisted Learning Practice\n\n## Purpose\n\nDefine a healthy pattern for using AI during learning.\n\n## Practice\n\nUse AI to clarify, compare, generate examples, review mistakes, and improve drafts. Do not use AI as a shortcut that hides your thinking.\n\n## Reflection Questions\n\n- What did AI help me understand?\n- What did I still need to decide myself?\n- What changed between my first attempt and final output?\n- What would I ask differently next time?",
       "chunks": [
@@ -1920,7 +1937,8 @@
           "type": "paragraph",
           "heading": "Reflection Questions"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：学生问怎么正确使用 AI 辅助学习、AI 使用边界是什么，或教师设计 AI 辅助教学策略时检索。能力范围：定义健康的 AI 辅助学习模式，包括何时该用 AI、何时该自己思考。限制：不含具体提示词模板（需联动 kb-prompt-001）；不作为学术诚信判定依据。"
     },
     {
       "id": "kb-project-001",
@@ -1980,7 +1998,7 @@
       "source": "../knowledge-base/06-projects/sample-project-case.md",
       "searchText": "kb-project-001 Sample AI Study Assistant Project project student teacher builder agent project-case ai-assistant learning-support 项目 项目案例 学习助手 AI 学习助手 project case 案例 ai-study-assistant study-planning learning-reflection define-user-situation design-assistant-prompt evaluate-learning-support kb-challenge-001 kb-prompt-001 Sample AI Study Assistant Project Purpose Situation Ontology Workflow Skills Solution Deliverables Evaluation Knowledge Growth Reuse Notes Agent Notes # Sample AI Study Assistant Project ## Purpose Show what a simple project case entry should include. ## Situation Students need a lightweight assistant that helps plan study sessions and review progress. ## Ontology Key concepts include learner, study goal, available time, difficulty, study plan, progress review, and reflection prompt. ## Workflow ```text Collect learning goal -> collect time and difficulty -> generate study plan -> ask reflection question -> review usefulness -> improve assistant prompt ``` ## Skills This project uses situation modeling, assistant prompt design, structured conversation design, and output evaluation. ## Solution Create an AI assistant that asks for the learning goal, time available, and current difficulty, then generates a study plan and reflection prompt. ## Deliverables - Assistant prompt. - Example conversation. - Short demo. - Reflection notes. ## Evaluation Evaluate whether the assistant produces a useful plan, asks relevant questions, and helps the learner reflect. ## Knowledge Growth This project can add reusable assets back into the Knowledge Cognitive Cell: - A study-planning prompt. - A project case. - FAQ entries about learning with AI. - Skill nodes for study planning and reflection. ## Reuse Notes This case can be reused as a starter example for the first AI assistant challenge. ## Agent Notes Retrieve this entry when a student or builder needs a simple example of an AI assistant project.",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:10:36.303Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# Sample AI Study Assistant Project\n\n## Purpose\n\nShow what a simple project case entry should include.\n\n## Situation\n\nStudents need a lightweight assistant that helps plan study sessions and review progress.\n\n## Ontology\n\nKey concepts include learner, study goal, available time, difficulty, study plan, progress review, and reflection prompt.\n\n## Workflow\n\n```text\nCollect learning goal\n-> collect time and difficulty\n-> generate study plan\n-> ask reflection question\n-> review usefulness\n-> improve assistant prompt\n```\n\n## Skills\n\nThis project uses situation modeling, assistant prompt design, structured conversation design, and output evaluation.\n\n## Solution\n\nCreate an AI assistant that asks for the learning goal, time available, and current difficulty, then generates a study plan and reflection prompt.\n\n## Deliverables\n\n- Assistant prompt.\n- Example conversation.\n- Short demo.\n- Reflection notes.\n\n## Evaluation\n\nEvaluate whether the assistant produces a useful plan, asks relevant questions, and helps the learner reflect.\n\n## Knowledge Growth\n\nThis project can add reusable assets back into the Knowledge Cognitive Cell:\n\n- A study-planning prompt.\n- A project case.\n- FAQ entries about learning with AI.\n- Skill nodes for study planning and reflection.\n\n## Reuse Notes\n\nThis case can be reused as a starter example for the first AI assistant challenge.\n\n## Agent Notes\n\nRetrieve this entry when a student or builder needs a simple example of an AI assistant project.",
       "chunks": [
@@ -2144,7 +2162,8 @@
           "note": "L1/L2完整,关系齐全,审核通过",
           "timestamp": "2026-07-07T02:10:36.303Z"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：学生或 Builder 需要一个简单的 AI 助手项目参考案例时检索。能力范围：展示项目案例条目应包含的结构（目标、技术栈、成果、反思）。限制：仅作为案例模板参考，不含可运行代码；具体技术实现需查阅对应代码仓库。"
     },
     {
       "id": "kb-agent-001",
@@ -2187,7 +2206,7 @@
       "source": "../knowledge-base/07-agents/knowledge-librarian-agent.md",
       "searchText": "kb-agent-001 Knowledge Librarian Agent agent builder agent knowledge-librarian retrieval agent Agent 智能体 检索 Agent 角色定义 知识检索 相关条目推荐 按类型/受众/标签检索 推荐相关条目 检查 metadata 完整性 Knowledge Librarian Agent Purpose Role Capabilities Agent Notes # Knowledge Librarian Agent ## Purpose Define a future agent role that helps users find, organize, and improve knowledge-base entries. ## Role The Knowledge Librarian Agent helps students, teachers, and builders locate the right knowledge item and suggests where new knowledge should be added. ## Capabilities - Search by type, audience, and tags. - Recommend related entries. - Check whether an entry has complete metadata. - Suggest the right template for new content. ## Agent Notes This is a design placeholder for future Agent Team integration.",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:03:41.831Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# Knowledge Librarian Agent\n\n## Purpose\n\nDefine a future agent role that helps users find, organize, and improve knowledge-base entries.\n\n## Role\n\nThe Knowledge Librarian Agent helps students, teachers, and builders locate the right knowledge item and suggests where new knowledge should be added.\n\n## Capabilities\n\n- Search by type, audience, and tags.\n- Recommend related entries.\n- Check whether an entry has complete metadata.\n- Suggest the right template for new content.\n\n## Agent Notes\n\nThis is a design placeholder for future Agent Team integration.",
       "chunks": [
@@ -2245,7 +2264,8 @@
           "type": "paragraph",
           "heading": "Agent Notes"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：讨论知识库的自动化管理、Agent 协作架构或 Knowledge Librarian 角色设计时检索。能力范围：定义未来 Knowledge Librarian Agent 的职责——帮助用户查找、组织和改进知识条目。限制：目前是设计占位符，尚未实现为可执行 Agent；不包含实际 Agent 调用接口。"
     },
     {
       "id": "kb-agent-002",
@@ -2293,7 +2313,7 @@
       "source": "../knowledge-base/07-agents/knowledge-cognitive-cell.md",
       "searchText": "kb-agent-002 Knowledge Cognitive Cell agent builder teacher agent cognitive-cell knowledge-base knowledge-agent nseap Agent 智能体 知识认知细胞 知识仓库 Knowledge Cognitive Cell 检索 认知细胞架构 共享知识层 静态到演化路径 组织多类型知识 提供贡献模板 为 Agent 检索准备接口 Knowledge Cognitive Cell Purpose Identity Capability Interface Static to Evolutionary Path Agent Notes # Knowledge Cognitive Cell ## Purpose Define the Knowledge Base as a Cognitive Cell in the NSEAP AI Learning Operating System. ## Identity The Knowledge Cognitive Cell is the shared knowledge layer owned by the Knowledge Team. It serves students, teachers, builders, and agents by turning scattered course and project outputs into reusable knowledge assets. ## Capability Current MVP capabilities: - Organize course, challenge, prompt, FAQ, best practice, project, and agent knowledge. - Provide templates for consistent contribution. - Add metadata for future retrieval. - Support GitHub review and versioning. - Provide examples that other teams can copy. Future capabilities: - Retrieve relevant knowledge for agents. - Recommend related entries. - Check metadata quality. - Suggest templates for new content. - Learn from feedback and update knowledge. ## Interface Current interfaces: - Markdown. - YAML frontmatter. - JSON Schema. - GitHub pull request workflow. Future interfaces: - Search API. - Agent retrieval API. - MCP integration. - Documentation portal. - Knowledge graph. ## Static to Evolutionary Path MVP stage: ```text Static Cognitive Cell -> stable knowledge structure -> templates -> metadata -> GitHub review ``` Future stage: ```text Evolutionary Cognitive Cell -> Knowledge Librarian Agent -> ontology -> memory -> evaluation -> KSTAR update loop ``` ## Agent Notes Retrieve this entry when explaining how Knowledge Team aligns with the Cognitive Cell architecture.",
       "createdAt": "2026-07-06T08:43:29.981Z",
-      "updatedAt": "2026-07-07T02:03:41.831Z",
+      "updatedAt": "2026-07-07T07:52:01.843Z",
       "importedFrom": "knowledge-base",
       "extractedText": "# Knowledge Cognitive Cell\n\n## Purpose\n\nDefine the Knowledge Base as a Cognitive Cell in the NSEAP AI Learning Operating System.\n\n## Identity\n\nThe Knowledge Cognitive Cell is the shared knowledge layer owned by the Knowledge Team.\n\nIt serves students, teachers, builders, and agents by turning scattered course and project outputs into reusable knowledge assets.\n\n## Capability\n\nCurrent MVP capabilities:\n\n- Organize course, challenge, prompt, FAQ, best practice, project, and agent knowledge.\n- Provide templates for consistent contribution.\n- Add metadata for future retrieval.\n- Support GitHub review and versioning.\n- Provide examples that other teams can copy.\n\nFuture capabilities:\n\n- Retrieve relevant knowledge for agents.\n- Recommend related entries.\n- Check metadata quality.\n- Suggest templates for new content.\n- Learn from feedback and update knowledge.\n\n## Interface\n\nCurrent interfaces:\n\n- Markdown.\n- YAML frontmatter.\n- JSON Schema.\n- GitHub pull request workflow.\n\nFuture interfaces:\n\n- Search API.\n- Agent retrieval API.\n- MCP integration.\n- Documentation portal.\n- Knowledge graph.\n\n## Static to Evolutionary Path\n\nMVP stage:\n\n```text\nStatic Cognitive Cell\n-> stable knowledge structure\n-> templates\n-> metadata\n-> GitHub review\n```\n\nFuture stage:\n\n```text\nEvolutionary Cognitive Cell\n-> Knowledge Librarian Agent\n-> ontology\n-> memory\n-> evaluation\n-> KSTAR update loop\n```\n\n## Agent Notes\n\nRetrieve this entry when explaining how Knowledge Team aligns with the Cognitive Cell architecture.",
       "chunks": [
@@ -2435,7 +2455,59 @@
           "type": "paragraph",
           "heading": "Agent Notes"
         }
-      ]
+      ],
+      "agentNotes": "触发条件：解释知识库如何与 NSEAP 认知细胞架构对齐、或说明 Knowledge Cognitive Cell 定位时检索。能力范围：阐述知识库作为认知细胞在 AI 学习操作系统中的结构化定位。限制：是架构设计文档，不包含具体 API 实现或数据结构细节；实现细节需查看代码。"
+    },
+    {
+      "id": "kb-rubric-1783417946429",
+      "title": "Test Rubric",
+      "type": "rubric",
+      "status": "draft",
+      "audience": [
+        "teacher",
+        "agent"
+      ],
+      "tags": [],
+      "keywords": [
+        "rubric",
+        "评分",
+        "测试"
+      ],
+      "concepts": [],
+      "skills": [],
+      "deliverables": [],
+      "related": [],
+      "relationships": [],
+      "summary": "Test rubric for challenge eval",
+      "situation": "",
+      "ontology": "",
+      "workflow": "",
+      "skill": "",
+      "evaluation": "",
+      "knowledgeGrowth": "",
+      "knowledgeProcessing": {
+        "classificationReason": "",
+        "coreProblem": "",
+        "keyPoints": [],
+        "suggestedRelations": [],
+        "missingFields": [],
+        "nextActions": []
+      },
+      "source": "api-created",
+      "searchText": "Test Rubric rubric teacher agent rubric 评分 测试 Test rubric for challenge eval",
+      "metadataGeneratedBy": "manual",
+      "analysisStatus": "",
+      "analysisNote": "",
+      "analysisConfidence": null,
+      "extractionStatus": "",
+      "extractionMethod": "",
+      "extractionNote": "",
+      "extractedText": "",
+      "chunks": [],
+      "extractedTextPreview": "",
+      "archivedAt": null,
+      "createdAt": "2026-07-07T09:52:26.429Z",
+      "updatedAt": "2026-07-07T09:52:26.429Z"
     }
   ]
 }

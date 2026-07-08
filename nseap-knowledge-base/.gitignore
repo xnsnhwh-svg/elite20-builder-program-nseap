@@ -7,3 +7,5 @@ data/knowledge.db-shm
 .env
 .env.*
 output/playwright/
+# 沙箱挂载产生的临时隐藏文件
+data/.fuse_hidden*

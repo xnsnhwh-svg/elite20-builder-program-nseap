@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NSEAP Rubric Item",
+  "description": "Schema for Rubric type knowledge items — evaluation criteria used by Review Task Agent and teachers.",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "type",
+    "summary",
+    "audience",
+    "keywords",
+    "status",
+    "source",
+    "dimensions"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^kb-rubric-[0-9]{3}$",
+      "description": "Stable rubric id, e.g. kb-rubric-001."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "type": {
+      "const": "rubric"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 10,
+      "description": "One-sentence explanation of what this rubric evaluates."
+    },
+    "source": {
+      "type": "string",
+      "description": "Source file path or origin."
+    },
+    "audience": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["student", "teacher", "builder", "agent"]
+      },
+      "minItems": 1
+    },
+    "keywords": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 3
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "review", "stable", "sample", "deprecated", "archived"]
+    },
+    "assessesChallenge": {
+      "type": "string",
+      "description": "The challenge ID this rubric evaluates, e.g. kb-challenge-001."
+    },
+    "dimensions": {
+      "type": "array",
+      "description": "Evaluation dimensions with weight and level descriptors.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "weight", "levels"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Dimension name, e.g. 'Product definition clarity'."
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Percentage weight of this dimension (all should sum to 100)."
+          },
+          "levels": {
+            "type": "array",
+            "description": "Level descriptors from lowest to highest.",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": ["score", "label", "description"],
+              "properties": {
+                "score": { "type": "number" },
+                "label": { "type": "string" },
+                "description": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "passingScore": {
+      "type": "number",
+      "description": "Minimum total score (0-100) to pass."
+    },
+    "agentNotes": {
+      "type": "string",
+      "description": "Instructions for agents: when to retrieve, what it can answer, limitations."
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["predicate", "target"],
+        "properties": {
+          "predicate": {
+            "type": "string",
+            "enum": ["assessedBy", "requires", "supports", "relatedTo", "includes", "usesPrompt", "usesPractice"]
+          },
+          "target": { "type": "string" },
+          "targetLabel": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

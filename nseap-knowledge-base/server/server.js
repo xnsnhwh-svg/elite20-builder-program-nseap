@@ -31,7 +31,8 @@ const typeMeta = {
   faq: "FAQ",
   "best-practice": "最佳实践",
   project: "项目案例",
-  agent: "Agent"
+  agent: "Agent",
+  rubric: "Rubric"
 };
 
 const fieldPriority = [
@@ -68,7 +69,8 @@ const allowedTypes = new Set([
   "faq",
   "best-practice",
   "project",
-  "agent"
+  "agent",
+  "rubric"
 ]);
 
 const allowedStatuses = new Set(["draft", "review", "stable", "sample", "deprecated", "archived"]);
@@ -414,6 +416,7 @@ function toAgentContextItem(entry, matchedFields = [], score = 0) {
     type: entry.type,
     typeLabel: typeMeta[entry.type] || entry.type,
     status: entry.status,
+    trust: statusTrust[entry.status] || 0,
     summary: entry.summary || "",
     audience: normalizeArray(entry.audience),
     keywords: normalizeArray(entry.keywords),
@@ -424,6 +427,7 @@ function toAgentContextItem(entry, matchedFields = [], score = 0) {
       target: r.target || "",
       targetLabel: r.targetLabel || ""
     })),
+    agentNotes: entry.agentNotes || "",
     citation: { id: entry.id, title: entry.title, source: entry.source || "" },
     matchedFields,
     score
@@ -611,6 +615,52 @@ function makeGuidedStep(order, title, entry, teacherScript, checkQuestion, reaso
     referenceAnswer: referenceAnswer || checkQuestion,
     actionLabel: order === 1 ? "开始看这一段" : "我懂了，下一步"
   };
+}
+
+// 无 LLM 时的兜底判分：基于参考答案关键词的重合度。
+// 中文按 2-gram + 数字/字母词切分，去掉停用词，比纯字数更能反映"有没有答到点上"。
+// 返回 correct 用 partial/false/unknown 三档；unknown 用于参考答案本身无有效关键词（无法判断）的情况。
+function gradeAnswerByKeywordOverlap(studentAnswer, referenceAnswer) {
+  const stop = new Set(["的","了","和","与","是","在","有","这","那","你","我","它","们","一个","一条","什么","如何","怎么","可以","应该","需要","以及","或者","还是","不是","就是","这条","这个","那个","知识","任务","答案","问题","参考","回答","比如","如","等","把","被","让","会","要","能","对","从","到","为","也","都","而","并","其","之","于","即","该"]);
+  const extract = (text) => {
+    const raw = String(text || "").toLowerCase();
+    const tokens = new Set();
+    // 英文/数字词
+    (raw.match(/[a-z0-9]+/g) || []).forEach((w) => { if (w.length >= 2) tokens.add(w); });
+    // 中文 2-gram
+    const zh = raw.replace(/[^一-龥]/g, "");
+    for (let i = 0; i < zh.length - 1; i++) {
+      const bigram = zh.slice(i, i + 2);
+      if (!stop.has(bigram)) tokens.add(bigram);
+    }
+    return tokens;
+  };
+  const refTokens = extract(referenceAnswer);
+  const stuTokens = extract(studentAnswer);
+  const studentLen = String(studentAnswer || "").trim().length;
+
+  if (refTokens.size === 0) {
+    // 参考答案没有可比对的关键词（比如是开放式判据），无法客观判分，交给用户自查。
+    return {
+      correct: "unknown",
+      score: 0,
+      feedback: "（未配置 LLM）这道小检查是开放题，系统无法自动判分。请对照参考答案自查，配置 LLM 后可获得针对性反馈。",
+      pending: true
+    };
+  }
+  if (studentLen < 5) {
+    return { correct: false, score: 0, feedback: "（未配置 LLM）回答太短，看不出你的理解，请展开说说。" };
+  }
+  let hit = 0;
+  refTokens.forEach((t) => { if (stuTokens.has(t)) hit++; });
+  const overlap = hit / refTokens.size;
+  if (overlap >= 0.5) {
+    return { correct: true, score: 1, feedback: `（未配置 LLM，基于关键词重合度约 ${Math.round(overlap * 100)}%）覆盖了参考答案的主要点，判为理解到位。配置 LLM 后可获得更准确评判。` };
+  }
+  if (overlap >= 0.2) {
+    return { correct: "partial", score: 0.5, feedback: `（未配置 LLM，基于关键词重合度约 ${Math.round(overlap * 100)}%）答到了部分要点，建议对照参考答案补充后重试。` };
+  }
+  return { correct: false, score: 0, feedback: "（未配置 LLM，关键词重合度较低）回答似乎没答到参考答案的要点，请再想想或对照参考答案调整。" };
 }
 
 function textOrFallback(value, fallback) {
@@ -847,7 +897,8 @@ function buildGuidedPath(entry, db) {
       entry,
       "先不要急着做。老师会先带你看这条挑战到底要求完成什么、交付什么，以及它最容易卡在哪里。",
       "这条挑战最后要产出什么？",
-      "理解目标后，后面的资料才不会变成零散阅读。"
+      "理解目标后，后面的资料才不会变成零散阅读。",
+      "应能说出这条挑战要求的最终交付物是什么（如一份文档、一个可演示的作品或一段代码），而不只是复述标题。"
     ));
     steps.push(makeGuidedStep(
       2,
@@ -857,7 +908,8 @@ function buildGuidedPath(entry, db) {
         ? "这一段重点看 Prompt 如何把挑战拆成可执行步骤。你不需要背提示词，而是学会它为什么这样问。"
         : "当前还没有关联 Prompt。先用挑战摘要自己拆出 3 个动作：理解要求、准备材料、形成交付。",
       "这个 Prompt 或拆解方式帮你减少了哪一步的不确定性？",
-      "挑战类知识需要从任务说明走向可执行计划。"
+      "挑战类知识需要从任务说明走向可执行计划。",
+      "应指出拆解把某一个模糊环节（如「不知道从哪下手」「不确定要交什么」）变成了明确可执行的一步，而不是泛泛说「有帮助」。"
     ));
     steps.push(makeGuidedStep(
       3,
@@ -867,7 +919,8 @@ function buildGuidedPath(entry, db) {
         ? "现在看一个项目案例。重点不是照抄，而是看别人如何把挑战要求变成作品。"
         : "当前还没有项目案例关联。你可以先把这条挑战当作案例模板，思考自己会怎么完成。",
       "这个案例最值得你借鉴的一个动作是什么？",
-      "案例能把抽象要求变成具体做法。"
+      "案例能把抽象要求变成具体做法。",
+      "应具体点出案例里的某一个可操作动作（如「先定义用户再动手」「用某结构组织内容」），而不是笼统说「整体不错」。"
     ));
     steps.push(makeGuidedStep(
       4,
@@ -877,7 +930,8 @@ function buildGuidedPath(entry, db) {
         ? "这一步看最佳实践。老师会帮你把案例里的做法提炼成下次还能用的方法。"
         : "如果还没有最佳实践，就先从当前挑战里提炼一个固定检查清单。",
       "下次遇到类似任务时，你会复用哪条方法？",
-      "知识库的价值不是看完，而是能复用。"
+      "知识库的价值不是看完，而是能复用。",
+      "应提炼出一条可迁移到其他任务的方法或检查清单（如「先列交付标准再动手」），强调它为什么下次还能用。"
     ));
     steps.push(makeGuidedStep(
       5,
@@ -885,7 +939,8 @@ function buildGuidedPath(entry, db) {
       entry,
       "最后把这条挑战转成你的下一步行动：你要先读什么、写什么、检查什么。到这一步，浏览就变成了执行准备。",
       "你现在能写出第一步行动吗？",
-      "带练的终点是让用户能开始做。"
+      "带练的终点是让用户能开始做。",
+      "应给出一个具体、可立即执行的第一步（如「先写出目标用户画像」「先搭一个最小可运行demo」），而不是「我再想想」这类空泛回答。"
     ));
   } else if (entry.type === "project") {
     steps.push(makeGuidedStep(
@@ -894,7 +949,8 @@ function buildGuidedPath(entry, db) {
       entry,
       "先看项目场景和摘要。老师会带你判断：这个项目到底解决了什么真实问题。",
       "这个项目的核心问题是什么？",
-      "项目案例要先看问题，再看结果。"
+      "项目案例要先看问题，再看结果。",
+      "应说清这个项目针对的真实问题或需求是什么（谁遇到了什么困难），而不是只描述项目做了什么功能。"
     ));
     steps.push(makeGuidedStep(
       2,
@@ -904,7 +960,8 @@ function buildGuidedPath(entry, db) {
         ? "现在回到它关联的挑战，看项目是怎么回应挑战要求的。"
         : "当前还没有关联挑战。先根据项目摘要反推它可能回应了什么任务要求。",
       "项目里的哪个部分对应了挑战要求？",
-      "项目案例需要和任务要求对齐。"
+      "项目案例需要和任务要求对齐。",
+      "应把项目里的某个具体产出对应到挑战的某条要求上（如「这份分析回应了挑战里的X要求」），体现出两者的对齐关系。"
     ));
     steps.push(makeGuidedStep(
       3,
@@ -914,7 +971,8 @@ function buildGuidedPath(entry, db) {
         ? "这一步看它背后的方法或 Prompt。你要抓的是可复用动作，而不是只看结果。"
         : "当前还没有方法或 Prompt 关联。先从项目流程里提炼一个可复用动作。",
       "这个项目最可复用的方法是什么？",
-      "把案例变成方法，后续才有复利。"
+      "把案例变成方法，后续才有复利。",
+      "应提炼出一个可迁移到其他项目的具体方法或步骤（如某种拆解方式、某个检查动作），而不是只夸项目做得好。"
     ));
     steps.push(makeGuidedStep(
       4,
@@ -922,7 +980,8 @@ function buildGuidedPath(entry, db) {
       entry,
       "最后把这个案例迁移到你的任务：替换场景、替换材料、保留结构。这样你就不是看案例，而是在学会复用案例。",
       "如果换成你的项目，你会保留哪个结构？",
-      "带练要把理解推到应用。"
+      "带练要把理解推到应用。",
+      "应指出一个值得保留复用的结构或框架（如「保留问题-方法-验证这个骨架」），并说明换成自己任务时怎么替换内容。"
     ));
   } else if (entry.type === "prompt") {
     steps.push(makeGuidedStep(
@@ -951,22 +1010,6 @@ function buildGuidedPath(entry, db) {
       "你会替换哪一段来适配自己的任务？",
       "会改写，才算真正掌握。",
       "把角色、目标、输入、输出四个要素替换成自己任务的具体内容，保留结构不变。"
-    ));
-    steps.push(makeGuidedStep(
-      2,
-      "找到使用场景",
-      challenge || project || fallbackRelated || entry,
-      "现在把 Prompt 放回真实挑战或项目里看。老师会带你判断它在整个任务中负责哪一步。",
-      "它适合在任务的哪个阶段使用？",
-      "提示词必须回到任务场景里才有意义。"
-    ));
-    steps.push(makeGuidedStep(
-      3,
-      "试着改写一次",
-      entry,
-      "最后试着把 Prompt 改成你的版本：保留角色、目标、输入、输出要求，替换成你的具体任务。",
-      "你会替换哪一段来适配自己的任务？",
-      "会改写，才算真正掌握。"
     ));
   } else {
     steps.push(makeGuidedStep(
@@ -2075,7 +2118,10 @@ async function handleApi(req, res, url) {
     }
     const settings = llmSettings();
     if (!settings.enabled) {
-      sendJson(res, 200, { correct: true, score: 1, feedback: "LLM 未配置，默认通过。" });
+      // 无 LLM 时用关键词重合度粗判：从参考答案里抽取有意义的词，看学生回答覆盖了多少。
+      // 这比纯看字数更能反映理解，但仍是启发式，明确告知用户。
+      const gradeResult = gradeAnswerByKeywordOverlap(studentAnswer, referenceAnswer);
+      sendJson(res, 200, gradeResult);
       return;
     }
     const prompt = [
@@ -2116,7 +2162,7 @@ async function handleApi(req, res, url) {
       });
     } catch (error) {
       console.error("Guided check error:", error.message);
-      sendJson(res, 200, { correct: true, score: 1, feedback: "助教暂时无法判断，已默认通过。" });
+      sendJson(res, 200, { correct: "unknown", score: 0, feedback: "助教暂时无法连接，无法评判这道小检查。你可以对照参考答案自查，或稍后重试。", pending: true });
     }
     return;
   }
@@ -2374,7 +2420,7 @@ async function handleApi(req, res, url) {
     const index = db.entries.findIndex((item) => item.id === id);
     if (index === -1) { sendJson(res, 404, { error: "条目未找到" }); return; }
     const updated = { ...db.entries[index] };
-    for (const key of ["title","summary","keywords","concepts","skills","deliverables","audience","tags","status","situation","ontology","workflow","evaluation","knowledgeGrowth"]) {
+    for (const key of ["title","summary","keywords","concepts","skills","deliverables","audience","tags","status","situation","ontology","workflow","evaluation","knowledgeGrowth","agentNotes"]) {
       if (payload[key] !== undefined) updated[key] = payload[key];
     }
     if (payload.keywords && Array.isArray(payload.keywords) && payload.keywords.filter(Boolean).length < 3) { sendJson(res, 400, { error: "关键词至少 3 个" }); return; }

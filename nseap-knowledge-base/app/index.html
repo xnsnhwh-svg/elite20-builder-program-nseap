@@ -162,6 +162,49 @@
               </button>
             </div>
 
+            <sc-if value="{{ agentPreviewOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-bottom:24px;padding:18px;border:1px solid #C8D2F6;border-radius:14px;background:#F7F8FF">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3A5BD9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"></rect><line x1="12" y1="4" x2="12" y2="7"></line><circle cx="9" cy="13" r="1"></circle><circle cx="15" cy="13" r="1"></circle></svg>
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#2740A8;font-weight:600">Agent 检索预览</span>
+                  </div>
+                  <button onClick="{{ onAgentPreviewClose }}" title="关闭" style="width:28px;height:28px;border-radius:7px;border:1px solid #D8DDF2;background:#fff;color:#6A7382;display:grid;place-items:center;cursor:pointer" style-hover="border-color:#9AA7E8;color:#2740A8">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                  </button>
+                </div>
+                <div style="display:flex;gap:8px;margin-bottom:14px">
+                  <input value="{{ agentPreviewQuery }}" onChange="{{ onAgentPreviewInput }}" type="text" placeholder="输入检索词（留空显示全部）" style="flex:1;height:34px;padding:0 10px;border:1px solid #D8DDF2;border-radius:8px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#3A5BD9" />
+                  <button onClick="{{ onAgentPreviewSearch }}" style="height:34px;padding:0 12px;border:0;border-radius:8px;background:#3A5BD9;color:#fff;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap" style-hover="background:#2740A8">检索</button>
+                </div>
+                <sc-if value="{{ agentPreviewBusy }}" hint-placeholder-val="{{ false }}"><p style="font-size:12px;color:#6A7382;margin:0">正在检索...</p></sc-if>
+                <sc-if value="{{ agentPreviewEmpty }}" hint-placeholder-val="{{ false }}"><p style="font-size:12px;color:#8A94A3;margin:0">无匹配结果。</p></sc-if>
+                <sc-if value="{{ agentPreviewHasResults }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <sc-for list="{{ agentPreviewItems }}" as="item" hint-placeholder-count="4">
+                      <div style="padding:10px 12px;border-radius:10px;background:#fff;border:1px solid #E8ECF6">
+                        <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
+                          <span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:4px;font-size:9.5px;font-weight:600;background:{{ item.typeBg }};color:{{ item.typeInk }}">{{ item.typeLabel }}</span>
+                          <span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:4px;font-size:9.5px;font-weight:600;background:{{ item.statusBg }};color:{{ item.statusInk }}">{{ item.status }}</span>
+                          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8A94A3">trust {{ item.trust }}</span>
+                        </div>
+                        <p style="font-size:13px;font-weight:600;color:#161A20;margin:0 0 3px;line-height:1.35">{{ item.title }}</p>
+                        <p style="font-size:12px;color:#5A6473;line-height:1.5;margin:0 0 4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ item.summary }}</p>
+                        <sc-if value="{{ item.hasCitation }}" hint-placeholder-val="{{ false }}"><span style="font-size:10.5px;color:#3A5BD9;font-family:'IBM Plex Mono',monospace">{{ item.citation }}</span></sc-if>
+                        <sc-if value="{{ item.hasRelationships }}" hint-placeholder-val="{{ false }}">
+                          <div style="margin-top:4px;display:flex;flex-wrap:wrap;gap:4px">
+                            <sc-for list="{{ item.relationships }}" as="rel" hint-placeholder-count="2">
+                              <span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:4px;font-size:9.5px;background:#EEF1F5;color:#5A6473">{{ rel.label }}</span>
+                            </sc-for>
+                          </div>
+                        </sc-if>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+
             <h2 style="font-size:15px;font-weight:600;margin:0 0 12px">精选条目</h2>
             <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:30px">
               <sc-for list="{{ home.featured }}" as="c" hint-placeholder-count="4">
@@ -407,7 +450,25 @@
                     </sc-if>
                   </div>
 
-                  <sc-if value="{{ guidedVisible }}" hint-placeholder-val="{{ false }}">
+                  <sc-if value="{{ selected.hasRevisions }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin:10px 0 4px;padding:10px 12px;border:1px solid #EEF1F5;border-radius:10px;background:#FAFBFC">
+                      <button onClick="{{ selected.onToggleRevisions }}" style="border:0;background:none;padding:0;font-size:10.5px;font-weight:600;color:#5A6473;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:4px">
+                        <span>修订历史 · Revisions ({{ selected.revisionsCount }})</span>
+                        <span style="font-size:9px">{{ selected.revisionsArrow }}</span>
+                      </button>
+                      <sc-if value="{{ selected.revisionsExpanded }}" hint-placeholder-val="{{ false }}">
+                        <div style="margin-top:8px;display:flex;flex-direction:column;gap:5px">
+                          <sc-for list="{{ selected.revisionsItems }}" as="rev" hint-placeholder-count="3">
+                            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:6px;background:#fff;border:1px solid #EEF1F5">
+                              <span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:4px;font-size:9.5px;font-weight:600;background:{{ rev.statusBg }};color:{{ rev.statusInk }}">{{ rev.status }}</span>
+                              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8A94A3">{{ rev.hashShort }}</span>
+                              <span style="font-size:10.5px;color:#6A7382;margin-left:auto">{{ rev.time }}</span>
+                            </div>
+                          </sc-for>
+                        </div>
+                      </sc-if>
+                    </div>
+                  </sc-if>
                     <div style="margin:14px 0 4px;padding:15px;border:1px solid #C8D2F6;border-radius:14px;background:#F7F8FF">
                       <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px">
                         <div><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#2740A8">老师带练 · Guided Practice</span><h3 style="font-size:15px;font-weight:700;color:#161A20;margin:6px 0 0">{{ guidedTitle }}</h3></div>
@@ -457,7 +518,7 @@
                       <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">适用对象 <span style="color:#D24E4E">*</span></label><input value="{{ metadataAudience }}" onChange="{{ onMetadataAudience }}" type="text" placeholder="学生, 教师, Agent" style="width:100%;height:36px;padding:0 10px;border:1px solid {{ metadataFormErrors.audience ? '#D24E4E' : '#DDE3EA' }};border-radius:9px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#0E7C6B"><sc-if value="{{ metadataFormErrors.audience }}"><span style="display:block;font-size:11px;color:#D24E4E;margin-top:3px">{{ metadataFormErrors.audience }}</span></sc-if></div>
                       <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">概念</label><input value="{{ metadataConcepts }}" onChange="{{ onMetadataConcepts }}" type="text" placeholder="AI+X, KSTAR, 元数据" style="width:100%;height:36px;padding:0 10px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#0E7C6B"></div>
                       <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">技能</label><input value="{{ metadataSkills }}" onChange="{{ onMetadataSkills }}" type="text" placeholder="结构化阅读, 任务拆解" style="width:100%;height:36px;padding:0 10px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#0E7C6B"></div>
-                      <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">状态</label><select value="{{ metadataStatus }}" onChange="{{ onMetadataStatus }}" style="width:100%;height:36px;padding:0 10px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20"><option value="draft">draft</option><option value="review">review</option><option value="stable">stable</option><option value="archived">archived</option></select></div>
+                      <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">状态</label><select value="{{ metadataStatus }}" onChange="{{ onMetadataStatus }}" style="width:100%;height:36px;padding:0 10px;border:1px solid #DDE3EA;border-radius:9px;background:#fff;font-size:12.5px;font-family:inherit;color:#161A20"><option value="draft">draft</option><option value="review">review</option><option value="stable">stable</option><option value="sample">sample</option><option value="deprecated">deprecated</option><option value="archived">archived</option></select></div>
                       <div style="display:flex;align-items:end;gap:8px"><button type="submit" style="height:36px;padding:0 14px;border:0;border-radius:9px;background:#0E7C6B;color:#fff;font-size:12.5px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#0A5A4E">保存 metadata</button></div>
                     </form>
                     <sc-if value="{{ metadataOk }}" hint-placeholder-val="{{ false }}"><div style="margin-top:10px;padding:9px 11px;border-radius:9px;background:#E6F3F0;color:#0A5A4E;font-size:12px;font-weight:600">{{ metadataResult.message }}</div></sc-if>
@@ -713,12 +774,22 @@
                           <div style="padding:8px 10px;border-radius:7px;background:#FEF5E0;border:1px solid #F5D98F">
                             <span style="display:block;font-size:10.5px;font-weight:600;color:#8A6A00;margin-bottom:3px">△ 部分正确</span>
                             <p style="font-size:11.5px;color:#3A424E;line-height:1.5;margin:0;white-space:pre-wrap">{{ guidedCurrentFeedback }}</p>
+                            <button onClick="{{ onGuidedRetry }}" style="margin-top:6px;height:26px;padding:0 9px;border:1px solid #F5D98F;border-radius:6px;background:#fff;color:#8A6A00;font-size:10.5px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#FEF5E0">重新回答</button>
                           </div>
                         </sc-if>
                         <sc-if value="{{ guidedCurrentGradingWrong }}">
                           <div style="padding:8px 10px;border-radius:7px;background:#FDF0EF;border:1px solid #F5CBC8">
                             <span style="display:block;font-size:10.5px;font-weight:600;color:#A83A2A;margin-bottom:3px">✗ 和参考答案有出入</span>
                             <p style="font-size:11.5px;color:#3A424E;line-height:1.5;margin:0;white-space:pre-wrap">{{ guidedCurrentFeedback }}</p>
+                            <button onClick="{{ onGuidedRetry }}" style="margin-top:6px;height:26px;padding:0 9px;border:1px solid #F5CBC8;border-radius:6px;background:#fff;color:#A83A2A;font-size:10.5px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#FDF0EF">重新回答</button>
+                          </div>
+                        </sc-if>
+                        <sc-if value="{{ guidedCurrentGradingUnknown }}">
+                          <div style="padding:8px 10px;border-radius:7px;background:#F0F2F5;border:1px solid #DDE3EA">
+                            <span style="display:block;font-size:10.5px;font-weight:600;color:#6A7382;margin-bottom:3px">⚠ 暂时无法评判</span>
+                            <p style="font-size:11.5px;color:#3A424E;line-height:1.5;margin:0;white-space:pre-wrap">{{ guidedCurrentFeedback }}</p>
+                            <sc-if value="{{ guidedCurrentReferenceAnswer }}"><p style="font-size:11px;color:#5A6473;line-height:1.5;margin:6px 0 0;padding:6px 8px;background:#fff;border-radius:6px;border:1px solid #EEF1F5"><strong style="color:#161A20">参考答案: </strong>{{ guidedCurrentReferenceAnswer }}</p></sc-if>
+                            <button onClick="{{ onGuidedRetry }}" style="margin-top:6px;height:26px;padding:0 9px;border:1px solid #DDE3EA;border-radius:6px;background:#fff;color:#6A7382;font-size:10.5px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#F0F2F5">重新回答</button>
                           </div>
                         </sc-if>
                       </sc-if>
@@ -820,7 +891,7 @@
                 <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A94A3">手动新增 · Manual Draft</span>
                 <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">知识类型</label>
                   <select value="{{ formType }}" onChange="{{ onFormType }}" style="width:100%;height:38px;padding:0 11px;border:1px solid #DDE3EA;border-radius:9px;background:#F8FAFB;font-size:13px;font-family:inherit;color:#161A20">
-                    <option value="course">课程</option><option value="challenge">挑战</option><option value="prompt">提示词</option><option value="faq">FAQ</option><option value="best-practice">最佳实践</option><option value="project">项目案例</option><option value="agent">Agent</option>
+                    <option value="course">课程</option><option value="challenge">挑战</option><option value="prompt">提示词</option><option value="faq">FAQ</option><option value="best-practice">最佳实践</option><option value="project">项目案例</option><option value="agent">Agent</option><option value="rubric">Rubric</option>
                   </select></div>
                 <div><label style="display:block;font-size:12px;font-weight:600;color:#6A7382;margin-bottom:6px">标题 <span style="color:#D24E4E">*</span></label>
                   <input value="{{ formTitle }}" onChange="{{ onFormTitle }}" type="text" placeholder="例如:第 2 周项目复盘" style="width:100%;height:38px;padding:0 11px;border:1px solid {{ formErrors.title ? '#D24E4E' : '#DDE3EA' }};border-radius:9px;background:#F8FAFB;font-size:13px;font-family:inherit;color:#161A20" style-focus="outline:none;border-color:#0E7C6B;background:#fff"><sc-if value="{{ formErrors.title }}"><span style="display:block;font-size:11px;color:#D24E4E;margin-top:4px">{{ formErrors.title }}</span></sc-if></div>
@@ -1026,7 +1097,8 @@ class Component extends DCLogic {
         {id:"faq",label:"FAQ"},
         {id:"best-practice",label:"\u6700\u4f73\u5b9e\u8df5"},
         {id:"project",label:"\u9879\u76ee\u6848\u4f8b"},
-        {id:"agent",label:"Agent"}
+        {id:"agent",label:"Agent"},
+        {id:"rubric",label:"Rubric"}
       ];
   flow = window.__NSEAP_EMBEDDED_DATA__ && window.__NSEAP_EMBEDDED_DATA__.knowledgeData && Array.isArray(window.__NSEAP_EMBEDDED_DATA__.knowledgeData.flow) && window.__NSEAP_EMBEDDED_DATA__.knowledgeData.flow.length
     ? window.__NSEAP_EMBEDDED_DATA__.knowledgeData.flow
@@ -1036,10 +1108,10 @@ class Component extends DCLogic {
   ];
   featuredIds = ["kb-overview-001","kb-challenge-001","kb-prompt-001","kb-project-001"];
   typeMeta = {
-    overview:{label:"\u6982\u89c8",bg:"#EDE9FE",ink:"#5B21B6"},course:{label:"\u8bfe\u7a0b",bg:"#E0EDFF",ink:"#1D4ED8"},challenge:{label:"\u6311\u6218",bg:"#FBEACB",ink:"#8A5A08"},prompt:{label:"\u63d0\u793a\u8bcd",bg:"#DBF0E4",ink:"#136A40"},faq:{label:"FAQ",bg:"#FBE3EE",ink:"#9C2760"},"best-practice":{label:"\u6700\u4f73\u5b9e\u8df5",bg:"#E4E8FF",ink:"#3A34A0"},project:{label:"\u9879\u76ee\u6848\u4f8b",bg:"#FBE4D2",ink:"#98461A"},agent:{label:"Agent",bg:"#E6F3F0",ink:"#0A5A4E"},concept:{label:"\u6982\u5ff5",bg:"#EEF2FF",ink:"#4F46E5"},skill:{label:"\u6280\u80fd",bg:"#E6F3F0",ink:"#0A5A4E"},deliverable:{label:"\u4ea4\u4ed8\u7269",bg:"#FEF3C7",ink:"#92400E"}
+    overview:{label:"\u6982\u89c8",bg:"#EDE9FE",ink:"#5B21B6"},course:{label:"\u8bfe\u7a0b",bg:"#E0EDFF",ink:"#1D4ED8"},challenge:{label:"\u6311\u6218",bg:"#FBEACB",ink:"#8A5A08"},prompt:{label:"\u63d0\u793a\u8bcd",bg:"#DBF0E4",ink:"#136A40"},faq:{label:"FAQ",bg:"#FBE3EE",ink:"#9C2760"},"best-practice":{label:"\u6700\u4f73\u5b9e\u8df5",bg:"#E4E8FF",ink:"#3A34A0"},project:{label:"\u9879\u76ee\u6848\u4f8b",bg:"#FBE4D2",ink:"#98461A"},agent:{label:"Agent",bg:"#E6F3F0",ink:"#0A5A4E"},rubric:{label:"Rubric",bg:"#FDE8E8",ink:"#9B1C1C"},concept:{label:"\u6982\u5ff5",bg:"#EEF2FF",ink:"#4F46E5"},skill:{label:"\u6280\u80fd",bg:"#E6F3F0",ink:"#0A5A4E"},deliverable:{label:"\u4ea4\u4ed8\u7269",bg:"#FEF3C7",ink:"#92400E"}
   };
   statusMeta = {
-    sample:{label:"sample",bg:"#EEF1F5",ink:"#5A6473"},draft:{label:"draft",bg:"#FBEACB",ink:"#8A5A08"},stable:{label:"stable",bg:"#DBF0E4",ink:"#136A40"},review:{label:"review",bg:"#E0EDFF",ink:"#1D4ED8"},archived:{label:"archived",bg:"#F1F3F6",ink:"#6A7382"}
+    sample:{label:"sample",bg:"#EEF1F5",ink:"#5A6473"},draft:{label:"draft",bg:"#FBEACB",ink:"#8A5A08"},stable:{label:"stable",bg:"#DBF0E4",ink:"#136A40"},review:{label:"review",bg:"#E0EDFF",ink:"#1D4ED8"},deprecated:{label:"deprecated",bg:"#FDE8E8",ink:"#9B1C1C"},archived:{label:"archived",bg:"#F1F3F6",ink:"#6A7382"}
   };
   themes = {
     emerald:{label:"知识绿",primary:"#0E7C6B",primaryInk:"#0A5A4E",primaryWash:"#E6F3F0",secondary:"#3A5BD9",appBg:"#F1F3F6",headerBg:"#12161D",headerInk:"#E8ECF2",headerMuted:"#8892A6"},
@@ -1048,7 +1120,7 @@ class Component extends DCLogic {
   };
   entries = this.buildEntries();
 
-  state = { view:"home", category:"all", search:"", statusFilter:"", selectedId:null, exploreMode:"list", graphStructureExpanded:false, hoverPreviewId:null, flowStep:6, form:{title:"",type:"course",keywords:"",summary:""}, metadataForm:{entryId:"",keywords:"",concepts:"",skills:"",audience:"",status:"draft"}, relationshipForm:{predicate:"supports",target:"",targetLabel:"",note:""}, settingsForm:{baseUrl:"",model:"",apiKey:""}, settings:null, settingsOpen:false, settingsBusy:false, settingsResult:null, theme:"emerald", deleteConfirmId:null, deleteBusy:false, deleteResult:null, submitResult:null, metadataResult:null, relationshipResult:null, guidedOpen:false, guidedBusy:false, guidedPath:null, guidedStep:0, guidedResult:null, guidedAnswers:{}, guidedAnswerInput:"", uploadResult:null, uploadBusy:false, uploadProgress:null, recent:[], saved:[], viewed:[], drafts:[], apiMode:"embedded", apiSearchResults:null, deepBusy:false, deepDone:false, auditLogExpanded:false, reviewNote:"", exportMenuOpen:null };
+  state = { view:"home", category:"all", search:"", statusFilter:"", selectedId:null, exploreMode:"list", graphStructureExpanded:false, hoverPreviewId:null, flowStep:6, form:{title:"",type:"course",keywords:"",summary:""}, metadataForm:{entryId:"",keywords:"",concepts:"",skills:"",audience:"",status:"draft"}, relationshipForm:{predicate:"supports",target:"",targetLabel:"",note:""}, settingsForm:{baseUrl:"",model:"",apiKey:""}, settings:null, settingsOpen:false, settingsBusy:false, settingsResult:null, theme:"emerald", deleteConfirmId:null, deleteBusy:false, deleteResult:null, submitResult:null, metadataResult:null, relationshipResult:null, guidedOpen:false, guidedBusy:false, guidedPath:null, guidedStep:0, guidedResult:null, guidedAnswers:{}, guidedAnswerInput:"", uploadResult:null, uploadBusy:false, uploadProgress:null, recent:[], saved:[], viewed:[], drafts:[], apiMode:"embedded", apiSearchResults:null, deepBusy:false, deepDone:false, auditLogExpanded:false, revisionsExpanded:false, revisionsData:null, agentPreviewOpen:false, agentPreviewQuery:"", agentPreviewResults:null, agentPreviewBusy:false, reviewNote:"", exportMenuOpen:null };
 
   componentDidMount(){
     let p = {};
@@ -1845,8 +1917,27 @@ class Component extends DCLogic {
     this.setState(s => {
       const recent = [id, ...s.recent.filter(x => x !== id)].slice(0,8);
       const viewed = s.viewed.includes(id) ? s.viewed : [...s.viewed, id];
-      return { selectedId:id, view:"explore", hoverPreviewId:null, recent, viewed, metadataForm:this.metadataFormFor(entry), relationshipForm:this.relationshipFormFor(entry), metadataResult:null, relationshipResult:null, guidedOpen:false, guidedBusy:false, guidedPath:null, guidedStep:0, guidedResult:null, deleteConfirmId:null, deleteResult:null };
-    }, () => { this.persist(); this.startFlow(); });
+      return { selectedId:id, view:"explore", hoverPreviewId:null, recent, viewed, metadataForm:this.metadataFormFor(entry), relationshipForm:this.relationshipFormFor(entry), metadataResult:null, relationshipResult:null, guidedOpen:false, guidedBusy:false, guidedPath:null, guidedStep:0, guidedResult:null, deleteConfirmId:null, deleteResult:null, revisionsExpanded:false, revisionsData:null };
+    }, () => { this.persist(); this.startFlow(); this.loadRevisions(id); });
+  }
+  async loadRevisions(id){
+    if(!id) return;
+    try {
+      const resp = await fetch("/api/knowledge/" + encodeURIComponent(id) + "/revisions?limit=20", { cache:"no-store" });
+      if(!resp.ok) { this.setState({revisionsData:null}); return; }
+      const data = await resp.json();
+      this.setState({revisionsData: data.revisions || []});
+    } catch(e) { this.setState({revisionsData:null}); }
+  }
+  async fetchAgentContext(q){
+    this.setState({agentPreviewBusy:true, agentPreviewResults:null});
+    try {
+      const params = new URLSearchParams({q:q||"", limit:"8"});
+      const resp = await fetch("/api/agent/context?" + params.toString(), {cache:"no-store"});
+      if(!resp.ok) throw new Error("API error");
+      const data = await resp.json();
+      this.setState({agentPreviewBusy:false, agentPreviewResults:data.context||[]});
+    } catch(e) { this.setState({agentPreviewBusy:false, agentPreviewResults:[]}); }
   }
   toggleSave(id){
     this.setState(s => ({ saved: s.saved.includes(id) ? s.saved.filter(x => x !== id) : [...s.saved, id] }), () => this.persist());
@@ -1891,16 +1982,28 @@ class Component extends DCLogic {
         });
         const data = await res.json();
         if(data && data.correct !== undefined) {
+          const grading = data.correct === true ? "correct"
+            : (data.correct === "partial" ? "partial"
+            : (data.correct === "unknown" || data.pending ? "unknown" : "wrong"));
           self.setState(s => ({
-            guidedAnswers: { ...s.guidedAnswers, [idx]: { ...s.guidedAnswers[idx], grading:data.correct === true ? "correct" : (data.correct === "partial" ? "partial" : "wrong"), score:data.score || 0, feedback:data.feedback || "" } }
+            guidedAnswers: { ...s.guidedAnswers, [idx]: { ...s.guidedAnswers[idx], grading, score:typeof data.score === "number" ? data.score : 0, feedback:data.feedback || "" } }
           }));
         }
       } catch(e) {
         self.setState(s => ({
-          guidedAnswers: { ...s.guidedAnswers, [idx]: { ...s.guidedAnswers[idx], grading:"correct", score:1, feedback:"助教暂时无法判断，已默认通过。" } }
+          guidedAnswers: { ...s.guidedAnswers, [idx]: { ...s.guidedAnswers[idx], grading:"unknown", score:0, feedback:"助教暂时无法连接，无法评判这道小检查。你可以对照参考答案自查，或稍后重试。" } }
         }));
       }
     })();
+  }
+
+  retryGuidedAnswer(){
+    const idx = this.state.guidedStep;
+    this.setState(s => {
+      const answers = { ...s.guidedAnswers };
+      delete answers[idx];
+      return { guidedAnswers: answers, guidedAnswerInput: "" };
+    });
   }
 
   guidedNext(){
@@ -1909,23 +2012,31 @@ class Component extends DCLogic {
     if(!total) return;
     this.setState(s => {
       if(s.guidedStep >= total - 1) {
-        const answered = Object.keys(s.guidedAnswers || {}).length;
-        const totalScore = Object.values(s.guidedAnswers || {}).reduce((sum, a) => sum + (typeof a.score === "number" ? a.score : 0), 0);
-        const pct = total > 0 ? Math.round(totalScore / total * 100) : 0;
-        const correct = Object.values(s.guidedAnswers || {}).filter(a => a.grading === "correct").length;
-        const partial = Object.values(s.guidedAnswers || {}).filter(a => a.grading === "partial").length;
-        const wrong = Object.values(s.guidedAnswers || {}).filter(a => a.grading === "wrong").length;
-        const pending = Object.values(s.guidedAnswers || {}).filter(a => a.grading === "pending" || (!a.grading && a.answer)).length;
+        const all = Object.values(s.guidedAnswers || {});
+        const answered = all.length;
+        const correct = all.filter(a => a.grading === "correct").length;
+        const partial = all.filter(a => a.grading === "partial").length;
+        const wrong = all.filter(a => a.grading === "wrong").length;
+        const unknown = all.filter(a => a.grading === "unknown").length;
+        const pending = all.filter(a => a.grading === "pending" || (!a.grading && a.answer)).length;
+        // 得分率只在"已被判分"的题里算（correct/partial/wrong），分母排除待评判和无法评判的题，避免稀释。
+        const graded = correct + partial + wrong;
+        const gradedScore = all.filter(a => ["correct","partial","wrong"].includes(a.grading)).reduce((sum, a) => sum + (typeof a.score === "number" ? a.score : 0), 0);
+        const pct = graded > 0 ? Math.round(gradedScore / graded * 100) : null;
         let stats = "你完成了 "+answered+"/"+total+" 道小检查";
-        if(correct || partial || wrong) {
+        if(correct || partial || wrong || unknown || pending) {
           const parts = [];
           if(correct) parts.push("✓ 正确 "+correct);
           if(partial) parts.push("△ 部分 "+partial);
           if(wrong) parts.push("✗ 有出入 "+wrong);
-          if(pending) parts.push("⏳ 待评判 "+pending);
+          if(unknown) parts.push("⚠ 未判分 "+unknown);
+          if(pending) parts.push("⏳ 评判中 "+pending);
           stats += "（"+parts.join(" · ")+"）";
         }
-        return { guidedResult:{state:"success",message:"本轮带练完成。"+stats+"。δR 得分率 "+pct+"%。"} };
+        let scoreLine = "";
+        if(pct !== null) scoreLine = " 已判分题目的平均得分率 "+pct+"%。";
+        else if(answered > 0) scoreLine = " 本轮没有可自动判分的题目（未配置 LLM 或均为开放题），建议对照参考答案自查。";
+        return { guidedResult:{state:"success",message:"本轮带练完成。"+stats+"。"+scoreLine} };
       }
       return { guidedStep: Math.min(total - 1, s.guidedStep + 1), guidedResult:null };
     }, () => this.scrollToActiveChunk());
@@ -2687,7 +2798,7 @@ class Component extends DCLogic {
       featured,
       onExplore:()=>this.setView("explore"),
       onContribute:()=>this.setView("contribute"),
-      onAgent:()=>this.setState({view:"explore",category:"agent"})
+      onAgent:()=>{ this.setState({agentPreviewOpen:true, agentPreviewQuery:"", agentPreviewResults:null, agentPreviewBusy:false}); this.fetchAgentContext(""); }
     };
 
     // EXPLORE chips
@@ -2696,7 +2807,7 @@ class Component extends DCLogic {
       const active = c.id===S.category;
       return { label:c.label, count, onClick:()=>this.setCategory(c.id), bg: active?primary:"#fff", border: active?primary:"#DDE3EA", ink: active?"#fff":"#4A5361", weight: active?"600":"500" };
     });
-    const statusOptions = [{id:"",label:"全部状态"},{id:"draft",label:"draft"},{id:"review",label:"review"},{id:"stable",label:"stable"},{id:"archived",label:"archived"}];
+    const statusOptions = [{id:"",label:"全部状态"},{id:"draft",label:"draft"},{id:"review",label:"review"},{id:"stable",label:"stable"},{id:"sample",label:"sample"},{id:"deprecated",label:"deprecated"},{id:"archived",label:"archived"}];
     const statusChips = statusOptions.map(s => {
       const scoped = S.category==="all" ? this.entries : this.entries.filter(e=>e.type===S.category);
       const count = s.id ? scoped.filter(e=>(e.status||"draft")===s.id).length : scoped.length;
@@ -2826,12 +2937,27 @@ class Component extends DCLogic {
           timestamp: log.timestamp ? new Date(log.timestamp).toLocaleString("zh-CN",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}) : "",
           note: log.note || ""
         })) : [],
+        hasRevisions: Array.isArray(S.revisionsData) && S.revisionsData.length > 0,
+        revisionsExpanded: S.revisionsExpanded,
+        revisionsArrow: S.revisionsExpanded ? "▲" : "▼",
+        revisionsCount: Array.isArray(S.revisionsData) ? S.revisionsData.length : 0,
+        onToggleRevisions:()=>this.setState(s => ({ revisionsExpanded: !s.revisionsExpanded })),
+        revisionsItems: Array.isArray(S.revisionsData) ? S.revisionsData.map(rev => {
+          const sm2 = this.statusMeta[rev.status] || {bg:"#EEF1F5",ink:"#5A6473"};
+          return {
+            status: rev.status || "unknown",
+            statusBg: sm2.bg,
+            statusInk: sm2.ink,
+            hashShort: (rev.contentHash || "").slice(0, 8),
+            time: rev.createdAt ? new Date(rev.createdAt).toLocaleString("zh-CN",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}) : ""
+          };
+        }) : [],
         transitionButtons: (() => {
           const cur = sel.status || "draft";
-          const validMap = { draft:["review"], review:["stable","draft"], stable:["archived","draft"], archived:["draft"] };
+          const validMap = { draft:["review"], review:["stable","draft"], stable:["deprecated","archived","draft"], sample:["review","deprecated","archived","draft"], deprecated:["draft","archived"], archived:["draft"] };
           const targets = validMap[cur] || [];
-          const labels = { review:"提交审核", stable:"发布为 stable", draft:"退回 draft", archived:"归档" };
-          const colors = { review:{bg:"#1D4ED8",ink:"#fff"}, stable:{bg:"#136A40",ink:"#fff"}, draft:{bg:"#8A5A08",ink:"#fff"}, archived:{bg:"#6A7382",ink:"#fff"} };
+          const labels = { review:"提交审核", stable:"发布为 stable", draft:"退回 draft", archived:"归档", deprecated:"标记废弃", sample:"sample" };
+          const colors = { review:{bg:"#1D4ED8",ink:"#fff"}, stable:{bg:"#136A40",ink:"#fff"}, draft:{bg:"#8A5A08",ink:"#fff"}, archived:{bg:"#6A7382",ink:"#fff"}, deprecated:{bg:"#9B1C1C",ink:"#fff"}, sample:{bg:"#5A6473",ink:"#fff"} };
           return targets.map(t => ({
             label: labels[t] || t,
             bg: (colors[t] || colors.draft).bg,
@@ -2919,6 +3045,9 @@ class Component extends DCLogic {
     const guidedCurrentGradingCorrect = guidedCurrentGrading === "correct";
     const guidedCurrentGradingPartial = guidedCurrentGrading === "partial";
     const guidedCurrentGradingWrong = guidedCurrentGrading === "wrong";
+    const guidedCurrentGradingUnknown = guidedCurrentGrading === "unknown";
+    const guidedCanRetry = guidedCurrentGradingWrong || guidedCurrentGradingPartial || guidedCurrentGradingUnknown;
+    const guidedCurrentReferenceAnswer = guidedStep && guidedStep.referenceAnswer ? guidedStep.referenceAnswer : "";
 
     const ladderStyles = { past:{bg:"#EDEFF3",ink:"#9AA3B0",border:"#E4E8ED",weight:"500"},current:{bg:primary,ink:"#fff",border:primary,weight:"700"},next:{bg:"#ECEFFC",ink:"#2740A8",border:"#3A5BD9",weight:"600"},future:{bg:"#F4F6F9",ink:"#AEB6C1",border:"#E4E8ED",weight:"500"} };
     const ladder = this.ladder.map((n,i)=>{ const st=i<2?"past":i===2?"current":i===3?"next":"future"; return {code:n.code,label:n.label,...ladderStyles[st]}; });
@@ -3004,6 +3133,25 @@ class Component extends DCLogic {
       nav,
       isHome:S.view==="home", isExplore:S.view==="explore", isContribute:S.view==="contribute", isGuided:S.view==="guided",
       home, ladder,
+      agentPreviewOpen:S.agentPreviewOpen,
+      agentPreviewQuery:S.agentPreviewQuery,
+      agentPreviewBusy:S.agentPreviewBusy,
+      agentPreviewEmpty:!S.agentPreviewBusy && Array.isArray(S.agentPreviewResults) && S.agentPreviewResults.length===0,
+      agentPreviewHasResults:!S.agentPreviewBusy && Array.isArray(S.agentPreviewResults) && S.agentPreviewResults.length>0,
+      onAgentPreviewClose:()=>this.setState({agentPreviewOpen:false}),
+      onAgentPreviewInput:e=>this.setState({agentPreviewQuery:e.target.value}),
+      onAgentPreviewSearch:()=>this.fetchAgentContext(S.agentPreviewQuery),
+      agentPreviewItems:Array.isArray(S.agentPreviewResults) ? S.agentPreviewResults.map(ctx => {
+        const tm2 = this.typeMeta[ctx.type] || {label:ctx.type||"unknown",bg:"#EEF1F5",ink:"#5A6473"};
+        const sm2 = this.statusMeta[ctx.status] || {label:ctx.status||"unknown",bg:"#EEF1F5",ink:"#5A6473"};
+        const rels = Array.isArray(ctx.relationships) ? ctx.relationships.map(r=>({label:(r.predicate||"")+" → "+(r.targetTitle||r.target||"")})) : [];
+        return {
+          title:ctx.title||ctx.id, summary:ctx.summary||"", type:ctx.type, status:ctx.status, trust:ctx.trust!=null?ctx.trust:"-",
+          typeLabel:tm2.label, typeBg:tm2.bg, typeInk:tm2.ink, statusBg:sm2.bg, statusInk:sm2.ink,
+          citation:ctx.citation||"", hasCitation:!!ctx.citation,
+          relationships:rels, hasRelationships:rels.length>0
+        };
+      }) : [],
       exploreChips,
       exploreModes,
       isListMode:(S.exploreMode || "list") !== "graph",
@@ -3060,10 +3208,12 @@ class Component extends DCLogic {
       guidedModeNote:guidedPath ? (guidedPath.llmReady ? "LLM 可接入" : "规则模板 · 待接入 LLM") : "",
       guidedAnswerInput:S.guidedAnswerInput,
       guidedCurrentAnswer, guidedCurrentAnswerDone, guidedCurrentAnswerNeeded,
-      guidedCurrentGrading, guidedCurrentFeedback,
-      guidedCurrentGradingPending, guidedCurrentGradingCorrect, guidedCurrentGradingPartial, guidedCurrentGradingWrong,
+      guidedCurrentGrading, guidedCurrentFeedback, guidedCurrentReferenceAnswer,
+      guidedCurrentGradingPending, guidedCurrentGradingCorrect, guidedCurrentGradingPartial, guidedCurrentGradingWrong, guidedCurrentGradingUnknown,
+      guidedCanRetry,
       onGuidedAnswerChange:e=>this.setState({guidedAnswerInput:e.target.value}),
       onGuidedAnswerSubmit:()=>this.submitGuidedAnswer(),
+      onGuidedRetry:()=>this.retryGuidedAnswer(),
       onGuidedClose:()=>this.closeGuidedPath(),
       onGuidedPrev:()=>this.guidedPrev(),
       onGuidedNext:()=>this.guidedNext(),

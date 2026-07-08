@@ -1,6 +1,6 @@
 {
   "name": "nseap-knowledge-base",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "description": "NSEAP Knowledge Cognitive Cell lightweight frontend-backend MVP",
   "scripts": {

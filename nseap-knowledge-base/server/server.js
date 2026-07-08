@@ -1219,6 +1219,7 @@ function sanitizeEntry(raw) {
     related: normalizeArray(raw.related),
     relationships,
     summary: String(raw.summary || ""),
+    agentNotes: String(raw.agentNotes || ""),
     situation: String(raw.situation || ""),
     ontology: String(raw.ontology || ""),
     workflow: String(raw.workflow || ""),
@@ -1237,6 +1238,7 @@ function sanitizeEntry(raw) {
       ...skills,
       ...deliverables,
       raw.summary,
+      raw.agentNotes,
       raw.situation,
       raw.ontology,
       raw.workflow,
@@ -1414,6 +1416,29 @@ function parseJsonObject(text) {
   }
 }
 
+// 把上传分析返回的 suggestedRelations 拼成 agentNotes 的“联动”尾句。
+// 模型不知道库里其他条目的真实 ID，所以联动只给“方向 + 提示”，由人后续替换成真实 id。
+function appendRelationHintToAgentNotes(agentNotes, suggestedRelations) {
+  const base = String(agentNotes || "").trim();
+  const rels = Array.isArray(suggestedRelations) ? suggestedRelations : [];
+  const predicateLabel = {
+    includes: "包含", requires: "需要", supports: "支持",
+    assessedBy: "被评估", usesPrompt: "用到提示词", relatedTo: "相关", usesPractice: "用到实践"
+  };
+  const hints = rels
+    .map((r) => {
+      const p = predicateLabel[r && r.predicate] || (r && r.predicate) || "相关";
+      const target = String((r && (r.targetHint || r.target)) || "").trim();
+      return target ? `${p} → ${target}` : "";
+    })
+    .filter(Boolean)
+    .slice(0, 3);
+  if (!base) return "";
+  if (hints.length === 0) return base;
+  const sep = /[；;。]$/.test(base) ? "" : "；";
+  return `${base}${sep}联动：${hints.join("、")}（待人工替换为具体条目）。`;
+}
+
 function normalizeLlmAnalysis(value) {
   const data = value && typeof value === "object" ? value : {};
   const type = normalizeKnowledgeType(data.type, "project");
@@ -1421,6 +1446,7 @@ function normalizeLlmAnalysis(value) {
     title: String(data.title || "").trim(),
     type,
     summary: String(data.summary || "").trim(),
+    agentNotes: String(data.agentNotes || data.agent_notes || "").trim(),
     audience: normalizeArray(data.audience),
     tags: normalizeArray(data.tags),
     keywords: normalizeArray(data.keywords),
@@ -1450,6 +1476,7 @@ function ruleAnalysis(payload) {
     title,
     type,
     summary: textPreview || `由上传文件 ${fileName || "未命名文件"} 自动生成的知识草稿，后续需要补充 metadata。`,
+    agentNotes: `触发条件：用户问到「${title}」相关内容时可参考（待完善）；能力范围：提供该资料的原始内容，具体可回答范围待整理；限制：这是未经 LLM 分析的自动草稿桩，正文和边界尚未确认，正式使用前需人工补写或配置 LLM 后重新生成。`,
     audience: ["Builder", "Agent"],
     tags: ["uploaded-file", extension || "file"].filter(Boolean),
     keywords: [title, fileName, extension, "上传文件", "知识草稿"].filter(Boolean),
@@ -1507,9 +1534,11 @@ async function analyzeUploadWithLlm(payload) {
     "你是 NSEAP Knowledge Cognitive Cell 的知识整理助手。",
     "请根据上传文件正文，生成一个知识草稿的 metadata。",
     "只能返回 JSON，不要返回 Markdown。",
-    "type 必须是 overview/course/challenge/prompt/faq/best-practice/project/agent 之一。",
+    "type 必须是 overview/course/challenge/prompt/faq/best-practice/project/agent/rubric 之一。",
     "audience、tags、keywords、concepts、skills、deliverables 必须是数组。",
     "summary 用中文，一句话说明资料解决什么问题。",
+    "必须返回 agentNotes 字符串：写给其他 AI Agent 看的“使用说明”，用中文，必须严格包含三段，用分号分隔——",
+    "“触发条件：（用户问什么/什么场景时应检索这条）；能力范围：（这条能用来回答或支撑什么）；限制：（不能用于什么、有什么边界）”。不要写联动关系，系统会用 suggestedRelations 自动补。",
     "必须返回 knowledgeProcessing 对象，用来解释系统如何把原始文件加工成知识单元。",
     "knowledgeProcessing 结构必须包含：classificationReason 字符串、coreProblem 字符串、keyPoints 数组、suggestedRelations 数组、missingFields 数组、nextActions 数组。",
     "suggestedRelations 数组里的每一项包含 predicate、targetHint、reason。predicate 优先使用 includes/requires/supports/assessedBy/usesPrompt/relatedTo/usesPractice。",
@@ -1557,6 +1586,12 @@ async function analyzeUploadWithLlm(payload) {
         return value !== "" && value !== null;
       }))
     };
+
+    // 联动部分不让模型猜（它不知道其他条目 ID，容易幻觉），改用同次返回的 suggestedRelations 拼接。
+    merged.agentNotes = appendRelationHintToAgentNotes(
+      merged.agentNotes,
+      merged.knowledgeProcessing && merged.knowledgeProcessing.suggestedRelations
+    );
 
     return {
       ...merged,
@@ -1765,6 +1800,7 @@ function buildUploadEntry(payload, storedName, relativeSource, analysis, extract
     related: [],
     relationships: [],
     summary: inferred.summary || textPreview || `由上传文件 ${payload.fileName || storedName} 自动生成的知识草稿，后续需要补充 metadata。`,
+    agentNotes: inferred.agentNotes || "",
     situation: inferred.situation,
     ontology: inferred.ontology,
     workflow: inferred.workflow,

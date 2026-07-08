@@ -614,7 +614,7 @@
       "id": "kb-upload-1783135052354",
       "title": "本体抽取 Skill",
       "type": "project",
-      "status": "draft",
+      "status": "stable",
       "audience": [
         "FDE",
         "领域专家",
@@ -718,8 +718,52 @@
       "extractedTextPreview": "--- name: ontology-extraction version: \"2.1.0\" updated: \"2026-07-02\" changelog: | v2.1.0（2026-07-02）新增5项： ① T1强制确认步骤（新实体升T1时不可跳过） ② A-Box completeness语义定义（compl",
       "archivedAt": null,
       "createdAt": "2026-07-04T03:17:32.354Z",
-      "updatedAt": "2026-07-07T07:52:01.843Z",
-      "agentNotes": "触发条件：需要了解本体抽取方法论、T-Box/R-Box/A-Box 概念或如何从文档生成结构化本体时检索。能力范围：提供本体抽取的专用技能定义，将领域文档转化为三元组结构。限制：是方法论描述，不含可直接执行的代码脚本；具体实现需对接 Ontology Team 工具链。"
+      "updatedAt": "2026-07-10T06:48:59.340Z",
+      "agentNotes": "触发条件：需要了解本体抽取方法论、T-Box/R-Box/A-Box 概念或如何从文档生成结构化本体时检索。能力范围：提供本体抽取的专用技能定义，将领域文档转化为三元组结构。限制：是方法论描述，不含可直接执行的代码脚本；具体实现需对接 Ontology Team 工具链。",
+      "auditLog": [
+        {
+          "action": "transition",
+          "from": "draft",
+          "to": "review",
+          "note": "",
+          "timestamp": "2026-07-10T06:42:10.502Z"
+        },
+        {
+          "action": "transition",
+          "from": "review",
+          "to": "draft",
+          "note": "退回修订",
+          "timestamp": "2026-07-10T06:42:17.803Z"
+        },
+        {
+          "action": "transition",
+          "from": "draft",
+          "to": "review",
+          "note": "",
+          "timestamp": "2026-07-10T06:42:19.106Z"
+        },
+        {
+          "action": "transition",
+          "from": "review",
+          "to": "draft",
+          "note": "退回修订",
+          "timestamp": "2026-07-10T06:42:20.312Z"
+        },
+        {
+          "action": "transition",
+          "from": "draft",
+          "to": "review",
+          "note": "",
+          "timestamp": "2026-07-10T06:48:57.206Z"
+        },
+        {
+          "action": "approved",
+          "from": "review",
+          "to": "stable",
+          "note": "",
+          "timestamp": "2026-07-10T06:48:59.340Z"
+        }
+      ]
     },
     {
       "id": "kb-overview-001",
